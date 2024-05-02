@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+:root{
+    --mainColor:  #A2E4B8;
+    --mainColorBright: #08FF08;
+    --secondaryColor: #393D47;
+    --secondaryColorBright: #DBD7D2;
+    --textColor: #eee;
+}
+
+h4 {
+    text-align: center;
+}
+
+.main-page {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: var(--secondaryColorBright);
+    width: 100%;
+}
+
+/*
+Entry CSS
+*/
+.container {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.entry-form {
+    padding: 1rem 1rem 1rem 1rem;
+    background-color: var(--textColor);
+}
+
+.entry-table {
+    margin-left: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+    max-width: 60%;
+    min-width: 40%;
+    background-color: var(--textColor);
+}
+
+/*
+Login CSS
+*/
+
+.register {
+    margin-left: 3rem;
+}
+
