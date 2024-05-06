@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -9,12 +9,17 @@
     font-style: normal;
 }
 
-:root{
-    --mainColor:  #A2E4B8;
+:root {
+    --mainColor: #A2E4B8;
     --mainColorBright: #08FF08;
     --secondaryColor: #393D47;
     --secondaryColorBright: #DBD7D2;
     --textColor: #eee;
+}
+
+h3 {
+    margin-top: 1rem;
+    margin-left: 5rem;
 }
 
 h4 {
@@ -22,6 +27,7 @@ h4 {
 }
 
 .main-page {
+    overflow: auto;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -30,7 +36,7 @@ h4 {
 }
 
 /*
-Entry CSS
+Protected-Entry CSS
 */
 .container {
     margin-top: 2rem;
@@ -57,8 +63,29 @@ Entry CSS
 /*
 Login CSS
 */
+.login {
+    margin-left: 3rem;
+}
 
 .register {
     margin-left: 3rem;
+}
+
+/*
+Home
+*/
+p {
+    margin: 1rem 3rem 1rem 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-align: center;
+
+}
+
+.list-wrap {
+    margin: 0 auto;
+    width: 50%;
+    border: 1px solid black;
+    text-align: center;
 }
 

@@ -14,8 +14,10 @@ function Navbar() {
       <h3>Tarkov App</h3>
       <nav ref={navRef}>
         <a href="/home">Home</a>
-        <a href="/entry">Entry</a>
         <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/protected">Entry</a>
+
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaTimes/>
         </button>
