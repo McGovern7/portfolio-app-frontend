@@ -9,6 +9,8 @@ const Register = () => {
     username: '',
     password: ''
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState('');
 
   const handleRegInputChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
@@ -18,8 +20,20 @@ const Register = () => {
     });
   };
 
+  const validateForm = () => {
+    if (!regData.username || !regData.password) {
+      setError('Username and password are required');
+      return false;
+    }
+    setError('');
+    return true;
+  };
+
   const handleRegFormSubmit = async (event) => {
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
+    if (!validateForm()) return;
+    setLoading(true);
+    
     await api.post('/auth/', regData);
     setRegData({
       username: '',

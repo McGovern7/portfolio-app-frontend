@@ -26,6 +26,15 @@ h4 {
     text-align: center;
 }
 
+h5 {
+    margin-bottom: 1rem;
+}
+
+.btn {
+    margin-top: 1rem;
+    min-width: 7rem;
+}
+
 .main-page {
     overflow: auto;
     position: fixed;
@@ -35,21 +44,41 @@ h4 {
     width: 100%;
 }
 
-/*
-Protected-Entry CSS
-*/
 .container {
     margin-top: 2rem;
     padding-top: 1rem;
+    min-width: 100rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+
+    h7 {
+        margin: center;
+    }
 }
 
+
+
+/*
+Protected-Entry CSS
+*/
+
 .entry-form {
+    position: relative;
     padding: 1rem 1rem 1rem 1rem;
     background-color: var(--textColor);
+}
+
+.entry-form::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 4rem;
+    height: 1px;
+    background-color: black; /* Change to your preferred line color */
+    z-index: 1;
 }
 
 .entry-table {
@@ -63,12 +92,20 @@ Protected-Entry CSS
 /*
 Login CSS
 */
-.login {
+.profile {
     margin-left: 3rem;
 }
 
 .register {
     margin-left: 3rem;
+}
+
+.logout {
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.delete {
+    padding: 1rem 1rem 1rem 1rem;
 }
 
 /*

@@ -9,26 +9,23 @@ import './pages.css'
 function ProtectedPage() {
   // const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const verifyToken = async () => {
-      const token = localStorage.getItem('token');
-      console.log(token)
-      try {
-        const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
-        if (!response.ok) {
-          throw new Error('Token verification failed');
-        }
-      } catch (error) {
-        localStorage.removeItem('token');
-        navigate('/login');
+  const verifyToken = async () => {
+    const token = localStorage.getItem('token');
+    console.log(token)
+    try {
+      const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
+      if (!response.ok) {
+        throw new Error('Token verification failed');
       }
-    };
+    } catch (error) {
+      localStorage.removeItem('token');
+      navigate('/profile');
+    }
+  };
 
+  useEffect(() => { // verifies once
     verifyToken();
-  }, [navigate]);
-
-
+  }, [navigate])
 
   // get the user info from the fast api
   const [entries, setEntries] = useState([]);
@@ -61,7 +58,9 @@ function ProtectedPage() {
 
   // function to submit a form
   const handleFormSubmit = async (event) => {
+    verifyToken();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
+    //await api.get(`/entries/`)
     await api.post(`/entries/`, formData);
     fetchEntries(); // recall all the entries so app is always up to date
     setFormData({ // clear the form
@@ -102,8 +101,7 @@ function ProtectedPage() {
             </div>
 
             <button type='submit' className='btn btn-primary mb-3'>
-              Submit
-
+              Add
             </button>
           </form>
         </div>

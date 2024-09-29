@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import api from '../api'
 import '../components/components.css'
 import './pages.css'
 
-function Login() {
+function Profile() {
+
   const [regData, setRegData] = useState({
     username: '',
     password: ''
@@ -21,6 +23,19 @@ function Login() {
   };
 
   const navigate = useNavigate();
+  const verifyToken = async () => {
+    const token = localStorage.getItem('token');
+    console.log(token)
+    try {
+      const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
+      if (!response.ok) {
+        throw new Error('Token verification failed');
+      }
+    } catch (error) {
+      localStorage.removeItem('token');
+      navigate('/profile');
+    }
+  };
 
   const validateForm = () => {
     if (!regData.username || !regData.password) {
@@ -31,7 +46,7 @@ function Login() {
     return true;
   };
 
-  // handle submissions when user tries to login
+  // handle submissions when user tries to LOGIN
   const handleLogFormSubmit = async (event) => {
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
@@ -54,7 +69,7 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.access_token); // set local storage to received token
-        localStorage.setItem('username', regData.username) // set username to local storage so it can be grabbed for entries
+        localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
         navigate('/protected'); // protected component ensureing valid token
       } else {
         const errorData = await response.json();
@@ -64,40 +79,105 @@ function Login() {
       setLoading(false);
       setError('An error occurred. Please try again later.')
     }
-  };
+  }
+
+  const [loginVisible, setLoginVisible] = useState(false);
+  const [logoutVisible, setLogoutVisible] = useState(false); 
+
+  useEffect(() => { // login or logout depending on localStorage status
+    if (localStorage.getItem('token')) {
+      verifyToken() // verify good profile or reset storage
+      setLogoutVisible(true);
+    }
+    else {
+      setLoginVisible(true);
+    }
+  }, [navigate]) // only runs once on site load
+
+  // handle submissions when user tries to LOGOUT
+  const handleLogoutButton = () => {
+    verifyToken();
+    localStorage.clear();
+    navigate('/home');
+  }
+
+  // delete user and their entries from both databases
+  const handleDeleteButton = async () => {
+    verifyToken();
+    const username = localStorage.getItem('username');
+    try {
+      const response = await api.delete(`/users/${username}`);
+      if (!response.ok) {
+        throw new Error('Could not delete user profile');
+      }
+    }
+    catch (error) {
+      localStorage.clear();
+      navigate('/home')
+    }
+    navigate('/home')
+  }
+  
+  
+  ;
 
   return (
     <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
-      <h3>Login to access your entries</h3>
-      <div className='container'>
-        <div className='login'>
-          <div className='p-3 bg-white border border-dark'>
-            <h4>Login</h4>
-            <form onSubmit={handleLogFormSubmit}>
-
-              <div className='mb-3'>
-                <label htmlFor="username" className='form-label'>Username</label>
-                <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username}/>
+      <h3>User Profile</h3>
+        <div className='profile' style={{ display: logoutVisible ? 'block' : 'none' }}>
+          <div className='container'>
+            <div className='logout'>
+              <div className='p-3 bg-white border border-dark'>
+                <h5>Logout of *{localStorage.getItem('username')}*?</h5>
+                <button type="submit" className='btn btn-success' onClick={handleLogoutButton} disabled={loading}>
+                  {loading ? 'Logging out' : 'Logout'}
+                </button>
               </div>
-
-              <div className='mb-3'>
-                <label htmlFor="password" className='form-label'>Password</label>
-                <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password}/>
+            </div>
+            <div className='delete'>
+              <div className='p-3 bg-white border border-dark'>
+                <h5>Delete user account *{localStorage.getItem('username')}*?</h5>
+                <button type="submit" className='btn btn-success' onClick={handleDeleteButton} disabled={loading}>
+                  {loading ? 'Deleting' : 'Delete'}
+                </button>
               </div>
-
-              <button type="submit" className='btn btn-success' disabled={loading}>
-                {loading ? 'Logging in' : 'Login'}
-              </button>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div className='profile' style={{ display: loginVisible ? 'block' : 'none' }}>
+          <div className='container'>
+            <div className='login'>
+              <div className='p-3 bg-white border border-dark'>
+                <h5>Login to access your entries</h5>
+                <form onSubmit={handleLogFormSubmit}>
+
+                  <div className='mb-3'>
+                    <label htmlFor="username" className='form-label'>Username</label>
+                    <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username} />
+                  </div>
+
+                  <div className='mb-3'>
+                    <label htmlFor="password" className='form-label'>Password</label>
+                    <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} />
+                  </div>
+
+                  <button type="submit" className='btn btn-success' disabled={loading}>
+                    {loading ? 'Logging in' : 'Login'}
+                  </button>
+                  {error && <p style={{ color: 'red' }}>{error}</p>}
+                </form>
+              </div>
+              <h7>Don't have an Account?  <a href="/register">Register</a></h7>
+            </div>
+          </div>
+          
+        </div>
     </div>
   )
 }
 
-export default Login
+export default Profile

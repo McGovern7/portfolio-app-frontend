@@ -12,6 +12,7 @@ header {
 nav a{
     margin: 0 4rem;
     color: var(--mainColor);
+    text-decoration: none;
 }
 
 nav a:hover{
@@ -53,6 +54,7 @@ pop down when width < 1024 pixels
         background-color: var(--secondaryColor);
         transition: 1s;
         transform: translateY(-100vh);
+        flex-direction: row;
     }
 
     header .responsive_nav{
