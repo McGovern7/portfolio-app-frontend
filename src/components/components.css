@@ -54,7 +54,6 @@ pop down when width < 1024 pixels
         background-color: var(--secondaryColor);
         transition: 1s;
         transform: translateY(-100vh);
-        flex-direction: row;
     }
 
     header .responsive_nav{

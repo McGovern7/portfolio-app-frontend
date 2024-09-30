@@ -4,6 +4,7 @@ import api from '../api'
 import Navbar from '../components/Navbar'
 import '../components/components.css'
 import './pages.css'
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 
 function ProtectedPage() {
@@ -25,7 +26,7 @@ function ProtectedPage() {
 
   useEffect(() => { // verifies once
     verifyToken();
-  }, [navigate])
+  }, [navigate]);
 
   // get the user info from the fast api
   const [entries, setEntries] = useState([]);
@@ -33,12 +34,12 @@ function ProtectedPage() {
     ammo_name: '',
     caliber: '',
     ammo_amount: 0,
-    username: localStorage.getItem('username'),
+    username: localStorage.getItem('username')
   });
 
   // get all of the entries from the logged in user
   const fetchEntries = async () => {
-    const username = localStorage.getItem('username') 
+    const username = localStorage.getItem('username')
     const response = await api.get(`/entries/${username}`);
     setEntries(response.data)
   };
@@ -60,7 +61,7 @@ function ProtectedPage() {
   const handleFormSubmit = async (event) => {
     verifyToken();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
-    //await api.get(`/entries/`)
+    // TODO: trim the data before posting!!!
     await api.post(`/entries/`, formData);
     fetchEntries(); // recall all the entries so app is always up to date
     setFormData({ // clear the form
@@ -69,12 +70,27 @@ function ProtectedPage() {
       ammo_amount: 0,
     });
   };
+
+  const [ammoTypes, setAmmoTypes] = useState([]);
+
+
+
+  const fetchAmmoTypes = async () => {
+    const response = await api.get(`/tarkov_ammo/`);
+    setAmmoTypes(response.data)
+  }
+
+  const handleDropDown = (event) => {
+    
+  }
+
+    ;
   return (
     <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
-      <div className='container entry'>
+      <div className='container'>
         <div className='entry-form border border-dark'>
           <h4>Enter Ammo into your Storage</h4>
           <form onSubmit={handleFormSubmit}>
@@ -111,9 +127,9 @@ function ProtectedPage() {
             <thead className='table-dark'>
               <tr>
                 <th>Ammo Name</th>
-                <th>caliber</th>
+                <th>Caliber</th>
                 <th>Ammo Amount</th>
-                <th>username</th>
+                <th>Username</th>
               </tr>
             </thead>
             <tbody>
@@ -127,6 +143,41 @@ function ProtectedPage() {
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <div className='container'>
+        <div className='ammo-parent border border-dark' >
+          <h4>Ammo Chart</h4>
+          <div className='checkbox-table'>
+            <button className='dropdown' onClick={handleDropDown}>
+              'place'
+            </button>
+            <table className='ammo-table table table-striped table-bordered table-hover border-dark'>
+              <thead className='table-dark'>
+                <tr>
+                  <th>Name</th>
+                  <th>Caliber</th>
+                  <th>Penetration</th>
+                  <th>Damage</th>
+                  <th>Velocity</th>
+                  <th>Frag%</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ammoTypes.map((type) => (
+                  <tr key={[type.ammo_name, type.ammo_group]}>
+                    <td>{type.ammo_name}</td>
+                    <td>{type.caliber}</td>
+                    <td>{type.penetration}</td>
+                    <td>{type.damage}</td>
+                    <td>{type.velocity}</td>
+                    <td>{type.frag_pct}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
