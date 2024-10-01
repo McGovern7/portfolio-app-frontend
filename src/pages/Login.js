@@ -5,6 +5,7 @@ import api from '../api'
 import '../components/components.css'
 import './pages.css'
 
+
 function Profile() {
 
   const [regData, setRegData] = useState({
@@ -117,8 +118,6 @@ function Profile() {
     }
     navigate('/home')
   }
-  
-  
   ;
 
   return (

@@ -48,7 +48,7 @@ function ProtectedPage() {
     fetchEntries();
   }, []);
 
-  // expect an event and create a variable based on a checkbox getting clicked or not
+  // expect an event and create a variable based on a checkbox getting clicked or not (nullish coalescing operator)
   const handleInputChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     setFormData({
@@ -73,18 +73,31 @@ function ProtectedPage() {
 
   const [ammoTypes, setAmmoTypes] = useState([]);
 
-
-
   const fetchAmmoTypes = async () => {
     const response = await api.get(`/tarkov_ammo/`);
-    setAmmoTypes(response.data)
-  }
+    setAmmoTypes(response.data);
+  };
 
-  const handleDropDown = (event) => {
-    
-  }
+  // unique dropdown button to show/hide ammo table
+  const [dropDown, setDropDown] = useState({
+    icon: <FaChevronDown />,
+    isOpen: false,
+    fetchedOnce: false,
+  });
 
-    ;
+  const handleDropDown = () => {
+    if (dropDown.isOpen) {
+      setDropDown({ icon: <FaChevronDown />, isOpen: false });
+    }
+    else {
+      if (dropDown.fetchedOnce == false) {
+        fetchAmmoTypes();
+        dropDown.fetchedOnce = true;
+      }
+      setDropDown({ icon: <FaChevronUp />, isOpen: true });
+    }
+  }
+  ;
   return (
     <div className='main-page'>
       <React.Fragment>
@@ -150,10 +163,10 @@ function ProtectedPage() {
         <div className='ammo-parent border border-dark' >
           <h4>Ammo Chart</h4>
           <div className='checkbox-table'>
-            <button className='dropdown' onClick={handleDropDown}>
-              'place'
+            <button type='submit' className='dropdown' onClick={handleDropDown}>
+              {dropDown.icon}
             </button>
-            <table className='ammo-table table table-striped table-bordered table-hover border-dark'>
+            <table className='ammo-table table table-striped table-bordered table-hover border-dark' style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
               <thead className='table-dark'>
                 <tr>
                   <th>Name</th>
