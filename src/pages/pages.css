@@ -45,8 +45,6 @@ h5 {
 }
 
 .container {
-    margin-top: 2%;
-    margin-left: 2%;
     padding-top: 1%;
     max-width: 100rem;
     display: flex;
@@ -69,7 +67,7 @@ Protected-Entry CSS
     background-color: var(--textColor);
 }
 
-.entry-form::after {
+.form-header::after {
     content: "";
     position: absolute;
     left: 0;
@@ -80,13 +78,20 @@ Protected-Entry CSS
     z-index: 1;
 }
 
-.entry-table {
-    position: relative;
+.entry-table-frame {
     margin-left: 2%;
     padding: 1rem 1rem 1rem 1rem;
-    max-width: 60%;
-    min-width: 40%;
+    width: 70%;
+    min-width: 45rem;
     background-color: var(--textColor);
+}
+
+.entry-table {
+    justify-content: flex-start;
+}
+
+.chart-title {
+    text-align: start !important;
 }
 
 .ammo-parent {
@@ -94,6 +99,11 @@ Protected-Entry CSS
     padding: 1rem 1rem 1rem 1rem;
     max-width: 100%;
     background-color: var(--textColor);
+}
+
+.dropdown {
+    width: 1.75rem;
+    margin-bottom: .5rem;
 }
 
 
@@ -120,7 +130,7 @@ Login CSS
 Home
 */
 p {
-    margin: 1rem 3rem 1rem 3rem;
+    margin: 0rem 1rem 0rem 1rem;
     font-family: 'Courier New', Courier, monospace;
     font-size: large;
     text-align: center;
@@ -130,7 +140,6 @@ p {
 .list-wrap {
     margin: 0 auto;
     width: 50%;
-    border: 1px solid black;
+    border: 1px solid darkslategray;
     text-align: center;
 }
-

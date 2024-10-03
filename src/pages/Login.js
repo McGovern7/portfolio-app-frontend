@@ -27,12 +27,15 @@ function Profile() {
   const verifyToken = async () => {
     const token = localStorage.getItem('token');
     console.log(token)
+    setLoading(true);
     try {
       const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
+      setLoading(false);
       if (!response.ok) {
         throw new Error('Token verification failed');
       }
     } catch (error) {
+      setLoading(false);
       localStorage.removeItem('token');
       navigate('/profile');
     }
@@ -83,7 +86,7 @@ function Profile() {
   }
 
   const [loginVisible, setLoginVisible] = useState(false);
-  const [logoutVisible, setLogoutVisible] = useState(false); 
+  const [logoutVisible, setLogoutVisible] = useState(false);
 
   useEffect(() => { // login or logout depending on localStorage status
     if (localStorage.getItem('token')) {
@@ -105,20 +108,23 @@ function Profile() {
   // delete user and their entries from both databases
   const handleDeleteButton = async () => {
     verifyToken();
+    setLoading(true);
     const username = localStorage.getItem('username');
     try {
       const response = await api.delete(`/users/${username}`);
+      setLoading(false)
       if (!response.ok) {
         throw new Error('Could not delete user profile');
       }
     }
     catch (error) {
+      setLoading(false);
       localStorage.clear();
       navigate('/home')
     }
     navigate('/home')
   }
-  ;
+    ;
 
   return (
     <div className='main-page'>
@@ -126,55 +132,55 @@ function Profile() {
         <Navbar />
       </React.Fragment>
       <h3>User Profile</h3>
-        <div className='profile' style={{ display: logoutVisible ? 'block' : 'none' }}>
-          <div className='container'>
-            <div className='logout'>
-              <div className='p-3 bg-white border border-dark'>
-                <h5>Logout of *{localStorage.getItem('username')}*?</h5>
-                <button type="submit" className='btn btn-success' onClick={handleLogoutButton} disabled={loading}>
-                  {loading ? 'Logging out' : 'Logout'}
-                </button>
-              </div>
+      <div className='profile' style={{ display: logoutVisible ? 'block' : 'none' }}>
+        <div className='container'>
+          <div className='logout'>
+            <div className='p-3 bg-white border border-dark'>
+              <h5>Logout of *{localStorage.getItem('username')}*?</h5>
+              <button type="submit" className='btn btn-success' onClick={handleLogoutButton} disabled={loading}>
+                {loading ? 'Logging out' : 'Logout'}
+              </button>
             </div>
-            <div className='delete'>
-              <div className='p-3 bg-white border border-dark'>
-                <h5>Delete user account *{localStorage.getItem('username')}*?</h5>
-                <button type="submit" className='btn btn-success' onClick={handleDeleteButton} disabled={loading}>
-                  {loading ? 'Deleting' : 'Delete'}
-                </button>
-              </div>
+          </div>
+          <div className='delete'>
+            <div className='p-3 bg-white border border-dark'>
+              <h5>Delete user account *{localStorage.getItem('username')}*?</h5>
+              <button type="submit" className='btn btn-success' onClick={handleDeleteButton} disabled={loading}>
+                {loading ? 'Deleting' : 'Delete'}
+              </button>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className='profile' style={{ display: loginVisible ? 'block' : 'none' }}>
-          <div className='container'>
-            <div className='login'>
-              <div className='p-3 bg-white border border-dark'>
-                <h5>Login to access your entries</h5>
-                <form onSubmit={handleLogFormSubmit}>
+      <div className='profile' style={{ display: loginVisible ? 'block' : 'none' }}>
+        <div className='container'>
+          <div className='login'>
+            <div className='p-3 bg-white border border-dark'>
+              <h5>Login to access your entries</h5>
+              <form onSubmit={handleLogFormSubmit}>
 
-                  <div className='mb-3'>
-                    <label htmlFor="username" className='form-label'>Username</label>
-                    <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username} />
-                  </div>
+                <div className='mb-3'>
+                  <label htmlFor="username" className='form-label'>Username</label>
+                  <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username} />
+                </div>
 
-                  <div className='mb-3'>
-                    <label htmlFor="password" className='form-label'>Password</label>
-                    <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} />
-                  </div>
+                <div className='mb-3'>
+                  <label htmlFor="password" className='form-label'>Password</label>
+                  <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} />
+                </div>
 
-                  <button type="submit" className='btn btn-success' disabled={loading}>
-                    {loading ? 'Logging in' : 'Login'}
-                  </button>
-                  {error && <p style={{ color: 'red' }}>{error}</p>}
-                </form>
-              </div>
-              <h7>Don't have an Account?  <a href="/register">Register</a></h7>
+                <button type="submit" className='btn btn-success' disabled={loading}>
+                  {loading ? 'Logging in' : 'Login'}
+                </button>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+              </form>
             </div>
+            <h7>Don't have an Account?  <a href="/register">Register</a></h7>
           </div>
-          
         </div>
+
+      </div>
     </div>
   )
 }

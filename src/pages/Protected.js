@@ -4,7 +4,7 @@ import api from '../api'
 import Navbar from '../components/Navbar'
 import '../components/components.css'
 import './pages.css'
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaRegWindowMinimize, FaRegWindowMaximize, FaPlus } from "react-icons/fa";
 
 
 function ProtectedPage() {
@@ -28,7 +28,9 @@ function ProtectedPage() {
     verifyToken();
   }, [navigate]);
 
-  // get the user info from the fast api
+  // declare useStates for form and its table
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState('');
   const [entries, setEntries] = useState([]);
   const [formData, setFormData] = useState({
     ammo_name: '',
@@ -39,14 +41,13 @@ function ProtectedPage() {
 
   // get all of the entries from the logged in user
   const fetchEntries = async () => {
+    setLoading(true);
     const username = localStorage.getItem('username')
+    // TODO: try catch clause?
     const response = await api.get(`/entries/${username}`);
     setEntries(response.data)
+    setLoading(false);
   };
-
-  useEffect(() => {
-    fetchEntries();
-  }, []);
 
   // expect an event and create a variable based on a checkbox getting clicked or not (nullish coalescing operator)
   const handleInputChange = (event) => {
@@ -57,19 +58,43 @@ function ProtectedPage() {
     });
   };
 
+  const validateForm = () => {
+    if (!formData.ammo_name || !formData.caliber || formData.ammo_amount < 1) {
+      setError('All Fields are required');
+      return false;
+    }
+    setError('');
+    return true;
+  }
+
   // function to submit a form
   const handleFormSubmit = async (event) => {
     verifyToken();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
-    // TODO: trim the data before posting!!!
+    if (!validateForm()) return;
+    setLoading(true);
+    
+    try {
+      await api.get(`tarkov_ammo/${formData.caliber}/${formData.ammo_name}`);
+    }
+    catch (error) {
+      setLoading(false);
+      setError("Ammo type not found, See Chart for Name/Caliber Format")
+      return;
+    }
     await api.post(`/entries/`, formData);
     fetchEntries(); // recall all the entries so app is always up to date
+    setLoading(false);
     setFormData({ // clear the form
       ammo_name: '',
       caliber: '',
       ammo_amount: 0,
     });
   };
+
+  useEffect(() => {
+    fetchEntries();
+  }, [navigate]);
 
   const [ammoTypes, setAmmoTypes] = useState([]);
 
@@ -105,21 +130,21 @@ function ProtectedPage() {
       </React.Fragment>
       <div className='container'>
         <div className='entry-form border border-dark'>
-          <h4>Enter Ammo into your Storage</h4>
+          <h4 classname='form-header'>Enter Ammo into your Storage</h4>
           <form onSubmit={handleFormSubmit}>
 
             <div className='mb-3 mt-3'>
               <label htmlFor='ammo_name' className='form-label'>
                 Ammo Name
               </label>
-              <input type='text' className='form-control' id='ammo_name' name="ammo_name" onChange={handleInputChange} value={formData.ammo_name} />
+              <input type='text' className='form-control' id='ammo_name' name="ammo_name" onChange={handleInputChange} value={formData.ammo_name.trim()} />
             </div>
 
             <div className='mb-3'>
               <label htmlFor='caliber' className='form-label'>
                 Caliber
               </label>
-              <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleInputChange} value={formData.caliber} />
+              <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleInputChange} value={formData.caliber.trim()} />
             </div>
 
             <div className='mb-3'>
@@ -129,14 +154,15 @@ function ProtectedPage() {
               <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleInputChange} value={formData.ammo_amount} />
             </div>
 
-            <button type='submit' className='btn btn-primary mb-3'>
+            <button type='submit' className='btn btn-primary mb-3' disabled={loading}>
               Add
             </button>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
           </form>
         </div>
-        <div className='entry-table border border-dark' >
+        <div className='entry-table-frame border border-dark' >
           <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
-          <table className='table table-striped table-bordered table-hover border-dark'>
+          <table className='entry-table table table-striped table-bordered table-hover border-dark'>
             <thead className='table-dark'>
               <tr>
                 <th>Ammo Name</th>
@@ -161,12 +187,12 @@ function ProtectedPage() {
 
       <div className='container'>
         <div className='ammo-parent border border-dark' >
-          <h4>Ammo Chart</h4>
-          <div className='checkbox-table'>
-            <button type='submit' className='dropdown' onClick={handleDropDown}>
-              {dropDown.icon}
-            </button>
-            <table className='ammo-table table table-striped table-bordered table-hover border-dark' style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
+          <h4 className='chart-title'>Ammo Chart</h4>
+          <button type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
+            {dropDown.icon}
+          </button>
+          <div className='checkbox-table' style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
+            <table className='ammo-table table table-striped table-bordered table-hover border-dark'>
               <thead className='table-dark'>
                 <tr>
                   <th>Name</th>
@@ -194,7 +220,6 @@ function ProtectedPage() {
         </div>
       </div>
     </div>
-
   )
 }
 
