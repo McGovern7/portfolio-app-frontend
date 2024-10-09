@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
 import Navbar from '../components/Navbar'
 import '../components/components.css'
 import './pages.css'
-import { FaChevronDown, FaChevronUp, FaRegWindowMinimize, FaRegWindowMaximize, FaPlus } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 
 function ProtectedPage() {
   // const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
-  const verifyToken = async () => {
+  const verifyToken = useCallback(async () => {
     const token = localStorage.getItem('token');
     console.log(token)
     try {
@@ -22,7 +22,7 @@ function ProtectedPage() {
       localStorage.removeItem('token');
       navigate('/profile');
     }
-  };
+  }, [navigate]);
 
   useEffect(() => { // verifies once
     verifyToken();
@@ -49,13 +49,40 @@ function ProtectedPage() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    fetchEntries();
+  }, [navigate]);
+
   // expect an event and create a variable based on a checkbox getting clicked or not (nullish coalescing operator)
-  const handleInputChange = (event) => {
+  const handleAmmoNameChange = (event) => {
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    setFormData({
+      ...formData,
+      [event.target.name]: value.toUpperCase(),
+    });
+  };
+
+  const handleCaliberChange = (event) => {
+    function toTitleCase(str) {
+      let words = str.replace(/_/g, '-');
+      words = words.replace(/\w\S\w*/g, text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase());
+      words = words.replace(/-/g, '_');
+      str = words;
+      return str;
+    }
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    setFormData({
+      ...formData,
+      [event.target.name]: toTitleCase(value),
+    });
+  };
+
+  const handleAmmountChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     setFormData({
       ...formData,
       [event.target.name]: value,
-    });
+    })
   };
 
   const validateForm = () => {
@@ -63,7 +90,7 @@ function ProtectedPage() {
       setError('All Fields are required');
       return false;
     }
-    setError('');
+    setError('');    
     return true;
   }
 
@@ -82,19 +109,18 @@ function ProtectedPage() {
       setError("Ammo type not found, See Chart for Name/Caliber Format")
       return;
     }
-    await api.post(`/entries/`, formData);
+    await api.post(`/entries/`, formData);  //TODO: use validated entryData instead of formData
+
     fetchEntries(); // recall all the entries so app is always up to date
     setLoading(false);
-    setFormData({ // clear the form
+    setFormData({
       ammo_name: '',
       caliber: '',
       ammo_amount: 0,
     });
   };
 
-  useEffect(() => {
-    fetchEntries();
-  }, [navigate]);
+
 
   const [ammoTypes, setAmmoTypes] = useState([]);
 
@@ -115,7 +141,7 @@ function ProtectedPage() {
       setDropDown({ icon: <FaChevronDown />, isOpen: false });
     }
     else {
-      if (dropDown.fetchedOnce == false) {
+      if (dropDown.fetchedOnce === false) {
         fetchAmmoTypes();
         dropDown.fetchedOnce = true;
       }
@@ -130,28 +156,28 @@ function ProtectedPage() {
       </React.Fragment>
       <div className='container'>
         <div className='entry-form border border-dark'>
-          <h4 classname='form-header'>Enter Ammo into your Storage</h4>
+          <h4 className='form-header'>Enter Ammo into your Storage</h4>
           <form onSubmit={handleFormSubmit}>
 
             <div className='mb-3 mt-3'>
               <label htmlFor='ammo_name' className='form-label'>
                 Ammo Name
               </label>
-              <input type='text' className='form-control' id='ammo_name' name="ammo_name" onChange={handleInputChange} value={formData.ammo_name.trim()} />
+              <input type='text' className='form-control' id='ammo_name' name="ammo_name" onChange={handleAmmoNameChange} value={formData.ammo_name} />
             </div>
 
             <div className='mb-3'>
               <label htmlFor='caliber' className='form-label'>
                 Caliber
               </label>
-              <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleInputChange} value={formData.caliber.trim()} />
+              <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleCaliberChange} value={formData.caliber} />
             </div>
 
             <div className='mb-3'>
               <label htmlFor='ammo_amount' className='form-label'>
                 Amount
               </label>
-              <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleInputChange} value={formData.ammo_amount} />
+              <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleAmmountChange} value={formData.ammo_amount} />
             </div>
 
             <button type='submit' className='btn btn-primary mb-3' disabled={loading}>
@@ -168,7 +194,6 @@ function ProtectedPage() {
                 <th>Ammo Name</th>
                 <th>Caliber</th>
                 <th>Ammo Amount</th>
-                <th>Username</th>
               </tr>
             </thead>
             <tbody>
@@ -177,7 +202,6 @@ function ProtectedPage() {
                   <td>{entry.ammo_name}</td>
                   <td>{entry.caliber}</td>
                   <td>{entry.ammo_amount}</td>
-                  <td>{entry.username}</td>
                 </tr>
               ))}
             </tbody>

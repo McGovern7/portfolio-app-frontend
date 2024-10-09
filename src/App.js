@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Profile from './pages/Login'
 import Register from './pages/Register'
-import ProtectedPage from './pages/Protected' 
+import ProtectedPage from './pages/Protected'
 import Home from './pages/Home'
-import NoPage from './pages/NoPage' 
+import NoPage from './pages/NoPage'
 
 // npm start
 /**
@@ -16,7 +16,7 @@ import NoPage from './pages/NoPage'
  */
 
 const App = () => {
-  
+
   return ( // react can only return one element
     <div>
       <BrowserRouter>

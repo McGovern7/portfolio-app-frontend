@@ -11,6 +11,7 @@ const Register = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
+  const [regStatus, setRegStatus] = useState('');
 
   const handleRegInputChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
@@ -33,8 +34,17 @@ const Register = () => {
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
     setLoading(true);
+    try {
+      await api.post('/auth/', regData);
+    } catch (error) {
+      setLoading(false);
+      setError('An account with that name already exists', error);
+      console.log(error);
+      return;
+    }
     
-    await api.post('/auth/', regData);
+    // ERROR: string.format not a function
+    setRegStatus(`You have successfully registered account ${regData.username}`);
     setRegData({
       username: '',
       password: ''
@@ -46,11 +56,11 @@ const Register = () => {
       <React.Fragment>
         <Navbar />
       </React.Fragment>
-      <h3>Register a new account</h3>
+      <h3>Registration</h3>
       <div className='container'>
         <div className='register'>
           <div className='p-3 bg-white border border-dark'>
-            <h4>Register</h4>
+            <h4>Register A New Profile</h4>
             <form onSubmit={handleRegFormSubmit}>
 
               <div className='mb-3'>
@@ -63,8 +73,10 @@ const Register = () => {
                 <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} />
               </div>
 
-              <button className='btn btn-success'>Register</button>
+              <button className='btn btn-success' disabled={loading}>Register</button>
+              {error && <p className="error">{error}</p>}
             </form>
+            {regStatus && <p className="success">{setRegStatus}</p>}
           </div>
         </div>
       </div>

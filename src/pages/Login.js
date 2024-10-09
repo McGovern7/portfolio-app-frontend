@@ -83,7 +83,7 @@ function Profile() {
       setLoading(false);
       setError('An error occurred. Please try again later.')
     }
-  }
+  };
 
   const [loginVisible, setLoginVisible] = useState(false);
   const [logoutVisible, setLogoutVisible] = useState(false);
@@ -103,7 +103,7 @@ function Profile() {
     verifyToken();
     localStorage.clear();
     navigate('/home');
-  }
+  };
 
   // delete user and their entries from both databases
   const handleDeleteButton = async () => {
@@ -123,8 +123,7 @@ function Profile() {
       navigate('/home')
     }
     navigate('/home')
-  }
-    ;
+  };
 
   return (
     <div className='main-page'>
@@ -173,10 +172,10 @@ function Profile() {
                 <button type="submit" className='btn btn-success' disabled={loading}>
                   {loading ? 'Logging in' : 'Login'}
                 </button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {error && <p className="error">{error}</p>}
               </form>
             </div>
-            <h7>Don't have an Account?  <a href="/register">Register</a></h7>
+            <>Don't have an Account?  <a href="/register">Register</a></>
           </div>
         </div>
 
