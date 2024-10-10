@@ -49,31 +49,43 @@ function ProtectedPage() {
     setLoading(false);
   };
 
+  const findDupe = async () => {
+    setLoading(true);
+
+    setLoading(false);
+    return false;
+  }
+
   useEffect(() => {
     fetchEntries();
   }, [navigate]);
 
+
   // expect an event and create a variable based on a checkbox getting clicked or not (nullish coalescing operator)
   const handleAmmoNameChange = (event) => {
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    function toUpper(str) {
+      str = str.replace(/\w\S\w*/g, text => text.toUpperCase());
+      return str.trim();
+    }
+    const value = event.target.type === 'checkbox' ? event.target.checked : toUpper(event.target.value);
     setFormData({
       ...formData,
-      [event.target.name]: value.toUpperCase(),
+      [event.target.name]: toUpper(value),
     });
   };
 
+  // Real-time syntax query correcting of caliber form data to Title_Text 
   const handleCaliberChange = (event) => {
-    function toTitleCase(str) {
+    function toTitle(str) {
       let words = str.replace(/_/g, '-');
       words = words.replace(/\w\S\w*/g, text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase());
-      words = words.replace(/-/g, '_');
-      str = words;
-      return str;
+      str = words.replace(/[ -]/g, '_');
+      return str.trim();
     }
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    const value = event.target.type === 'checkbox' ? event.target.checked : toTitle(event.target.value);
     setFormData({
       ...formData,
-      [event.target.name]: toTitleCase(value),
+      [event.target.name]: toTitle(value),
     });
   };
 
@@ -109,6 +121,11 @@ function ProtectedPage() {
       setError("Ammo type not found, See Chart for Name/Caliber Format")
       return;
     }
+    fetchEntries(); // recall all the entries so app is always up to date
+    console.log(formData.ammo_name);
+    console.log(formData.caliber);
+    console.log(formData.ammo_amount);
+
     await api.post(`/entries/`, formData);  //TODO: use validated entryData instead of formData
 
     fetchEntries(); // recall all the entries so app is always up to date
