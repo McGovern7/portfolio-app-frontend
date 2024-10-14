@@ -11,7 +11,6 @@ function ProtectedPage() {
   const navigate = useNavigate();
   const verifyToken = useCallback(async () => {
     const token = localStorage.getItem('token');
-    console.log(token);
     try {
       const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
       if (!response.ok) {
@@ -19,16 +18,14 @@ function ProtectedPage() {
       }
     } catch (error) {
       localStorage.removeItem('token');
+      localStorage.removeItem('username');
       navigate('/profile');
     };
   }, [navigate]);
 
-  useEffect(() => { // verifies once
-    verifyToken();
-  }, [navigate]);
-
   // declare useStates for form and its table
-  const [error, setError] = useState('');
+  const [formError, setFormError] = useState('');
+  const [generalError, setGeneralError] = useState('');
   const [loading, setLoading] = useState('');
   const [entries, setEntries] = useState([]);
   const [formData, setFormData] = useState({
@@ -42,17 +39,19 @@ function ProtectedPage() {
   const fetchEntries = async () => {
     setLoading(true);
     const username = localStorage.getItem('username');
-    // TODO: try catch clause?
-    const response = await api.get(`/entries/${username}`);
-    setEntries(response.data);
-    setLoading(false);
+    try {
+      const response = await api.get(`/entries/${username}`);
+      setEntries(response.data);
+      setGeneralError('');
+    } catch (error) {
+      console.log(`No Entries Associated with ${username}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  useEffect(() => {
-    fetchEntries();
-  }, [navigate]);
-
   // expect an event and create a variable based on a checkbox being clicked or not (nullish coalescing operator)
+  // Real-time syntax query correcting of Ammo Name form data toUpperCase() 
   const handleAmmoNameChange = (event) => {
     function toUpper(str) {
       let words = str.replace(/_/g, '-');
@@ -80,7 +79,7 @@ function ProtectedPage() {
       [event.target.name]: toTitle(value),
     });
   };
-  const handleAmmountChange = (event) => {
+  const handleOtherChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     setFormData({
       ...formData,
@@ -88,18 +87,20 @@ function ProtectedPage() {
     });
   };
 
+  // pre-submission validations
   const validateForm = () => {
     if (!formData.ammo_name || !formData.caliber || formData.ammo_amount < 1) {
-      setError('All Fields are required');
+      setFormError('All Fields are required');
       return false;
     };
-    setError('');
+    setFormError('');
     return true;
   }
 
   // function to submit an entry form
   const handleFormSubmit = async (event) => {
     verifyToken();
+    fetchEntries();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
     setLoading(true);
@@ -108,72 +109,48 @@ function ProtectedPage() {
       await api.get(`/tarkov_ammo/${formData.caliber}/${formData.ammo_name}`);
     } catch (error) {
       setLoading(false);
-      setError("Ammo type not found, See Chart for Name/Caliber Format");
+      setFormError("Ammo type not found, See Chart for Name/Caliber Format");
       return;
     };
 
-
-
-
-
-
-
-
-
-
-    let currResponse = await api.get(`/entries/${formData.username}/${formData.caliber}/${formData.ammo_name}`);
-    let currData = currResponse.data;
-    let currID = parseInt(currData.id);
-
-
-    console.log(currID);
-    if (currID > 0) { // PATCH existing entry with summed ammo_ammount
+    // decide to PATCH or POST depending on duplicate response
+    try {
+      const currResponse = await api.get(`/entries/${formData.username}/${formData.caliber}/${formData.ammo_name}`);
+      const currData = currResponse.data;
+      const currID = parseInt(currData.id);
+      if (currID > 0) {
+        try {
+          const newAmount = parseInt(currData.ammo_amount) + parseInt(formData.ammo_amount);
+          console.log(currID);
+          await api.patch(`/entries/${currID}`, { newAmount: newAmount });
+          console.log('patched');
+        } catch (error) {
+          setFormError("An issue patching existing data has occurred");
+        };
+      }
+    } catch (error) {
       try {
-        console.log("proceed to patch");
-        let newAmmount = parseInt(currData.ammo_amount) + parseInt(formData.ammo_amount);
-
-        await api.patch(`/entries/${currID}`, {
-          old_data: formData,
-          new_ammount: newAmmount,
-          db_id: currID 
-        });
+        await api.post(`/entries/`, formData);
+        console.log('posted');
       } catch (error) {
-        setLoading(false);
-        setError("An issue patching existing data has occurred");
-        return;
+        setFormError("Unable to submit entry to database");
       };
+    } finally {
+      fetchEntries(); // recall all the entries so app is always up to date
+      setLoading(false);
+      setFormData({
+        ...formData,
+        ammo_name: '',
+        caliber: '',
+        ammo_amount: 0,
+      });
     }
-    else { // POST new entry
-      try {
-        console.log('posting');
-        //await api.post(`/entries/`, formData);
-      } catch (error) {
-        setLoading(false);
-        setError("Unable to submit entry to database");
-        return;
-      };
-    };
-
-
-
-
-
-
-
-
-
-
-
-
-
-    fetchEntries(); // recall all the entries so app is always up to date
-    setLoading(false);
-    setFormData({
-      ammo_name: '',
-      caliber: '',
-      ammo_amount: 0,
-    });
   };
+
+  useEffect(() => {
+    verifyToken();
+    fetchEntries();
+  }, [navigate]);
 
 
   const [ammoTypes, setAmmoTypes] = useState([]);
@@ -208,6 +185,7 @@ function ProtectedPage() {
       <React.Fragment>
         <Navbar />
       </React.Fragment>
+      {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
       <div className='container'>
         <div className='entry-form border border-dark'>
           <h4 className='form-header'>Enter Ammo into your Storage</h4>
@@ -231,13 +209,13 @@ function ProtectedPage() {
               <label htmlFor='ammo_amount' className='form-label'>
                 Amount
               </label>
-              <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleAmmountChange} value={formData.ammo_amount} />
+              <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleOtherChange} value={formData.ammo_amount} />
             </div>
 
             <button type='submit' className='btn btn-primary mb-3' disabled={loading}>
               Add
             </button>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {formError && <p style={{ color: 'red' }}>{formError}</p>}
           </form>
         </div>
         <div className='entry-table-frame border border-dark' >
