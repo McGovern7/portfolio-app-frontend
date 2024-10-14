@@ -8,11 +8,10 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 
 function ProtectedPage() {
-  // const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
   const verifyToken = useCallback(async () => {
     const token = localStorage.getItem('token');
-    console.log(token)
+    console.log(token);
     try {
       const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
       if (!response.ok) {
@@ -21,7 +20,7 @@ function ProtectedPage() {
     } catch (error) {
       localStorage.removeItem('token');
       navigate('/profile');
-    }
+    };
   }, [navigate]);
 
   useEffect(() => { // verifies once
@@ -39,41 +38,34 @@ function ProtectedPage() {
     username: localStorage.getItem('username')
   });
 
-  // get all of the entries from the logged in user
+  // GET all of the entries from the logged in user
   const fetchEntries = async () => {
     setLoading(true);
-    const username = localStorage.getItem('username')
+    const username = localStorage.getItem('username');
     // TODO: try catch clause?
     const response = await api.get(`/entries/${username}`);
-    setEntries(response.data)
+    setEntries(response.data);
     setLoading(false);
   };
-
-  const findDupe = async () => {
-    setLoading(true);
-
-    setLoading(false);
-    return false;
-  }
 
   useEffect(() => {
     fetchEntries();
   }, [navigate]);
 
-
-  // expect an event and create a variable based on a checkbox getting clicked or not (nullish coalescing operator)
+  // expect an event and create a variable based on a checkbox being clicked or not (nullish coalescing operator)
   const handleAmmoNameChange = (event) => {
     function toUpper(str) {
-      str = str.replace(/\w\S\w*/g, text => text.toUpperCase());
+      let words = str.replace(/_/g, '-');
+      words = str.replace(/\w\S\w*/g, text => text.toUpperCase());
+      str = words.replace(/[ ]/g, '_');
       return str.trim();
-    }
+    };
     const value = event.target.type === 'checkbox' ? event.target.checked : toUpper(event.target.value);
     setFormData({
       ...formData,
       [event.target.name]: toUpper(value),
     });
   };
-
   // Real-time syntax query correcting of caliber form data to Title_Text 
   const handleCaliberChange = (event) => {
     function toTitle(str) {
@@ -81,52 +73,98 @@ function ProtectedPage() {
       words = words.replace(/\w\S\w*/g, text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase());
       str = words.replace(/[ -]/g, '_');
       return str.trim();
-    }
+    };
     const value = event.target.type === 'checkbox' ? event.target.checked : toTitle(event.target.value);
     setFormData({
       ...formData,
       [event.target.name]: toTitle(value),
     });
   };
-
   const handleAmmountChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     setFormData({
       ...formData,
       [event.target.name]: value,
-    })
+    });
   };
 
   const validateForm = () => {
     if (!formData.ammo_name || !formData.caliber || formData.ammo_amount < 1) {
       setError('All Fields are required');
       return false;
-    }
-    setError('');    
+    };
+    setError('');
     return true;
   }
 
-  // function to submit a form
+  // function to submit an entry form
   const handleFormSubmit = async (event) => {
     verifyToken();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
     setLoading(true);
-    
-    try {
-      await api.get(`tarkov_ammo/${formData.caliber}/${formData.ammo_name}`);
-    }
-    catch (error) {
-      setLoading(false);
-      setError("Ammo type not found, See Chart for Name/Caliber Format")
-      return;
-    }
-    fetchEntries(); // recall all the entries so app is always up to date
-    console.log(formData.ammo_name);
-    console.log(formData.caliber);
-    console.log(formData.ammo_amount);
 
-    await api.post(`/entries/`, formData);  //TODO: use validated entryData instead of formData
+    try {
+      await api.get(`/tarkov_ammo/${formData.caliber}/${formData.ammo_name}`);
+    } catch (error) {
+      setLoading(false);
+      setError("Ammo type not found, See Chart for Name/Caliber Format");
+      return;
+    };
+
+
+
+
+
+
+
+
+
+
+    let currResponse = await api.get(`/entries/${formData.username}/${formData.caliber}/${formData.ammo_name}`);
+    let currData = currResponse.data;
+    let currID = parseInt(currData.id);
+
+
+    console.log(currID);
+    if (currID > 0) { // PATCH existing entry with summed ammo_ammount
+      try {
+        console.log("proceed to patch");
+        let newAmmount = parseInt(currData.ammo_amount) + parseInt(formData.ammo_amount);
+
+        await api.patch(`/entries/${currID}`, {
+          old_data: formData,
+          new_ammount: newAmmount,
+          db_id: currID 
+        });
+      } catch (error) {
+        setLoading(false);
+        setError("An issue patching existing data has occurred");
+        return;
+      };
+    }
+    else { // POST new entry
+      try {
+        console.log('posting');
+        //await api.post(`/entries/`, formData);
+      } catch (error) {
+        setLoading(false);
+        setError("Unable to submit entry to database");
+        return;
+      };
+    };
+
+
+
+
+
+
+
+
+
+
+
+
 
     fetchEntries(); // recall all the entries so app is always up to date
     setLoading(false);
@@ -136,7 +174,6 @@ function ProtectedPage() {
       ammo_amount: 0,
     });
   };
-
 
 
   const [ammoTypes, setAmmoTypes] = useState([]);
@@ -163,8 +200,8 @@ function ProtectedPage() {
         dropDown.fetchedOnce = true;
       }
       setDropDown({ icon: <FaChevronUp />, isOpen: true });
-    }
-  }
+    };
+  };
   ;
   return (
     <div className='main-page'>
@@ -215,7 +252,7 @@ function ProtectedPage() {
             </thead>
             <tbody>
               {entries.map((entry) => (
-                <tr key={entry.id}>
+                <tr key={entry.ammo_name}>
                   <td>{entry.ammo_name}</td>
                   <td>{entry.caliber}</td>
                   <td>{entry.ammo_amount}</td>

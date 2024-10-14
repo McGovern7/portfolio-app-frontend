@@ -89,8 +89,8 @@ function Profile() {
   const [logoutVisible, setLogoutVisible] = useState(false);
 
   useEffect(() => { // login or logout depending on localStorage status
+    verifyToken() // verify good profile or reset storage
     if (localStorage.getItem('token')) {
-      verifyToken() // verify good profile or reset storage
       setLogoutVisible(true);
     }
     else {
