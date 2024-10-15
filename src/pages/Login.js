@@ -26,20 +26,23 @@ function Profile() {
   const navigate = useNavigate();
   const verifyToken = async () => {
     const token = localStorage.getItem('token');
-    console.log(token)
+    if (!token) {
+      console.log('left early')
+      return;
+    }
     setLoading(true);
     try {
       const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
       setLoading(false);
       if (!response.ok) {
         throw new Error('Token verification failed');
-      }
+      };
     } catch (error) {
       setLoading(false);
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       navigate('/profile');
-    }
+    };
   };
   
   // length of 
@@ -47,7 +50,7 @@ function Profile() {
     if (!regData.username || !regData.password) {
       setError('Username and password are required');
       return false;
-    }
+    };
     setError('');
     return true;
   };
@@ -71,7 +74,6 @@ function Profile() {
         body: formDetails,
       });
       setLoading(false);
-
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.access_token); // set local storage to received token
@@ -80,25 +82,25 @@ function Profile() {
       } else {
         const errorData = await response.json();
         setError(errorData.detail || 'Authentication failed!');
-      }
+      };
     } catch (error) {
       setLoading(false);
-      setError('An error occurred. Please try again later.')
-    }
+      setError('An error occurred. Please try again later.');
+    };
   };
 
   const [loginVisible, setLoginVisible] = useState(false);
   const [logoutVisible, setLogoutVisible] = useState(false);
 
   useEffect(() => { // login or logout depending on localStorage status
-    verifyToken() // verify good profile or reset storage
+    verifyToken(); // verify good profile or reset storage
     if (localStorage.getItem('token')) {
       setLogoutVisible(true);
     }
     else {
       setLoginVisible(true);
-    }
-  }, [navigate]) // only runs once on site load
+    };
+  }, [navigate]); // only runs once on site load
 
   // handle submissions when user tries to LOGOUT
   const handleLogoutButton = () => {
@@ -114,17 +116,17 @@ function Profile() {
     const username = localStorage.getItem('username');
     try {
       const response = await api.delete(`/users/${username}`);
-      setLoading(false)
+      setLoading(false);
       if (!response.ok) {
         throw new Error('Could not delete user profile');
-      }
+      };
     }
     catch (error) {
       setLoading(false);
       localStorage.clear();
-      navigate('/home')
-    }
-    navigate('/home')
+      navigate('/home');
+    };
+    navigate('/home');
   };
 
   return (

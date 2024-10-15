@@ -26,7 +26,11 @@ const Register = () => {
     if (!regData.username || !regData.password) {
       setError('Username and password are required');
       return false;
-    }
+    };
+    if (regData.password.length < 8) {
+      setError('Password must be at least 8 characters');
+      return false;
+    };
     setError('');
     return true;
   };
@@ -36,16 +40,17 @@ const Register = () => {
     if (!validateForm()) return;
     setLoading(true);
     try {
-      await api.post('/auth/', regData);
+      await api.post('/auth/', regData); // case insensitive
     } catch (error) {
       setLoading(false);
       setError('An account with that name already exists', error);
       console.log(error);
       return;
-    }
+    };
     
     // ERROR: string.format not a function
-    setRegStatus(`You have successfully registered account ${regData.username}`);
+    setRegStatus(`${regData.username} successfully registered`);
+    setError('');
     setRegData({
       username: '',
       password: ''
@@ -76,8 +81,8 @@ const Register = () => {
 
               <button className='btn btn-success' disabled={loading}>Register</button>
               {error && <p className="error">{error}</p>}
+              {regStatus && <p className="success">{regStatus}</p>}
             </form>
-            {regStatus && <p className="success">{setRegStatus}</p>}
           </div>
         </div>
       </div>

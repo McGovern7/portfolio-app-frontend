@@ -122,7 +122,7 @@ Protected-Entry CSS
 
 
 /*
-Login CSS
+Profile CSS
 */
 .profile {
     margin-left: 3;
@@ -141,7 +141,15 @@ Login CSS
 }
 
 /*
-Home
+Register CSS
+*/
+
+.success {
+    color: 'green';
+}
+
+/*
+Home CSS
 */
 .writeup {
     margin: 1rem 3rem 1rem 3rem;

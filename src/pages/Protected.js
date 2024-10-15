@@ -11,11 +11,16 @@ function ProtectedPage() {
   const navigate = useNavigate();
   const verifyToken = useCallback(async () => {
     const token = localStorage.getItem('token');
+    if (!token) {
+      localStorage.removeItem('username');
+      navigate('/profile');
+      return;
+    };
     try {
       const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
       if (!response.ok) {
         throw new Error('Token verification failed');
-      }
+      };
     } catch (error) {
       localStorage.removeItem('token');
       localStorage.removeItem('username');
@@ -39,6 +44,9 @@ function ProtectedPage() {
   const fetchEntries = async () => {
     setLoading(true);
     const username = localStorage.getItem('username');
+    if (!username) {
+      return;
+    };
     try {
       const response = await api.get(`/entries/${username}`);
       setEntries(response.data);
@@ -47,7 +55,7 @@ function ProtectedPage() {
       console.log(`No Entries Associated with ${username}`);
     } finally {
       setLoading(false);
-    }
+    };
   };
 
   // expect an event and create a variable based on a checkbox being clicked or not (nullish coalescing operator)
@@ -96,7 +104,7 @@ function ProtectedPage() {
     if (formData.ammo_amount < 1) {
       setFormError('Ammunition amount must be > 0');
       return false;
-    }
+    };
     setFormError('');
     return true;
   }
@@ -129,7 +137,7 @@ function ProtectedPage() {
         } catch (error) {
           setFormError("An issue patching existing data has occurred");
         };
-      }
+      };
     } catch (error) {
       try {
         await api.post(`/entries/`, formData); // POST validated entry
@@ -145,7 +153,7 @@ function ProtectedPage() {
         caliber: '',
         ammo_amount: 0,
       });
-    }
+    };
   };
 
   useEffect(() => {
@@ -176,7 +184,7 @@ function ProtectedPage() {
       if (dropDown.fetchedOnce === false) {
         fetchAmmoTypes();
         dropDown.fetchedOnce = true;
-      }
+      };
       setDropDown({ icon: <FaChevronUp />, isOpen: true });
     };
   };
