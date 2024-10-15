@@ -22,6 +22,7 @@ const Register = () => {
   };
 
   const validateForm = () => {
+    // exceeds string limits or contains invalid characters
     if (!regData.username || !regData.password) {
       setError('Username and password are required');
       return false;
@@ -65,12 +66,12 @@ const Register = () => {
 
               <div className='mb-3'>
                 <label htmlFor="username" className='form-label'>Username</label>
-                <input type="text" className='form-control' id='username' name='username' onChange={handleRegInputChange} value={regData.username} />
+                <input type="text" className='form-control' id='username' name='username' onChange={handleRegInputChange} value={regData.username} maxLength={15} />
               </div>
 
               <div className='mb-3'>
                 <label htmlFor="password" className='form-label'>Password</label>
-                <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} />
+                <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} maxLength={36} />
               </div>
 
               <button className='btn btn-success' disabled={loading}>Register</button>

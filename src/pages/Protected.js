@@ -89,15 +89,19 @@ function ProtectedPage() {
 
   // pre-submission validations
   const validateForm = () => {
-    if (!formData.ammo_name || !formData.caliber || formData.ammo_amount < 1) {
+    if (!formData.ammo_name || !formData.caliber) {
       setFormError('All Fields are required');
       return false;
     };
+    if (formData.ammo_amount < 1) {
+      setFormError('Ammunition amount must be > 0');
+      return false;
+    }
     setFormError('');
     return true;
   }
 
-  // function to submit an entry form
+  // function to submit a validated entry form
   const handleFormSubmit = async (event) => {
     verifyToken();
     fetchEntries();
@@ -117,28 +121,25 @@ function ProtectedPage() {
     try {
       const currResponse = await api.get(`/entries/${formData.username}/${formData.caliber}/${formData.ammo_name}`);
       const currData = currResponse.data;
-      const currID = parseInt(currData.id);
+      const currID = parseInt(currData.id); // existing entry's id
       if (currID > 0) {
         try {
           const newAmount = parseInt(currData.ammo_amount) + parseInt(formData.ammo_amount);
-          console.log(currID);
-          await api.patch(`/entries/${currID}`, { newAmount: newAmount });
-          console.log('patched');
+          await api.patch(`/entries/${currID}`, { newAmount: newAmount }); // PATCH validated entry
         } catch (error) {
           setFormError("An issue patching existing data has occurred");
         };
       }
     } catch (error) {
       try {
-        await api.post(`/entries/`, formData);
-        console.log('posted');
+        await api.post(`/entries/`, formData); // POST validated entry
       } catch (error) {
         setFormError("Unable to submit entry to database");
       };
     } finally {
       fetchEntries(); // recall all the entries so app is always up to date
       setLoading(false);
-      setFormData({
+      setFormData({ // reset form
         ...formData,
         ammo_name: '',
         caliber: '',
@@ -195,14 +196,14 @@ function ProtectedPage() {
               <label htmlFor='ammo_name' className='form-label'>
                 Ammo Name
               </label>
-              <input type='text' className='form-control' id='ammo_name' name="ammo_name" onChange={handleAmmoNameChange} value={formData.ammo_name} />
+              <input type='text' className='form-control' id='ammo_name' name="ammo_name" onChange={handleAmmoNameChange} value={formData.ammo_name} maxLength={25} />
             </div>
 
             <div className='mb-3'>
               <label htmlFor='caliber' className='form-label'>
                 Caliber
               </label>
-              <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleCaliberChange} value={formData.caliber} />
+              <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleCaliberChange} value={formData.caliber} maxLength={25} />
             </div>
 
             <div className='mb-3'>
