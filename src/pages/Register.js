@@ -3,6 +3,7 @@ import api from '../api'
 import Navbar from '../components/Navbar'
 import '../components/components.css'
 import './pages.css'
+import { FaUser, FaUserPlus } from "react-icons/fa";
 
 const Register = () => {
   const [regData, setRegData] = useState({
@@ -47,7 +48,7 @@ const Register = () => {
       console.log(error);
       return;
     };
-    
+
     // ERROR: string.format not a function
     setRegStatus(`${regData.username} successfully registered`);
     setError('');
@@ -64,9 +65,9 @@ const Register = () => {
       </React.Fragment>
       <h3>Registration</h3>
       <div className='container'>
-        <div className='register'>
-          <div className='p-3 bg-white border border-dark'>
-            <h4>Register A New Profile</h4>
+        <div className='register-pad'>
+          <div className='register p-3 border border-dark reg-box'>
+            <h5>Register A New Profile</h5>
             <form onSubmit={handleRegFormSubmit}>
 
               <div className='mb-3'>
@@ -79,7 +80,9 @@ const Register = () => {
                 <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} maxLength={36} />
               </div>
 
-              <button className='btn btn-success' disabled={loading}>Register</button>
+              <button className='btn btn-success' disabled={loading}>
+                <FaUserPlus />{loading ? ' Registering' : ' Register'}
+              </button>
               {error && <p className="error">{error}</p>}
               {regStatus && <p className="success">{regStatus}</p>}
             </form>

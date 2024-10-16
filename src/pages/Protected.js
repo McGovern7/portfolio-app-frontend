@@ -5,6 +5,8 @@ import Navbar from '../components/Navbar'
 import '../components/components.css'
 import './pages.css'
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { GiSilverBullet } from "react-icons/gi";
+
 
 
 function ProtectedPage() {
@@ -26,7 +28,7 @@ function ProtectedPage() {
       localStorage.removeItem('username');
       navigate('/profile');
     };
-  }, [navigate]);
+  });
 
   // declare useStates for form and its table
   const [formError, setFormError] = useState('');
@@ -194,6 +196,7 @@ function ProtectedPage() {
       <React.Fragment>
         <Navbar />
       </React.Fragment>
+      <h3>{localStorage.getItem('username')}'s Stash</h3>
       {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
       <div className='container'>
         <div className='entry-form border border-dark'>
@@ -222,7 +225,7 @@ function ProtectedPage() {
             </div>
 
             <button type='submit' className='btn btn-primary mb-3' disabled={loading}>
-              Add
+              <GiSilverBullet />{loading ? ' Adding' : ' Add'}
             </button>
             {formError && <p style={{ color: 'red' }}>{formError}</p>}
           </form>

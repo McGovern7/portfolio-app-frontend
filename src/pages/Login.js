@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar'
 import api from '../api'
 import '../components/components.css'
 import './pages.css'
+import { FaSignInAlt, FaSignOutAlt, FaTrashAlt } from "react-icons/fa";
+
 
 
 function Profile() {
@@ -44,7 +46,7 @@ function Profile() {
       navigate('/profile');
     };
   };
-  
+
   // length of 
   const validateForm = () => {
     if (!regData.username || !regData.password) {
@@ -137,19 +139,19 @@ function Profile() {
       <h3>User Profile</h3>
       <div className='profile' style={{ display: logoutVisible ? 'block' : 'none' }}>
         <div className='container'>
-          <div className='logout'>
-            <div className='p-3 bg-white border border-dark'>
+          <div className='logout-pad'>
+            <div className='logout p-3 border border-dark'>
               <h5>Logout of *{localStorage.getItem('username')}*?</h5>
               <button type="submit" className='btn btn-success' onClick={handleLogoutButton} disabled={loading}>
-                {loading ? 'Logging out' : 'Logout'}
+                {loading ? 'Logging out ' : 'Logout '}<FaSignOutAlt />
               </button>
             </div>
           </div>
-          <div className='delete'>
-            <div className='p-3 bg-white border border-dark'>
+          <div className='delete-pad'>
+            <div className='delete p-3 border border-dark'>
               <h5>Delete user account *{localStorage.getItem('username')}*?</h5>
-              <button type="submit" className='btn btn-success' onClick={handleDeleteButton} disabled={loading}>
-                {loading ? 'Deleting' : 'Delete'}
+              <button type="submit" className='btn btn-danger' onClick={handleDeleteButton} disabled={loading}>
+                {loading ? 'Deleting ' : 'Delete '}<FaTrashAlt />
               </button>
             </div>
           </div>
@@ -158,8 +160,8 @@ function Profile() {
 
       <div className='profile' style={{ display: loginVisible ? 'block' : 'none' }}>
         <div className='container'>
-          <div className='login'>
-            <div className='p-3 bg-white border border-dark'>
+          <div className='login-pad'>
+            <div className='login p-3 border border-dark'>
               <h5>Login to access your entries</h5>
               <form onSubmit={handleLogFormSubmit}>
 
@@ -174,7 +176,7 @@ function Profile() {
                 </div>
 
                 <button type="submit" className='btn btn-success' disabled={loading}>
-                  {loading ? 'Logging in' : 'Login'}
+                  <FaSignInAlt />{loading ? ' Logging in' : ' Login'}
                 </button>
                 {error && <p className="error">{error}</p>}
               </form>

@@ -54,7 +54,7 @@ h5 {
 }
 
 .container {
-    padding-top: 1%;
+    padding-top: 1rem;
     max-width: 100rem;
     display: flex;
     flex-direction: row;
@@ -124,28 +124,46 @@ Protected-Entry CSS
 /*
 Profile CSS
 */
-.profile {
-    margin-left: 3;
+
+
+.login-pad {
+    min-width: 22rem;
 }
 
-.register {
-    margin-left: 3rem;
+.login {
+    background-color: var(--textColor);
+}
+
+.logout-pad {
+    padding: 0rem 1rem 0rem 0rem;
 }
 
 .logout {
-    padding: 1rem 1rem 1rem 1rem;
+    background-color: var(--textColor);
+}
+
+.delete-pad {
+    padding: 0rem 1rem 0rem 1rem;
 }
 
 .delete {
-    padding: 1rem 1rem 1rem 1rem;
+    background-color: var(--textColor);
 }
 
 /*
 Register CSS
 */
 
+.register-pad {
+    min-width: 22rem;
+}
+
+.register {
+    background-color: var(--textColor);
+}
+
 .success {
-    color: 'green';
+    color: green;
 }
 
 /*
