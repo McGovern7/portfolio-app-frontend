@@ -50,8 +50,9 @@ const Register = () => {
     };
 
     // ERROR: string.format not a function
-    setRegStatus(`${regData.username} successfully registered`);
     setError('');
+    setLoading(false);
+    setRegStatus(`${regData.username} successfully registered: `);
     setRegData({
       username: '',
       password: ''
@@ -87,6 +88,7 @@ const Register = () => {
               {regStatus && <p className="success">{regStatus}</p>}
             </form>
           </div>
+          {localStorage.getItem('username') ? <></> : (<>Want to access Profile? <a href="/profile">Login</a></>) }
         </div>
       </div>
     </div>

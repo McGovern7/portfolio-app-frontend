@@ -29,7 +29,7 @@ function Profile() {
   const verifyToken = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
-      console.log('left early')
+      localStorage.removeItem('username');
       return;
     }
     setLoading(true);
@@ -96,10 +96,12 @@ function Profile() {
 
   useEffect(() => { // login or logout depending on localStorage status
     verifyToken(); // verify good profile or reset storage
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('username')) {
+      setLoginVisible(false); // could be redundant
       setLogoutVisible(true);
     }
     else {
+      setLogoutVisible(false);
       setLoginVisible(true);
     };
   }, [navigate]); // only runs once on site load
