@@ -1,16 +1,22 @@
+/*
+Button Comp
+*/
 
+.btn {
+    margin-top: 1rem;
+    min-width: 8rem;
+}
+
+/* 
+Navbar Comp
+*/
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    padding: 0 2rem;
     background-color: var(--secondaryColor);
     color: var(--textColor);
-}
-
-.app-title {
-    padding-right: 5rem;
 }
 
 nav {
@@ -43,12 +49,17 @@ header .nav-btn {
 }
 
 /* 
-pop down when width < 1024 pixels 
+pop down when width < 925 pixels 
 */
 @media only screen and (max-width: 925px){
+    header {
+        padding-right: 2rem;
+    }
     header .nav-btn {
+        position: absolute;
         visibility: visible;
         opacity: 1;
+        right: 2rem;
     }
 
     header nav{
@@ -74,12 +85,12 @@ pop down when width < 1024 pixels
 
     nav .nav-close-btn {
         position: absolute;
-        top: 2rem;
+        top: 1rem;
         right: 2rem;
     }
 
     nav a{
         font-size: 1.5rem;
     }
-
 }
+

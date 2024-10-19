@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button.tsx'
 import Navbar from '../components/Navbar'
 import api from '../api'
 import '../components/components.css'
 import './pages.css'
 import { FaSignInAlt, FaSignOutAlt, FaTrashAlt } from "react-icons/fa";
-
-
 
 function Profile() {
 
@@ -144,17 +143,13 @@ function Profile() {
           <div className='logout-pad'>
             <div className='logout p-3 border border-dark'>
               <h5>Logout of *{localStorage.getItem('username')}*?</h5>
-              <button type="submit" className='btn btn-success' onClick={handleLogoutButton} disabled={loading}>
-                {loading ? 'Logging out ' : 'Logout '}<FaSignOutAlt />
-              </button>
+              <Button id='logout-button' label={loading ? ' Logging out' : ' Logout'} icon={<FaSignOutAlt />} variant='success' type='submit' onClick={handleLogoutButton} disabled={loading}></Button>
             </div>
           </div>
           <div className='delete-pad'>
             <div className='delete p-3 border border-dark'>
               <h5>Delete user account *{localStorage.getItem('username')}*?</h5>
-              <button type="submit" className='btn btn-danger' onClick={handleDeleteButton} disabled={loading}>
-                {loading ? 'Deleting ' : 'Delete '}<FaTrashAlt />
-              </button>
+              <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
             </div>
           </div>
         </div>
@@ -177,16 +172,13 @@ function Profile() {
                   <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
                 </div>
 
-                <button type="submit" className='btn btn-success' disabled={loading}>
-                  <FaSignInAlt />{loading ? ' Logging in' : ' Login'}
-                </button>
+                <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading}></Button>
                 {error && <p className="error">{error}</p>}
               </form>
             </div>
             <>Don't have an Account?  <a href="/register">Register</a></>
           </div>
         </div>
-
       </div>
     </div>
   )

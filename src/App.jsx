@@ -7,13 +7,6 @@ import Home from './pages/Home'
 import NoPage from './pages/NoPage'
 
 // npm start
-/**
- * Needed
- * 1. User login/authentication as first page
- * 2. form to ask for ammo & caliber, post corresponding data
- * 3. form to get info needed for entries
- * 4. ability to specify search through ammo entries
- */
 
 const App = () => {
 

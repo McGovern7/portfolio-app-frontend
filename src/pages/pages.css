@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-/*
-ISSUE: NAVBAR DROPDOWN DOES NOT COVER ALL COMPONENTS
-*/
 
 * {
-    padding: 0;
+    padding-right: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Orbitron", sans-serif;
@@ -21,7 +18,6 @@ ISSUE: NAVBAR DROPDOWN DOES NOT COVER ALL COMPONENTS
 }
 
 p {
-    font-family: 'Courier New', Courier, monospace;
     font-size: large;
     text-align: center;
 }
@@ -29,19 +25,16 @@ p {
 h3 {
     margin-top: 1rem;
     margin-left: 5rem;
+    margin-right: 5rem;
 }
 
 h4 {
+    margin-top: 0.5rem;
     text-align: center;
 }
 
 h5 {
     margin-bottom: 1rem;
-}
-
-.btn {
-    margin-top: 1rem;
-    min-width: 7rem;
 }
 
 .main-page {
@@ -54,21 +47,21 @@ h5 {
 }
 
 .container {
-    padding-top: 1rem;
-    max-width: 100rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-
-    h7 {
-        margin: center;
-    }
+    max-width: none;
 }
 
 .error{
-    margin: 0rem 1rem 0rem 1rem;
-    color: 'red';
+    color: red;
+}
+
+.success {
+    color: green;
 }
 
 /*
@@ -93,7 +86,7 @@ Protected-Entry CSS
 }
 
 .entry-table-frame {
-    margin-left: 2%;
+    margin-left: 1rem;
     padding: 1rem 1rem 1rem 1rem;
     width: 70%;
     min-width: 45rem;
@@ -116,15 +109,14 @@ Protected-Entry CSS
 }
 
 .dropdown {
+    padding: 0rem;
     width: 1.75rem;
     margin-bottom: .5rem;
 }
 
-
 /*
 Profile CSS
 */
-
 
 .login-pad {
     min-width: 22rem;
@@ -135,7 +127,7 @@ Profile CSS
 }
 
 .logout-pad {
-    padding: 0rem 1rem 0rem 0rem;
+    margin-right: 1rem;
 }
 
 .logout {
@@ -143,7 +135,7 @@ Profile CSS
 }
 
 .delete-pad {
-    padding: 0rem 1rem 0rem 1rem;
+    margin: 0rem 1rem 0rem 1rem;
 }
 
 .delete {
@@ -162,15 +154,13 @@ Register CSS
     background-color: var(--textColor);
 }
 
-.success {
-    color: green;
-}
-
 /*
 Home CSS
 */
-.writeup {
+.writeup p {
     margin: 1rem 3rem 1rem 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 .list-wrap {
@@ -179,4 +169,3 @@ Home CSS
     border: 1px solid darkslategray;
     text-align: center;
 }
-

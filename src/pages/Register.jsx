@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import api from '../api'
-import Navbar from '../components/Navbar'
+import Button from '../components/Button.tsx'
+import Navbar from '../components/Navbar.jsx'
 import '../components/components.css'
 import './pages.css'
 import { FaUser, FaUserPlus } from "react-icons/fa";
@@ -81,14 +82,12 @@ const Register = () => {
                 <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} maxLength={36} />
               </div>
 
-              <button className='btn btn-success' disabled={loading}>
-                <FaUserPlus />{loading ? ' Registering' : ' Register'}
-              </button>
+              <Button id='register' label={loading ? ' Registering' : ' Register'} icon={<FaUserPlus />} variant='success' disabled={loading}></Button>
               {error && <p className="error">{error}</p>}
               {regStatus && <p className="success">{regStatus}</p>}
             </form>
           </div>
-          {localStorage.getItem('username') ? <></> : (<>Want to access Profile? <a href="/profile">Login</a></>) }
+          {localStorage.getItem('username') ? <></> : (<>Want to access Profile? <a href="/profile">Login</a></>)}
         </div>
       </div>
     </div>

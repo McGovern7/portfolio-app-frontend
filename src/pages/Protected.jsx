@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
+import Button from '../components/Button.tsx'
 import Navbar from '../components/Navbar'
 import '../components/components.css'
 import './pages.css'
