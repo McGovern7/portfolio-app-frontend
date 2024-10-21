@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
+import verifyToken from '../components/Verify.jsx'
 import Button from '../components/Button.tsx'
 import Navbar from '../components/Navbar'
 import '../components/components.css'
@@ -9,27 +10,11 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { GiSilverBullet } from "react-icons/gi";
 
 
-
 function ProtectedPage() {
   const navigate = useNavigate();
-  const verifyToken = useCallback(async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      localStorage.removeItem('username');
-      navigate('/profile');
-      return;
-    };
-    try {
-      const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
-      if (!response.ok) {
-        throw new Error('Token verification failed');
-      };
-    } catch (error) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('username');
-      navigate('/profile');
-    };
-  });
+  const handleVerify = useCallback(async () => {
+    await verifyToken(navigate);
+  }, [navigate]);
 
   // declare useStates for form and its table
   const [formError, setFormError] = useState('');
@@ -114,7 +99,7 @@ function ProtectedPage() {
 
   // function to submit a validated entry form
   const handleFormSubmit = async (event) => {
-    verifyToken();
+    handleVerify();
     fetchEntries();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
@@ -160,15 +145,16 @@ function ProtectedPage() {
   };
 
   useEffect(() => {
-    verifyToken();
+    handleVerify();
     fetchEntries();
-  }, [navigate]);
-
+  }, [handleVerify]);
 
   const [ammoTypes, setAmmoTypes] = useState([]);
 
   const fetchAmmoTypes = async () => {
+    setLoading(true);
     const response = await api.get(`/tarkov_ammo/`);
+    setLoading(false);
     setAmmoTypes(response.data);
   };
 
@@ -225,9 +211,7 @@ function ProtectedPage() {
               <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleOtherChange} value={formData.ammo_amount} />
             </div>
 
-            <button type='submit' className='btn btn-primary mb-3' disabled={loading}>
-              <GiSilverBullet />{loading ? ' Adding' : ' Add'}
-            </button>
+            <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet />} variant='primary' type='submit' disabled={loading}></Button>
             {formError && <p style={{ color: 'red' }}>{formError}</p>}
           </form>
         </div>

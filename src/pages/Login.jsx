@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import verifyToken from '../components/Verify.jsx'
 import Button from '../components/Button.tsx'
 import Navbar from '../components/Navbar'
 import api from '../api'
@@ -15,6 +16,12 @@ function Profile() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
+  const [delTriggered, setDelTriggered] = useState(false);
+
+  const navigate = useNavigate();
+  const handleVerify = useCallback(async () => {
+    await verifyToken(navigate); // check token status
+  }, [navigate]);
 
   const handleLogInputChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
@@ -24,29 +31,6 @@ function Profile() {
     });
   };
 
-  const navigate = useNavigate();
-  const verifyToken = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      localStorage.removeItem('username');
-      return;
-    }
-    setLoading(true);
-    try {
-      const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
-      setLoading(false);
-      if (!response.ok) {
-        throw new Error('Token verification failed');
-      };
-    } catch (error) {
-      setLoading(false);
-      localStorage.removeItem('token');
-      localStorage.removeItem('username');
-      navigate('/profile');
-    };
-  };
-
-  // length of 
   const validateForm = () => {
     if (!regData.username || !regData.password) {
       setError('Username and password are required');
@@ -60,13 +44,13 @@ function Profile() {
   const handleLogFormSubmit = async (event) => {
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
-    setLoading(true);
 
     const formDetails = new URLSearchParams();
     formDetails.append('username', regData.username);
     formDetails.append('password', regData.password);
 
     try {
+      setLoading(true);
       const response = await fetch('http://localhost:8000/auth/token', {
         method: 'POST',
         headers: {
@@ -93,8 +77,43 @@ function Profile() {
   const [loginVisible, setLoginVisible] = useState(false);
   const [logoutVisible, setLogoutVisible] = useState(false);
 
+  // handle submissions when user tries to LOGOUT
+  const handleLogoutButton = () => {
+    handleVerify();
+    localStorage.clear();
+    navigate('/home');
+  };
+
+  // delete user and their entries from both databases
+  const handleDeleteButton = useCallback(async () => {
+    handleVerify();
+    setLoading(true);
+    const username = localStorage.getItem('username');
+    try {
+      await api.delete(`/entries/${username}`);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    };
+    try {
+      const delUserResponse = await api.delete(`/users/${username}`);
+      if (delUserResponse.status === 200) {
+        localStorage.clear();
+        setError('');
+      } else {
+        throw new Error(`Failed to DELETE user ${username}`);
+      };
+    } catch (error) {
+      setError(`Failed to delete user ${username}`);
+    } finally {
+      setLoading(false);
+    };
+    setDelTriggered(true);
+  }, [handleVerify]);
+
   useEffect(() => { // login or logout depending on localStorage status
-    verifyToken(); // verify good profile or reset storage
+    handleVerify(); // verify good profile or clear localStorage
+    console.log('username: ', localStorage.getItem('username'));
     if (localStorage.getItem('username')) {
       setLoginVisible(false); // could be redundant
       setLogoutVisible(true);
@@ -103,34 +122,9 @@ function Profile() {
       setLogoutVisible(false);
       setLoginVisible(true);
     };
-  }, [navigate]); // only runs once on site load
+  }, [navigate, handleVerify, delTriggered]); //called on every verification update
 
-  // handle submissions when user tries to LOGOUT
-  const handleLogoutButton = () => {
-    verifyToken();
-    localStorage.clear();
-    navigate('/home');
-  };
-
-  // delete user and their entries from both databases
-  const handleDeleteButton = async () => {
-    verifyToken();
-    setLoading(true);
-    const username = localStorage.getItem('username');
-    try {
-      const response = await api.delete(`/users/${username}`);
-      setLoading(false);
-      if (!response.ok) {
-        throw new Error('Could not delete user profile');
-      };
-    }
-    catch (error) {
-      setLoading(false);
-      localStorage.clear();
-      navigate('/home');
-    };
-    navigate('/home');
-  };
+  ;
 
   return (
     <div className='main-page'>
@@ -150,6 +144,7 @@ function Profile() {
             <div className='delete p-3 border border-dark'>
               <h5>Delete user account *{localStorage.getItem('username')}*?</h5>
               <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
+              {error && <p className="error">{error}</p>}
             </div>
           </div>
         </div>

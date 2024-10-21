@@ -7,7 +7,7 @@ const Button = ({ id, label, icon, variant, type = Button, onClick, disabled}) =
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`btn btn-${variant}`}
+      className={`btn btn-${variant} mb-3`}
     >
       {icon}{label}
     </button>

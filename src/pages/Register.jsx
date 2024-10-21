@@ -4,7 +4,7 @@ import Button from '../components/Button.tsx'
 import Navbar from '../components/Navbar.jsx'
 import '../components/components.css'
 import './pages.css'
-import { FaUser, FaUserPlus } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa";
 
 const Register = () => {
   const [regData, setRegData] = useState({
@@ -43,21 +43,22 @@ const Register = () => {
     setLoading(true);
     try {
       await api.post('/auth/', regData); // case insensitive
+      setError('');
+      setRegStatus(`${regData.username} registered successfully`);
+      setRegData({
+        username: '',
+        password: ''
+      });
     } catch (error) {
-      setLoading(false);
       setError('An account with that name already exists', error);
       console.log(error);
-      return;
+      setRegData({
+        ...regData,
+        password: ''
+      });
+    } finally {
+      setLoading(false);
     };
-
-    // ERROR: string.format not a function
-    setError('');
-    setLoading(false);
-    setRegStatus(`${regData.username} successfully registered: `);
-    setRegData({
-      username: '',
-      password: ''
-    });
   };
 
   return (
@@ -82,7 +83,7 @@ const Register = () => {
                 <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} maxLength={36} />
               </div>
 
-              <Button id='register' label={loading ? ' Registering' : ' Register'} icon={<FaUserPlus />} variant='success' disabled={loading}></Button>
+              <Button id='register' label={loading ? ' Registering' : ' Register'} icon={<FaUserPlus />} variant='success' type='submit' disabled={loading}></Button>
               {error && <p className="error">{error}</p>}
               {regStatus && <p className="success">{regStatus}</p>}
             </form>
