@@ -15,10 +15,10 @@ function Navbar() {
     <header>
       <h3 className='app-title'>Tarkov App</h3>
       <nav ref={navRef}>
-        <a href="/home"><FaHome /> Home</a>
-        <a href="/profile"><FaUserCog /> Profile</a>
-        <a href="/register"><FaUserPlus /> Register</a>
-        <a href="/protected"><FaWpforms /> Entries</a>
+        <a href="/home"><FaHome alt="" /> Home</a>
+        <a href="/profile"><FaUserCog alt="" /> Profile</a>
+        <a href="/register"><FaUserPlus alt="" /> Register</a>
+        <a href="/protected"><FaWpforms alt="" /> Entries</a>
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaBars />
         </button>

@@ -13,7 +13,11 @@ import { GiSilverBullet } from "react-icons/gi";
 function ProtectedPage() {
   const navigate = useNavigate();
   const handleVerify = useCallback(async () => {
-    await verifyToken(navigate);
+    const response = await verifyToken();
+    if (!response) {
+      localStorage.clear();
+      navigate('/profile');
+    }    
   }, [navigate]);
 
   // declare useStates for form and its table
@@ -167,14 +171,14 @@ function ProtectedPage() {
 
   const handleDropDown = () => {
     if (dropDown.isOpen) {
-      setDropDown({ icon: <FaChevronDown />, isOpen: false });
+      setDropDown({ icon: <FaChevronDown alt="dropdown" />, isOpen: false });
     }
     else {
       if (dropDown.fetchedOnce === false) {
         fetchAmmoTypes();
         dropDown.fetchedOnce = true;
       };
-      setDropDown({ icon: <FaChevronUp />, isOpen: true });
+      setDropDown({ icon: <FaChevronUp alt="dropdown" />, isOpen: true });
     };
   };
   ;
@@ -187,8 +191,8 @@ function ProtectedPage() {
       {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
       <div className='container'>
         <div className='entry-form border border-dark'>
-          <h4 className='form-header'>Enter Ammo into your Storage</h4>
-          <form onSubmit={handleFormSubmit}>
+          <h4 className='form-title'>Enter Ammo into your Storage</h4>
+          <form aria-labelledby='form-title' onSubmit={handleFormSubmit}>
 
             <div className='mb-3 mt-3'>
               <label htmlFor='ammo_name' className='form-label'>
@@ -198,7 +202,7 @@ function ProtectedPage() {
             </div>
 
             <div className='mb-3'>
-              <label htmlFor='caliber' className='form-label'>
+              <label  htmlFor='caliber' className='form-label'>
                 Caliber
               </label>
               <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleCaliberChange} value={formData.caliber} maxLength={25} />
@@ -211,24 +215,24 @@ function ProtectedPage() {
               <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleOtherChange} value={formData.ammo_amount} />
             </div>
 
-            <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet />} variant='primary' type='submit' disabled={loading}></Button>
+            <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet alt="" />} variant='primary' type='submit' disabled={loading}></Button>
             {formError && <p style={{ color: 'red' }}>{formError}</p>}
           </form>
         </div>
         <div className='entry-table-frame border border-dark' >
-          <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
-          <table className='entry-table table table-striped table-bordered table-hover border-dark'>
+          <h4 className='storage-title'>{localStorage.getItem('username')}'s Ammo Storage</h4>
+          <table aria-labelledby='storage-title' className='entry-table table table-striped table-bordered table-hover border-dark'>
             <thead className='table-dark'>
               <tr>
-                <th>Ammo Name</th>
-                <th>Caliber</th>
-                <th>Ammo Amount</th>
+                <th scope="col">Ammo Name</th>
+                <th scope="col">Caliber</th>
+                <th scope="col">Ammo Amount</th>
               </tr>
             </thead>
             <tbody>
               {entries.map((entry) => (
                 <tr key={entry.ammo_name}>
-                  <td>{entry.ammo_name}</td>
+                  <th scope="row">{entry.ammo_name}</th>
                   <td>{entry.caliber}</td>
                   <td>{entry.ammo_amount}</td>
                 </tr>
@@ -240,26 +244,26 @@ function ProtectedPage() {
 
       <div className='container'>
         <div className='ammo-parent border border-dark' >
-          <h4 className='chart-title'>Ammo Chart</h4>
-          <button type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
+          <h4 className='type-chart-title'>Ammo Types Chart</h4>
+          <button aria-labelledby='type-chart-title' type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
             {dropDown.icon}
           </button>
-          <div className='checkbox-table' style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
-            <table className='ammo-table table table-striped table-bordered table-hover border-dark'>
+          <div style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
+            <table aria-labelledby='dropdown button' className='table table-striped table-bordered table-hover border-dark'>
               <thead className='table-dark'>
                 <tr>
-                  <th>Name</th>
-                  <th>Caliber</th>
-                  <th>Penetration</th>
-                  <th>Damage</th>
-                  <th>Velocity</th>
-                  <th>Frag%</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Caliber</th>
+                  <th scope="col">Penetration</th>
+                  <th scope="col">Damage</th>
+                  <th scope="col">Velocity</th>
+                  <th scope="col">Frag%</th>
                 </tr>
               </thead>
               <tbody>
                 {ammoTypes.map((type) => (
                   <tr key={[type.ammo_name, type.ammo_group]}>
-                    <td>{type.ammo_name}</td>
+                    <th scope='row'>{type.ammo_name}</th>
                     <td>{type.caliber}</td>
                     <td>{type.penetration}</td>
                     <td>{type.damage}</td>

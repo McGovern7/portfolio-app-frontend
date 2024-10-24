@@ -17,11 +17,26 @@ function Profile() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
   const [delTriggered, setDelTriggered] = useState(false);
+  const [loginVisible, setLoginVisible] = useState(false);
+  const [logoutVisible, setLogoutVisible] = useState(false);
 
   const navigate = useNavigate();
   const handleVerify = useCallback(async () => {
-    await verifyToken(navigate); // check token status
-  }, [navigate]);
+    const response = await verifyToken();
+    // login or logout depending on verification status
+    if (response) {
+      setLoginVisible(false);
+      setLogoutVisible(true);
+    }
+    else {
+      setLoginVisible(true); // could be redundant
+      setLogoutVisible(false);
+    }
+  });
+
+  useEffect(() => {
+    handleVerify();
+  }, [navigate, delTriggered]);
 
   const handleLogInputChange = (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
@@ -65,6 +80,7 @@ function Profile() {
         localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
         navigate('/protected'); // protected component ensureing valid token
       } else {
+        localStorage.clear();
         const errorData = await response.json();
         setError(errorData.detail || 'Authentication failed!');
       };
@@ -73,9 +89,6 @@ function Profile() {
       setError('An error occurred. Please try again later.');
     };
   };
-
-  const [loginVisible, setLoginVisible] = useState(false);
-  const [logoutVisible, setLogoutVisible] = useState(false);
 
   // handle submissions when user tries to LOGOUT
   const handleLogoutButton = () => {
@@ -87,6 +100,7 @@ function Profile() {
   // delete user and their entries from both databases
   const handleDeleteButton = useCallback(async () => {
     handleVerify();
+    console.log('verified');
     setLoading(true);
     const username = localStorage.getItem('username');
     try {
@@ -109,21 +123,7 @@ function Profile() {
       setLoading(false);
     };
     setDelTriggered(true);
-  }, [handleVerify]);
-
-  useEffect(() => { // login or logout depending on localStorage status
-    handleVerify(); // verify good profile or clear localStorage
-    console.log('username: ', localStorage.getItem('username'));
-    if (localStorage.getItem('username')) {
-      setLoginVisible(false); // could be redundant
-      setLogoutVisible(true);
-    }
-    else {
-      setLogoutVisible(false);
-      setLoginVisible(true);
-    };
-  }, [navigate, handleVerify, delTriggered]); //called on every verification update
-
+  });
   ;
 
   return (
