@@ -19,7 +19,10 @@
 
 p {
     font-size: large;
-    text-align: center;
+    text-align: left;
+    line-height: 2.0;
+    padding-left: 7rem;
+    padding-right: 7rem;
 }
 
 h3 {
@@ -35,6 +38,15 @@ h4 {
 
 h5 {
     margin-bottom: 1rem;
+}
+
+img {
+    margin: 2rem 2rem 2rem 2rem;
+}
+
+footer {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 .main-page {
@@ -65,53 +77,31 @@ h5 {
 }
 
 /*
-Protected-Entry CSS
+Home CSS
 */
-
-.entry-form {
-    position: relative;
-    padding: 1rem 1rem 1rem 1rem;
-    background-color: var(--textColor);
+.writeup p {
+    margin: 1rem 3rem 1rem 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
-.form-header::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 5rem;
-    height: 1px;
-    background-color: none; /* Change to your preferred line color */
-    z-index: 1;
+.list-wrap {
+    margin: 0 auto;
+    width: 50%;
+    border: 1px solid darkslategray;
+    text-align: center;
 }
 
-.entry-table-frame {
-    margin-left: 1rem;
-    padding: 1rem 1rem 1rem 1rem;
-    width: 70%;
-    min-width: 45rem;
-    background-color: var(--textColor);
+.logged-out-img {
+    border: 0.4rem solid var(--mainColor);
+    max-width: 42%;
+    max-height: 42%;
 }
 
-.entry-table {
-    justify-content: flex-start;
-}
-
-.type-chart-title {
-    text-align: start !important;
-}
-
-.ammo-parent {
-    position: relative;
-    padding: 1rem 1rem 1rem 1rem;
-    max-width: 100%;
-    background-color: var(--textColor);
-}
-
-.dropdown {
-    padding: 0rem;
-    width: 1.75rem;
-    margin-bottom: .5rem;
+.logged-in-img {
+    border: 0.4rem solid var(--mainColor);
+    max-width: 49%;
+    max-height: 49%;
 }
 
 /*
@@ -155,17 +145,51 @@ Register CSS
 }
 
 /*
-Home CSS
+Protected-Entry CSS
 */
-.writeup p {
-    margin: 1rem 3rem 1rem 3rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+
+.entry-form-div {
+    position: relative;
+    padding: 1rem 1rem 1rem 1rem;
+    background-color: var(--textColor);
 }
 
-.list-wrap {
-    margin: 0 auto;
-    width: 50%;
-    border: 1px solid darkslategray;
-    text-align: center;
+.form-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5rem;
+    height: 1px;
+    background-color: none; /* Change to your preferred line color */
+    z-index: 1;
+}
+
+.entry-table-frame {
+    margin-left: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+    width: 70%;
+    min-width: 45rem;
+    background-color: var(--textColor);
+}
+
+.entry-table {
+    justify-content: flex-start;
+}
+
+.type-chart-title {
+    text-align: start !important;
+}
+
+.ammo-parent {
+    position: relative;
+    padding: 1rem 1rem 1rem 1rem;
+    max-width: 100%;
+    background-color: var(--textColor);
+}
+
+.dropdown {
+    padding: 0rem;
+    width: 1.75rem;
+    margin-bottom: .5rem;
 }
