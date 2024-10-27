@@ -1,7 +1,8 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import LoggedOut from '../assets/LoggedOut.png'
-import LoggedIn from '../assets/LoggedIn.png'
+import React from 'react';
+import Navbar from '../components/Navbar';
+import LoggedOut from '../assets/LoggedOut.png';
+import LoggedIn from '../assets/LoggedIn.png';
+import DataFlow from '../assets/DataFlow.png';
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
         <div className='list-wrap'>
           <ul className='list-group'>
             <li className='list-group-item'>The <b>React</b> library for web and native user interfaces</li>
+            <li className='list-group-item'>The <b>Axios</b> library to parse the FastAPI JSON data to Javascript</li>
             <li className='list-group-item'>The <b>Bootstrap</b> styling toolkit</li>
             <li className='list-group-item'><b>CSS</b> styling</li>
           </ul>
@@ -47,11 +49,13 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section>
+        <section className='dataflow'>
           <h3>API-User Dataflow</h3>
-          <img className='logged-out-img' src={LoggedOut} loading="lazy" alt="Chart depicting a logged out user's API call Dataflow"></img>
-          <img className='logged-in-img' src={LoggedIn} loading="lazy" alt="Chart depicting a logged In user's API call Dataflowr"></img>
-
+          <img aria-labelledby='image-set' className='data-flow-img' src={DataFlow} loading="lazy" alt="Flow Diagram of how data transfers from frontend to backend using software packages"></img>
+          <div className='image-set'>
+            <img aria-labelledby='image-set' className='logged-out-img' src={LoggedOut} loading="lazy" alt="Chart depicting a logged out user's API call Dataflow"></img>
+            <img aria-labelledby='image-set' className='logged-in-img' src={LoggedIn} loading="lazy" alt="Chart depicting a logged In user's API call Dataflow"></img>
+          </div>
         </section>
         <footer>
 

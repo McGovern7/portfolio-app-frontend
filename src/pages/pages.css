@@ -41,7 +41,8 @@ h5 {
 }
 
 img {
-    margin: 2rem 2rem 2rem 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 footer {
@@ -92,16 +93,22 @@ Home CSS
     text-align: center;
 }
 
+.data-flow-img {
+    margin: 2rem 5% 2rem 5%;
+    max-width: 90%;
+}
+
 .logged-out-img {
+    margin-left: 5%;
+    margin-right: 5%;
     border: 0.4rem solid var(--mainColor);
-    max-width: 42%;
-    max-height: 42%;
+    max-width: 42.5%;
 }
 
 .logged-in-img {
+    margin-right: 5%;
     border: 0.4rem solid var(--mainColor);
-    max-width: 49%;
-    max-height: 49%;
+    max-width: 42.5%;
 }
 
 /*
