@@ -62,7 +62,7 @@ const Register = () => {
   };
 
   return (
-    <div className='main-page'>
+    <body className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
@@ -93,7 +93,7 @@ const Register = () => {
           </div>
         </div>
       </main>
-    </div>
+    </body>
   )
 }
 

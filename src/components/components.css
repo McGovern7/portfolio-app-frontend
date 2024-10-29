@@ -1,4 +1,29 @@
 /*
+SideBar Comp
+*/
+
+footer {
+	display: flex;
+	position: absolute;
+	overflow: scroll;
+	width: 100%;
+	padding: 1rem;
+	background-color: midnightblue;
+	justify-content: space-between;
+}
+
+footer a {
+	margin: 2vw;
+
+}
+
+.sidebar img {
+	margin: none;
+	width: 80px;
+	height: 80px;
+}
+
+/*
 Button Comp
 */
 
@@ -19,20 +44,20 @@ header {
     color: var(--textColor);
 }
 
-nav {
+.nav-bar {
     display: flex;
     flex-grow: 1;
     align-items: center;
     justify-content: space-around;
 }
 
-nav a{
+.nav-bar a{
     margin: 2vw;
     color: var(--mainColor);
     text-decoration: none;
 }
 
-nav a:hover{
+.nav-bar a:hover{
     color:var(--mainColorBright);
 }
 
@@ -62,7 +87,7 @@ pop down when width < 925 pixels
         right: 2rem;
     }
 
-    header nav{
+    header .nav-bar{
         position: fixed;
         top: 0;
         left: 0;
@@ -83,13 +108,13 @@ pop down when width < 925 pixels
         transform: none;
     }
 
-    nav .nav-close-btn {
+    .nav-bar .nav-close-btn {
         position: absolute;
         top: 1rem;
         right: 2rem;
     }
 
-    nav a{
+    .nav-bar a{
         font-size: 1.5rem;
     }
 }

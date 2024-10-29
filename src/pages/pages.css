@@ -40,16 +40,6 @@ h5 {
     margin-bottom: 1rem;
 }
 
-img {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-footer {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-}
-
 .main-page {
     overflow: auto;
     position: fixed;

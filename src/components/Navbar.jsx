@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { FaBars, FaHome, FaUserCog, FaUserPlus, FaWpforms } from 'react-icons/fa';
-import {  } from "react-icons/fa";
+import { } from "react-icons/fa";
 import './components.css';
 
 
@@ -14,7 +14,8 @@ function Navbar() {
   return (
     <header>
       <h3 className='app-title'>Tarkov App</h3>
-      <nav ref={navRef}>
+      <nav className='nav-bar' ref={navRef}>
+        <a href="/portfolio"> Portfolio</a>
         <a href="/home"><FaHome alt="" /> Home</a>
         <a href="/profile"><FaUserCog alt="" /> Profile</a>
         <a href="/register"><FaUserPlus alt="" /> Register</a>

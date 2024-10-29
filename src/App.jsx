@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import ProtectedPage from './pages/Protected'
 import Home from './pages/Home'
 import NoPage from './pages/NoPage'
+import Portfolio from './pages/Portfolio'
 
 // npm start
 
@@ -15,6 +16,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+          <Route path='/portfolio' element={<Portfolio />} />
           <Route path='/home' element={<Home />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/register' element={<Register />} />

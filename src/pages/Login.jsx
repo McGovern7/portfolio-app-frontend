@@ -127,7 +127,7 @@ function Profile() {
   ;
 
   return (
-    <div className='main-page'>
+    <body className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
@@ -143,7 +143,7 @@ function Profile() {
             </div>
             <div className='delete-pad'>
               <div className='delete p-3 border border-dark'>
-                <h5 aria-lalbel='delete-title'>Delete user account *{localStorage.getItem('username')}*?</h5>
+                <h5 aria-label='delete-title'>Delete user account *{localStorage.getItem('username')}*?</h5>
                 <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
                 {error && <p aria-labelledby='delete-title' className="error">{error}</p>}
               </div>
@@ -177,7 +177,7 @@ function Profile() {
           </div>
         </div>
       </main>
-    </div>
+    </body>
   )
 }
 

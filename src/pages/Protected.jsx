@@ -183,7 +183,7 @@ function ProtectedPage() {
   };
   ;
   return (
-    <div className='main-page'>
+    <body className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
@@ -278,7 +278,7 @@ function ProtectedPage() {
           </div>
         </div>
       </main>
-    </div>
+    </body>
   )
 }
 

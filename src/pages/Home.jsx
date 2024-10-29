@@ -1,12 +1,14 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import '../components/components.css'
+import './pages.css'
 import LoggedOut from '../assets/LoggedOut.png';
 import LoggedIn from '../assets/LoggedIn.png';
 import DataFlow from '../assets/DataFlow.png';
 
 export default function Home() {
   return (
-    <div className='main-page'>
+    <body className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
@@ -30,6 +32,8 @@ export default function Home() {
             <li className='list-group-item'><b>MySQL CRUD</b> operations, creating queries in both <b>SQL</b> and <b>FastAPI</b></li>
             <li className='list-group-item'><b>Pydantic</b> model validation</li>
             <li className='list-group-item'><b>JWT</b> Authentication using web tokens</li>
+            <li className='list-group-item'><b>CORSMiddleware</b> for cross-origin access and security</li>
+
           </ul>
         </div>
         <h4>Front End</h4>
@@ -42,12 +46,16 @@ export default function Home() {
           </ul>
         </div>
         <section>
-          <h3>Architecture</h3>
+          <h3>Architecture: FrontEnd</h3>
+
+          <h3>Architecture: Backend</h3>
           <div className='writeup'>
             <p>
               &nbsp;&nbsp;&nbsp;This application leverages Python's FastAPI alongside MySQL to create a fast, intuitive, and secure RESTful API framework. I utilized a MySQL script to create static tables and initialize dynamic ones. Subsequent requests are handled through FastAPI with Pydantic, enabling features such as asynchronous support, automatic data validation, interactive documentation, improved security, and scalability for future projects.
             </p>
           </div>
+          <h3>Architecture: The Stack</h3>
+
         </section>
         <section className='dataflow'>
           <h3>API-User Dataflow</h3>
@@ -57,10 +65,7 @@ export default function Home() {
             <img aria-labelledby='image-set' className='logged-in-img' src={LoggedIn} loading="lazy" alt="Chart depicting a logged In user's API call Dataflow"></img>
           </div>
         </section>
-        <footer>
-
-        </footer>
       </main>
-    </div>
+    </body>
   )
 }
