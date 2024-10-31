@@ -1,8 +1,9 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import SideBar from '../components/SideBar'
+import Navbar from '../components/Navbar.jsx';
+import ImageComp from '../components/ImageComp.tsx';
+import SideBar from '../components/SideBar.jsx';
 import './MeStyle.css';
-import Resume from '../assets/Resume.pdf'
+import Resume from '../assets/Resume.pdf';
 
 export default function Portfolio() {
   return (
@@ -16,7 +17,7 @@ export default function Portfolio() {
         <div className='column'></div>
           <h2>Luke McGovern</h2>
           <p>Fullstack developer, Robotics enthusiast, Seeker of the cutting-edge</p>
-          <object data={Resume} width="500" height="375" type="application/pdf"></object>
+          <object aria-label='Resume PDF' data={Resume} width="500" height="375" type="application/pdf"></object>
       </main>
       <React.Fragment>
         <SideBar />

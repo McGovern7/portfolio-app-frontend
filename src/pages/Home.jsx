@@ -2,9 +2,9 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import '../components/components.css'
 import './pages.css'
-import LoggedOut from '../assets/LoggedOut.png';
-import LoggedIn from '../assets/LoggedIn.png';
-import DataFlow from '../assets/DataFlow.png';
+import LoggedOut from '../assets/LoggedOut.webp';
+import LoggedIn from '../assets/LoggedIn.webp';
+import DataFlow from '../assets/DataFlow.webp';
 
 export default function Home() {
   return (
@@ -45,9 +45,12 @@ export default function Home() {
             <li className='list-group-item'><b>CSS</b> styling</li>
           </ul>
         </div>
+        <p>
+          &nbsp;&nbsp;&nbsp;The benefits of choosing these elements for my stack are the following:
+        </p>
         <section>
           <h3>Architecture: FrontEnd</h3>
-
+          
           <h3>Architecture: Backend</h3>
           <div className='writeup'>
             <p>

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
+import { MouseEventHandler } from 'react';
 
-const Button = ({ id, label, icon, variant, type = Button, onClick, disabled}) => {
+
+interface ButtonProps {
+  id: string;
+  label: string;
+  icon: ReactNode;
+  variant: string;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  disabled: boolean;
+}
+
+const Button = ({ id, label, icon, variant, onClick, disabled }: ButtonProps) => {
   return (
     <button
       id={id}
-      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`btn btn-${variant} mb-3`}
