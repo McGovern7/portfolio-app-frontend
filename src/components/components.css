@@ -2,25 +2,24 @@
 SideBar Comp
 */
 
-footer {
-	display: flex;
-	position: absolute;
-	overflow: scroll;
-	width: 100%;
-	padding: 1rem;
-	background-color: midnightblue;
-	justify-content: space-between;
-}
+.side-bar-comp {
+    height: 100%;
+    width: 200px;
+    align-items: left;
+    justify-content: space-between;
+    background-color: var(--secondaryColor);
+  }
 
-footer a {
-	margin: 2vw;
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
 
-}
-
-.sidebar img {
-	margin: none;
-	width: 80px;
-	height: 80px;
+.side-bar img {
+	margin: 10px;
+	width: 50px;
+	height: 50px;
 }
 
 /*

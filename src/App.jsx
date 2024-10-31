@@ -1,11 +1,12 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Profile from './pages/Login'
-import Register from './pages/Register'
-import ProtectedPage from './pages/Protected'
-import Home from './pages/Home'
-import NoPage from './pages/NoPage'
-import Portfolio from './pages/Portfolio'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Profile from './pages/Login';
+import Register from './pages/Register';
+import ProtectedPage from './pages/Protected';
+import Home from './pages/Home';
+import NoPage from './pages/NoPage';
+import Portfolio from './pages/Portfolio';
+import ResumePage from './pages/Resume';
 
 // npm start
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/profile' element={<Profile />} />
           <Route path='/register' element={<Register />} />
           <Route path='/protected' element={<ProtectedPage />} />
+          <Route path='/resume' element={<ResumePage />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
       </BrowserRouter>

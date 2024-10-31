@@ -4,6 +4,7 @@ import React from 'react';
 const images = require.context('../assets', false, /\.(png|jpe?g|webp|svg)$/);
 
 interface ImageProps {
+  ariaLabel?: string; 
   src: string;
   className: string;
   width?: number;
@@ -11,7 +12,7 @@ interface ImageProps {
   alt: string;
 }
 
-const ImageComp = ({ src, className, width, height, alt }: ImageProps) => {
+const ImageComp = ({ ariaLabel, src, className, width, height, alt }: ImageProps) => {
   let imageSrc;
   
   try {
@@ -23,6 +24,7 @@ const ImageComp = ({ src, className, width, height, alt }: ImageProps) => {
 
   return (
     <img
+      aria-label={ariaLabel}
       src={imageSrc}
       className={className}
       width={width}

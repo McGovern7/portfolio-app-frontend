@@ -76,7 +76,7 @@ Home CSS
     font-weight: bold;
 }
 
-.list-wrap {
+.list-group {
     margin: 0 auto;
     width: 50%;
     border: 1px solid darkslategray;
@@ -86,19 +86,20 @@ Home CSS
 .data-flow-img {
     margin: 2rem 5% 2rem 5%;
     max-width: 90%;
+    border: 0.4rem solid var(--mainColor);
 }
 
 .logged-out-img {
     margin-left: 5%;
     margin-right: 5%;
-    border: 0.4rem solid var(--mainColor);
     max-width: 42.5%;
+    border: 0.4rem solid var(--mainColor);
 }
 
 .logged-in-img {
     margin-right: 5%;
-    border: 0.4rem solid var(--mainColor);
     max-width: 42.5%;
+    border: 0.4rem solid var(--mainColor);
 }
 
 /*
