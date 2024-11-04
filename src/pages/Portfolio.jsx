@@ -5,7 +5,7 @@ import './MeStyle.css';
 
 export default function Portfolio() {
   return (
-    <body className='main-page'>
+    <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
@@ -25,6 +25,6 @@ export default function Portfolio() {
           </main>
         </div>
       </div>
-    </body>
+    </div>
   )
 }

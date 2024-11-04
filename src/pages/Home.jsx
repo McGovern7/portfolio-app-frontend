@@ -5,16 +5,15 @@ import Card from '../components/Card.tsx'
 import '../components/components.css'
 import './pages.css'
 
-
 export default function Home() {
   return (
-    <body className='main-page'>
+    <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
       <main>
-        <section className='writeup'>
-          <h3 className='writeup-title'>Writeup: Tarkov Ammo Storage Application</h3>
+        <section id='writeup'>
+          <h3 id='unused-writeup-title'>Writeup: Tarkov Ammo Storage Application</h3>
           <p>
             &nbsp;&nbsp;&nbsp;In today's rapidly evolving and competitive tech landscape, full-stack development has become an essential skill for developers. Full-stack development is a multi-discipline skill, requiring devs to have an end-to-end understanding of an application. This comprehensive knowledge enables efficient problem-solving and can lead to a more robust application architecture.  For example, a full-stack dev assigned to the frontend can leverage their insights of backend processes to optimize how frontend components interact with server-side logic. These devs can streamline queries, robustly handle bad requests, and minimize server data load—improving both performance and user experience.
           </p>
@@ -25,7 +24,7 @@ export default function Home() {
             &nbsp;&nbsp;&nbsp;I have successfully taught myself the various software disciplines necessary to build my first web application as a solo full-stack developer.  Made high in demand by today's devs, this project's stack comprises the following tools.
           </p>
         </section>
-        <section className='stack'>
+        <section id='unused-stack'>
           <h3>Architecture: The Stack</h3>
           <h4>Back End</h4>
           <div className='card-block'>
@@ -67,15 +66,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='dataflow'>
+        <section id='dataflow'>
           <h3>API-User Dataflow</h3>
-          <ImageComp ariaLabel='api data diagram' src='DataFlow.webp' className='data-flow-img shadow' alt="Flow Diagram of how data transfers from frontend to backend using software packages" />
-          <div className='image-set'>
-            <ImageComp ariaLabel='Logged out flowchart' src='LoggedOut.webp' className='logged-out-img shadow' alt="Chart depicting a logged out user's API call Dataflow" />
-            <ImageComp ariaLabel='Logged in flowchart' src='LoggedIn.webp' className='logged-in-img shadow' alt="Chart depicting a logged In user's API call Dataflow" />
+          <p aria-labelledby='data-flow-img'>
+            Portraying the Data Transformations required so that the Frontend and Backend can receive it at each step.
+          </p>
+          <ImageComp id='data-flow-img' ariaLabel='api data diagram' src='DataFlow.webp' className='shadow' alt="Flow Diagram of how data transfers from frontend to backend using software packages" />
+          <p aria-labelledby='image-set'>
+            Depicting the Flow of User-Specific Data when navigating the pages of the app. Diagram's changes show the levels of permission between login statuses
+          </p>
+          <div id='image-set'>
+            <ImageComp id='logged-out-img' ariaLabel='Logged out flowchart' src='LoggedOut.webp' className='shadow' alt="Chart depicting a logged out user's API call Dataflow" />
+            <ImageComp id='logged-in-img' ariaLabel='Logged in flowchart' src='LoggedIn.webp' className='shadow' alt="Chart depicting a logged In user's API call Dataflow" />
           </div>
         </section>
       </main>
-    </body >
+    </div>
   )
 }

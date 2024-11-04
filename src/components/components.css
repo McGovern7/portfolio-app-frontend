@@ -13,12 +13,18 @@ Card Comp
 	height: 200px;
 }
 
-.card-title {
-	font-size: large;
+.card-block {
+    padding: 0rem 1rem 0rem 1rem;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
 }
 
 .card-title {
 	padding: 2vh 1vh 1vh 2vh;
+	font-size: large;
 	color: #DBD7D2;
 	width: 100%;
 	position: relative;
@@ -40,6 +46,8 @@ Card Comp
 	padding: 1vh 1vh 1vh 3vh;
 	color: #DBD7D2;
 }
+
+
 
 /*
 Button Comp
@@ -94,7 +102,7 @@ header .nav-btn {
 /* 
 pop down when width < 925 pixels 
 */
-@media only screen and (max-width: 925px) {
+@media only screen and (max-width: 1025px) {
 	header {
 		padding-right: 2rem;
 	}

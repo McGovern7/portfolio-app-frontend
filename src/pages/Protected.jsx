@@ -183,17 +183,17 @@ function ProtectedPage() {
   };
   ;
   return (
-    <body className='main-page'>
+    <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
       <main>
         <h3>{localStorage.getItem('username')}'s Stash</h3>
         {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
-        <div className='container'>
-          <div className='entry-form-div border border-dark'>
-            <h4 className='form-title'>Enter Ammo into your Storage</h4>
-            <form aria-labelledby='form-title' className='entry-form' onSubmit={handleFormSubmit}>
+        <div className='grouper'>
+          <section id='entry-form-sect' className='border border-dark shadow-lg'>
+            <h4>Enter Ammo into your Storage</h4>
+            <form aria-labelledby='entry-form-sect' onSubmit={handleFormSubmit}>
 
               <div className='mb-3 mt-3'>
                 <label htmlFor='ammo_name' className='form-label'>
@@ -217,12 +217,12 @@ function ProtectedPage() {
               </div>
 
               <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet alt="" />} variant='primary' type='submit' disabled={loading}></Button>
-              {formError && <p aria-labelledby='entry-form' style={{ color: 'red' }}>{formError}</p>}
+              {formError && <p aria-labelledby='entry-form-sect' style={{ color: 'red' }}>{formError}</p>}
             </form>
-          </div>
-          <div className='entry-table-frame border border-dark' >
-            <h4 className='storage-title'>{localStorage.getItem('username')}'s Ammo Storage</h4>
-            <table aria-labelledby='storage-title' className='entry-table table table-striped table-bordered table-hover border-dark'>
+          </section>
+          <section id='entry-table-sect' className='border border-dark shadow-lg' >
+            <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
+            <table id='entry-table' aria-labelledby='entry-table-sect' className='table table-striped table-bordered table-hover border-dark'>
               <thead className='table-dark'>
                 <tr>
                   <th scope="col">Ammo Name</th>
@@ -240,45 +240,43 @@ function ProtectedPage() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </section>
         </div>
 
-        <div className='container'>
-          <div className='ammo-parent border border-dark' >
-            <h4 className='type-chart-title'>Ammo Types Chart</h4>
-            <button aria-labelledby='type-chart-title' type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
-              {dropDown.icon}
-            </button>
-            <div style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
-              <table aria-labelledby='dropdown button' className='table table-striped table-bordered table-hover border-dark'>
-                <thead className='table-dark'>
-                  <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Caliber</th>
-                    <th scope="col">Penetration</th>
-                    <th scope="col">Damage</th>
-                    <th scope="col">Velocity</th>
-                    <th scope="col">Frag%</th>
+        <section id='ammo-type-chart-sect' className='border border-dark shadow-lg' >
+          <h4>Ammo Types Chart</h4>
+          <button aria-labelledby='ammo-type-chart-sect' type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
+            {dropDown.icon}
+          </button>
+          <div style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
+            <table id='ammo-table' aria-labelledby='ammo-type-chart-sect' className='table table-striped table-bordered table-hover border-dark'>
+              <thead className='table-dark'>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Caliber</th>
+                  <th scope="col">Penetration</th>
+                  <th scope="col">Damage</th>
+                  <th scope="col">Velocity</th>
+                  <th scope="col">Frag%</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ammoTypes.map((type) => (
+                  <tr key={[type.ammo_name, type.ammo_group]}>
+                    <th scope='row'>{type.ammo_name}</th>
+                    <td>{type.caliber}</td>
+                    <td>{type.penetration}</td>
+                    <td>{type.damage}</td>
+                    <td>{type.velocity}</td>
+                    <td>{type.frag_pct}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {ammoTypes.map((type) => (
-                    <tr key={[type.ammo_name, type.ammo_group]}>
-                      <th scope='row'>{type.ammo_name}</th>
-                      <td>{type.caliber}</td>
-                      <td>{type.penetration}</td>
-                      <td>{type.damage}</td>
-                      <td>{type.velocity}</td>
-                      <td>{type.frag_pct}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
+        </section>
       </main>
-    </body>
+    </div>
   )
 }
 

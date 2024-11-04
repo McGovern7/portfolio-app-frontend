@@ -1,196 +1,206 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 * {
-    padding-right: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Orbitron", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+	padding-right: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Orbitron", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
 }
 
 :root {
-    --mainColor: #A2E4B8;
-    --mainColorBright: #08FF08;
-    --secondaryColor: #393D47;
-    --secondaryColorBright: #DBD7D2;
-    --textColor: #eee;
+	--mainColor: #A2E4B8;
+	--mainColorBright: #08FF08;
+	--secondaryColor: #393D47;
+	--secondaryColorBright: #DBD7D2;
+	--textColor: #eee;
 }
 
 h3 {
-    margin-top: 1rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
+	margin-top: 1rem;
+	margin-left: 5rem;
+	margin-right: 5rem;
 }
 
 h4 {
-    margin-top: 0.5rem;
-    text-align: center;
+	margin-top: 0.5rem;
+	text-align: center;
 }
 
 h5 {
-    margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 
 .main-page {
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    background-color: var(--secondaryColorBright);
-    width: 100%;
+	overflow: auto;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	background-color: var(--secondaryColorBright);
+	width: 100%;
 }
 
-.container {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: none;
+.grouper {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	max-width: none;
+	overflow-x: scroll;
 }
 
 .error {
-    color: red;
+	color: red;
 }
 
 .success {
-    color: green;
+	color: green;
 }
 
 /*
 Home CSS
 */
-.writeup p {
-    font-size: large;
-    text-align: left;
-    line-height: 2.0;
-    margin: 1rem 8rem 1rem 8rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+#writeup p {
+	font-size: large;
+	text-align: left;
+	line-height: 2.0;
+	margin: 1rem 8rem 1rem 8rem;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
 }
 
-.card-block {
-    padding: 0rem 1rem 0rem 1rem;
-    justify-content: space-evenly;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
+.card-block::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 10px;
+	height: 8px;
 }
 
-.image-set {
-    margin-bottom: 4rem;
+.card-block::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, .5);
+	-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
-.data-flow-img {
-    margin: 2rem 5% 2rem 5%;
-    max-width: 90%;
-    border: 0.4rem solid var(--mainColor);
+#image-set {
+	margin-bottom: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
-.logged-out-img {
-    margin-left: 5%;
-    margin-right: 5%;
-    max-width: 42.5%;
-    border: 0.4rem solid var(--mainColor);
+#data-flow-img {
+	margin: 0rem 5% 2rem 5%;
+	max-width: 90%;
+	border: 0.4rem solid var(--mainColor);
 }
 
-.logged-in-img {
-    margin-right: 5%;
-    max-width: 42.5%;
-    border: 0.4rem solid var(--mainColor);
+#logged-out-img {
+	max-width: 42.5%;
+	border: 0.4rem solid var(--mainColor);
+}
+
+#logged-in-img {
+	max-width: 42.5%;
+	border: 0.4rem solid var(--mainColor);
+}
+
+#dataflow p {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+	font-weight: bold;
+	color: gray;
 }
 
 /*
 Profile CSS
 */
 
-.login-pad {
-    min-width: 22rem;
-    margin-right: 1rem;
+#login-sect {
+	margin: 2rem 4rem 4rem 1rem;
 }
 
-.login-pad caption {
-    min-width: 22rem;
+#login-sect p {
+	min-width: 20rem;
+	font-weight: bold;
+	color: gray;
 }
 
 .login {
-    background-color: var(--textColor);
+	background-color: var(--textColor);
+}
+
+#logout-sect {
+	margin: 2rem 1rem 4rem 1rem;
 }
 
 .logout {
-    background-color: var(--textColor);
+	background-color: var(--textColor);
 }
 
-.delete-pad {
-    margin: 0rem 1rem 0rem 1rem;
+#delete-sect {
+	margin: 2rem 4rem 4rem 1rem;
 }
 
 .delete {
-    background-color: var(--textColor);
+	background-color: var(--textColor);
 }
 
 /*
 Register CSS
 */
 
-.register-pad {
-    min-width: 22rem;
+#register-sect {
+	margin: 2rem 4rem 4rem 1rem;
+}
+
+#register-sect p {
+	min-width: 20rem;
+	font-weight: bold;
+	color: gray;
 }
 
 .register {
-    background-color: var(--textColor);
+	background-color: var(--textColor);
 }
 
 /*
 Protected-Entry CSS
 */
 
-.entry-form-div {
-    position: relative;
-    padding: 1rem 1rem 1rem 1rem;
-    background-color: var(--textColor);
+#entry-form-sect {
+	margin: 2rem 1rem 4rem 1rem;
+	padding: 1rem 1rem 1rem 1rem;
+	position: relative;
+	background-color: var(--textColor);
 }
 
-.form-header::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 5rem;
-    height: 1px;
-    background-color: none;
-    /* Change to your preferred line color */
-    z-index: 1;
+#entry-table-sect {
+	margin: 2rem 1rem 4rem 1rem;
+	padding: 1rem 1rem 1rem 1rem;
+	width: 70%;
+	min-width: 45rem;
+	background-color: var(--textColor);
 }
 
-.entry-table-frame {
-    margin-left: 1rem;
-    padding: 1rem 1rem 1rem 1rem;
-    width: 70%;
-    min-width: 45rem;
-    background-color: var(--textColor);
+
+#ammo-type-chart-sect {
+	margin: 2rem 3rem 5rem 1rem;
+	position: relative;
+	padding: 1rem 1rem 1rem 1rem;
+	width: 994px;
+	background-color: var(--textColor);
 }
 
-.entry-table {
-    justify-content: flex-start;
-}
-
-.type-chart-title {
-    text-align: start !important;
-}
-
-.ammo-parent {
-    position: relative;
-    padding: 1rem 1rem 1rem 1rem;
-    max-width: 100%;
-    background-color: var(--textColor);
+#ammo-table {
+	background-color: var(--textColor);
+	overflow-x: scroll;
 }
 
 .dropdown {
-    padding: 0rem;
-    width: 1.75rem;
-    margin-bottom: .5rem;
+	padding: 0rem;
+	width: 1.75rem;
+	margin-bottom: .5rem;
 }

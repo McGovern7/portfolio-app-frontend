@@ -127,33 +127,33 @@ function Profile() {
   ;
 
   return (
-    <body className='main-page'>
+    <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
       <main>
         <h3>User Profile</h3>
-        <div className='profile' style={{ display: logoutVisible ? 'block' : 'none' }}>
-          <div className='container'>
-            <div className='logout-pad'>
+        <div style={{ display: logoutVisible ? 'block' : 'none' }}>
+          <div className='grouper'>
+            <section id='logout-sect' className='shadow-lg'>
               <div className='logout p-3 border border-dark'>
                 <h5>Logout of *{localStorage.getItem('username')}*?</h5>
                 <Button id='logout-button' label={loading ? ' Logging out' : ' Logout'} icon={<FaSignOutAlt />} variant='success' type='submit' onClick={handleLogoutButton} disabled={loading}></Button>
               </div>
-            </div>
-            <div className='delete-pad'>
+            </section>
+            <section id='delete-sect' className='shadow-lg'>
               <div className='delete p-3 border border-dark'>
                 <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
                 <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
                 {error && <p aria-label='delete form error response' className="error">{error}</p>}
               </div>
-            </div>
+            </section>
           </div>
         </div>
 
-        <div className='profile' style={{ display: loginVisible ? 'block' : 'none' }}>
-          <div className='container'>
-            <div className='login-pad'>
+        <div style={{ display: loginVisible ? 'block' : 'none' }}>
+          <div className='grouper'>
+            <section id='login-sect' className='shadow-lg'>
               <div className='login p-3 border border-dark'>
                 <h5 aria-label='login title'>Login to access your entries</h5>
                 <form id='login-form' onSubmit={handleLogFormSubmit} aria-label='login form'>
@@ -171,13 +171,14 @@ function Profile() {
                   <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading} ariaLabelledBy='login-form'></Button>
                   {error && <p className="error" aria-labelledby='login-form' >{error}</p>}
                 </form>
+                <p aria-label='register new account prompt'>Don't have an Account?  <a href="/register">Register</a></p>
+
               </div>
-              <caption aria-label='register new account prompt'>Don't have an Account?  <a href="/register">Register</a></caption>
-            </div>
+            </section>
           </div>
         </div>
       </main>
-    </body>
+    </div>
   )
 }
 

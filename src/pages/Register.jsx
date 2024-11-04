@@ -62,18 +62,17 @@ const Register = () => {
   };
 
   return (
-    <body className='main-page'>
+    <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
       <main>
         <h3>Registration</h3>
-        <div className='container'>
-          <div className='register-pad'>
+        <div className='grouper'>
+          <section id='register-sect' className='shadow-lg'>
             <div className='register p-3 border border-dark reg-box'>
-              <h5 className='register-title'>Register A New Profile</h5>
-              <form aria-labelledby='register-title' aria-label='register-form' onSubmit={handleRegFormSubmit}>
-
+              <h5>Register A New Profile</h5>
+              <form aria-labelledby='register-sect' onSubmit={handleRegFormSubmit}>
                 <div className='mb-3'>
                   <label htmlFor="username" className='form-label'>Username</label>
                   <input type="text" className='form-control' id='username' name='username' onChange={handleRegInputChange} value={regData.username} maxLength={15} />
@@ -85,15 +84,15 @@ const Register = () => {
                 </div>
 
                 <Button id='register' label={loading ? ' Registering' : ' Register'} icon={<FaUserPlus />} variant='success' type='submit' disabled={loading}></Button>
-                {error && <p aria-labelledby='register-form' className="error">{error}</p>}
-                {regStatus && <p aria-labelledby='register-form' className="success">{regStatus}</p>}
+                {error && <p aria-labelledby='register-sect' className="error">{error}</p>}
+                {regStatus && <p aria-labelledby='register-sect' className="success">{regStatus}</p>}
               </form>
+              {localStorage.getItem('username') ? <></> : (<p>Want to access Profile? <a href="/profile">Login</a></p>)}
             </div>
-            {localStorage.getItem('username') ? <></> : (<>Want to access Profile? <a href="/profile">Login</a></>)}
-          </div>
+          </section>
         </div>
       </main>
-    </body>
+    </div>
   )
 }
 

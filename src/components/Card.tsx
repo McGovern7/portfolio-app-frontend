@@ -15,7 +15,7 @@ const Card = ({ ariaLabel, id, title, image, content }: CardProps) => {
         <article
             aria-label={ariaLabel}
             id={id}
-            className='card-section card shadow-lg'
+            className='card-section card shadow'
         >
             {title}
             {image}
