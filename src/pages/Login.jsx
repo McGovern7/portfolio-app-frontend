@@ -143,9 +143,9 @@ function Profile() {
             </div>
             <div className='delete-pad'>
               <div className='delete p-3 border border-dark'>
-                <h5 aria-label='delete-title'>Delete user account *{localStorage.getItem('username')}*?</h5>
+                <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
                 <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
-                {error && <p aria-labelledby='delete-title' className="error">{error}</p>}
+                {error && <p aria-label='delete form error response' className="error">{error}</p>}
               </div>
             </div>
           </div>
@@ -155,8 +155,8 @@ function Profile() {
           <div className='container'>
             <div className='login-pad'>
               <div className='login p-3 border border-dark'>
-                <h5 className='login-title'>Login to access your entries</h5>
-                <form aria-labelledby='login-title' aria-label='login-form' onSubmit={handleLogFormSubmit}>
+                <h5 aria-label='login title'>Login to access your entries</h5>
+                <form id='login-form' onSubmit={handleLogFormSubmit} aria-label='login form'>
 
                   <div className='mb-3'>
                     <label htmlFor="username" className='form-label'>Username</label>
@@ -168,11 +168,11 @@ function Profile() {
                     <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
                   </div>
 
-                  <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading}></Button>
-                  {error && <p aria-labelledby='login-form' className="error">{error}</p>}
+                  <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading} ariaLabelledBy='login-form'></Button>
+                  {error && <p className="error" aria-labelledby='login-form' >{error}</p>}
                 </form>
               </div>
-              <>Don't have an Account?  <a href="/register">Register</a></>
+              <caption aria-label='register new account prompt'>Don't have an Account?  <a href="/register">Register</a></caption>
             </div>
           </div>
         </div>

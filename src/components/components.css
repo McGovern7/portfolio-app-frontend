@@ -1,25 +1,44 @@
 /*
-SideBar Comp
+Card Comp
 */
+.card-section {
+	margin: 30px 20px 25px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	background-color: #43423A;
+	min-width: 385px;
+	max-width: 385px;
+	height: 200px;
+}
 
-.side-bar-comp {
-    height: 100%;
-    width: 200px;
-    align-items: left;
-    justify-content: space-between;
-    background-color: var(--secondaryColor);
-  }
+.card-title {
+	font-size: large;
+}
 
-.side-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-  }
+.card-title {
+	padding: 2vh 1vh 1vh 2vh;
+	color: #DBD7D2;
+	width: 100%;
+	position: relative;
+	
+}
 
-.side-bar img {
-	margin: 10px;
-	width: 50px;
-	height: 50px;
+.card-title::after {
+	content: " ";
+	right: 0;
+	display: block;
+	height: 2px;
+	width: 125px;
+	position: absolute;
+	top: 100%;
+	background: #DBD7D2;
+}
+
+.card-content {
+	padding: 1vh 1vh 1vh 3vh;
+	color: #DBD7D2;
 }
 
 /*
@@ -27,94 +46,118 @@ Button Comp
 */
 
 .btn {
-    margin-top: 1rem;
-    min-width: 8rem;
+	margin-top: 1rem;
+	min-width: 8rem;
 }
 
 /* 
 Navbar Comp
 */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    background-color: var(--secondaryColor);
-    color: var(--textColor);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 80px;
+	background-color: var(--secondaryColor);
+	color: var(--textColor);
 }
 
 .nav-bar {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: space-around;
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: space-around;
 }
 
-.nav-bar a{
-    margin: 2vw;
-    color: var(--mainColor);
-    text-decoration: none;
+.nav-bar a {
+	margin: 2vw;
+	color: var(--mainColor);
+	text-decoration: none;
 }
 
-.nav-bar a:hover{
-    color:var(--mainColorBright);
+.nav-bar a:hover {
+	color: var(--mainColorBright);
 }
 
 header .nav-btn {
-    padding: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--mainColor);
-    visibility: hidden;
-    opacity: 0;
-    font-size: 1.8rem;
+	padding: 5px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--mainColor);
+	visibility: hidden;
+	opacity: 0;
+	font-size: 1.8rem;
 }
 
 /* 
 pop down when width < 925 pixels 
 */
-@media only screen and (max-width: 925px){
-    header {
-        padding-right: 2rem;
-    }
-    header .nav-btn {
-        position: absolute;
-        visibility: visible;
-        opacity: 1;
-        right: 2rem;
-    }
+@media only screen and (max-width: 925px) {
+	header {
+		padding-right: 2rem;
+	}
 
-    header .nav-bar{
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        background-color: var(--secondaryColor);
-        transition: 1s;
-        transform: translateY(-100vh);
-        z-index: 99;
-    }
+	header .nav-btn {
+		position: absolute;
+		visibility: visible;
+		opacity: 1;
+		right: 2rem;
+	}
 
-    header .responsive_nav{
-        transform: none;
-    }
+	header .nav-bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		background-color: var(--secondaryColor);
+		transition: 1s;
+		transform: translateY(-100vh);
+		z-index: 99;
+	}
 
-    .nav-bar .nav-close-btn {
-        position: absolute;
-        top: 1rem;
-        right: 2rem;
-    }
+	header .responsive_nav {
+		transform: none;
+	}
 
-    .nav-bar a{
-        font-size: 1.5rem;
-    }
+	.nav-bar .nav-close-btn {
+		position: absolute;
+		top: 1rem;
+		right: 2rem;
+	}
+
+	.nav-bar a {
+		font-size: 1.5rem;
+	}
 }
 
+/*
+SideBar Comp
+*/
+
+.side-bar-comp {
+	height: 100%;
+	width: 200px;
+	align-items: left;
+	justify-content: space-between;
+	background-color: var(--secondaryColor);
+}
+
+.side-bar {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+}
+
+.side-bar img {
+	margin: 10px;
+	width: 50px;
+	height: 50px;
+}

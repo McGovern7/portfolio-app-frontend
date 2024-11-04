@@ -17,14 +17,6 @@
     --textColor: #eee;
 }
 
-p {
-    font-size: large;
-    text-align: left;
-    line-height: 2.0;
-    padding-left: 7rem;
-    padding-right: 7rem;
-}
-
 h3 {
     margin-top: 1rem;
     margin-left: 5rem;
@@ -59,7 +51,7 @@ h5 {
     max-width: none;
 }
 
-.error{
+.error {
     color: red;
 }
 
@@ -71,16 +63,25 @@ h5 {
 Home CSS
 */
 .writeup p {
-    margin: 1rem 3rem 1rem 3rem;
+    font-size: large;
+    text-align: left;
+    line-height: 2.0;
+    margin: 1rem 8rem 1rem 8rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
 
-.list-group {
-    margin: 0 auto;
-    width: 50%;
-    border: 1px solid darkslategray;
-    text-align: center;
+.card-block {
+    padding: 0rem 1rem 0rem 1rem;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+.image-set {
+    margin-bottom: 4rem;
 }
 
 .data-flow-img {
@@ -108,14 +109,15 @@ Profile CSS
 
 .login-pad {
     min-width: 22rem;
+    margin-right: 1rem;
+}
+
+.login-pad caption {
+    min-width: 22rem;
 }
 
 .login {
     background-color: var(--textColor);
-}
-
-.logout-pad {
-    margin-right: 1rem;
 }
 
 .logout {
@@ -159,7 +161,8 @@ Protected-Entry CSS
     right: 0;
     top: 5rem;
     height: 1px;
-    background-color: none; /* Change to your preferred line color */
+    background-color: none;
+    /* Change to your preferred line color */
     z-index: 1;
 }
 
