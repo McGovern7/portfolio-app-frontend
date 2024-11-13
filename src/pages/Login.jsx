@@ -136,13 +136,13 @@ function Profile() {
         <div style={{ display: logoutVisible ? 'block' : 'none' }}>
           <div className='grouper'>
             <section id='logout-sect' className='shadow-lg'>
-              <div className='logout p-3 border border-dark'>
+              <div className='logout p-3'>
                 <h5>Logout of *{localStorage.getItem('username')}*?</h5>
                 <Button id='logout-button' label={loading ? ' Logging out' : ' Logout'} icon={<FaSignOutAlt />} variant='success' type='submit' onClick={handleLogoutButton} disabled={loading}></Button>
               </div>
             </section>
             <section id='delete-sect' className='shadow-lg'>
-              <div className='delete p-3 border border-dark'>
+              <div className='delete p-3'>
                 <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
                 <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
                 {error && <p aria-label='delete form error response' className="error">{error}</p>}
@@ -154,7 +154,7 @@ function Profile() {
         <div style={{ display: loginVisible ? 'block' : 'none' }}>
           <div className='grouper'>
             <section id='login-sect' className='shadow-lg'>
-              <div className='login p-3 border border-dark'>
+              <div className='login p-3'>
                 <h5 aria-label='login title'>Login to access your entries</h5>
                 <form id='login-form' onSubmit={handleLogFormSubmit} aria-label='login form'>
 

@@ -1,21 +1,174 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
+
+/*
+Portfolio Page
+*/
+
+.portfolio-page {
+	overflow: auto;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	background-color: var(--secondaryColorBright);
+	width: 100%;
+
+	.side-bar-column {
+		flex: 0 0 200px;
+	}
+	.main-column-A {
+		flex: 1;
+		max-width: 400px;
+	}
+	.fixed-section {
+		position: fixed;
+		max-width: 400px;
+		height: fill;
+	}
+	.main-column-B {
+		flex: 1;
+	}
+
+	.scroll-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.skills {
+		text-align: center;
+	}
+}
+
+/* SynthWave Comp */
+.synthwave-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, #ff00cc, #3333ff);
+	overflow: hidden;
+}
+
+.synthwave-grid {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 200%;
+	height: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-wrap: wrap;
+	opacity: 0.1;
+	animation: glow 10s infinite alternate;
+}
+
+.grid-line {
+	flex: 1 0 10%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes glow {
+	from {
+		filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+	}
+
+	to {
+		filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1));
+	}
+}
+
+/* SideBar Comp */
+.side-bar-comp {
+	height: 100%;
+	width: 200px;
+	align-items: left;
+	justify-content: space-between;
+	background-color: var(--secondaryColor);
+}
+
+.side-bar img {
+	margin: 10px;
+	width: 50px;
+	height: 50px;
+}
+
+.side-bar a {
+	display: flex;
+	text-decoration: none;
+}
+.side-bar a h5 {
+	padding: 22px 10px 0px 10px;
+	color: #DBD7D2;
+	transition: padding 0.3s ease;
+}
+.side-bar a:hover {
+	h5 {
+		padding-left: 25px;
+	}
+}
+
+/* Card Comp */
+.portfolio-page {
+	.card-section {
+		margin: 30px 20px 25px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		background-color: #375C6D;
+		min-width: 80%;
+		max-width: 80%;
+		height: fill;
+	}
+
+	.card-section:hover {
+		background-color: #3E677A;
+	}
+
+	.card-block {
+		padding: 0rem 1rem 0rem 1rem;
+		justify-content: space-evenly;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		overflow-x: scroll;
+	}
+
+	.card-title {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 2vh 2vh 1vh 2vh;
+		color: #DBD7D2;
+		width: 100%;
+		position: relative;
+		font-size: large;
+	}
+
+	.card-title::after {
+		content: " ";
+		right: 0;
+		display: block;
+		height: 2px;
+		width: 200px;
+		position: absolute;
+		top: 100%;
+		background: #DBD7D2;
+	}
+
+	.card-content {
+		padding: 1vh 1vh 1vh 3vh;
+		color: #DBD7D2;
+		font-size: medium;
+	}
+}
+
+/* Resume Page */
 object {
-  width: 100%;
-  height: 1190px;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.side-bar-column {
-  flex: 0 0 200px;
-}
-
-.main-column {
-  flex: 1;
+	width: 100%;
+	height: 1190px;
 }

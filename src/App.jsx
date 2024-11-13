@@ -8,8 +8,6 @@ import NoPage from './pages/NoPage';
 import Portfolio from './pages/Portfolio';
 import ResumePage from './pages/Resume';
 
-// npm start
-
 const App = () => {
   return ( // react can only return one element
     <BrowserRouter>

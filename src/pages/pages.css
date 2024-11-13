@@ -61,7 +61,7 @@ h5 {
 /*
 Home CSS
 */
-#writeup p {
+#writeup-sect p, #description p {
 	font-size: large;
 	text-align: left;
 	line-height: 2.0;
@@ -105,13 +105,22 @@ Home CSS
 	border: 0.4rem solid var(--mainColor);
 }
 
-#dataflow p {
+#dataflow-sect p {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	text-align: center;
 	font-weight: bold;
 	color: gray;
+}
+
+#onboarded-sect ul {
+	margin: 1rem 4rem 4rem 4rem;
+	border: 0.4rem solid var(--mainColor);
+}
+
+#onboarded-sect li {
+	font-weight: bold;
 }
 
 /*
@@ -130,6 +139,7 @@ Profile CSS
 
 .login {
 	background-color: var(--textColor);
+	border: 0.4rem solid var(--mainColor);
 }
 
 #logout-sect {
@@ -138,6 +148,7 @@ Profile CSS
 
 .logout {
 	background-color: var(--textColor);
+	border: 0.4rem solid var(--mainColor);
 }
 
 #delete-sect {
@@ -146,6 +157,7 @@ Profile CSS
 
 .delete {
 	background-color: var(--textColor);
+	border: 0.4rem solid var(--mainColor);
 }
 
 /*
@@ -164,6 +176,7 @@ Register CSS
 
 .register {
 	background-color: var(--textColor);
+	border: 0.4rem solid var(--mainColor);
 }
 
 /*
@@ -171,20 +184,21 @@ Protected-Entry CSS
 */
 
 #entry-form-sect {
-	margin: 2rem 1rem 4rem 1rem;
+	margin: 2rem 1rem 3.5rem 1rem;
 	padding: 1rem 1rem 1rem 1rem;
 	position: relative;
 	background-color: var(--textColor);
+	border: 0.4rem solid var(--mainColor);
 }
 
 #entry-table-sect {
-	margin: 2rem 1rem 4rem 1rem;
+	margin: 2rem 1rem 3rem 1rem;
 	padding: 1rem 1rem 1rem 1rem;
 	width: 70%;
 	min-width: 45rem;
 	background-color: var(--textColor);
+	border: 0.4rem solid var(--mainColor);
 }
-
 
 #ammo-type-chart-sect {
 	margin: 2rem 3rem 5rem 1rem;
@@ -192,6 +206,7 @@ Protected-Entry CSS
 	padding: 1rem 1rem 1rem 1rem;
 	width: 994px;
 	background-color: var(--textColor);
+	border: 0.4rem solid var(--mainColor);
 }
 
 #ammo-table {

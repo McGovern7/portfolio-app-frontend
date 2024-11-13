@@ -191,7 +191,7 @@ function ProtectedPage() {
         <h3>{localStorage.getItem('username')}'s Stash</h3>
         {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
         <div className='grouper'>
-          <section id='entry-form-sect' className='border border-dark shadow-lg'>
+          <section id='entry-form-sect' className='shadow-lg'>
             <h4>Enter Ammo into your Storage</h4>
             <form aria-labelledby='entry-form-sect' onSubmit={handleFormSubmit}>
 
@@ -220,7 +220,7 @@ function ProtectedPage() {
               {formError && <p aria-labelledby='entry-form-sect' style={{ color: 'red' }}>{formError}</p>}
             </form>
           </section>
-          <section id='entry-table-sect' className='border border-dark shadow-lg' >
+          <section id='entry-table-sect' className='shadow-lg' >
             <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
             <table id='entry-table' aria-labelledby='entry-table-sect' className='table table-striped table-bordered table-hover border-dark'>
               <thead className='table-dark'>
@@ -242,39 +242,40 @@ function ProtectedPage() {
             </table>
           </section>
         </div>
-
-        <section id='ammo-type-chart-sect' className='border border-dark shadow-lg' >
-          <h4>Ammo Types Chart</h4>
-          <button aria-labelledby='ammo-type-chart-sect' type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
-            {dropDown.icon}
-          </button>
-          <div style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
-            <table id='ammo-table' aria-labelledby='ammo-type-chart-sect' className='table table-striped table-bordered table-hover border-dark'>
-              <thead className='table-dark'>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Caliber</th>
-                  <th scope="col">Penetration</th>
-                  <th scope="col">Damage</th>
-                  <th scope="col">Velocity</th>
-                  <th scope="col">Frag%</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ammoTypes.map((type) => (
-                  <tr key={[type.ammo_name, type.ammo_group]}>
-                    <th scope='row'>{type.ammo_name}</th>
-                    <td>{type.caliber}</td>
-                    <td>{type.penetration}</td>
-                    <td>{type.damage}</td>
-                    <td>{type.velocity}</td>
-                    <td>{type.frag_pct}</td>
+        <div className='grouper'>
+          <section id='ammo-type-chart-sect' className='shadow-lg' >
+            <h4>Ammo Types Chart</h4>
+            <button aria-labelledby='ammo-type-chart-sect' type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
+              {dropDown.icon}
+            </button>
+            <div style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
+              <table id='ammo-table' aria-labelledby='ammo-type-chart-sect' className='table table-striped table-bordered table-hover border-dark'>
+                <thead className='table-dark'>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Caliber</th>
+                    <th scope="col">Penetration</th>
+                    <th scope="col">Damage</th>
+                    <th scope="col">Velocity</th>
+                    <th scope="col">Frag%</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+                </thead>
+                <tbody>
+                  {ammoTypes.map((type) => (
+                    <tr key={[type.ammo_name, type.ammo_group]}>
+                      <th scope='row'>{type.ammo_name}</th>
+                      <td>{type.caliber}</td>
+                      <td>{type.penetration}</td>
+                      <td>{type.damage}</td>
+                      <td>{type.velocity}</td>
+                      <td>{type.frag_pct}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
   )

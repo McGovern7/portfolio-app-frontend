@@ -145,27 +145,3 @@ pop down when width < 925 pixels
 		font-size: 1.5rem;
 	}
 }
-
-/*
-SideBar Comp
-*/
-
-.side-bar-comp {
-	height: 100%;
-	width: 200px;
-	align-items: left;
-	justify-content: space-between;
-	background-color: var(--secondaryColor);
-}
-
-.side-bar {
-	display: flex;
-	flex-direction: column;
-	align-items: left;
-}
-
-.side-bar img {
-	margin: 10px;
-	width: 50px;
-	height: 50px;
-}

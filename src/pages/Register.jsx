@@ -70,7 +70,7 @@ const Register = () => {
         <h3>Registration</h3>
         <div className='grouper'>
           <section id='register-sect' className='shadow-lg'>
-            <div className='register p-3 border border-dark reg-box'>
+            <div className='register p-3'>
               <h5>Register A New Profile</h5>
               <form aria-labelledby='register-sect' onSubmit={handleRegFormSubmit}>
                 <div className='mb-3'>
