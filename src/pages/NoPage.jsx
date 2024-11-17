@@ -1,15 +1,11 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React from 'react';
+import Navbar from '../components/Navbar';
+import DiagonalSlideGrid from '../components/grid';
 
 export default function Home() {
   return (
-    <div className='main-page'>
-      <React.Fragment>
-        <Navbar/>
-      </React.Fragment>
-      <h2>
-        Error 404: Not Found
-      </h2>
+    <div>
+      <DiagonalSlideGrid />
     </div>
   )
 }

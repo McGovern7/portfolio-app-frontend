@@ -1,34 +1,68 @@
-/*
-Card Comp
-*/
+/* Diagonal Grid */
+.diagonal-grid {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #1a202c;
+	/* Slate-900 equivalent */
+}
+
+.square-grid {
+	display: grid;
+	grid-template-columns: repeat(30, 1rem);
+	/* 30 columns, 1rem wide each */
+	grid-template-rows: repeat(20, 1rem);
+	/* 20 rows, 1rem tall each */
+	gap: 10px;
+	/* Add gap between the squares */
+}
+
+.square-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	padding: 2px;
+  }
+
+  .square-group:hover .square-point {
+	background: linear-gradient(to bottom, #4c51bf, #000000); /* Hover effect */
+	opacity: 1;
+  }
+
+.square-point {
+	display: flex;
+	align-items: center;
+	height: 8px;
+	width: 8px;
+	background-color: white;
+	opacity: 50%;
+}
+
+/* Card Comp */
 .card-section {
-	margin: 30px 20px 25px 20px;
+	margin: 3vh 1vw 3vh 1vw;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	background-color: #43423A;
+	color: var(--darkTextColor);
 	min-width: 385px;
 	max-width: 385px;
 	height: 200px;
 }
 
 .card-block {
-    padding: 0rem 1rem 0rem 1rem;
-    justify-content: space-evenly;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
+	padding: 0vh 1vh 0vh 1vh;
+	justify-content: space-evenly;
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
 }
 
 .card-title {
 	padding: 2vh 1vh 1vh 2vh;
 	font-size: large;
-	color: #DBD7D2;
-	width: 100%;
 	position: relative;
-	
 }
 
 .card-title::after {
@@ -39,33 +73,24 @@ Card Comp
 	width: 125px;
 	position: absolute;
 	top: 100%;
-	background: #DBD7D2;
 }
 
 .card-content {
 	padding: 1vh 1vh 1vh 3vh;
-	color: #DBD7D2;
 }
 
-
-
-/*
-Button Comp
-*/
-
+/* Button Comp */
 .btn {
-	margin-top: 1rem;
-	min-width: 8rem;
+	margin-top: 1vh;
+	min-width: 8vw;
 }
 
-/* 
-Navbar Comp
-*/
+/* Navbar Comp */
 header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	height: 80px;
+	height: 11vh;
 	background-color: var(--secondaryColor);
 	color: var(--textColor);
 }
@@ -78,7 +103,7 @@ header {
 }
 
 .nav-bar a {
-	margin: 2vw;
+	margin: 2vh;
 	color: var(--mainColor);
 	text-decoration: none;
 }
@@ -96,12 +121,10 @@ header .nav-btn {
 	color: var(--mainColor);
 	visibility: hidden;
 	opacity: 0;
-	font-size: 1.8rem;
+	font-size: 3vh;
 }
 
-/* 
-pop down when width < 925 pixels 
-*/
+/*  pop down when width < 1025 pixels */
 @media only screen and (max-width: 1025px) {
 	header {
 		padding-right: 2rem;

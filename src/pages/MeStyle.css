@@ -2,92 +2,107 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--greenPrimary: #3C552D;
+	--lightPrimary: #e4e5f1;
+	--lightSecondary: ;
+	--darkPrimary: rgb(30, 30, 30);
+	--darkSecondary: ;
+	--darkBorder: rgb(100, 100, 100);
+	--darkTextColor: #DBD7D2;
+	--cardBackground: #2A324A;
+	--cardBackgroundHover: #3F4B6F;
+}
+
+.diagonal-slide-grid {
+    position: relative;
+    display: grid;
+    height: 100vh;
+    align-items: center;    /* Vertically centers the content */
+    justify-items: center;  /* Horizontally centers the content */
+    background-color: #1e293b; /* Tailwind slate-900 */
+    padding-left: 2rem;  /* px-8 */
+    padding-right: 2rem; /* px-8 */
+}
 
 /*
 Portfolio Page
 */
 
 .portfolio-page {
-	overflow: auto;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	background-color: var(--secondaryColorBright);
-	width: 100%;
-
-	.side-bar-column {
-		flex: 0 0 200px;
-	}
-	.main-column-A {
-		flex: 1;
-		max-width: 400px;
-	}
-	.fixed-section {
-		position: fixed;
-		max-width: 400px;
-		height: fill;
-	}
-	.main-column-B {
-		flex: 1;
-	}
-
-	.scroll-list {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.skills {
-		text-align: center;
-	}
-}
-
-/* SynthWave Comp */
-.synthwave-background {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(to bottom, #ff00cc, #3333ff);
-	overflow: hidden;
-}
-
-.synthwave-grid {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 200%;
-	height: 50%;
-	transform: translateX(-50%);
 	display: flex;
-	flex-wrap: wrap;
-	opacity: 0.1;
-	animation: glow 10s infinite alternate;
+	height: 100vh;
 }
 
-.grid-line {
-	flex: 1 0 10%;
-	height: 100%;
-	background: rgba(255, 255, 255, 0.2);
+.portfolio-page.dark-mode {
+	background-color: var(--darkPrimary);
+	color: var(--darkTextColor);
 }
 
-@keyframes glow {
-	from {
-		filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
-	}
+.side-bar-column {
+	display: flex;
+	flex: 0 0 200px;
+}
 
-	to {
-		filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1));
-	}
+.main-column-A {
+	flex: 1;
+	position: relative;
+	max-width: 400px;
+	padding: 15px;
+	border-right: 2px solid var(--darkBorder);
+}
+
+.main-column-B {
+	flex: 1;
+	padding: 15px;
+	overflow-y: auto;
+}
+
+.scroll-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.scroll-to {
+	cursor: pointer;
+	width: fit-content;
+}
+
+.skills {
+	text-align: center;
+}
+
+#dark-mode-button {
+	display: flex;
+	margin-top: 10px;
+	width: 30px;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 50%;
+	align-items: center;
+	color: var(--greenPrimary);
+	transition: color 0.3s ease, background-color 0.3s ease;
+	/* Smooth transition for color and fill */
+}
+
+#dark-mode-button:hover {
+	background-color: var(--greenPrimary);
+	color: #DBD7D2;
+}
+
+#dark-mode-button svg {
+	width: 22px;
+	height: 22px;
 }
 
 /* SideBar Comp */
 .side-bar-comp {
 	height: 100%;
 	width: 200px;
-	align-items: left;
 	justify-content: space-between;
-	background-color: var(--secondaryColor);
+	background-color: var(--greenPrimary);
+	border-right: 2px solid var(--darkBorder);
 }
 
 .side-bar img {
@@ -100,11 +115,13 @@ Portfolio Page
 	display: flex;
 	text-decoration: none;
 }
+
 .side-bar a h5 {
 	padding: 22px 10px 0px 10px;
-	color: #DBD7D2;
+	color: var(--darkTextColor);
 	transition: padding 0.3s ease;
 }
+
 .side-bar a:hover {
 	h5 {
 		padding-left: 25px;
@@ -113,62 +130,46 @@ Portfolio Page
 
 /* Card Comp */
 .portfolio-page {
+
+	.main-column-A section,
+	.main-column-B section {
+		border-top: 1px solid var(--darkBorder);
+	}
+
 	.card-section {
-		margin: 30px 20px 25px 20px;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: flex-start;
-		background-color: #375C6D;
+		background-color: var(--cardBackground);
 		min-width: 80%;
 		max-width: 80%;
-		height: fill;
+		height: stretch;
+		line-height: 1.6;
 	}
 
 	.card-section:hover {
-		background-color: #3E677A;
-	}
-
-	.card-block {
-		padding: 0rem 1rem 0rem 1rem;
-		justify-content: space-evenly;
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		overflow-x: scroll;
+		background-color: var(--cardBackgroundHover);
 	}
 
 	.card-title {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 2vh 2vh 1vh 2vh;
-		color: #DBD7D2;
-		width: 100%;
+		padding: 10px 20px 5px 20px;
 		position: relative;
 		font-size: large;
 	}
 
 	.card-title::after {
-		content: " ";
-		right: 0;
-		display: block;
 		height: 2px;
-		width: 200px;
-		position: absolute;
-		top: 100%;
-		background: #DBD7D2;
+		width: 155px;
+		background: var(--darkTextColor);
 	}
 
 	.card-content {
-		padding: 1vh 1vh 1vh 3vh;
-		color: #DBD7D2;
-		font-size: medium;
+		padding: 10px 20px 10px 45px;
 	}
 }
 
 /* Resume Page */
 object {
 	width: 100%;
-	height: 1190px;
+	height: 152vh;
 }

@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 * {
-	padding-right: 0;
-	margin: 0;
 	box-sizing: border-box;
 	font-family: "Orbitron", sans-serif;
 	font-optical-sizing: auto;
@@ -14,22 +12,16 @@
 	--mainColorBright: #08FF08;
 	--secondaryColor: #393D47;
 	--secondaryColorBright: #DBD7D2;
+	--cardColor: #43423A;
 	--textColor: #eee;
 }
 
 h3 {
-	margin-top: 1rem;
-	margin-left: 5rem;
-	margin-right: 5rem;
-}
-
-h4 {
-	margin-top: 0.5rem;
-	text-align: center;
+	margin: 2vh 5vw 0vh 5vw;
 }
 
 h5 {
-	margin-bottom: 1rem;
+	margin-bottom: 1.5vh;
 }
 
 .main-page {
@@ -39,15 +31,6 @@ h5 {
 	bottom: 0;
 	background-color: var(--secondaryColorBright);
 	width: 100%;
-}
-
-.grouper {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: flex-start;
-	max-width: none;
-	overflow-x: scroll;
 }
 
 .error {
@@ -63,17 +46,20 @@ Home CSS
 */
 #writeup-sect p, #description p {
 	font-size: large;
-	text-align: left;
 	line-height: 2.0;
-	margin: 1rem 8rem 1rem 8rem;
+	margin: 2vh 8vw 2vh 8vw;
 	font-family: 'Courier New', Courier, monospace;
 	font-weight: bold;
 }
 
+.card-block .card-section {
+	background-color: var(--cardColor);
+}
+
 .card-block::-webkit-scrollbar {
 	-webkit-appearance: none;
-	width: 10px;
-	height: 8px;
+	width: 1vw;
+	height: 1vh;
 }
 
 .card-block::-webkit-scrollbar-thumb {
@@ -83,26 +69,26 @@ Home CSS
 }
 
 #image-set {
-	margin-bottom: 4rem;
+	margin-bottom: 6vh;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 }
 
 #data-flow-img {
-	margin: 0rem 5% 2rem 5%;
-	max-width: 90%;
-	border: 0.4rem solid var(--mainColor);
+	margin: 0vh 4vw 2vh 4vw;
+	width: 92vw;
+	border: 6px solid var(--mainColor);
 }
 
 #logged-out-img {
-	max-width: 42.5%;
-	border: 0.4rem solid var(--mainColor);
+	width: 42.5vw;
+	border: 6px solid var(--mainColor);
 }
 
 #logged-in-img {
-	max-width: 42.5%;
-	border: 0.4rem solid var(--mainColor);
+	width: 42.5vw;
+	border: 6px solid var(--mainColor);
 }
 
 #dataflow-sect p {
@@ -115,8 +101,8 @@ Home CSS
 }
 
 #onboarded-sect ul {
-	margin: 1rem 4rem 4rem 4rem;
-	border: 0.4rem solid var(--mainColor);
+	margin: 2vh 4vw 8vh 4vw;
+	border: solid var(--mainColor);
 }
 
 #onboarded-sect li {
@@ -128,7 +114,7 @@ Profile CSS
 */
 
 #login-sect {
-	margin: 2rem 4rem 4rem 1rem;
+	margin: 4vh 1vw 7vh 2vw;
 }
 
 #login-sect p {
@@ -139,25 +125,25 @@ Profile CSS
 
 .login {
 	background-color: var(--textColor);
-	border: 0.4rem solid var(--mainColor);
+	border: 6px solid var(--mainColor);
 }
 
 #logout-sect {
-	margin: 2rem 1rem 4rem 1rem;
+	margin: 4vh 1vw 7vh 2vw;
 }
 
 .logout {
 	background-color: var(--textColor);
-	border: 0.4rem solid var(--mainColor);
+	border: 6px solid var(--mainColor);
 }
 
 #delete-sect {
-	margin: 2rem 4rem 4rem 1rem;
+	margin: 4vh 1vw 7vh 2vw;
 }
 
 .delete {
 	background-color: var(--textColor);
-	border: 0.4rem solid var(--mainColor);
+	border: 6px solid var(--mainColor);
 }
 
 /*
@@ -165,30 +151,40 @@ Register CSS
 */
 
 #register-sect {
-	margin: 2rem 4rem 4rem 1rem;
+	margin: 4vh 1vw 7vh 2vw;
 }
 
 #register-sect p {
-	min-width: 20rem;
 	font-weight: bold;
 	color: gray;
 }
 
 .register {
+	min-width: 20rem;
 	background-color: var(--textColor);
-	border: 0.4rem solid var(--mainColor);
+	border: 6px solid var(--mainColor);
 }
 
 /*
 Protected-Entry CSS
 */
+.grouper {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	overflow-x: scroll;
+}
+
+.grouper h4 {
+	text-align: center;
+}
 
 #entry-form-sect {
 	margin: 2rem 1rem 3.5rem 1rem;
 	padding: 1rem 1rem 1rem 1rem;
-	position: relative;
+	min-width: 20rem;
 	background-color: var(--textColor);
-	border: 0.4rem solid var(--mainColor);
+	border: 6px solid var(--mainColor);
 }
 
 #entry-table-sect {
@@ -197,16 +193,15 @@ Protected-Entry CSS
 	width: 70%;
 	min-width: 45rem;
 	background-color: var(--textColor);
-	border: 0.4rem solid var(--mainColor);
+	border: 6px solid var(--mainColor);
 }
 
 #ammo-type-chart-sect {
 	margin: 2rem 3rem 5rem 1rem;
-	position: relative;
 	padding: 1rem 1rem 1rem 1rem;
-	width: 994px;
+	min-width: 994px;
 	background-color: var(--textColor);
-	border: 0.4rem solid var(--mainColor);
+	border: 6px solid var(--mainColor);
 }
 
 #ammo-table {

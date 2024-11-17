@@ -20,8 +20,8 @@ const ScrollTo = ({ ariaLabel, id, className, content, sectionID }: ScrollToProp
         }
     }
     return (
-        <a aria-label={ariaLabel} id={id} className={className} 
-         onClick={ScrollToSection}>{content}</a>
+        <p aria-label={ariaLabel} id={id} className={className} 
+         onClick={ScrollToSection}><b>{content}</b></p>
     )
 }
 
