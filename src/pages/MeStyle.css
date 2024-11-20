@@ -1,37 +1,59 @@
-* {
-	box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 
 :root {
 	--greenPrimary: #3C552D;
+	--greenSecondary: #4E6440;
 	--lightPrimary: #e4e5f1;
-	--lightSecondary: ;
 	--darkPrimary: rgb(30, 30, 30);
-	--darkSecondary: ;
 	--darkBorder: rgb(100, 100, 100);
 	--darkTextColor: #DBD7D2;
 	--cardBackground: #2A324A;
 	--cardBackgroundHover: #3F4B6F;
 }
 
-.diagonal-slide-grid {
-    position: relative;
-    display: grid;
-    height: 100vh;
-    align-items: center;    /* Vertically centers the content */
-    justify-items: center;  /* Horizontally centers the content */
-    background-color: #1e293b; /* Tailwind slate-900 */
-    padding-left: 2rem;  /* px-8 */
-    padding-right: 2rem; /* px-8 */
-}
-
 /*
 Portfolio Page
 */
+html {
+	background-color: var(--darkBorder);
+}
+
+.portfolio-page * {
+	font-family: "League Spartan", serif;
+	font-style: normal;
+}
 
 .portfolio-page {
 	display: flex;
 	height: 100vh;
+	background-color: white;
+
+	h1 {
+		margin-bottom: 0;
+		font-weight: 900;
+	}
+
+	h2 {
+		font-weight: 800;
+	}
+
+	.brief-desc {
+		justify-self: center;
+		white-space: nowrap;
+		text-align: center;
+	}
+
+	caption {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	p,
+	caption,
+	ul {
+		font-weight: 500;
+	}
+
 }
 
 .portfolio-page.dark-mode {
@@ -39,40 +61,34 @@ Portfolio Page
 	color: var(--darkTextColor);
 }
 
-.side-bar-column {
-	display: flex;
-	flex: 0 0 200px;
+.diagonal-grid.dark-mode {
+	background-color: var(--darkPrimary);
 }
 
 .main-column-A {
 	flex: 1;
 	position: relative;
 	max-width: 400px;
-	padding: 15px;
-	border-right: 2px solid var(--darkBorder);
+	clip-path: inset(0 0px);
 }
 
 .main-column-B {
 	flex: 1;
-	padding: 15px;
+	padding: 2vh;
 	overflow-y: auto;
+	border-left: 2px solid var(--darkBorder);
 }
 
-.scroll-list {
-	display: flex;
-	flex-direction: column;
-}
-
-.scroll-to {
-	cursor: pointer;
-	width: fit-content;
+#intro {
+	margin: 2vh 2vh 0px 2vh;
+	height: 48vh;
 }
 
 .skills {
 	text-align: center;
 }
 
-#dark-mode-button {
+#dark-mode-button, #back-btn {
 	display: flex;
 	margin-top: 10px;
 	width: 30px;
@@ -91,85 +107,113 @@ Portfolio Page
 	color: #DBD7D2;
 }
 
-#dark-mode-button svg {
+#dark-mode-button svg, #back-btn svg {
 	width: 22px;
 	height: 22px;
 }
 
 /* SideBar Comp */
-.side-bar-comp {
-	height: 100%;
-	width: 200px;
-	justify-content: space-between;
-	background-color: var(--greenPrimary);
-	border-right: 2px solid var(--darkBorder);
-}
-
-.side-bar img {
-	margin: 10px;
-	width: 50px;
-	height: 50px;
-}
-
-.side-bar a {
+.side-bar-column {
 	display: flex;
-	text-decoration: none;
-}
+	flex: 0 0 200px;
 
-.side-bar a h5 {
-	padding: 22px 10px 0px 10px;
-	color: var(--darkTextColor);
-	transition: padding 0.3s ease;
-}
+	.side-bar-comp {
+		padding-top: 1vh;
+		height: 100%;
+		width: 200px;
+		justify-content: space-between;
+		background-color: var(--greenPrimary);
+		border-right: 2px solid var(--darkBorder);
+		align-items: center;
 
-.side-bar a:hover {
-	h5 {
-		padding-left: 25px;
+		.side-bar {
+			#back-btn { 
+				position: absolute;
+				right: 0;
+				margin-right: 1vw;
+			}
+			img {
+				margin: 10px;
+				width: 40px;
+				height: 40px;
+				user-select: none;
+			}
+
+			a {
+				margin: 0vh 1vh 2vh 1vh;
+				display: flex;
+				text-decoration: none;
+				border-radius: 35px;
+				user-select: none;
+
+				h5 {
+					display: flex;
+					margin: 0;
+					padding: 0px 10px 0px 0px;
+					align-items: center;
+					color: var(--darkTextColor);
+					transition: padding 0.3s ease;
+				}
+			}
+
+			a:hover {
+				h5 {
+					padding-left: 15px;
+				}
+
+				background: var(--greenSecondary);
+			}
+		}
 	}
 }
 
 /* Card Comp */
 .portfolio-page {
-
-	.main-column-A section,
-	.main-column-B section {
-		border-top: 1px solid var(--darkBorder);
-	}
-
 	.card-section {
+		margin: 3vh 1vw 3vh 1vw;
 		background-color: var(--cardBackground);
 		min-width: 80%;
 		max-width: 80%;
 		height: stretch;
 		line-height: 1.6;
+
+		.card-title {
+			display: flex;
+			justify-content: space-between;
+		}
 	}
 
 	.card-section:hover {
 		background-color: var(--cardBackgroundHover);
 	}
+}
 
-	.card-title {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 10px 20px 5px 20px;
-		position: relative;
-		font-size: large;
-	}
+/* Scroll-To Comp */
+.scroll-list {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
 
-	.card-title::after {
-		height: 2px;
-		width: 155px;
-		background: var(--darkTextColor);
-	}
+.scroll-to {
+	margin-bottom: 1.5vh;
+	cursor: pointer;
+	width: fit-content;
+	transition: padding 0.3s ease;
+	user-select: none;
+}
 
-	.card-content {
-		padding: 10px 20px 10px 45px;
-	}
+.scroll-to:hover {
+	padding-left: 25px;
 }
 
 /* Resume Page */
 object {
 	width: 100%;
-	height: 152vh;
+}
+
+.resume-column {
+	display: flex;
+	width: stretch;
+	height: 100vh;
 }

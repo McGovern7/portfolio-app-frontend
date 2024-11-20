@@ -1,82 +1,68 @@
 /* Diagonal Grid */
 .diagonal-grid {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	background-color: #1a202c;
-	/* Slate-900 equivalent */
+	cursor: crosshair;
+	padding: 12px;
+	place-content: center;
+	height: 50vh;
+	overflow: hidden;
+}
+
+.row-group {
+	display: grid;
+	grid-auto-flow: column;
 }
 
 .square-grid {
 	display: grid;
-	grid-template-columns: repeat(30, 1rem);
-	/* 30 columns, 1rem wide each */
-	grid-template-rows: repeat(20, 1rem);
-	/* 20 rows, 1rem tall each */
-	gap: 10px;
-	/* Add gap between the squares */
+	gap: 6px;
 }
 
 .square-group {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	padding: 2px;
-  }
-
-  .square-group:hover .square-point {
-	background: linear-gradient(to bottom, #4c51bf, #000000); /* Hover effect */
-	opacity: 1;
-  }
+	padding: 6px;
+}
 
 .square-point {
-	display: flex;
-	align-items: center;
 	height: 8px;
 	width: 8px;
-	background-color: white;
+	background: linear-gradient(to bottom, var(--cardBackgroundHover), var(--darkTextColor));
 	opacity: 50%;
+}
+
+.square-group:hover {
+	background: var(--darkBorder);
+}
+
+.square-group:hover .square-point {
+	background: var(--darkTextColor);
+	/* Hover effect */
+	opacity: 1;
 }
 
 /* Card Comp */
 .card-section {
-	margin: 3vh 1vw 3vh 1vw;
 	display: flex;
 	flex-direction: column;
 	color: var(--darkTextColor);
-	min-width: 385px;
-	max-width: 385px;
-	height: 200px;
-}
 
-.card-block {
-	padding: 0vh 1vh 0vh 1vh;
-	justify-content: space-evenly;
-	display: flex;
-	flex-direction: row;
-	overflow-x: scroll;
-}
+	.card-title {
+		font-size: large;
+		position: relative;
+		padding: 10px 20px 5px 20px;
+	}
 
-.card-title {
-	padding: 2vh 1vh 1vh 2vh;
-	font-size: large;
-	position: relative;
-}
+	.card-title::after {
+		content: " ";
+		position: absolute;
+		top: 100%;
+		right: 0;
+		height: 2px;
+		width: 125px;
+		background: var(--darkTextColor);
+	}
 
-.card-title::after {
-	content: " ";
-	right: 0;
-	display: block;
-	height: 2px;
-	width: 125px;
-	position: absolute;
-	top: 100%;
-}
-
-.card-content {
-	padding: 1vh 1vh 1vh 3vh;
+	.card-content {
+		padding: 10px 20px 10px 45px;
+	}
 }
 
 /* Button Comp */

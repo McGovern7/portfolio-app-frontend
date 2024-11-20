@@ -24,15 +24,6 @@ h5 {
 	margin-bottom: 1.5vh;
 }
 
-.main-page {
-	overflow: auto;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	background-color: var(--secondaryColorBright);
-	width: 100%;
-}
-
 .error {
 	color: red;
 }
@@ -44,28 +35,58 @@ h5 {
 /*
 Home CSS
 */
-#writeup-sect p, #description p {
+.main-page {
+	overflow: auto;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	background-color: var(--secondaryColorBright);
+	width: 100%;
+
+	.card-block {
+		padding: 0vh 1vh 0vh 1vh;
+		justify-content: space-evenly;
+		display: flex;
+		flex-direction: row;
+		overflow-x: scroll;
+
+		.card-section {
+			margin: 3vh 1vw 3vh 1vw;
+			min-width: 385px;
+			max-width: 385px;
+			height: 200px;
+			background-color: var(--cardColor);
+
+			.card-block {
+				padding: 0vh 1vh 0vh 1vh;
+				justify-content: space-evenly;
+				display: flex;
+				flex-direction: row;
+				overflow-x: scroll;
+			}
+		}
+	}
+
+	.card-block::-webkit-scrollbar {
+		-webkit-appearance: none;
+		width: 1vw;
+		height: 1vh;
+	}
+
+	.card-block::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background-color: rgba(0, 0, 0, .5);
+		-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+	}
+}
+
+#writeup-sect p,
+#description p {
 	font-size: large;
 	line-height: 2.0;
 	margin: 2vh 8vw 2vh 8vw;
 	font-family: 'Courier New', Courier, monospace;
 	font-weight: bold;
-}
-
-.card-block .card-section {
-	background-color: var(--cardColor);
-}
-
-.card-block::-webkit-scrollbar {
-	-webkit-appearance: none;
-	width: 1vw;
-	height: 1vh;
-}
-
-.card-block::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background-color: rgba(0, 0, 0, .5);
-	-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
 #image-set {
@@ -173,10 +194,9 @@ Protected-Entry CSS
 	flex-direction: row;
 	align-items: flex-start;
 	overflow-x: scroll;
-}
-
-.grouper h4 {
-	text-align: center;
+	h4 {
+		text-align: center;
+	}
 }
 
 #entry-form-sect {

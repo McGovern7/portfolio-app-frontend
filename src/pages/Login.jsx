@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import verifyToken from '../components/Verify.jsx'
 import Button from '../components/Button.tsx'
@@ -21,7 +21,7 @@ function Profile() {
   const [logoutVisible, setLogoutVisible] = useState(false);
 
   const navigate = useNavigate();
-  const handleVerify = useCallback(async () => {
+  const handleVerify = async () => {
     const response = await verifyToken();
     // login or logout depending on verification status
     if (response) {
@@ -32,7 +32,7 @@ function Profile() {
       setLoginVisible(true); // could be redundant
       setLogoutVisible(false);
     }
-  });
+  };
 
   useEffect(() => {
     handleVerify();
@@ -98,7 +98,7 @@ function Profile() {
   };
 
   // delete user and their entries from both databases
-  const handleDeleteButton = useCallback(async () => {
+  const handleDeleteButton = async () => {
     handleVerify();
     console.log('verified');
     setLoading(true);
@@ -123,7 +123,7 @@ function Profile() {
       setLoading(false);
     };
     setDelTriggered(true);
-  });
+  };
   ;
 
   return (
