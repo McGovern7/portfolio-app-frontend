@@ -2,7 +2,7 @@ import React from 'react';
 import './components.css';
 import anime from "animejs";
 
-const DiagonalSlideGrid = () => {
+const FlowGrid = () => {
 	return (
 		<div className="diagonal-grid" >
 			<SquareGrid />
@@ -63,4 +63,4 @@ const SquareGrid = () => {
 	);
 };
 
-export default DiagonalSlideGrid;
+export default FlowGrid;

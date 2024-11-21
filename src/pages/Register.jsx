@@ -60,7 +60,6 @@ const Register = () => {
       setLoading(false);
     };
   };
-
   return (
     <div className='main-page'>
       <React.Fragment>

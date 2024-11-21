@@ -181,7 +181,6 @@ function ProtectedPage() {
       setDropDown({ icon: <FaChevronUp alt="dropdown" />, isOpen: true });
     };
   };
-  ;
   return (
     <div className='main-page'>
       <React.Fragment>

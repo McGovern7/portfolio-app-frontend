@@ -124,8 +124,6 @@ function Profile() {
     };
     setDelTriggered(true);
   };
-  ;
-
   return (
     <div className='main-page'>
       <React.Fragment>
