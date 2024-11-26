@@ -2,24 +2,24 @@ import React from 'react';
 import './components.css';
 import anime from "animejs";
 
-const FlowGrid = () => {
+const Grid = () => {
 	return (
-		<div className="diagonal-grid" >
+		<div className="grid" >
 			<SquareGrid />
 		</div>
 	);
 }
 
-const GRID_WIDTH = 17;
-const GRID_HEIGHT = 17;
+const GRID_WIDTH = 19;
+const GRID_HEIGHT = 19;
 
 const SquareGrid = () => {
 	const handleSquareClick = (e: any) => {
 		anime({
 			targets: ".square-point",
 			scale: [
-				{ value: 1.35, easing: "easeOutSine", duration: 250 },
-				{ value: 1, easing: "easeInOutQuad", duration: 500 },
+				{ value: -1.35, easing: "easeOutSine", duration: 250 },
+				{ value: 1.00, easing: "easeInOutQuad", duration: 500 },
 			],
 			translateY: [
 				{ value: 20, easing: "easeOutSine", duration: 250 },
@@ -57,10 +57,10 @@ const SquareGrid = () => {
 	}
 
 	return (
-		<div style={{ gridTemplateRows: `repeat(${GRID_WIDTH}, 1rem)` }} className="square-grid">
+		<div style={{ gridTemplateColumns: `repeat('autofill', 1fr)`, gridTemplateRows: `repeat('autofill', 1fr)` }} className="square-grid">
 			{squares}
 		</div>
 	);
 };
 
-export default FlowGrid;
+export default Grid;

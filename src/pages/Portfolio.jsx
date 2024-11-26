@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import SideBar from '../components/SideBar.jsx';
 import Card from '../components/Card.tsx';
 import ScrollTo from '../components/ScrollTo.tsx';
-import FlowGrid from '../components/grid.tsx';
+// @ts-ignore
+import Grid from '../components/Grid.tsx';
 import { IoContrast } from "react-icons/io5";
+import { FiArrowUpRight } from "react-icons/fi";
 import './MeStyle.css';
 
 function Portfolio() {
   // unique darkmode button to change palette
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode); // Toggle dark mode
   };
@@ -24,10 +26,14 @@ function Portfolio() {
       </div>
       <div className='main-column-A'>
         <section id='intro'>
-          <button id='dark-mode-button' onClick={toggleDarkMode}><IoContrast /></button>
-          <h1 style={{ marginBottom: "0", }}>Luke McGovern</h1>
-          <caption style={{ paddingTop: "0", paddingBottom: "1vh" }}>luke.mcgovern18@gmail.com</caption>
-          <p style={{ marginBottom: "4vh", }}>Full-Stack Developer, Software Engineer</p>
+          <div className='dark-btn-container'>
+            <button id='dark-mode-button' onClick={toggleDarkMode}><IoContrast /></button>
+          </div>
+          <h1>Luke McGovern</h1>
+          <ul style={{ margin: '0' }}>
+            <p style={{ marginBottom: "0" }}>Software Engineer, Full-Stack Developer</p>
+            <caption style={{ paddingBottom: "2vh", }}>luke.mcgovern18@gmail.com</caption>
+          </ul>
           <ul className='scroll-list'>
             <ScrollTo ariaLabel='scroll to about me' id='about-scroll' className='scroll-to'
               content='About Me' sectionID='about-me' />
@@ -41,28 +47,92 @@ function Portfolio() {
               content='Class Work' sectionID='class-work' />
           </ul>
         </section>
-        <FlowGrid />
+        <Grid />
       </div>
       <div className='main-column-B'>
         <section id='about-me'>
           <h2>About Me</h2>
-          <p>Since recently graduating with a Computer Science degree from my hometown school, UVM, I've been passionately expanding my skillset to face challenges in our ever-evolving tech landscape. I am driven to continuously grow my coding expertise from an innate desire to solve complex problems.</p>
-          <p>Recently, I have become proficient in robotics software architecture, and building accessible web applications using full-stack development techniques.  Accomplishing these solo projects has vastly improved my ability to solve obstacles independently.</p>
+          <div className='row'>
+            <p className='col'>Since recently graduating with a Computer Science degree from his hometown school of UVM, He's passionately expanding his skillset to address the challenges in this ever-evolving tech landscape. He is driven to continuously grow his coding expertise, from an innate desire to find creative solutions.</p>
+            <p className='col'>Recently, he has become proficient in robotics software architecture, and building accessible web applications using full-stack development techniques.  Accomplishing these solo projects has vastly improved his ability to solve obstacles independently.</p>
+          </div>
         </section>
         <section id='proficiencies'>
           <h2>Proficiencies</h2>
-          <h4 style={{ textAlign: 'center' }}>Languages</h4>
-          <p className='skills'>Python  |  C  |  C++  |  JavaScript  |  Swift  |  React  |  HTML  |  CSS  |  MySQL  |  R</p>
-          <h4 style={{ textAlign: 'center' }}>Skills</h4>
-          <p className='skills'>Full-Stack Dev  |  FastAPI  |  Linux CLI  |  Git  |  ROS Robotics  |  iOS Dev  |  PC Building          </p>
+          <div className={`title-row ${darkMode ? 'dark-mode' : ''}`}>
+            <h4 className='col thin-title' id='language-title'>LANGUAGES</h4>
+            <h4 className='col thin-title' id='skills-title'>SKILLS & TOOLS</h4>
+          </div>
+          <div className='row'>
+            <div className='col'>
+              <p className='row skills'>Python</p>
+              <p className='row skills'>Swift</p>
+              <p className='row skills'>C</p>
+              <p className='row skills'>C++</p>
+              <p className='row skills'>JavaScript</p>
+            </div>
+            <div className='col'>
+              <p className='row skills'>MySQL</p>
+              <p className='row skills'>React</p>
+              <p className='row skills'>R</p>
+              <p className='row skills'>CSS</p>
+              <p className='row skills'>HTML</p>
+            </div>
+            <div className='col'>
+              <p className='row skills'>Full-Stack Dev</p>
+              <p className='row skills'>FastAPI</p>
+              <p className='row skills'>Figma</p>
+              <p className='row skills'>iOS Dev</p>
+            </div>
+            <div className='col'>
+              <p className='row skills'>GIT</p>
+              <p className='row skills'>ROS Robotics</p>
+              <p className='row skills'>LinuxCLI</p>
+              <p className='row skills'>Pandas</p>
+            </div>
+            <div className='col'>
+              <p className='skills'>Algo. Design</p>
+              <p className='skills'>Data Structures</p>
+              <p className='skills'>Data Privacy</p>
+              <p className='row skills'>PC Building</p>
+            </div>
+          </div>
         </section>
         <section id='projects'>
           <h2>Projects</h2>
-          <p>Full-Stack Project: <a href='http://localhost:3000/home'>Tarkov App</a></p>
-          <p>Autonomous Drone Project: <a target="_blank" rel="noopener noreferrer" href='https://github.com/McGovern7/ardupilot-nav-scripts'>Ardupilot Script Nav</a></p>
-          <ul>
-            <li>Program autonomous navigation software for a drone in a virtual environment (using LiDAR, Odometry, and GPS)</li>
-          </ul>
+          <div className='project-group'>
+            <h5 className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='http://localhost:3000/home'>TARKOV APP<FiArrowUpRight className='external' /></a></h5>
+            <div className='row'>
+              <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
+              <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups</p>
+            </div>
+            <img className='col shield' alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&color=%23f7df1e" />
+            <img className='col shield' alt="react version 18.3.1" src="https://img.shields.io/npm/v/react?logo=react&label=React&color=%2300C4DC" />
+            <img className='col shield' alt="axios version 1.7.8" src="https://img.shields.io/npm/v/axios?logo=axios&label=Axios&color=%23671ddf" />
+            <img className='col shield' alt="Node.js version 20.18.1" src="https://img.shields.io/npm/v/node?logo=node.js&label=Node&color=%23417E38" />
+            <img className='col shield' alt="Bootstrap version 5.3.3" src="https://img.shields.io/npm/v/bootstrap?logo=bootstrap&label=Bootstrap&color=%239461fb" />
+            <img className='col shield' alt="anime.js version 3.2.2" src="https://img.shields.io/npm/v/animejs?logo=anime&label=anime.js&color=%23F74F4D" />
+            <img className='col shield' alt="react-icons version 5.3.0" src="https://img.shields.io/npm/v/react-icons?logo=anime&label=react-icons&color=%23e91e63" />
+            <img className='col shield' alt="tailwindcss version 3.4.15" src="https://img.shields.io/npm/v/tailwindcss?logo=tailwindcss&label=Tailwind%20CSS&color=%2338bdf9" />
+
+            
+
+            <img className='col shield' alt="fast API version 0.0.8" src="https://img.shields.io/npm/v/fastapi?logo=fastapi&label=FastAPI&color=%23009485" />
+
+          </div>
+          <div className='project-group'>
+            <h5 className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='https://github.com/McGovern7/ardupilot-nav-scripts'>ARDUPILOT SCRIPT NAV<FiArrowUpRight className='external' /></a></h5>
+            <div className='row'>
+              <p className='col'>After graduation, He joined the drone navigation community. This project allows a drone to autonomously navigate a 3D maze using a script he developed.</p>
+              <p className='col'>Future plans to add object recognition and tracking, then implement this software into a custom self-built drone.</p>
+            </div>
+            <div className={`row thin-content ${darkMode ? 'dark-mode' : ''}`}>
+              <p className='col'>ROLE</p>
+              <p className='col'>TOOLS</p>
+              <p className='col'>DURATION</p>
+              <p className='col'>LEARNED</p>
+            </div>
+          </div>
         </section>
         <section id='work-experience'>
           <h2>Work Experience</h2>
@@ -95,8 +165,9 @@ function Portfolio() {
             title={<p className='card-title'><b>Cybersecurity Principles</b>Summer 2022</p>}
             content={<p className='card-content'>Infiltrate my professor’s (fake) online bank using cryptographic hashing to secure computer networks. Newfound understanding of network threat vectors allows me to build more secure software.</p>} />
         </section>
-      </div>
-    </div>
+      </div >
+
+    </div >
   )
 }
 

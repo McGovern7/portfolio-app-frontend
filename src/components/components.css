@@ -1,20 +1,15 @@
 /* Grid */
-.diagonal-grid {
+.grid {
+	padding: 1vh 0vh 1vh 0vh;
+	display: flex;
 	cursor: crosshair;
-	padding: 12px;
 	place-content: center;
-	height: 50vh;
 	overflow: hidden;
 }
 
 .row-group {
 	display: grid;
 	grid-auto-flow: column;
-}
-
-.square-grid {
-	display: grid;
-	gap: 6px;
 }
 
 .square-group {
@@ -24,16 +19,16 @@
 .square-point {
 	height: 8px;
 	width: 8px;
-	background: linear-gradient(to bottom, var(--cardBackgroundHover), var(--darkTextColor));
+	background: linear-gradient(to bottom, var(--purple-800), var(--gray-200));
 	opacity: 50%;
 }
 
 .square-group:hover {
-	background: var(--darkBorder);
+	background: var(--gray-700);
 }
 
 .square-group:hover .square-point {
-	background: var(--darkTextColor);
+	background: var(--gray-100);
 	/* Hover effect */
 	opacity: 1;
 }
@@ -50,26 +45,26 @@
 	.back-btn-container {
 		display: flex;
 		justify-content: flex-end;
-		margin: 0vh 2vh 2vh 0vh;
+		padding-right: 4vh;
 
 		#back-btn {
-			margin-right: 2vh;
-			background-color: var(--darkTextColor);
+			margin-left: 2vh;
+			background-color: var(--gray-100);
 		}
 
 		#back-btn:hover {
-			background-color: var(--darkPrimary);
-			color: var(--darkTextColor);
+			background-color: var(--gray-900);
+			color: var(--gray-100);
 		}
 	}
 
 	.side-bar {
 		.side-icon {
-			color: var(--darkTextColor);
 			margin: 8px;
-			border: 2px solid var(--darkTextColor);
-			border-radius: 50%;
 			padding: 2px;
+			color: var(--gray-100);
+			border: 2px solid var(--gray-100);
+			border-radius: 50%;
 
 			svg {
 				width: 30px;
@@ -91,20 +86,20 @@
 			text-decoration: none;
 			border-radius: 35px;
 			user-select: none;
-			padding: 0;
 			h5 {
+				font-size: 20px;
 				display: flex;
 				margin: 0;
-				padding: 0px 10px 0px 0px;
+				padding-left: 0.375rem;
 				align-items: center;
-				color: var(--darkTextColor);
+				color: var(--gray-100);
 				transition: padding 0.3s ease;
 			}
 		}
 
 		a:hover {
 			h5 {
-				padding-left: 15px;
+				padding-left: 2vh;
 			}
 
 			background: var(--greenSecondary);
@@ -112,7 +107,7 @@
 	}
 
 	#side-border {
-		border-bottom: 1px solid var(--darkTextColor);
+		border-bottom: 1px solid var(--gray-100);
 		margin: 0 1vh 0 1vh;
 	}
 }
@@ -121,12 +116,12 @@
 .card-section {
 	display: flex;
 	flex-direction: column;
-	color: var(--darkTextColor);
+	color: var(--gray-100);
 
 	.card-title {
-		font-size: large;
+		padding: 2vh 2vh 1vh 2vh;
+		font-size: 20px;
 		position: relative;
-		padding: 10px 20px 5px 20px;
 	}
 
 	.card-title::after {
@@ -136,11 +131,11 @@
 		right: 0;
 		height: 2px;
 		width: 125px;
-		background: var(--darkTextColor);
+		background: var(--gray-100);
 	}
 
 	.card-content {
-		padding: 10px 20px 10px 45px;
+		padding: 1vh 4vh 2vh 6vh;
 	}
 }
 

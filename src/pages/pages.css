@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 * {
-	box-sizing: border-box;
-	font-family: "Orbitron", sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
 }
@@ -36,6 +34,7 @@ h5 {
 Home CSS
 */
 .main-page {
+	font-family: "Orbitron", sans-serif;
 	overflow: auto;
 	position: fixed;
 	top: 0;
