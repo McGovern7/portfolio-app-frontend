@@ -91,47 +91,50 @@ function Portfolio() {
               <p className='row skills'>Pandas</p>
             </div>
             <div className='col'>
-              <p className='skills'>Algo. Design</p>
-              <p className='skills'>Data Structures</p>
-              <p className='skills'>Data Privacy</p>
-              <p className='row skills'>PC Building</p>
+              <p className='skills'>Algo-Design</p>
+              <p className='skills'>Data-Structs</p>
+              <p className='skills'>Data-Privacy</p>
+              <p className='row skills'>PC-Building</p>
             </div>
           </div>
         </section>
         <section id='projects'>
           <h2>Projects</h2>
           <div className='project-group'>
-            <h5 className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='http://localhost:3000/home'>TARKOV APP<FiArrowUpRight className='external' /></a></h5>
+            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='http://localhost:3000/home'>TARKOV APP<FiArrowUpRight className='external' /></a></div>
             <div className='row'>
               <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
               <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups</p>
             </div>
-            <img className='col shield' alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&color=%23f7df1e" />
+            <caption>Frontend</caption>
+            <img className='col shield' alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&labelColor=%234d3459&color=%23fcdc00" />
             <img className='col shield' alt="react version 18.3.1" src="https://img.shields.io/npm/v/react?logo=react&label=React&color=%2300C4DC" />
-            <img className='col shield' alt="axios version 1.7.8" src="https://img.shields.io/npm/v/axios?logo=axios&label=Axios&color=%23671ddf" />
+            <img className='col shield' alt="axios version 1.7.8" src="https://img.shields.io/npm/v/axios?logo=axios&label=Axios&logoColor=%23671ddf&color=%23671ddf" />
             <img className='col shield' alt="Node.js version 20.18.1" src="https://img.shields.io/npm/v/node?logo=node.js&label=Node&color=%23417E38" />
             <img className='col shield' alt="Bootstrap version 5.3.3" src="https://img.shields.io/npm/v/bootstrap?logo=bootstrap&label=Bootstrap&color=%239461fb" />
             <img className='col shield' alt="anime.js version 3.2.2" src="https://img.shields.io/npm/v/animejs?logo=anime&label=anime.js&color=%23F74F4D" />
             <img className='col shield' alt="react-icons version 5.3.0" src="https://img.shields.io/npm/v/react-icons?logo=anime&label=react-icons&color=%23e91e63" />
             <img className='col shield' alt="tailwindcss version 3.4.15" src="https://img.shields.io/npm/v/tailwindcss?logo=tailwindcss&label=Tailwind%20CSS&color=%2338bdf9" />
-
-            
-
+            <caption style={{marginTop: '1vh'}}>Backend</caption>
+            <img className='col shield' alt="Python" src="https://img.shields.io/badge/-empty?logo=python&label=Python&labelColor=%23214868&color=%23ffde73" />
             <img className='col shield' alt="fast API version 0.0.8" src="https://img.shields.io/npm/v/fastapi?logo=fastapi&label=FastAPI&color=%23009485" />
-
+            <img className='col shield' alt="uvicorn version 0.32.1" src="https://img.shields.io/pypi/v/uvicorn?label=Uvicorn&color=%232094f3" />
+            <img className='col shield' alt="SQLAlchemy version 2.0.36" src="https://img.shields.io/pypi/v/sqlalchemy?logo=sqlalchemy&label=SQLAlchemy&color=%23778877" />
+            <img className='col shield' alt="Pydantic version 2.10.2" src="https://img.shields.io/pypi/v/pydantic?logo=pydantic&label=Pydantic&logoColor=%23e92063&color=%23e92063" />
+            <img className='col shield' alt="python jose version 3.3.0" src="https://img.shields.io/pypi/v/python-jose?label=python-jose&color=%23006dad" />
           </div>
-          <div className='project-group'>
-            <h5 className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='https://github.com/McGovern7/ardupilot-nav-scripts'>ARDUPILOT SCRIPT NAV<FiArrowUpRight className='external' /></a></h5>
+          <div className='project-group' style={{paddingTop: '4vh', borderTop: '1px solid #216E4E'}}>
+            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='https://github.com/McGovern7/ardupilot-nav-scripts'>ARDUPILOT SCRIPT NAV<FiArrowUpRight className='external' /></a></div>
             <div className='row'>
               <p className='col'>After graduation, He joined the drone navigation community. This project allows a drone to autonomously navigate a 3D maze using a script he developed.</p>
               <p className='col'>Future plans to add object recognition and tracking, then implement this software into a custom self-built drone.</p>
             </div>
-            <div className={`row thin-content ${darkMode ? 'dark-mode' : ''}`}>
-              <p className='col'>ROLE</p>
-              <p className='col'>TOOLS</p>
-              <p className='col'>DURATION</p>
-              <p className='col'>LEARNED</p>
-            </div>
+            <img className='col shield' alt="ardupilot copter" src="https://img.shields.io/badge/Copter-space?label=Ardupilot&labelColor=%23dedede&color=%23fcd94c" />
+            <img className='col shield' alt="Python" src="https://img.shields.io/badge/-empty?logo=python&label=Python&labelColor=%23214868&color=%23ffde73" />
+            <img className='col shield' alt="Ubuntu" src="https://img.shields.io/badge/v22.0.4-space?logo=ubuntu&label=Ubuntu&color=%23e95521" />
+            <img className='col shield' alt="ros 2 humble" src="https://img.shields.io/badge/Humble-humble?logo=ros&logoColor=%232980b9&label=ROS2&color=%232980b9" />
+            <img className='col shield' alt="rclpy node" src="https://img.shields.io/badge/Node-space?label=rclpy&color=%232980b9" />
+            <img className='col shield' alt="pymavlink mavutil" src="https://img.shields.io/badge/mavutil-space?label=Pymavlink&color=%23ee6000" />
           </div>
         </section>
         <section id='work-experience'>
@@ -154,7 +157,7 @@ function Portfolio() {
           <h2>Notable Class Work</h2>
           <Card ariaLabel='Class, Web app development' id='web-dev-class'
             title={<p className='card-title'><b>Web App Development</b>Fall 2023</p>}
-            content={<p className='card-content'>Develop an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a REST API</p>} />
+            content={<p className='card-content'>Develop an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a RESTful API</p>} />
           <Card ariaLabel='Class, data privacy' id='data-priv-class'
             title={<p className='card-title'><b>Data Privacy</b>Fall 2023</p>}
             content={<p className='card-content'>Solo Project-based Learning: Adding privacy mechanisms to create secure and accurate coordinate data. Plot data on a world map with GeoPandas.</p>} />
