@@ -70,12 +70,6 @@ html {
 		font-size: 23px;
 	}
 
-	.brief-desc {
-		justify-self: center;
-		white-space: nowrap;
-		text-align: center;
-	}
-
 	caption {
 		padding-top: 0;
 		font-size: 14.5px;
@@ -110,12 +104,9 @@ html {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	position: relative;
-	transform: none;
 	max-width: 420px;
 	justify-content: space-between;
 	overflow-y: auto;
-	border-left: 2px solid var(--greenPrimary);
 	white-space: nowrap;
 }
 
@@ -129,6 +120,10 @@ html {
 	width: stretch;
 	border-left: 2px solid var(--greenPrimary);
 	overflow-x: hidden;
+
+	.skills {
+		margin: 0;
+	}
 }
 
 @media (max-width: 1075px) {
@@ -138,13 +133,19 @@ html {
 	}
 }
 
+@media (min-width: 1076px) {
+	.main-column-A {
+		width: 420px;
+		/* Restores full width smoothly */
+		transition: all 1s ease;
+	}
+}
+
 #intro {
 	padding: 2vh 4vh 0px 4vh;
 }
 
-.skills {
-	margin: 0;
-}
+
 
 .dark-btn-container {
 	display: flex;
@@ -162,18 +163,17 @@ html {
 	align-items: center;
 	color: var(--greenPrimary);
 	transition: color 0.3s ease, background-color 0.3s ease;
+
 	/* Smooth transition for color and fill */
+	svg {
+		width: 22px;
+		height: 22px;
+	}
 }
 
 #dark-mode-button:hover {
 	background-color: var(--greenPrimary);
 	color: #DBD7D2;
-}
-
-#dark-mode-button svg,
-#back-btn svg {
-	width: 22px;
-	height: 22px;
 }
 
 /* SideBar Comp */
@@ -225,7 +225,6 @@ html {
 	}
 }
 
-
 .thin-content p {
 	font-size: 13px;
 	font-weight: 300 !important;
@@ -247,6 +246,7 @@ html {
 		border-radius: 0.375rem;
 		cursor: pointer;
 		width: 48%;
+
 		a {
 			padding: 0vh 2vh 0vh 2vh;
 			text-decoration: none;
@@ -262,9 +262,11 @@ html {
 
 	.project-link:hover {
 		background-color: var(--gray-700);
+
 		a {
 			color: white;
 		}
+
 		.external {
 			color: var(--red-500);
 			transform: translate(4px, -8px);
@@ -272,16 +274,12 @@ html {
 		}
 	}
 
-
-
-}
-
-
-.shield {
-	width: auto;
-	min-height: 30px;
-	margin-right: 1vh;
-	margin-bottom: 1vh;
+	.shield {
+		width: auto;
+		min-height: 30px;
+		margin-right: 1vh;
+		margin-bottom: 1vh;
+	}
 }
 
 /* Scroll-To Comp */

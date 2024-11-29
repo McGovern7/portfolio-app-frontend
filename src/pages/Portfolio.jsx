@@ -124,7 +124,7 @@ function Portfolio() {
             <img className='col shield' alt="python jose version 3.3.0" src="https://img.shields.io/pypi/v/python-jose?label=python-jose&color=%23006dad" />
           </div>
           <div className='project-group' style={{paddingTop: '4vh', borderTop: '1px solid #216E4E'}}>
-            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='https://github.com/McGovern7/ardupilot-nav-scripts'>ARDUPILOT SCRIPT NAV<FiArrowUpRight className='external' /></a></div>
+            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='https://github.com/McGovern7/ardupilot-nav-scripts'>ARDUPILOT NAV<FiArrowUpRight className='external' /></a></div>
             <div className='row'>
               <p className='col'>After graduation, He joined the drone navigation community. This project allows a drone to autonomously navigate a 3D maze using a script he developed.</p>
               <p className='col'>Future plans to add object recognition and tracking, then implement this software into a custom self-built drone.</p>
