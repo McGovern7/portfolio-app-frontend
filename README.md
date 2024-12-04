@@ -9,20 +9,32 @@ It is paired with a backend which, for now, contains the API content needed for 
 - <a href="https://github.com/McGovern7/portfolio-app-backend" target="_blank">Portfolio App Backend</a>
 
 ## Environment
-This portfolio app frontend is initiated through the following steps
-1. mkdir portfolio && cd portfolio (the portfolio folder contains both frontend and backend repositories)
-2. mkdir frontend && cd frontend
-3. mkdir portfolio-app && cd portfolio-app
-4. npx create-react-app portfolio-app
-5. cd portfolio-app
-6. npm install (installs packages from package.json)
-7. npm start (launch app on local-host)
+This portfolio app frontend is initiated through the following steps:
 
-If npm install does not download all packages, try doing it manually with the following commands
-1. npm install react-router-dom react-icons animejs
-2. npm install --save-dev @types/animejs
-3. npm install --save-dev @types/node
-
+Create a folder to contain the python environment, sql script, along with both frontend and backend folders
+```
+mkdir portfolio && cd portfolio
+```
+```
+mkdir frontend && cd frontend
+mkdir portfolio-app && cd portfolio-app
+npx create-react-app portfolio-app
+cd portfolio-app
+```
+Install the package.json packages
+```
+npm install
+```
+Launch the react app
+```
+npm start
+```
+If npm install does not download all required packages, try doing it manually with the following commands in /portfolio-app
+```
+npm install react-router-dom react-icons animejs
+npm install --save-dev @types/animejs
+npm install --save-dev @types/node
+```
 ## BUILD
 In order to host this app beyond my local system, the frontend will be hosted using Github Pages.
 
