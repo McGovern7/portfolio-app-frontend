@@ -1,8 +1,12 @@
 # Portfolio App Frontend
-A solo project building a FastAPI app to interact with Tarkov SQL data
 
-## APP DESCRIPTION
-This app provides a space for me to host my portfolio, as well as any relevant full-stack projects. The app is a multipage react-app utilizing advanced features to showcase my frontend development skills.
+## PORTFOLIO APP DESCRIPTION
+This repository provides a space for me to host my portfolio, along with any relevant Full-Stack React projects. The app is a multipage react-app utilizing advanced features to showcase my frontend development skills. 
+
+It is paired with a backend which, for now, contains the API content needed for my tarkov-app.
+
+## Related Repositories
+- <a href="https://github.com/McGovern7/portfolio-app-backend" target="_blank">Portfolio App Backend</a>
 
 ## Environment
 This portfolio app frontend is initiated through the following steps
@@ -33,7 +37,6 @@ In order to host this app beyond my local system, the frontend will be hosted us
 <img height="30px" width="auto" alt="anime.js version 3.2.2" src="https://img.shields.io/npm/v/animejs?logo=anime&label=anime.js&color=%23F74F4D" />
 <img height="30px" width="auto" alt="react-icons version 5.3.0" src="https://img.shields.io/npm/v/react-icons?logo=anime&label=react-icons&color=%23e91e63" />
 <img height="30px" width="auto" alt="tailwindcss version 3.4.15" src="https://img.shields.io/npm/v/tailwindcss?logo=tailwindcss&label=Tailwind%20CSS&color=%2338bdf9" />
-            
 </div>
 
 ### Backend
@@ -59,4 +62,4 @@ I have successfully taught myself the various software disciplines necessary to 
 - With additional built-in packages, I can easily scale my app with features like caching, load balancing, rate limiting, and automated backups.
 - Having never used React prior to this, I have created a modular, scalable, and accessible app. This app is much more complex than anything I have built in the past, even apps I created in a group
 - I can jump-start future web apps with the components I created for this project (Button, Navbar, Sidebar, etc)
- - Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement.
+- Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can integrate.
