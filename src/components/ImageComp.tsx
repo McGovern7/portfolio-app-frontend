@@ -1,5 +1,5 @@
-
 import React from 'react';
+declare var require: any;
 
 const images = require.context('../assets', false, /\.(png|jpe?g|webp|svg)$/);
 
@@ -21,8 +21,7 @@ const ImageComp = ({ id, ariaLabel, src, className, width, height, alt }: ImageP
   } catch (err) {
     console.error(`Image ${src} not found`);
     return null; // Return null if the image doesn't exist
-  }
-
+  };
   return (
     <img
       id={id}
@@ -34,7 +33,7 @@ const ImageComp = ({ id, ariaLabel, src, className, width, height, alt }: ImageP
       alt={alt}
       loading='lazy'
     />
-  )
+  );
 };
 
 export default ImageComp;

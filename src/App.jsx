@@ -1,12 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Profile from './pages/Login';
-import Register from './pages/Register';
-import ProtectedPage from './pages/Protected';
-import Home from './pages/Home';
-import NoPage from './pages/NoPage';
-import Portfolio from './pages/Portfolio';
-import ResumePage from './pages/Resume';
+import { Portfolio, ResumePage, Home, Profile, Register, ProtectedPage, NoPage } from './pages';
 
 const App = () => {
   return ( // react can only return one element

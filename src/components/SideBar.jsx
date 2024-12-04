@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ImageComp from './ImageComp';
+import ImageComp from './ImageComp.tsx';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline } from "react-icons/io5";
 
