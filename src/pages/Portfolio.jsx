@@ -26,7 +26,7 @@ function Portfolio() {
             <button id='dark-mode-button' onClick={toggleDarkMode}><IoContrast /></button>
           </div>
           <h1>Luke McGovern</h1>
-          <ul style={{ padding: '0', margin: '0' }}>
+          <ul style={{ paddingLeft: '3px', margin: '0' }}>
             <p style={{ marginBottom: "0" }}>Software Engineer, Full-Stack Developer</p>
             <caption style={{ paddingBottom: "2vh", }}>luke.mcgovern18@gmail.com</caption>
           </ul>
