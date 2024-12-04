@@ -11,7 +11,6 @@ function Portfolio() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode); // Toggle dark mode
   };
-  ;
   return (
     <div className={`portfolio-page ${darkMode ? 'dark-mode' : ''}`}>
       <div className='side-bar-column'>
@@ -165,9 +164,8 @@ function Portfolio() {
             title={<p className='card-title'><b>Cybersecurity Principles</b>Summer 2022</p>}
             content={<p className='card-content'>Infiltrate my professor’s (fake) online bank using cryptographic hashing to secure computer networks. Newfound understanding of network threat vectors allows me to build more secure software.</p>} />
         </section>
-      </div >
-
-    </div >
+      </div>
+    </div>
   )
 }
 
