@@ -30,9 +30,7 @@ h5 {
 	color: green;
 }
 
-/*
-Home CSS
-*/
+/* Home CSS */
 .main-page {
 	font-family: "Orbitron", sans-serif;
 	overflow: auto;
@@ -61,7 +59,6 @@ Home CSS
 				justify-content: space-evenly;
 				display: flex;
 				flex-direction: row;
-				overflow-x: scroll;
 			}
 		}
 	}
@@ -101,11 +98,7 @@ Home CSS
 	border: 6px solid var(--mainColor);
 }
 
-#logged-out-img {
-	width: 42.5vw;
-	border: 6px solid var(--mainColor);
-}
-
+#logged-out-img,
 #logged-in-img {
 	width: 42.5vw;
 	border: 6px solid var(--mainColor);
@@ -113,9 +106,7 @@ Home CSS
 
 #dataflow-sect p {
 	display: flex;
-	align-items: center;
 	justify-content: space-around;
-	text-align: center;
 	font-weight: bold;
 	color: gray;
 }
@@ -123,76 +114,69 @@ Home CSS
 #onboarded-sect ul {
 	margin: 2vh 4vw 8vh 4vw;
 	border: solid var(--mainColor);
+
+	li {
+		font-weight: bold;
+	}
 }
 
-#onboarded-sect li {
-	font-weight: bold;
-}
-
-/*
-Profile CSS
-*/
-
+/* Profile CSS */
 #login-sect {
 	margin: 4vh 1vw 7vh 2vw;
-}
 
-#login-sect p {
-	min-width: 20rem;
-	font-weight: bold;
-	color: gray;
-}
+	p {
+		min-width: 20rem;
+		font-weight: bold;
+		color: gray;
+	}
 
-.login {
-	background-color: var(--textColor);
-	border: 6px solid var(--mainColor);
+	.login {
+		background-color: var(--textColor);
+		border: 6px solid var(--mainColor);
+	}
 }
 
 #logout-sect {
 	margin: 4vh 1vw 7vh 2vw;
-}
 
-.logout {
-	background-color: var(--textColor);
-	border: 6px solid var(--mainColor);
+	.logout {
+		background-color: var(--textColor);
+		border: 6px solid var(--mainColor);
+	}
 }
 
 #delete-sect {
 	margin: 4vh 1vw 7vh 2vw;
+
+	.delete {
+		background-color: var(--textColor);
+		border: 6px solid var(--mainColor);
+	}
 }
 
-.delete {
-	background-color: var(--textColor);
-	border: 6px solid var(--mainColor);
-}
-
-/*
-Register CSS
-*/
-
+/* Register CSS */
 #register-sect {
 	margin: 4vh 1vw 7vh 2vw;
+
+	p {
+		font-weight: bold;
+		color: gray;
+	}
+
+	.register {
+		min-width: 20rem;
+		background-color: var(--textColor);
+		border: 6px solid var(--mainColor);
+	}
 }
 
-#register-sect p {
-	font-weight: bold;
-	color: gray;
-}
-
-.register {
-	min-width: 20rem;
-	background-color: var(--textColor);
-	border: 6px solid var(--mainColor);
-}
-
-/*
-Protected-Entry CSS
-*/
+/* Protected-Entry CSS */
 .grouper {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
 	overflow-x: scroll;
+
 	h4 {
 		text-align: center;
 	}

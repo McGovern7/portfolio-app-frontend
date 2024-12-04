@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import SideBar from '../components/SideBar.jsx';
-import Card from '../components/Card.tsx';
-import ScrollTo from '../components/ScrollTo.tsx';
+import { Card, Grid, ScrollTo, SideBar } from '../components';
 // @ts-ignore
-import Grid from '../components/Grid.tsx';
 import { IoContrast } from "react-icons/io5";
 import { FiArrowUpRight } from "react-icons/fi";
 import './MeStyle.css';
@@ -30,7 +27,7 @@ function Portfolio() {
             <button id='dark-mode-button' onClick={toggleDarkMode}><IoContrast /></button>
           </div>
           <h1>Luke McGovern</h1>
-          <ul style={{ margin: '0' }}>
+          <ul style={{ padding: '0', margin: '0' }}>
             <p style={{ marginBottom: "0" }}>Software Engineer, Full-Stack Developer</p>
             <caption style={{ paddingBottom: "2vh", }}>luke.mcgovern18@gmail.com</caption>
           </ul>
@@ -60,41 +57,41 @@ function Portfolio() {
         <section id='proficiencies'>
           <h2>Proficiencies</h2>
           <div className={`title-row ${darkMode ? 'dark-mode' : ''}`}>
-            <h4 className='col thin-title' id='language-title'>LANGUAGES</h4>
-            <h4 className='col thin-title' id='skills-title'>SKILLS & TOOLS</h4>
+            <h4 className='thin-title' id='language-title'>LANGUAGES</h4>
+            <h4 className='thin-title' id='skills-title'>SKILLS & TOOLS</h4>
           </div>
           <div className='row'>
-            <div className='col'>
-              <p className='row skills'>Python</p>
-              <p className='row skills'>Swift</p>
-              <p className='row skills'>C</p>
-              <p className='row skills'>C++</p>
-              <p className='row skills'>JavaScript</p>
+            <div className='col skills'>
+              <p>Python</p>
+              <p>Swift</p>
+              <p>C</p>
+              <p>C++</p>
+              <p>JavaScript</p>
             </div>
-            <div className='col'>
-              <p className='row skills'>MySQL</p>
-              <p className='row skills'>React</p>
-              <p className='row skills'>R</p>
-              <p className='row skills'>CSS</p>
-              <p className='row skills'>HTML</p>
+            <div className='col skills'>
+              <p>MySQL</p>
+              <p>React</p>
+              <p>R</p>
+              <p>CSS</p>
+              <p>HTML</p>
             </div>
-            <div className='col'>
-              <p className='row skills'>Full-Stack Dev</p>
-              <p className='row skills'>FastAPI</p>
-              <p className='row skills'>Figma</p>
-              <p className='row skills'>iOS Dev</p>
+            <div className='col skills'>
+              <p>Full-Stack Dev</p>
+              <p>FastAPI</p>
+              <p>Figma</p>
+              <p>iOS Dev</p>
             </div>
-            <div className='col'>
-              <p className='row skills'>GIT</p>
-              <p className='row skills'>ROS Robotics</p>
-              <p className='row skills'>LinuxCLI</p>
-              <p className='row skills'>Pandas</p>
+            <div className='col skills'>
+              <p>GIT</p>
+              <p>ROS Robotics</p>
+              <p>LinuxCLI</p>
+              <p>Pandas</p>
             </div>
-            <div className='col'>
-              <p className='skills'>Algo-Design</p>
-              <p className='skills'>Data-Structs</p>
-              <p className='skills'>Data-Privacy</p>
-              <p className='row skills'>PC-Building</p>
+            <div className='col skills'>
+              <p>Algo-Design</p>
+              <p>Data-Structs</p>
+              <p>Data-Privacy</p>
+              <p>PC-Building</p>
             </div>
           </div>
         </section>

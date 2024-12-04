@@ -121,7 +121,7 @@ html {
 	border-left: 2px solid var(--greenPrimary);
 	overflow-x: hidden;
 
-	.skills {
+	.skills p {
 		margin: 0;
 	}
 }
@@ -144,8 +144,6 @@ html {
 #intro {
 	padding: 2vh 4vh 0px 4vh;
 }
-
-
 
 .dark-btn-container {
 	display: flex;
@@ -212,6 +210,7 @@ html {
 
 .title-row {
 	display: flex;
+	justify-content: space-between;
 
 	#language-title {
 		color: inherit;
@@ -233,7 +232,6 @@ html {
 .thin-content.dark-mode p {
 	color: var(--gray-400) !important;
 }
-
 
 .project-group {
 	margin-top: 2vh;
@@ -275,10 +273,11 @@ html {
 	}
 
 	.shield {
-		width: auto;
-		min-height: 30px;
 		margin-right: 1vh;
 		margin-bottom: 1vh;
+		padding: 0;
+		width: auto;
+		min-height: 30px;
 	}
 }
 
@@ -287,27 +286,27 @@ html {
 	margin: 0;
 	display: flex;
 	flex-direction: column;
-}
 
-.scroll-to {
-	margin-bottom: 1vh;
-	cursor: pointer;
-	width: fit-content;
-	transition: padding 0.3s ease;
-	user-select: none;
-}
+	.scroll-to {
+		margin-bottom: 1vh;
+		cursor: pointer;
+		width: fit-content;
+		transition: padding 0.3s ease;
+		user-select: none;
+	}
 
-.scroll-to:hover {
-	padding-left: 25px;
+	.scroll-to:hover {
+		padding-left: 25px;
+	}
 }
 
 /* Resume Page */
-object {
-	width: 100%;
-}
-
 .resume-column {
 	display: flex;
 	width: stretch;
 	height: 100vh;
+
+	object {
+		width: 100%;
+	}
 }
