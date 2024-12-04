@@ -1,19 +1,16 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom'
-import api from '../api'
-import verifyToken from '../components/Verify.jsx'
-import Button from '../components/Button.tsx'
-import Navbar from '../components/Navbar'
-import '../components/components.css'
-import './pages.css'
+import { useNavigate } from 'react-router-dom';
+import api from '../api';
+import { Button, Navbar, VerifyToken } from '../components';
+import '../components/components.css';
+import './pages.css';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { GiSilverBullet } from "react-icons/gi";
-
 
 function ProtectedPage() {
   const navigate = useNavigate();
   const handleVerify = useCallback(async () => {
-    const response = await verifyToken();
+    const response = await VerifyToken();
     if (!response) {
       localStorage.clear();
       navigate('/profile');
@@ -99,7 +96,7 @@ function ProtectedPage() {
     };
     setFormError('');
     return true;
-  }
+  };
 
   // function to submit a validated entry form
   const handleFormSubmit = async (event) => {
@@ -221,8 +218,8 @@ function ProtectedPage() {
           </section>
           <section id='entry-table-sect' className='shadow-lg' >
             <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
-            <table id='entry-table' aria-labelledby='entry-table-sect' className='table table-striped table-bordered table-hover border-dark'>
-              <thead className='table-dark'>
+            <table id='entry-table' aria-labelledby='entry-table-sect' className='table table-striped table-bordered border-dark'>
+              <thead className='table-dark '>
                 <tr>
                   <th scope="col">Ammo Name</th>
                   <th scope="col">Caliber</th>
@@ -248,8 +245,8 @@ function ProtectedPage() {
               {dropDown.icon}
             </button>
             <div style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
-              <table id='ammo-table' aria-labelledby='ammo-type-chart-sect' className='table table-striped table-bordered table-hover border-dark'>
-                <thead className='table-dark'>
+              <table id='ammo-table' aria-labelledby='ammo-type-chart-sect' className='table table-striped table-bordered border-dark'>
+                <thead className='table-dark no-highlight'>
                   <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Caliber</th>

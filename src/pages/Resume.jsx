@@ -1,6 +1,6 @@
 import React from 'react';
 import Resume from '../assets/Resume.pdf';
-import Sidebar from '../components/SideBar.jsx';
+import { SideBar } from '../components';
 import './MeStyle.css';
 
 export default function ResumePage() {
@@ -9,7 +9,7 @@ export default function ResumePage() {
       <div className='side-bar-column'>
         <section className='fixed-section'>
           <React.Fragment>
-            <Sidebar />
+            <SideBar />
           </React.Fragment>
         </section>
         <div className='resume-column'>

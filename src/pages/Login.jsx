@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import verifyToken from '../components/Verify.jsx'
-import Button from '../components/Button.tsx'
-import Navbar from '../components/Navbar'
-import api from '../api'
-import '../components/components.css'
-import './pages.css'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../api';
+import { Button, Navbar, VerifyToken } from '../components/';
+import '../components/components.css';
+import './pages.css';
 import { FaSignInAlt, FaSignOutAlt, FaTrashAlt } from "react-icons/fa";
 
 function Profile() {
@@ -22,7 +20,7 @@ function Profile() {
 
   const navigate = useNavigate();
   const handleVerify = async () => {
-    const response = await verifyToken();
+    const response = await VerifyToken();
     // login or logout depending on verification status
     if (response) {
       setLoginVisible(false);

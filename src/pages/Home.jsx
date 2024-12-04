@@ -1,9 +1,7 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import ImageComp from '../components/ImageComp.tsx';
-import Card from '../components/Card.tsx'
-import '../components/components.css'
-import './pages.css'
+import { Navbar, ImageComp, Card } from '../components';
+import '../components/components.css';
+import './pages.css';
 
 export default function Home() {
   return (

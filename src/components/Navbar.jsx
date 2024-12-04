@@ -4,13 +4,12 @@ import { TbWorld } from "react-icons/tb";
 import { } from "react-icons/fa";
 import './components.css';
 
-
 function Navbar() {
   const navRef = useRef();
 
   const showNavBar = () => {
     navRef.current.classList.toggle("responsive_nav");
-  }
+  };
 
   return (
     <header>
@@ -25,7 +24,6 @@ function Navbar() {
           <FaBars />
         </button>
       </nav>
-
       <button className="nav-btn" onClick={showNavBar}>
         <FaBars />
       </button>

@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import api from '../api'
-import Button from '../components/Button.tsx'
-import Navbar from '../components/Navbar.jsx'
-import '../components/components.css'
-import './pages.css'
+import React, { useState } from 'react';
+import api from '../api';
+import { Button, Navbar } from '../components/';
+import '../components/components.css';
+import './pages.css';
 import { FaUserPlus } from "react-icons/fa";
 
 const Register = () => {
