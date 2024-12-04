@@ -1,11 +1,26 @@
-# Tarkov Storage App using FastAPI
+# Portfolio App Frontend
 A solo project building a FastAPI app to interact with Tarkov SQL data
 
 ## APP DESCRIPTION
-This app provides a space for players of the game Escape from Tarkov to store the ammo they have found, and view the ammo's advance data. The storage tab can be accessed after registering an account and loggin in.
+This app provides a space for me to host my portfolio, as well as any relevant full-stack projects. The app is a multipage react-app utilizing advanced features to showcase my frontend development skills.
+
+## Environment
+This portfolio app frontend is initiated through the following steps
+1. mkdir portfolio && cd portfolio (the portfolio folder contains both frontend and backend repositories)
+2. mkdir frontend && cd frontend
+3. mkdir portfolio-app && cd portfolio-app
+4. npx create-react-app portfolio-app
+5. cd portfolio-app
+6. npm install (installs packages from package.json)
+7. npm start (launch app on local-host)
+
+If npm install does not download all packages, try doing it manually with the following commands
+1. npm install react-router-dom react-icons animejs
+2. npm install --save-dev @types/animejs
+3. npm install --save-dev @types/node
 
 ## BUILD
-The site will be hosted in conjunction with my Portfolio using WordPress
+In order to host this app beyond my local system, the frontend will be hosted using Github Pages.
 
 ## Stack Components
 ### Frontend

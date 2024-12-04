@@ -76,7 +76,7 @@ function Profile() {
         const data = await response.json();
         localStorage.setItem('token', data.access_token); // set local storage to received token
         localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
-        navigate('/protected'); // protected component ensureing valid token
+        navigate('/tarkov-app/protected'); // protected component ensureing valid token
       } else {
         localStorage.clear();
         const errorData = await response.json();
@@ -92,7 +92,7 @@ function Profile() {
   const handleLogoutButton = () => {
     handleVerify();
     localStorage.clear();
-    navigate('/home');
+    navigate('/tarkov-app/home');
   };
 
   // delete user and their entries from both databases

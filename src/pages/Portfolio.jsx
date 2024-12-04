@@ -97,7 +97,7 @@ function Portfolio() {
         <section id='projects'>
           <h2>Projects</h2>
           <div className='project-group'>
-            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='http://localhost:3000/home'>TARKOV APP<FiArrowUpRight className='external' /></a></div>
+            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='/tarkov-app/home'>TARKOV APP<FiArrowUpRight className='external' /></a></div>
             <div className='row'>
               <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
               <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups</p>

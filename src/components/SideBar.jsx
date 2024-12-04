@@ -42,8 +42,8 @@ function SideBar() {
 				</button>
 			</div>
 			<nav className='side-bar' ref={sideRef}>
-				<a id='home-link' href="http://localhost:3000/portfolio"><div className='side-icon'>{isHome ? <IoHome /> : <IoHomeOutline />}</div><h5>Home</h5></a>
-				<a id='resume-link' href="http://localhost:3000/resume"><div className='side-icon'>{isResume ? <IoDocumentAttach /> : <IoDocumentAttachOutline />}</div><h5>Resume</h5></a>
+				<a id='home-link' href="/portfolio"><div className='side-icon'>{isHome ? <IoHome /> : <IoHomeOutline />}</div><h5>Home</h5></a>
+				<a id='resume-link' href="/resume"><div className='side-icon'>{isResume ? <IoDocumentAttach /> : <IoDocumentAttachOutline />}</div><h5>Resume</h5></a>
 			</nav>
 			<div id='side-border'/>
 			<nav className='side-bar' ref={sideRef}>

@@ -16,10 +16,10 @@ function Navbar() {
       <h3 className='app-title'>Tarkov App</h3>
       <nav className='nav-bar' ref={navRef}>
         <a href="/portfolio"><TbWorld alt="" /> Portfolio</a>
-        <a href="/home"><FaHome alt="" /> Home</a>
-        <a href="/profile"><FaUserCog alt="" /> Profile</a>
-        <a href="/register"><FaUserPlus alt="" /> Register</a>
-        <a href="/protected"><FaWpforms alt="" /> Storage</a>
+        <a href="/tarkov-app/home"><FaHome alt="" /> Home</a>
+        <a href="/tarkov-app/profile"><FaUserCog alt="" /> Profile</a>
+        <a href="/tarkov-app/register"><FaUserPlus alt="" /> Register</a>
+        <a href="/tarkov-app/protected"><FaWpforms alt="" /> Storage</a>
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaBars />
         </button>
