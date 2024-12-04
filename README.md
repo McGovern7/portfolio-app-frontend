@@ -1,47 +1,70 @@
-# Tarkov Storage App using FastAPI
-A solo project building a FastAPI app to interact with Tarkov SQL data
+# Getting Started with Create React App
 
-## APP DESCRIPTION
-This app provides a space for players of the game Escape from Tarkov to store the ammo they have found, and view the ammo's advance data. The storage tab can be accessed after registering an account and loggin in.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## BUILD
-The site will be hosted in conjunction with my Portfolio using WordPress
+## Available Scripts
 
-## Stack Components
-### Frontend
-<div align="center">
-<img height="30px" width="auto" alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&labelColor=%234d3459&color=%23fcdc00" />
-<img height="30px" width="auto" alt="react version 18.3.1" src="https://img.shields.io/npm/v/react?logo=react&label=React&color=%2300C4DC" />
-<img height="30px" width="auto" alt="axios version 1.7.8" src="https://img.shields.io/npm/v/axios?logo=axios&label=Axios&logoColor=%23671ddf&color=%23671ddf" />
-<img height="30px" width="auto" alt="Node.js version 20.18.1" src="https://img.shields.io/npm/v/node?logo=node.js&label=Node&color=%23417E38" />
-<img height="30px" width="auto" alt="Bootstrap version 5.3.3" src="https://img.shields.io/npm/v/bootstrap?logo=bootstrap&label=Bootstrap&color=%239461fb" />
-<img height="30px" width="auto" alt="anime.js version 3.2.2" src="https://img.shields.io/npm/v/animejs?logo=anime&label=anime.js&color=%23F74F4D" />
-<img height="30px" width="auto" alt="react-icons version 5.3.0" src="https://img.shields.io/npm/v/react-icons?logo=anime&label=react-icons&color=%23e91e63" />
-<img height="30px" width="auto" alt="tailwindcss version 3.4.15" src="https://img.shields.io/npm/v/tailwindcss?logo=tailwindcss&label=Tailwind%20CSS&color=%2338bdf9" />
-            
-</div>
+In the project directory, you can run:
 
-### Backend
-<div align="center">
-    <img height="30px" width="auto" alt="Python" src="https://img.shields.io/badge/-empty?logo=python&label=Python&labelColor=%23214868&color=%23ffde73" />
-    <img height="30px" width="auto" alt="fast API version 0.0.8" src="https://img.shields.io/npm/v/fastapi?logo=fastapi&label=FastAPI&color=%23009485" />
-    <img height="30px" width="auto" alt="uvicorn version 0.32.1" src="https://img.shields.io/pypi/v/uvicorn?label=Uvicorn&color=%232094f3" />
-    <img height="30px" width="auto" alt="SQLAlchemy version 2.0.36" src="https://img.shields.io/pypi/v/sqlalchemy?logo=sqlalchemy&label=SQLAlchemy&color=%23778877" />
-    <img height="30px" width="auto" alt="Pydantic version 2.10.2" src="https://img.shields.io/pypi/v/pydantic?logo=pydantic&label=Pydantic&logoColor=%23e92063&color=%23e92063" />
-    <img height="30px" width="auto" alt="python jose version 3.3.0" src="https://img.shields.io/pypi/v/python-jose?label=python-jose&color=%23006dad" />  
-</div>
+### `npm start`
 
-## Writeup
-In today's rapidly evolving and competitive tech landscape, full-stack development has become an essential skill for developers. Full-stack development is a multi-discipline skill, requiring devs to have an end-to-end understanding of an application. This comprehensive knowledge enables efficient problem-solving and can lead to a more robust application architecture. For example, a full-stack dev assigned to the frontend can leverage their insights of backend processes to optimize how frontend components interact with server-side logic. These devs can streamline queries, robustly handle bad requests, and minimize server data load—improving both performance and user experience.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-When creating applications prior to this project, I was primarily assigned roles localized within the frontend or backend of an application. While this specialization allowed for expertise of roles, it limited my understanding of the app’s overall architecture. With this project, my goal is to gain a comprehensive view of the entire application stack.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-I have successfully taught myself the various software disciplines necessary to build my first web application as a solo full-stack developer. Made high in demand by today's devs, this project's stack comprises the following tools.
+### `npm test`
 
-## Onboarded Skills
-- Starting from almost no background, I have built a web api which is asynchronous, multi-port capable, well documented, secured, and efficient
-- For future projects, I can develop more complex api techniques within the ever-growing FastAPI web framework.
-- With additional built-in packages, I can easily scale my app with features like caching, load balancing, rate limiting, and automated backups.
-- Having never used React prior to this, I have created a modular, scalable, and accessible app. This app is much more complex than anything I have built in the past, even apps I created in a group
-- I can jump-start future web apps with the components I created for this project (Button, Navbar, Sidebar, etc)
- - Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
