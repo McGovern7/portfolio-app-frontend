@@ -80,7 +80,7 @@
 			user-select: none;
 		}
 
-		a {
+		.side-link {
 			margin: 1vh 1vh 1vh 1vh;
 			display: flex;
 			text-decoration: none;
@@ -97,7 +97,7 @@
 			}
 		}
 
-		a:hover {
+		.side-link:hover {
 			h5 {
 				padding-left: 2vh;
 			}

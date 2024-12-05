@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { FaBars, FaHome, FaUserCog, FaUserPlus, FaWpforms } from 'react-icons/fa';
 import { TbWorld } from "react-icons/tb";
 import { } from "react-icons/fa";
@@ -15,11 +16,21 @@ function Navbar() {
     <header>
       <h3 className='app-title'>Tarkov App</h3>
       <nav className='nav-bar' ref={navRef}>
-        <a href="/portfolio"><TbWorld alt="" /> Portfolio</a>
-        <a href="/tarkov-app/home"><FaHome alt="" /> Home</a>
-        <a href="/tarkov-app/profile"><FaUserCog alt="" /> Profile</a>
-        <a href="/tarkov-app/register"><FaUserPlus alt="" /> Register</a>
-        <a href="/tarkov-app/protected"><FaWpforms alt="" /> Storage</a>
+        <Link to="/portfolio">
+          <TbWorld alt="" /> Portfolio
+        </Link>
+        <Link to="/tarkov-app/home">
+          <FaHome alt="" /> Home
+        </Link>
+        <Link to="/tarkov-app/profile">
+          <FaUserCog alt="" /> Profile
+        </Link>
+        <Link to="/tarkov-app/register">
+          <FaUserPlus alt="" /> Register
+        </Link>
+        <Link to="/tarkov-app/protected">
+          <FaWpforms alt="" /> Storage
+        </Link>
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaBars />
         </button>

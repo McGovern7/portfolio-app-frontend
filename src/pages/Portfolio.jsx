@@ -27,8 +27,8 @@ function Portfolio() {
           </div>
           <h1>Luke McGovern</h1>
           <ul style={{ paddingLeft: '3px', margin: '0' }}>
-            <p style={{ marginBottom: "0" }}>Software Engineer, Full-Stack Developer</p>
-            <caption style={{ paddingBottom: "2vh", }}>luke.mcgovern18@gmail.com</caption>
+            <p className='mini' style={{ marginBottom: "0" }}>Software Engineer, Full-Stack Developer</p>
+            <p className='mini' style={{ paddingBottom: "2vh", }}>luke.mcgovern18@gmail.com</p>
           </ul>
           <ul className='scroll-list'>
             <ScrollTo ariaLabel='scroll to about me' id='about-scroll' className='scroll-to'
@@ -102,7 +102,7 @@ function Portfolio() {
               <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
               <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups</p>
             </div>
-            <caption>Frontend</caption>
+            <p className='mini'>Frontend</p>
             <img className='col shield' alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&labelColor=%234d3459&color=%23fcdc00" />
             <img className='col shield' alt="react version 18.3.1" src="https://img.shields.io/npm/v/react?logo=react&label=React&color=%2300C4DC" />
             <img className='col shield' alt="axios version 1.7.8" src="https://img.shields.io/npm/v/axios?logo=axios&label=Axios&logoColor=%23671ddf&color=%23671ddf" />
@@ -111,7 +111,7 @@ function Portfolio() {
             <img className='col shield' alt="anime.js version 3.2.2" src="https://img.shields.io/npm/v/animejs?logo=anime&label=anime.js&color=%23F74F4D" />
             <img className='col shield' alt="react-icons version 5.3.0" src="https://img.shields.io/npm/v/react-icons?logo=anime&label=react-icons&color=%23e91e63" />
             <img className='col shield' alt="tailwindcss version 3.4.15" src="https://img.shields.io/npm/v/tailwindcss?logo=tailwindcss&label=Tailwind%20CSS&color=%2338bdf9" />
-            <caption style={{marginTop: '1vh'}}>Backend</caption>
+            <p className='mini' style={{marginTop: '1vh'}}>Backend</p>
             <img className='col shield' alt="Python" src="https://img.shields.io/badge/-empty?logo=python&label=Python&labelColor=%23214868&color=%23ffde73" />
             <img className='col shield' alt="fast API version 0.0.8" src="https://img.shields.io/npm/v/fastapi?logo=fastapi&label=FastAPI&color=%23009485" />
             <img className='col shield' alt="uvicorn version 0.32.1" src="https://img.shields.io/pypi/v/uvicorn?label=Uvicorn&color=%232094f3" />
