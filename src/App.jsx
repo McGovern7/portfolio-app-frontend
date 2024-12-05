@@ -4,9 +4,9 @@ import { Portfolio, ResumePage, Home, Profile, Register, ProtectedPage, NoPage }
 
 const App = () => {
   return ( // react can only return one element
-    <BrowserRouter>
+    <BrowserRouter basename="portfolio-app-frontend">
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<Portfolio />} />
         <Route path='/portfolio' element={<Portfolio />} />
         <Route path='/resume' element={<ResumePage />} />
         <Route path='/tarkov-app/home' element={<Home />} />
