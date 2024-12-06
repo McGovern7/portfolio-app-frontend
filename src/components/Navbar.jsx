@@ -19,16 +19,16 @@ function Navbar() {
         <Link to="/portfolio">
           <TbWorld alt="" /> Portfolio
         </Link>
-        <Link to="/home">
+        <Link to="/tarkov-app/home">
           <FaHome alt="" /> Home
         </Link>
-        <Link to="/profile">
+        <Link to="/tarkov-app/profile">
           <FaUserCog alt="" /> Profile
         </Link>
-        <Link to="/register">
+        <Link to="/tarkov-app/register">
           <FaUserPlus alt="" /> Register
         </Link>
-        <Link to="/protected">
+        <Link to="/tarkov-app/protected">
           <FaWpforms alt="" /> Storage
         </Link>
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
