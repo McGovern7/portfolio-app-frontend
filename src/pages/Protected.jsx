@@ -13,7 +13,7 @@ function ProtectedPage() {
     const response = await VerifyToken();
     if (!response) {
       localStorage.clear();
-      navigate('/tarkov-app/profile');
+      navigate('/profile');
     }
   }, [navigate]);
 

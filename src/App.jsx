@@ -9,10 +9,10 @@ const App = () => {
         <Route index element={<Portfolio />} />
         <Route path='/portfolio' element={<Portfolio />} />
         <Route path='/resume' element={<ResumePage />} />
-        <Route path='/tarkov-app/home' element={<Home />} />
-        <Route path='/tarkov-app/profile' element={<Profile />} />
-        <Route path='/tarkov-app/register' element={<Register />} />
-        <Route path='/tarkov-app/protected' element={<ProtectedPage />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/protected' element={<ProtectedPage />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
     </BrowserRouter>
