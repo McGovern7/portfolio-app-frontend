@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Grid, ScrollTo, SideBar } from '../components';
 // @ts-ignore
 import { IoContrast } from "react-icons/io5";
@@ -97,7 +98,7 @@ function Portfolio() {
         <section id='projects'>
           <h2>Projects</h2>
           <div className='project-group'>
-            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='/tarkov-app/home'>TARKOV APP<FiArrowUpRight className='external' /></a></div>
+            <div className='project-link'><Link className='thin-title' to='/tarkov-app/home' target="_blank" rel="noopener noreferrer">TARKOV APP<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
               <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
               <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups</p>
@@ -111,7 +112,7 @@ function Portfolio() {
             <img className='col shield' alt="anime.js version 3.2.2" src="https://img.shields.io/npm/v/animejs?logo=anime&label=anime.js&color=%23F74F4D" />
             <img className='col shield' alt="react-icons version 5.3.0" src="https://img.shields.io/npm/v/react-icons?logo=anime&label=react-icons&color=%23e91e63" />
             <img className='col shield' alt="tailwindcss version 3.4.15" src="https://img.shields.io/npm/v/tailwindcss?logo=tailwindcss&label=Tailwind%20CSS&color=%2338bdf9" />
-            <p className='mini' style={{marginTop: '1vh'}}>Backend</p>
+            <p className='mini' style={{ marginTop: '1vh' }}>Backend</p>
             <img className='col shield' alt="Python" src="https://img.shields.io/badge/-empty?logo=python&label=Python&labelColor=%23214868&color=%23ffde73" />
             <img className='col shield' alt="fast API version 0.0.8" src="https://img.shields.io/npm/v/fastapi?logo=fastapi&label=FastAPI&color=%23009485" />
             <img className='col shield' alt="uvicorn version 0.32.1" src="https://img.shields.io/pypi/v/uvicorn?label=Uvicorn&color=%232094f3" />
@@ -119,8 +120,8 @@ function Portfolio() {
             <img className='col shield' alt="Pydantic version 2.10.2" src="https://img.shields.io/pypi/v/pydantic?logo=pydantic&label=Pydantic&logoColor=%23e92063&color=%23e92063" />
             <img className='col shield' alt="python jose version 3.3.0" src="https://img.shields.io/pypi/v/python-jose?label=python-jose&color=%23006dad" />
           </div>
-          <div className='project-group' style={{paddingTop: '4vh', borderTop: '1px solid #216E4E'}}>
-            <div className='project-link'><a className='thin-title' target="_blank" rel="noopener noreferrer" href='https://github.com/McGovern7/ardupilot-nav-scripts'>ARDUPILOT NAV<FiArrowUpRight className='external' /></a></div>
+          <div className='project-group' style={{ paddingTop: '4vh', borderTop: '1px solid #216E4E' }}>
+            <div className='project-link'><Link className='thin-title' to='https://github.com/McGovern7/ardupilot-nav-scripts target="_blank" rel="noopener noreferrer"'>ARDUPILOT NAV<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
               <p className='col'>After graduation, He joined the drone navigation community. This project allows a drone to autonomously navigate a 3D maze using a script he developed.</p>
               <p className='col'>Future plans to add object recognition and tracking, then implement this software into a custom self-built drone.</p>
