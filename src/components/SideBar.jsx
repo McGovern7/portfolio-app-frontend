@@ -10,8 +10,8 @@ function SideBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [canGoBack, setCanGoBack] = useState();
-  const isHome = window.location.pathname === '/portfolio-app-frontend/portfolio';
-  const isResume = window.location.pathname === '/portfolio-app-frontend/resume';
+  const isHome = window.location.pathname === '/portfolio';
+  const isResume = window.location.pathname === '/resume';
 
   const checkCanGoBack = async () => {
     if (location.key !== "default") {
