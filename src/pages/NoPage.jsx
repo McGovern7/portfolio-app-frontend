@@ -1,14 +1,14 @@
 import React from 'react';
-import { Navbar } from '../components';
+import { SideBar } from '../components';
 
 export default function Home() {
   return (
     <div>
       <React.Fragment>
-        <Navbar />
+        <SideBar />
       </React.Fragment>
       <h2>
-        Error 404: Not Found
+        Error 404: Page not found
       </h2>
     </div>
   )
