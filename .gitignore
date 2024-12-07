@@ -3,17 +3,10 @@
 /.pnp
 .pnp.js
 
-# packages
-# Keep package-lock.json to ensure dependency consistency
-# package-lock.json 
-
 # testing
 /coverage
 
 # production
-# Do not ignore /public as it contains necessary static files
-# Ignore /build since it's generated during the build process
-build/
 
 /misc
 .DS_Store
