@@ -1,7 +1,7 @@
 import React from 'react';
 import { SideBar } from '../components';
 
-export default function Home() {
+export default function Portfolio() {
   return (
     <div>
       <React.Fragment>
