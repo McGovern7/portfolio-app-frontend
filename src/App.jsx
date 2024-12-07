@@ -6,7 +6,7 @@ const App = () => {
   return ( // react can only return one element
     <BrowserRouter>
       <Routes>
-        <Route index element={<Portfolio />} />
+        <Route index element={<Home />} />
         <Route path='/portfolio' element={<Portfolio />} />
         <Route path='/resume' element={<ResumePage />} />
         <Route path='/home' element={<Home />} />
