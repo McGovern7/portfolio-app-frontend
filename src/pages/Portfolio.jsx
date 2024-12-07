@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid, ScrollTo, SideBar } from '../components';
 // @ts-ignore
@@ -7,13 +7,24 @@ import { FiArrowUpRight } from "react-icons/fi";
 import './MeStyle.css';
 
 function Portfolio() {
-  const [darkMode, setDarkMode] = useState(true); // darkMode style
-  const logDarkMode = async () => {
-    // Toggle dark mode and set in localStorage
+  // unique darkmode button to change palette
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    // Retrieve localStorage val on mount
+    const savedMode = localStorage.getItem('darkMode');    
+    if (savedMode === "true") {
+      setDarkMode(true);
+    }
+  }, []);
+
+  // Update the state on button press
+  const logDarkMode = async () => { 
     const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);  // Update the state
+    setDarkMode(newDarkMode);  
+    // Update after state change
     localStorage.setItem('darkMode', newDarkMode.toString());
   };
+
   return (
     <div className={`portfolio-page ${darkMode ? 'dark-mode' : ''}`}>
       <div className='side-bar-column'>

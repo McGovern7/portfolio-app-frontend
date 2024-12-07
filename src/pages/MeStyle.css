@@ -126,6 +126,12 @@ html {
   .skills p {
     margin: 0;
   }
+  .error {
+    display: flex;
+    margin: 0;
+    padding: 2vh;
+    
+  }
 }
 
 @media (max-width: 1075px) {

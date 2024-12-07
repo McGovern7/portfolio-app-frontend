@@ -8,7 +8,7 @@ export default function Portfolio() {
   useEffect(() => {
     const savedDarkMode = localStorage.getItem('darkMode');
     if (savedDarkMode === "true") {
-      setDarkMode(true); // Set state based on the stored value
+      setDarkMode(true);
     }
   }, []);
   return (
@@ -21,8 +21,8 @@ export default function Portfolio() {
         </section>
       </div>
       <div className='main-column-B'>
-        <h2>
-          Error 404: Page not found
+        <h2 className='error'>
+          <u>Error 404: Page not found</u>
         </h2>
       </div>
     </div>
