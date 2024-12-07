@@ -7,10 +7,12 @@ import { FiArrowUpRight } from "react-icons/fi";
 import './MeStyle.css';
 
 function Portfolio() {
-  // unique darkmode button to change palette
-  const [darkMode, setDarkMode] = useState(true);
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode); // Toggle dark mode
+  const [darkMode, setDarkMode] = useState(true); // darkMode style
+  const logDarkMode = async () => {
+    // Toggle dark mode and set in localStorage
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);  // Update the state
+    localStorage.setItem('darkMode', newDarkMode.toString());
   };
   return (
     <div className={`portfolio-page ${darkMode ? 'dark-mode' : ''}`}>
@@ -24,7 +26,7 @@ function Portfolio() {
       <div className='main-column-A'>
         <section id='intro'>
           <div className='dark-btn-container'>
-            <button id='dark-mode-button' onClick={toggleDarkMode}><IoContrast /></button>
+            <button id='dark-mode-button' onClick={logDarkMode}><IoContrast /></button>
           </div>
           <h1>Luke McGovern</h1>
           <ul style={{ paddingLeft: '3px', margin: '0' }}>
