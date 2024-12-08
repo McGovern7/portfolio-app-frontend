@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0c1838c2.css",
+    "main.js": "/static/js/main.a0850fe2.js",
+    "static/js/453.f4fbaa6d.chunk.js": "/static/js/453.f4fbaa6d.chunk.js",
+    "static/media/DataFlow.webp": "/static/media/DataFlow.c0ad3c816e14f9b4c005.webp",
+    "static/media/LoggedIn.webp": "/static/media/LoggedIn.239e7f2e2d02a51579c6.webp",
+    "static/media/WebLogo.webp": "/static/media/WebLogo.7df9aeda69d8282da4fb.webp",
+    "static/media/LoggedOut.webp": "/static/media/LoggedOut.a37f610ef035c967aed3.webp",
+    "static/media/GmailLogo.webp": "/static/media/GmailLogo.ea951137d73c6a9a6dc4.webp",
+    "static/media/Resume.pdf": "/static/media/Resume.c950f5e72b0098a0f399.pdf",
+    "static/media/LinkedInLogo.webp": "/static/media/LinkedInLogo.563bb61343573fa38280.webp",
+    "static/media/ResumeLogo.webp": "/static/media/ResumeLogo.c282ff9fa82ea42787b2.webp",
+    "static/media/GithubLogo.webp": "/static/media/GithubLogo.e0ea16119a8f1ff5a535.webp",
+    "index.html": "/index.html",
+    "main.0c1838c2.css.map": "/static/css/main.0c1838c2.css.map",
+    "main.a0850fe2.js.map": "/static/js/main.a0850fe2.js.map",
+    "453.f4fbaa6d.chunk.js.map": "/static/js/453.f4fbaa6d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c1838c2.css",
+    "static/js/main.a0850fe2.js"
+  ]
+}
