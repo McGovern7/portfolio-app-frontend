@@ -8,7 +8,7 @@ import './MeStyle.css';
 
 function Portfolio() {
   // unique darkmode button to change palette
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   useEffect(() => {
     // Retrieve localStorage val on mount
     const savedMode = localStorage.getItem('darkMode');    
@@ -111,7 +111,7 @@ function Portfolio() {
         <section id='projects'>
           <h2>Projects</h2>
           <div className='project-group'>
-            <div className='project-link'><Link className='thin-title' to='/home' target="_blank" rel="noopener noreferrer">TARKOV APP<FiArrowUpRight className='external' /></Link></div>
+            <div className='project-link'><Link className='thin-title' to='/tarkov-app/home' target="_blank" rel="noopener noreferrer">TARKOV APP<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
               <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
               <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups</p>
