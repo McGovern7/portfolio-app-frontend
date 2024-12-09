@@ -7,7 +7,7 @@ const verifyToken = async () => {
     return false;
   };
   try {
-    const response = await fetch(`http://localhost:8000/auth/verify-token/${token}`);
+    const response = await fetch(`https://portfolio-app-backend-ay3g.onrender.com/auth/verify-token/${token}`);
     if (!response.ok) {
       throw new Error('Token verification failed');
     };
