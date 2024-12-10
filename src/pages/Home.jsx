@@ -11,6 +11,9 @@ export default function Home() {
       </React.Fragment>
       <main>
         <section id='description'>
+          <p>
+            &nbsp;&nbsp;&nbsp;Expect long wait times, API Database is currently hosted on a free trial of Supabase
+          </p>
           <h3 id='description-title'>App Description</h3>
           <p>
             &nbsp;&nbsp;&nbsp;This app provides a space for players of the game Escape from Tarkov to store the ammo they have found, and view the ammo's advance data. The storage tab can be accessed after registering an account and loggin in.
@@ -73,7 +76,7 @@ export default function Home() {
         <section id='dataflow-sect'>
           <h3>API-User Dataflow</h3>
           <p aria-labelledby='data-flow-img'>
-            Portraying the Data Transformations required so that the Frontend and Backend can receive it at each step.
+            *localhost* Portraying the Data Transformations required so that the Frontend and Backend can receive it at each step.
           </p>
           <ImageComp id='data-flow-img' ariaLabel='api data diagram' src='DataFlow.webp' className='shadow' alt="Flow Diagram of how data transfers from frontend to backend using software packages" />
           <p aria-labelledby='image-set'>
@@ -88,11 +91,14 @@ export default function Home() {
           <h3>Skills I’ve Onboarded</h3>
           <ul class=" list-group list-group-flush shadow-lg">
             <li class="list-group-item">-  Starting from almost no background, I have built a web api which is <u>asynchronous</u>, <u>multi-port capable</u>, <u>well documented</u>, <u>secured</u>, and <u>efficient</u></li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  For future projects, I can develop more complex api techniques within the ever-growing FastAPI web framework. </li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  With additional built-in packages, I can easily scale my app with features like <u>caching</u>, <u>load balancing</u>, <u>rate limiting</u>, and <u>automated backups</u>.</li>
+            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  For future projects, I can develop more complex api techniques within the ever-growing FastAPI web framework</li>
+            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  With additional built-in packages, I can easily scale my app with features like <u>caching</u>, <u>load balancing</u>, <u>rate limiting</u>, and <u>automated backups</u></li>
             <li class="list-group-item">-  Having never used React prior to this, I have created a <u>modular</u>, <u>scalable</u>, and <u>accessible</u> app.  This app is much more complex than anything I have built in the past, even apps I created in a group</li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  I can jump-start future web apps with the components I created for this project (Button, Navbar, Sidebar, etc) </li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement. </li>
+            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  I can jump-start future web apps with the components I created for this project (Button, Navbar, Sidebar, etc)</li>
+            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement</li>
+            <li class="list-group-item">-  Onboarded multi-provider hosting in order to host my fullstack site with no cost. Site is updated though Github Commits from my frontend and backend repositories</li>
+            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Netlify hosts the React frontend, Render the FastAPI backend, and Supabase handles the PostgreSQL datbase changes</li>
+
           </ul>
         </section>
       </main>
