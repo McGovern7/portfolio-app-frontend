@@ -114,7 +114,7 @@ function Portfolio() {
             <div className='project-link'><Link className='thin-title' to='/tarkov-app/home' target="_blank" rel="noopener noreferrer">TARKOV APP<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
               <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
-              <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups. Expect slow api service, as the SQL is hosted on a free version of SupaBase.</p>
+              <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups. Expect slow API service, as the SQL is hosted on a free version of Supabase.</p>
             </div>
             <p className='mini'>Frontend</p>
             <img className='col shield' alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&labelColor=%234d3459&color=%23fcdc00" />
@@ -135,7 +135,7 @@ function Portfolio() {
             <p className='mini'>Hosting</p>
             <img className='col shield' alt="Netlify Frontend" src="https://img.shields.io/badge/Frontend-%20?logo=Netlify&logoColor=%2332e2de&label=Netlify&color=%2332e2de" />
             <img className='col shield' alt="Render Backend" src="https://img.shields.io/badge/Backend-%20?logo=Render&label=Render&color=%232a0052" />
-            <img className='col shield' alt="Supabase SQL" src="https://img.shields.io/badge/PostgreSQL-%20?logo=Supabase&logoColor=%2339c385&label=Netlify&color=%2339c385" />
+            <img className='col shield' alt="Supabase SQL Database" src="https://img.shields.io/badge/SQL%20Database-%20?logo=Supabase&label=Supabase&color=%2339c385" />
           </div>
           <div className='project-group' style={{ paddingTop: '4vh', borderTop: '1px solid #216E4E' }}>
             <div className='project-link'><Link className='thin-title' to='https://github.com/McGovern7/ardupilot-nav-scripts target="_blank" rel="noopener noreferrer"'>ARDUPILOT NAV<FiArrowUpRight className='external' /></Link></div>

@@ -12,7 +12,7 @@ export default function Home() {
       <main>
         <section id='description'>
           <p>
-            &nbsp;&nbsp;&nbsp;Expect long wait times, API Database is currently hosted on a free trial of Supabase
+            &nbsp;&nbsp;&nbsp;Expect long wait times exceeding one minute, API Database is currently hosted on a free trial of Supabase, which takes around a minute to launch
           </p>
           <h3 id='description-title'>App Description</h3>
           <p>
@@ -97,7 +97,7 @@ export default function Home() {
             <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  I can jump-start future web apps with the components I created for this project (Button, Navbar, Sidebar, etc)</li>
             <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement</li>
             <li class="list-group-item">-  Onboarded multi-provider hosting in order to host my fullstack site with no cost. Site is updated though Github Commits from my frontend and backend repositories</li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Netlify hosts the React frontend, Render the FastAPI backend, and Supabase handles the PostgreSQL datbase changes</li>
+            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  <u>Netlify</u> hosts the React frontend, <u>Render</u> the FastAPI backend, and <u>Supabase</u> handles the PostgreSQL datbase changes</li>
 
           </ul>
         </section>
