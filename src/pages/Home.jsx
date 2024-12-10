@@ -98,7 +98,6 @@ export default function Home() {
             <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement</li>
             <li class="list-group-item">-  Onboarded multi-provider hosting in order to host my fullstack site with no cost. Site is updated though Github Commits from my frontend and backend repositories</li>
             <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  <u>Netlify</u> hosts the React frontend, <u>Render</u> the FastAPI backend, and <u>Supabase</u> handles the PostgreSQL datbase changes</li>
-
           </ul>
         </section>
       </main>
