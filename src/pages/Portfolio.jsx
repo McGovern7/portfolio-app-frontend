@@ -9,13 +9,39 @@ import './MeStyle.css';
 function Portfolio() {
   // unique darkmode button to change palette
   const [darkMode, setDarkMode] = useState(true);
-  useEffect(() => {
-    // Retrieve localStorage val on mount
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode === "true") {
-      setDarkMode(true);
+  const [smallScreen, setSmallScreen] = useState(window.innerWidth <= 1075);
+  const [hiddenA, setHiddenA] = useState(true);
+  const [hiddenB, setHiddenB] = useState(false);
+
+  const handleSlide = async () => {
+    if (hiddenA) {
+      setHiddenA(false);
+      setHiddenB(true);
     }
-  }, []);
+    else if (hiddenB) {
+      setHiddenB(false); // b is showing, so hide it
+      setHiddenA(true); // now show A
+    };
+  };
+
+  useEffect(() => {
+    // if (localStorage.getItem('darkMode')) { setDarkMode() }
+    const handleResize = () => {
+      const isSmall = window.innerWidth <= 1075;
+      if (isSmall !== smallScreen) { // if screen changes on this run, update it for next
+        if (!isSmall && smallScreen)
+          setSmallScreen(false);
+        else {
+          setSmallScreen(true);
+        }
+      }
+    };
+    console.log('small screen', smallScreen);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize); // cleanup listener
+    // eslint-disable-next-line
+  }, [handleSlide]);
 
   // Update the state on button press
   const logDarkMode = async () => {
@@ -34,8 +60,11 @@ function Portfolio() {
           </React.Fragment>
         </section>
       </div>
-      <div className='main-column-A'>
+      <div className={`main-column-A ${hiddenA ? 'hidden-a' : ''} ${hiddenB ? 'hidden-b' : ''}`}>
         <section id='intro'>
+          <button className='slider-button' onClick={handleSlide}>Slider</button>
+          <p>hiddenA: {hiddenA ? 'true' : 'false'}</p>
+          <p>hiddenB: {hiddenB ? 'true' : 'false'}</p>
           <div className='dark-btn-container'>
             <button id='dark-mode-button' onClick={logDarkMode}><IoContrast /></button>
           </div>
@@ -59,12 +88,17 @@ function Portfolio() {
         </section>
         <Grid />
       </div>
-      <div className='main-column-B'>
+      <div className={`main-column-B ${hiddenA ? 'hidden-a' : ''} ${hiddenB ? 'hidden-b' : ''}`}>
+        <div>
+          <button className={`slider-button`} onClick={handleSlide}>Slider</button>
+          <p>hiddenA: {hiddenA ? 'true' : 'false'}</p>
+          <p>hiddenB: {hiddenB ? 'true' : 'false'}</p>
+        </div>
         <section id='about-me'>
           <h2>About Me</h2>
           <div className='row'>
             <p className='col'>Since recently graduating with a Computer Science degree from his hometown school of UVM, He's passionately expanding his skillset to address the challenges in this ever-evolving tech landscape. He is driven to continuously grow his coding expertise, from an innate desire to find creative solutions.</p>
-            <p className='col'>Recently, he has become proficient in robotics software architecture, and building accessible web applications using full-stack development techniques.  Accomplishing these solo projects has vastly improved his ability to solve obstacles independently.</p>
+            <p className='col'>Recently, he has become proficient in robotics software architecture, and building accessible web applications using full-stack development techniques.  Accomplishing these solo projects has vastly improved his ability to solve obstacles independently, and develop software which reaches beyond the fundamental concepts taught at UVM.</p>
           </div>
         </section>
         <section id='proficiencies'>
@@ -138,10 +172,10 @@ function Portfolio() {
             <img className='col shield' alt="Supabase SQL Database" src="https://img.shields.io/badge/SQL%20Database-%20?logo=Supabase&label=Supabase&color=%2339c385" />
           </div>
           <div className='project-group' style={{ paddingTop: '4vh', borderTop: '1px solid #216E4E' }}>
-            <div className='project-link'><Link className='thin-title' to='https://github.com/McGovern7/ardupilot-nav-scripts target="_blank" rel="noopener noreferrer"'>ARDUPILOT NAV<FiArrowUpRight className='external' /></Link></div>
+            <div className='project-link'><Link className='thin-title' to='https://github.com/McGovern7/ardupilot-nav-scripts' target="_blank" rel="noopener noreferrer">ARDUPILOT NAV<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
               <p className='col'>After graduation, He joined the drone navigation community. This project allows a drone to autonomously navigate a 3D maze using a script he developed.</p>
-              <p className='col'>Future plans to add object recognition and tracking, then implement this software into a custom self-built drone.</p>
+              <p className='col'>Future plans to add object recognition and tracking, then implement this software into a custom self-built drone. See the writeup.md on Github for a detailed overview</p>
             </div>
             <img className='col shield' alt="ardupilot copter" src="https://img.shields.io/badge/Copter-space?label=Ardupilot&labelColor=%23dedede&color=%23fcd94c" />
             <img className='col shield' alt="Python" src="https://img.shields.io/badge/-empty?logo=python&label=Python&labelColor=%23214868&color=%23ffde73" />
