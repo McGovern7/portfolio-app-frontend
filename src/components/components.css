@@ -1,10 +1,10 @@
 /* Grid */
 .grid {
-  padding: 1vh 0vh 1vh 0vh;
+  padding: 1vh 2vh 1vh 3vh;
   display: flex;
   cursor: crosshair;
-  place-content: center;
-  overflow: hidden;
+  place-content: left;
+  overflow-y: hidden;
 }
 
 .row-group {
@@ -36,7 +36,8 @@
 /* SideBar Comp */
 .side-bar-comp {
   padding-top: 2vh;
-  height: 100%;
+  height: 100vh;
+  max-height: 100%;
   width: 200px;
   justify-content: space-between;
   background-color: var(--greenPrimary);

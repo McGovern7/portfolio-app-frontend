@@ -4,12 +4,13 @@ import { Card, Grid, ScrollTo, SideBar } from '../components';
 // @ts-ignore
 import { IoContrast } from "react-icons/io5";
 import { FiArrowUpRight } from "react-icons/fi";
+import { BiExpandHorizontal } from "react-icons/bi";
 import './MeStyle.css';
 
 function Portfolio() {
   // unique darkmode button to change palette
   const [darkMode, setDarkMode] = useState(true);
-  const [smallScreen, setSmallScreen] = useState(window.innerWidth <= 1075);
+  const [smallScreen, setSmallScreen] = useState(window.innerWidth <= 1100);
   const [hiddenA, setHiddenA] = useState(true);
   const [hiddenB, setHiddenB] = useState(false);
 
@@ -27,7 +28,7 @@ function Portfolio() {
   useEffect(() => {
     // if (localStorage.getItem('darkMode')) { setDarkMode() }
     const handleResize = () => {
-      const isSmall = window.innerWidth <= 1075;
+      const isSmall = window.innerWidth <= 1100;
       if (isSmall !== smallScreen) { // if screen changes on this run, update it for next
         if (!isSmall && smallScreen)
           setSmallScreen(false);
@@ -62,9 +63,6 @@ function Portfolio() {
       </div>
       <div className={`main-column-A ${hiddenA ? 'hidden-a' : ''} ${hiddenB ? 'hidden-b' : ''}`}>
         <section id='intro'>
-          <button className='slider-button' onClick={handleSlide}>Slider</button>
-          <p>hiddenA: {hiddenA ? 'true' : 'false'}</p>
-          <p>hiddenB: {hiddenB ? 'true' : 'false'}</p>
           <div className='dark-btn-container'>
             <button id='dark-mode-button' onClick={logDarkMode}><IoContrast /></button>
           </div>
@@ -88,12 +86,10 @@ function Portfolio() {
         </section>
         <Grid />
       </div>
+      <div className={`slider-col ${smallScreen ? 'small-screen' : 'big-screen'}`}>
+        <button className='slider-button' onClick={handleSlide}><BiExpandHorizontal /></button>
+      </div>
       <div className={`main-column-B ${hiddenA ? 'hidden-a' : ''} ${hiddenB ? 'hidden-b' : ''}`}>
-        <div>
-          <button className={`slider-button`} onClick={handleSlide}>Slider</button>
-          <p>hiddenA: {hiddenA ? 'true' : 'false'}</p>
-          <p>hiddenB: {hiddenB ? 'true' : 'false'}</p>
-        </div>
         <section id='about-me'>
           <h2>About Me</h2>
           <div className='row'>
