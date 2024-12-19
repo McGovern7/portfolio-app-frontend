@@ -13,7 +13,7 @@ function Navbar() {
   };
 
   return (
-    <header>
+    <header id="top">
       <h3 className='app-title'>Tarkov App</h3>
       <nav className='nav-bar' ref={navRef}>
         <Link to="/portfolio">

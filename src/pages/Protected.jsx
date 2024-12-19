@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
-import { Button, Navbar, VerifyToken } from '../components';
+import { Button, Navbar, ScrollTo, VerifyToken } from '../components';
 import '../components/components.css';
 import './pages.css';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaAngleUp } from "react-icons/fa6";
 import { GiSilverBullet } from "react-icons/gi";
 
 function ProtectedPage() {
@@ -184,6 +185,9 @@ function ProtectedPage() {
         <Navbar />
       </React.Fragment>
       <main>
+        <p id='warning-text'>
+          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
+        </p>
         <h3>{localStorage.getItem('username')}'s Stash</h3>
         {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
         <div className='grouper'>
@@ -272,6 +276,8 @@ function ProtectedPage() {
             </div>
           </section>
         </div>
+        <ScrollTo ariaLabel='scroll to top' className='scroll-to'
+          icon={<FaAngleUp />} sectionID='top' />
       </main>
     </div>
   )

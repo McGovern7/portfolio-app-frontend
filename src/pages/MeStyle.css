@@ -36,8 +36,8 @@ html {
 .portfolio-page {
   position: relative;
   display: flex;
-  height: 100vh;
   background-color: var(--lightPrimary);
+  height: 100vh;
   min-height: 600px;
   overflow: auto;
 
@@ -56,10 +56,10 @@ html {
   }
 
   h2 {
+    margin-top: 7vh;
     font-weight: 400;
     font-size: 35px;
     color: var(--greenPrimary);
-    margin-top: 7vh;
   }
 
   h4 {
@@ -96,11 +96,21 @@ html {
       visibility: hidden;
     }
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--purple-800);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--purple-600);
+  }
 }
 
-.portfolio-page::-webkit-scrollbar {
-  -webkit-appearance: none;
-}
 
 .portfolio-page.dark-mode {
   background-color: var(--gray-900);
@@ -113,24 +123,21 @@ html {
 
 .main-column-A {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  align-content: left;
   width: 420px;
   justify-content: space-between;
-  overflow: auto;
+  overflow: hidden;
   white-space: nowrap;
 }
 
 .main-column-B {
   padding: 2vh 3vh 2vh 2vh;
   display: flex;
-  flex: 1;
   flex-direction: column;
   width: 100%;
   overflow: auto;
-  border-left: 2px solid var(--greenPrimary);
-  border-right: 2px solid var(--greenPrimary);
+  overflow-x: hidden;
+  border-inline: 2px solid var(--greenPrimary);
 
   .skills p {
     margin: 0;
@@ -152,14 +159,12 @@ html {
   }
 
   .main-column-A.hidden-a {
-    width: 0px;
     max-width: 0px;
     min-width: 0px;
     transition: all 1s ease;
   }
 
   .main-column-B.hidden-a {
-    width: stretch;
     max-width: 100%;
     min-width: max(calc(100% - 230px), 480px);
     transition: all 1s ease;
@@ -167,7 +172,6 @@ html {
 
   .main-column-B.hidden-b {
     padding: 0;
-    width: 0px;
     min-width: 0px;
     max-width: 0px;
     border-left: none;
@@ -192,17 +196,14 @@ html {
 
 @media (min-width: 1076px) {
   .main-column-A {
-    width: 420px;
     min-width: 420px;
     max-width: 420px;
-    /* Restores full width smoothly */
     transition: all 1s ease;
   }
+
   .main-column-B {
-    width: 100%;
     max-width: 100%;
-    /* Restores full width smoothly */
-    transition: width 1s ease;
+    transition: all 1s ease;
   }
 }
 
@@ -218,20 +219,8 @@ html {
 #dark-mode-button,
 #back-btn {
   display: flex;
-  width: 30px;
-  height: 30px;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  align-items: center;
   color: var(--greenPrimary);
   transition: color 0.3s ease, background-color 0.3s ease;
-
-  /* Smooth transition for color and fill */
-  svg {
-    width: 22px;
-    height: 22px;
-  }
 }
 
 #dark-mode-button:hover {
@@ -242,6 +231,13 @@ html {
 /* SideBar Comp */
 .side-bar-column {
   display: flex;
+}
+
+/* ScrollTo Comp */
+.scroll-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Card Comp */
@@ -299,8 +295,7 @@ html {
 }
 
 .project-group {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-block: 2vh;
 
   .project-link {
     display: flex;
@@ -322,7 +317,6 @@ html {
       transition: transform 0.3s ease;
       padding-bottom: 1px;
     }
-
   }
 
   .project-link:hover {
@@ -334,8 +328,7 @@ html {
 
     .external {
       color: var(--red-500);
-      transform: translate(4px, -8px);
-      /* Move right (positive X) and up (negative Y) */
+      transform: translate(4px, -8px); /* Move right (positive X) and up (negative Y) */
     }
   }
 
@@ -345,25 +338,6 @@ html {
     padding: 0;
     width: auto;
     min-height: 30px;
-  }
-}
-
-/* Scroll-To Comp */
-.scroll-list {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-
-  .scroll-to {
-    margin-bottom: 1vh;
-    cursor: pointer;
-    width: fit-content;
-    transition: padding 0.3s ease;
-    user-select: none;
-  }
-
-  .scroll-to:hover {
-    padding-left: 25px;
   }
 }
 

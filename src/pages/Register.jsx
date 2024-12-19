@@ -65,6 +65,9 @@ const Register = () => {
         <Navbar />
       </React.Fragment>
       <main>
+        <p id='warning-text'>
+          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
+        </p>
         <h3>Registration</h3>
         <div className='grouper'>
           <section id='register-sect' className='shadow-lg'>

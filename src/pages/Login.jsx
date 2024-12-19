@@ -128,6 +128,9 @@ function Profile() {
         <Navbar />
       </React.Fragment>
       <main>
+        <p id='warning-text'>
+          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
+        </p>
         <h3>User Profile</h3>
         <div style={{ display: logoutVisible ? 'block' : 'none' }}>
           <div className='grouper'>

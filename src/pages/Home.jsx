@@ -1,43 +1,47 @@
 import React from 'react';
-import { Navbar, ImageComp, Card } from '../components';
-import '../components/components.css';
+import { Navbar, ImageComp, Card, ScrollTo } from '../components';
+import { FaAngleUp } from "react-icons/fa6";
 import './pages.css';
 
 export default function Home() {
   return (
-    <div className='main-page'>
+    <div className='main-page' id="home-top">
       <React.Fragment>
         <Navbar />
       </React.Fragment>
       <main>
+        <p id='warning-text'>
+          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
+        </p>
         <section id='description'>
-          <p>
-            &nbsp;&nbsp;&nbsp;Expect long wait times exceeding one minute, API Database is currently hosted on a free trial of Supabase, which takes around a minute to launch
-          </p>
           <h3 id='description-title'>App Description</h3>
           <p>
-            &nbsp;&nbsp;&nbsp;This app provides a space for players of the game Escape from Tarkov to store the ammo they have found, and view the ammo's advance data. The storage tab can be accessed after registering an account and loggin in.
+            &emsp;&ensp;This app provides a space for players of the game Escape from Tarkov to create secure accounts, log their in-game ammo, and view advanced ammo data. The storage tab can be accessed after registering an account and loggin in.
           </p>
         </section>
         <section id='writeup-sect'>
           <h3 id='unused-writeup-title'>Writeup: Tarkov Ammo Storage Application</h3>
           <p>
-            &nbsp;&nbsp;&nbsp;In today's rapidly evolving and competitive tech landscape, full-stack development has become an essential skill for developers. Full-stack development is a multi-discipline skill, requiring devs to have an end-to-end understanding of an application. This comprehensive knowledge enables efficient problem-solving and can lead to a more robust application architecture.  For example, a full-stack dev assigned to the frontend can leverage their insights of backend processes to optimize how frontend components interact with server-side logic. These devs can streamline queries, robustly handle bad requests, and minimize server data load—improving both performance and user experience.
+            &emsp;&ensp;In today's rapidly evolving and competitive tech landscape, full-stack capable developers are becoming highly regarded. Full-stack development is a multi-discipline skill, requiring devs to have an end-to-end understanding of an application. This comprehensive knowledge enables efficient problem-solving and leads to the creation of more robust application architecture.  For example, a full-stack dev assigned to the frontend can leverage their insights of backend processes to optimize how frontend components interact with server-side logic. These devs can streamline queries, robustly handle bad requests, and minimize server data load. In turn improving performance, development time, and user experience.
           </p>
           <p>
-            &nbsp;&nbsp;&nbsp;When creating applications prior to this project, I was primarily assigned roles localized within the frontend or backend of an application.  While this specialization allowed for expertise of roles, it limited my understanding of the app’s overall architecture.  With this project, my goal is to gain a comprehensive view of the entire application stack.
+            &emsp;&ensp;When creating applications prior to this project, I was primarily assigned roles localized within an app's frontend or backend.  While this specialization allowed for expertise of roles, it limited my understanding of the app’s overall architecture.  My goal with this project is to gain a comprehensive view of an application's stack, while discovering the benefits and challenges associated with full-stack development.
           </p>
           <p>
-            &nbsp;&nbsp;&nbsp;I have successfully taught myself the various software disciplines necessary to build my first web application as a solo full-stack developer.  Made high in demand by today's devs, this project's stack comprises the following tools.
+            &emsp;&ensp;I have successfully taught myself the various software disciplines necessary to build my first web application as a solo full-stack developer.  In addition, I have learned the process of hosting this app both remotely and locally.  Made high in demand by today's devs, the following elements comprise this project's stack.
           </p>
         </section>
         <section id='unused-stack-sect'>
-          <h3>Architecture: The Stack</h3>
+          <h3>Architecture: The Stack on localhost</h3>
           <h4 style={{ textAlign: 'left', margin: '2rem 0rem 0rem 8rem' }}>Back End</h4>
           <div className='card-block'>
-            <Card aria-label='SQL and FASTAPI card' id='api-card'
-              title={<p className='card-title' ><b>MySQL CRUD</b> using <b><a target="_blank" rel="noopener noreferrer" href='https://fastapi.tiangolo.com/'>FastAPI</a></b></p>}
-              content={<p className='card-content' >MySQL script initializes my database, where FastAPI queries make speedy, secure, scalable, and asynchronous API calls</p>}
+            <Card aria-label='MySQL card' id='data-card'
+              title={<p className='card-title' ><b><a target="_blank" rel="noopener noreferrer" href='https://www.mysql.com/'>MySQL</a></b> Database</p>}
+              content={<p className='card-content' >MySQLWorkbench initializes SQL tables from a script and hosts the database.</p>}
+            />
+            <Card aria-label='FASTAPI card' id='api-card'
+              title={<p className='card-title' ><b><a target="_blank" rel="noopener noreferrer" href='https://fastapi.tiangolo.com/'>FastAPI</a></b> Querying</p>}
+              content={<p className='card-content' >FastAPI queries call the database via SQLAlchemy to make speedy, secure, scalable, and asynch CRUD operations</p>}
             />
             <Card aria-label='Pydantic Card' id='pydantic-card'
               title={<p className='card-title' ><b><a target="_blank" rel="noopener noreferrer" href='https://docs.pydantic.dev/latest/'>Pydantic</a></b> modeling</p>}
@@ -49,7 +53,7 @@ export default function Home() {
             />
             <Card aria-label='CORS Card' id='cors-card'
               title={<p className='card-title' ><b><a target="_blank" rel="noopener noreferrer" href='https://expressjs.com/en/resources/middleware/cors.html'>CORSMiddleware</a></b></p>}
-              content={<p className='card-content' >Enables cross-origin access, essential for modern web architectures</p>}
+              content={<p className='card-content' >Enables cross-origin access between the React frontend and FastAPI backend, essential for modern web architectures</p>}
             />
           </div>
           <h4 style={{ textAlign: 'left', margin: '1rem 0rem 0rem 8rem' }}>Front End</h4>
@@ -75,11 +79,11 @@ export default function Home() {
 
         <section id='dataflow-sect'>
           <h3>API-User Dataflow</h3>
-          <p aria-labelledby='data-flow-img'>
+          <p className='img-text' aria-labelledby='data-flow-img'>
             *localhost* Portraying the Data Transformations required so that the Frontend and Backend can receive it at each step.
           </p>
           <ImageComp id='data-flow-img' ariaLabel='api data diagram' src='DataFlow.webp' className='shadow' alt="Flow Diagram of how data transfers from frontend to backend using software packages" />
-          <p aria-labelledby='image-set'>
+          <p className='img-text' aria-labelledby='image-set'>
             Depicting the Flow of User-Specific Data when navigating the pages of the app. Diagram's changes show the levels of permission between login statuses
           </p>
           <div id='image-set'>
@@ -89,17 +93,19 @@ export default function Home() {
         </section>
         <section id='onboarded-sect'>
           <h3>Skills I’ve Onboarded</h3>
-          <ul class=" list-group list-group-flush shadow-lg">
-            <li class="list-group-item">-  Starting from almost no background, I have built a web api which is <u>asynchronous</u>, <u>multi-port capable</u>, <u>well documented</u>, <u>secured</u>, and <u>efficient</u></li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  For future projects, I can develop more complex api techniques within the ever-growing FastAPI web framework</li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  With additional built-in packages, I can easily scale my app with features like <u>caching</u>, <u>load balancing</u>, <u>rate limiting</u>, and <u>automated backups</u></li>
-            <li class="list-group-item">-  Having never used React prior to this, I have created a <u>modular</u>, <u>scalable</u>, and <u>accessible</u> app.  This app is much more complex than anything I have built in the past, even apps I created in a group</li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  I can jump-start future web apps with the components I created for this project (Button, Navbar, Sidebar, etc)</li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement</li>
-            <li class="list-group-item">-  Onboarded multi-provider hosting in order to host my fullstack site with no cost. Site is updated though Github Commits from my frontend and backend repositories</li>
-            <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  <u>Netlify</u> hosts the React frontend, <u>Render</u> the FastAPI backend, and <u>Supabase</u> handles the PostgreSQL datbase changes</li>
+          <ul className=" list-group list-group-flush shadow-lg">
+            <li className="list-group-item">-  Starting with almost no background, I have built a web API which is <u>asynchronous</u>, <u>multi-port capable</u>, <u>well documented</u>, <u>secured</u>, and <u>efficient</u></li>
+            <li className="list-group-item">&emsp;&ensp;-  For future projects, I can develop more complex API techniques within the ever-growing FastAPI web framework</li>
+            <li className="list-group-item">&emsp;&ensp;-  With additional built-in packages, I can easily scale my app with features like <u>caching</u>, <u>load balancing</u>, <u>rate limiting</u>, and <u>automated backups</u></li>
+            <li className="list-group-item">-  Having never used React prior to this, I have created a <u>modular</u>, <u>scalable</u>, and <u>accessible</u> app.  This app is much more complex than anything I have built in the past, even apps I created in a group</li>
+            <li className="list-group-item">&emsp;&ensp;-  I can jump-start future web apps with the components I created for this project (Button, Navbar, Sidebar, etc)</li>
+            <li className="list-group-item">&emsp;&ensp;-  Given React’s wealth of libraries, tools, and extensions, there are always new techniques I can and implement</li>
+            <li className="list-group-item">-  Onboarded multi-provider hosting in order to host my fullstack site with no cost. Site is updated though Github Commits from my frontend and backend repositories</li>
+            <li className="list-group-item">&emsp;&ensp;-  <u>Netlify</u> hosts the React frontend, <u>Render</u> the FastAPI backend, and <u>Supabase</u> handles the PostgreSQL datbase changes</li>
           </ul>
         </section>
+        <ScrollTo ariaLabel='scroll to top button' className='scroll-to'
+                      icon={<FaAngleUp />} sectionID='top' />
       </main>
     </div>
   )

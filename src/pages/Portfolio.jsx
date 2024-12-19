@@ -64,7 +64,7 @@ function Portfolio() {
       <div className={`main-column-A ${hiddenA ? 'hidden-a' : ''} ${hiddenB ? 'hidden-b' : ''}`}>
         <section id='intro'>
           <div className='dark-btn-container'>
-            <button id='dark-mode-button' onClick={logDarkMode}><IoContrast /></button>
+            <button id='dark-mode-button' className='circle-btn' onClick={logDarkMode}><IoContrast /></button>
           </div>
           <h1>Luke McGovern</h1>
           <ul style={{ paddingLeft: '3px', margin: '0' }}>
@@ -93,7 +93,7 @@ function Portfolio() {
         <section id='about-me'>
           <h2>About Me</h2>
           <div className='row'>
-            <p className='col'>Since recently graduating with a Computer Science degree from his hometown school of UVM, He's passionately expanding his skillset to address the challenges in this ever-evolving tech landscape. He is driven to continuously grow his coding expertise, from an innate desire to find creative solutions.</p>
+            <p className='col'>Since recently graduating with a Computer Science degree from my hometown school of UVM, I've been passionately expanding my CS repertoire to address the ever-evolving challenges in this tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br></br><br></br>test</p>
             <p className='col'>Recently, he has become proficient in robotics software architecture, and building accessible web applications using full-stack development techniques.  Accomplishing these solo projects has vastly improved his ability to solve obstacles independently, and develop software which reaches beyond the fundamental concepts taught at UVM.</p>
           </div>
         </section>
