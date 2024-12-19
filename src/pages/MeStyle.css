@@ -38,8 +38,7 @@ html {
   display: flex;
   background-color: var(--lightPrimary);
   height: 100vh;
-  min-height: 600px;
-  overflow: auto;
+  min-height: 500px;
 
   h1,
   h2,
@@ -97,18 +96,7 @@ html {
     }
   }
 
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--purple-800);
-    border-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--purple-600);
-  }
+  scrollbar-color: var(--purple-800) rgba(0, 0, 0, 0); /* Thumb color and track color */
 }
 
 
@@ -135,7 +123,7 @@ html {
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
   overflow-x: hidden;
   border-inline: 2px solid var(--greenPrimary);
 
@@ -211,16 +199,9 @@ html {
   padding: 2vh 3vh 0 3vh;
 }
 
-.dark-btn-container {
-  display: flex;
-  justify-content: start;
-}
-
 #dark-mode-button,
 #back-btn {
-  display: flex;
   color: var(--greenPrimary);
-  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 #dark-mode-button:hover {
@@ -344,10 +325,11 @@ html {
 /* Resume Page */
 .resume-column {
   display: flex;
-  width: stretch;
   height: 100vh;
+  min-height: 500px;
 
   object {
-    width: 100%;
+    flex-grow: 1;
+    width: calc(100vw - 200px);
   }
 }

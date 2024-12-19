@@ -5,6 +5,11 @@
   font-style: normal;
 }
 
+html, body {
+  overflow: auto;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0); /* Thumb color and track color */
+}
+
 :root {
   --mainColor: #A2E4B8;
   --mainColorBright: #08FF08;
@@ -39,39 +44,19 @@ h5 {
   text-align: center;
 }
 
-.scroll-up-btn {
-  display: flex;
-  width: 30px;
-  height: 30px;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  align-items: center;
-  color: var(--greenPrimary);
-  transition: color 0.3s ease, background-color 0.3s ease;
-
-  /* Smooth transition for color and fill */
-  svg {
-    width: 22px;
-    height: 22px;
-  }
-}
-
 /* Home CSS */
 .main-page {
   display: flex;
   flex-direction: column;
   font-family: "Orbitron", sans-serif;
-  overflow: auto;
   position: relative;
-  top: 0;
-  bottom: 0;
   background-color: var(--secondaryColorBright);
-  width: 100%;
+  max-width: 100%;
   min-width: 600px;
+  min-height: 100vh;
 
   .card-block {
-    padding: 0vh 1vh 0vh 1vh;
+    padding-inline: 1vh;
     justify-content: space-evenly;
     display: flex;
     flex-direction: row;
@@ -91,18 +76,6 @@ h5 {
         flex-direction: row;
       }
     }
-  }
-
-  .card-block::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 1vw;
-    height: 1vh;
-  }
-
-  .card-block::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
   }
 }
 
@@ -227,7 +200,7 @@ h5 {
 
 #entry-form-sect {
   margin: 2rem 1rem 3.5rem 1rem;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
   min-width: 20rem;
   background-color: var(--textColor);
   border: 6px solid var(--mainColor);
@@ -235,7 +208,7 @@ h5 {
 
 #entry-table-sect {
   margin: 2rem 1rem 3rem 1rem;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
   width: 70%;
   min-width: 45rem;
   background-color: var(--textColor);
@@ -244,7 +217,7 @@ h5 {
 
 #ammo-type-chart-sect {
   margin: 2rem 3rem 5rem 1rem;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
   min-width: 994px;
   background-color: var(--textColor);
   border: 6px solid var(--mainColor);

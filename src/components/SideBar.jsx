@@ -48,9 +48,7 @@ function SideBar() {
         <Link className='side-link' to="https://www.linkedin.com/in/luke-mcgovern-03248528a/" target="_blank" rel="noopener noreferrer"><ImageComp aria-label='Linked in logo' src='LinkedInLogo.webp' alt="the Linked in logo in a circle" ></ImageComp><h5>LinkedIn</h5></Link>
         <Link className='side-link' to="https://mail.google.com/mail/u/0/?fs=1&to=luke.mcgovern18@gmail.com&su=&body=&bcc=&tf=cm" target="_blank" rel="noopener noreferrer"><ImageComp ariaLabel='Gmail logo' src='GmailLogo.webp' alt="the Gmail logo in a circle" ></ImageComp><h5>Email Me</h5></Link>
       </nav>
-      <div className='info'>
-        <footer>This App is a work in progress. Features like Accessibility, and mobile-friendly viewing are unimplemented</footer>
-      </div>
+      <footer><u>App under development</u> Features: Accessibility, mobile-friendly viewing are unimplemented. <br></br>If problem, Disable VPN</footer>
     </div>
   );
 }

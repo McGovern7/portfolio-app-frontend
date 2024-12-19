@@ -5,7 +5,7 @@ import './MeStyle.css';
 
 export default function ResumePage() {
   return (
-    <div className='resume-page'>
+    <div className='portfolio-page'>
       <div className='side-bar-column'>
         <section className='fixed-section'>
           <React.Fragment>

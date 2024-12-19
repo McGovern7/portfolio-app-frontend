@@ -184,13 +184,13 @@ function Portfolio() {
         <section id='work-experience'>
           <h2>Work Experience</h2>
           <Card ariaLabel='Work experience, Donahue & Associates' id='D-and-A-job'
-            title={<p className='card-title'><b>Tech Consultant, Donahue & Associates</b> May 2023 - Aug 2023</p>}
+            title={<p className='card-title'><b>Tech Consultant,<br></br> Donahue & Associates</b> May 2023 - Aug 2023</p>}
             content={<ul className='card-content'>
               <li>Manage website and help implement new tech endeavors</li>
               <li>Teach realtors how to get aerial shots of properties with a drone</li>
               <li>Set up computer equipment when moving office spaces</li></ul>} />
           <Card ariaLabel='Work experience, Bordeaux Constuction' id='construction-job'
-            title={<p className='card-title'><b>Construction, Bordeaux Construction</b> 2020 - Present</p>}
+            title={<p className='card-title'><b>Construction<br></br> Bordeaux Construction</b> 2020 - Present</p>}
             content={<ul className='card-content'>
               <li>Renovate commercial and residential properties</li>
               <li>Assist contractor with full apartment renovations, at each stage of the process</li>

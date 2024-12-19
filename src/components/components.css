@@ -5,17 +5,18 @@
 }
 
 .circle-btn {
+  display: flex;
   width: 30px;
   height: 30px;
   border: none;
   outline: none;
   border-radius: 50%;
   align-items: center;
+  justify-content: center;
   transition: color 0.3s ease, background-color 0.3s ease;
-  /* Smooth transition for color and fill */
 
   svg {
-    width: 22px;
+    width: 18px;
     height: 22px;
   }
 }
@@ -182,7 +183,6 @@ header {
   }
 
   .scroll-btn:hover {
-    padding: 0 !important;
     background-color: var(--secondaryColor);
     color: white;
   }
@@ -196,8 +196,10 @@ ul .scroll-to:hover {
 .side-bar-comp {
   display: flex;
   flex-direction: column;
-  padding-top: 2vh;
+  padding-inline: 1vh;
+  padding-block: 2vh;
   height: 100vh;
+  min-height: 500px;
   width: 200px;
   background-color: var(--greenPrimary);
 
@@ -207,7 +209,6 @@ ul .scroll-to:hover {
     padding-right: 4vh;
 
     #back-btn {
-      margin-left: 2vh;
       background-color: var(--gray-100);
     }
 
@@ -236,15 +237,13 @@ ul .scroll-to:hover {
       margin: 8px;
       width: 40px;
       height: 40px;
-      user-select: none;
     }
 
     .side-link {
-      margin: 1vh 1vh 1vh 1vh;
+      margin: 1vh;
       display: flex;
       text-decoration: none;
       border-radius: 35px;
-      user-select: none;
 
       h5 {
         font-size: 20px;
@@ -268,12 +267,9 @@ ul .scroll-to:hover {
 
   #side-border {
     border-bottom: 1px solid var(--gray-100);
-    margin: 0 1vh 0 1vh;
   }
 
-  .info {
-    position: relative;
-    flex-direction: flex-end;
-    text-align: center;
+  footer {
+    margin-top: auto;
   }
 }
