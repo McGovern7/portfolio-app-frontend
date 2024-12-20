@@ -20,7 +20,7 @@ export default function Home() {
           </p>
         </section>
         <section id='writeup-sect'>
-          <h3 id='unused-writeup-title'>Writeup: Tarkov Ammo Storage Application</h3>
+          <h3>Writeup: Tarkov Ammo Storage Application</h3>
           <p>
             &emsp;&ensp;In today's rapidly evolving and competitive tech landscape, full-stack capable developers are becoming highly regarded. Full-stack development is a multi-discipline skill, requiring devs to have an end-to-end understanding of an application. This comprehensive knowledge enables efficient problem-solving and leads to the creation of more robust application architecture.  For example, a full-stack dev assigned to the frontend can leverage their insights of backend processes to optimize how frontend components interact with server-side logic. These devs can streamline queries, robustly handle bad requests, and minimize server data load. In turn improving performance, development time, and user experience.
           </p>
@@ -31,7 +31,7 @@ export default function Home() {
             &emsp;&ensp;I have successfully taught myself the various software disciplines necessary to build my first web application as a solo full-stack developer.  In addition, I have learned the process of hosting this app both remotely and locally.  Made high in demand by today's devs, the following elements comprise this project's stack.
           </p>
         </section>
-        <section id='unused-stack-sect'>
+        <section>
           <h3>Architecture: The Stack on localhost</h3>
           <h4 style={{ textAlign: 'left', margin: '2rem 0rem 0rem 8rem' }}>Back End</h4>
           <div className='card-block'>
@@ -76,7 +76,6 @@ export default function Home() {
             />
           </div>
         </section>
-
         <section id='dataflow-sect'>
           <h3>API-User Dataflow</h3>
           <p className='img-text' aria-labelledby='data-flow-img'>

@@ -5,9 +5,10 @@
   font-style: normal;
 }
 
-html, body {
+html,
+body {
   overflow: auto;
-  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0); /* Thumb color and track color */
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
 }
 
 :root {
@@ -56,25 +57,19 @@ h5 {
   min-height: 100vh;
 
   .card-block {
-    padding-inline: 1vh;
-    justify-content: space-evenly;
     display: flex;
     flex-direction: row;
+    margin-inline: 8vw;
+    justify-content: start;
+    border-left: 6px solid #ff9a00;
+    border-right: 6px solid #27a7d8;
     overflow-x: scroll;
 
     .card-section {
-      margin: 3vh 1vw 3vh 1vw;
-      min-width: 385px;
-      max-width: 385px;
+      margin: 3vh 1vh 3vh 1vh;
+      min-width: 350px;
       height: 200px;
       background-color: var(--cardColor);
-
-      .card-block {
-        padding: 0vh 1vh 0vh 1vh;
-        justify-content: space-evenly;
-        display: flex;
-        flex-direction: row;
-      }
     }
   }
 }
@@ -89,20 +84,21 @@ h5 {
 }
 
 #dataflow-sect {
+  text-align: center;
+
   p {
     display: flex;
     justify-content: space-around;
+    text-align: start;
     font-weight: bold;
     color: gray;
     margin-inline: 8vw;
   }
 
   #data-flow-img {
-    display: flex;
     margin-bottom: 4vw;
     min-width: 600px;
     max-width: calc(100% - 8vw);
-    justify-self: center;
     border: 6px solid var(--mainColor);
   }
 

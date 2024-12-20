@@ -170,13 +170,14 @@ header {
 
 /* ScrollTo Comp */
 .scroll-to {
-  margin-bottom: 1vh;
   cursor: pointer;
   width: fit-content;
   transition: padding 0.3s ease;
   user-select: none;
 
   .scroll-btn {
+    margin-bottom: 5vh;
+    margin-left: 5vh;
     width: 40px;
     height: 40px;
     color: var(--secondaryColor);
@@ -270,6 +271,7 @@ ul .scroll-to:hover {
   }
 
   footer {
+    color: var(--textColor);
     margin-top: auto;
   }
 }
