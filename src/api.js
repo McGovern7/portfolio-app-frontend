@@ -3,7 +3,7 @@ import axios from 'axios';
 // axios is an api connection library
 
 const api = axios.create({
-    baseURL: 'https://portfolio-app-backend-ay3g.onrender.com',
+    baseURL: 'http://localhost:8000', // local API host
 });
 
 export default api;
