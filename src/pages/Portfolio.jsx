@@ -37,7 +37,6 @@ function Portfolio() {
         }
       }
     };
-    console.log('small screen', smallScreen);
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize); // cleanup listener
@@ -93,7 +92,7 @@ function Portfolio() {
         <section id='about-me'>
           <h2>About Me</h2>
           <div className='row'>
-            <p className='col'>Since recently graduating with a Computer Science degree from my hometown school of UVM, I've been passionately expanding my CS repertoire to address the ever-evolving challenges in this tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br></br><br></br>test</p>
+            <p className='col'>Since recently graduating with a Computer Science degree from my hometown school of UVM, I've been passionately expanding my CS repertoire to address the ever-evolving challenges in this tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br></br><br></br></p>
             <p className='col'>Recently, he has become proficient in robotics software architecture, and building accessible web applications using full-stack development techniques.  Accomplishing these solo projects has vastly improved his ability to solve obstacles independently, and develop software which reaches beyond the fundamental concepts taught at UVM.</p>
           </div>
         </section>

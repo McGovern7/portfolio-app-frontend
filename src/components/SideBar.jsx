@@ -25,7 +25,7 @@ function SideBar() {
     if (navigate(-1)) {
       navigate(-1); // Go back if within the same origin
     } else {
-      navigate('/portfolio'); // Fallback
+      setCanGoBack(false);
     }
   };
   useEffect(() => {
