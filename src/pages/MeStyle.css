@@ -166,6 +166,12 @@ html {
     border-left: none;
     border-right: 2px solid var(--greenPrimary);
     transition: all 1s ease;
+
+    section p, section div{
+      flex: 0;
+      min-width: 250px;
+      overflow-x: hidden;
+    }
   }
 
   #slide-btn {
@@ -198,11 +204,14 @@ html {
   padding: 2vh 3vh 0 3vh;
 }
 
-#dark-mode-btn, #back-btn, #slide-btn {
+#dark-mode-btn,
+#back-btn,
+#slide-btn {
   color: var(--greenPrimary);
 }
 
-#dark-mode-btn:hover, #slide-btn:hover {
+#dark-mode-btn:hover,
+#slide-btn:hover {
   background-color: var(--greenPrimary);
   color: #DBD7D2;
 }

@@ -34,8 +34,8 @@ function Portfolio() {
           setSmallScreen(false);
         else {
           setSmallScreen(true);
-        }
-      }
+        };
+      };
     };
 
     window.addEventListener("resize", handleResize);
@@ -92,8 +92,9 @@ function Portfolio() {
         <section id='about-me'>
           <h2>About Me</h2>
           <div className='row'>
-            <p className='col'>Since recently graduating with a Computer Science degree from my hometown school of UVM, I've been passionately expanding my CS repertoire to address the ever-evolving challenges in this tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br></br><br></br></p>
-            <p className='col'>Recently, he has become proficient in robotics software architecture, and building accessible web applications using full-stack development techniques.  Accomplishing these solo projects has vastly improved his ability to solve obstacles independently, and develop software which reaches beyond the fundamental concepts taught at UVM.</p>
+            <p className='col'>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br></br><br></br></p>
+            <p className='col'>I have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first full-stack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.</p>
+            <p>My current goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer.</p>
           </div>
         </section>
         <section id='proficiencies'>
@@ -111,7 +112,7 @@ function Portfolio() {
               <p>JavaScript</p>
             </div>
             <div className='col skills'>
-              <p>MySQL</p>
+              <p>SQL</p>
               <p>React</p>
               <p>R</p>
               <p>CSS</p>
@@ -142,8 +143,8 @@ function Portfolio() {
           <div className='project-group'>
             <div className='project-link'><Link className='thin-title' to='/tarkov-app/home' target="_blank" rel="noopener noreferrer">TARKOV APP<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
-              <p className='col'>Having been primarily assigned Front-End roles in college, He built this FastAPI app to encompass all parts of a contemporary website's development stack.</p>
-              <p className='col'>The stack is designed to be modular, so that future builds can be scaled with features additional like Caching, Load Balancing, and Backups. Expect slow API service, as the SQL is hosted on a free version of Supabase.</p>
+              <p className='col'>Having been primarily assigned Front-End roles in college, I sought to expand my horizons. I built this FastAPI app to encompass all parts of a contemporary website's development stack, and uncoil their interworkings.</p>
+              <p className='col'>My website's stack is designed using modular components, so that future builds can be scaled with additional components additional like Caching, Load Balancing, and Backups. Expect slow API service, as the SQL is hosted on a free Supabase version.</p>
             </div>
             <p className='mini'>Frontend</p>
             <div className='shield'>
@@ -175,8 +176,8 @@ function Portfolio() {
           <div className='project-group' style={{ paddingTop: '4vh', borderTop: '1px solid #216E4E' }}>
             <div className='project-link'><Link className='thin-title' to='https://github.com/McGovern7/ardupilot-nav-scripts' target="_blank" rel="noopener noreferrer">ARDUPILOT NAV<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
-              <p className='col'>After graduation, He joined the drone navigation community. This project allows a drone to autonomously navigate a 3D maze using a script he developed.</p>
-              <p className='col'>Future plans to add object recognition and tracking, then implement this software into a custom self-built drone. See the writeup.md on Github for a detailed overview</p>
+              <p className='col'>After graduation, I joined the drone navigation community. A community where hobbyists build and program drones to navigate without controllers. The code I built for this project allows a drone to navigate a 3D maze autonomously using a script.</p>
+              <p className='col'>This is just the beginning. I have Future plans to create object recognition and tracking software, which will then be integrated into a custom-built drone. See the writeup.md on Github for the project's overview</p>
             </div>
             <div className='shield'>
               <img alt="ardupilot copter" src="https://img.shields.io/badge/Copter-space?label=Ardupilot&labelColor=%23dedede&color=%23fcd94c" />
@@ -208,13 +209,13 @@ function Portfolio() {
           <h2>Notable Class Work</h2>
           <Card ariaLabel='Class, Web app development' id='web-dev-class'
             title={<p className='card-title'><b>Web App Development</b>Fall 2023</p>}
-            content={<p className='card-content'>Develop an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a RESTful API</p>} />
+            content={<p className='card-content'>Developed an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a RESTful API</p>} />
           <Card ariaLabel='Class, data privacy' id='data-priv-class'
             title={<p className='card-title'><b>Data Privacy</b>Fall 2023</p>}
-            content={<p className='card-content'>Solo Project-based Learning: Adding privacy mechanisms to create secure and accurate coordinate data. Plot data on a world map with GeoPandas.</p>} />
+            content={<p className='card-content'>Solo Project-based Learning: Created software which adds privacy mechanisms to create secure and accurate coordinate data. Data then plotted on a world map with GeoPandas.</p>} />
           <Card ariaLabel='Class, software engineering' id='software-eng-class'
             title={<p className='card-title'><b>Software Engineering</b>Spring 2023</p>}
-            content={<p className='card-content'>Using Agile Development in a group of 4, code a simulated monopoly game using PyGame. Sharing code through GitLab for this semester-long project.</p>} />
+            content={<p className='card-content'>Using Agile Development in a group of 4, I coded a simulated monopoly game using PyGame. Code was shared through GitLab for this semester-long project.</p>} />
           <Card ariaLabel='Class, cybersecurity' id='cybersecurity-class'
             title={<p className='card-title'><b>Cybersecurity Principles</b>Summer 2022</p>}
             content={<p className='card-content'>Infiltrate my professor’s (fake) online bank using cryptographic hashing to secure computer networks. Newfound understanding of network threat vectors allows me to build more secure software.</p>} />
