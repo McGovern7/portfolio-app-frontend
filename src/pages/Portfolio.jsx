@@ -67,7 +67,7 @@ function Portfolio() {
           </div>
           <h1>Luke McGovern</h1>
           <ul style={{ paddingLeft: '3px', margin: '0' }}>
-            <p className='mini' style={{ marginBottom: "0" }}>Software Engineer, Full-Stack Developer</p>
+            <p className='mini' style={{ marginBottom: "0" }}>Software Engineer, Fullstack Developer</p>
             <p className='mini' style={{ paddingBottom: "2vh", }}>luke.mcgovern18@gmail.com</p>
           </ul>
           <ul className='scroll-list'>
@@ -93,48 +93,39 @@ function Portfolio() {
           <h2>About Me</h2>
           <div className='row'>
             <p className='col'>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br></br><br></br></p>
-            <p className='col'>I have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first full-stack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.</p>
+            <p className='col'>I have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first fullstack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.</p>
             <p>My current goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer.</p>
           </div>
         </section>
         <section id='proficiencies'>
           <h2>Proficiencies</h2>
-          <div className={`title-row ${darkMode ? 'dark-mode' : ''}`}>
-            <h4 className='thin-title' id='language-title'>LANGUAGES</h4>
-            <h4 className='thin-title' id='skills-title'>SKILLS & TOOLS</h4>
-          </div>
-          <div className='row'>
-            <div className='col skills'>
-              <p>Python</p>
-              <p>Swift</p>
-              <p>C</p>
-              <p>C++</p>
-              <p>JavaScript</p>
+          <div id='prof-table'>
+            <div id='language-col'>
+              <div className='row'> <h4 className='thin-title'>LANGUAGES</h4> </div>
+              <div className='row'>
+                <div className='col skills'>
+                  <p>Python<br/>Swift<br/>C<br/>C++<br/>JavaScript</p>
+                </div>
+                <div className='col skills'>
+                  <p>SQL<br/>React<br/>CSS<br/>HTML</p>
+                </div>
+              </div>
             </div>
-            <div className='col skills'>
-              <p>SQL</p>
-              <p>React</p>
-              <p>R</p>
-              <p>CSS</p>
-              <p>HTML</p>
-            </div>
-            <div className='col skills'>
-              <p>Full-Stack Dev</p>
-              <p>FastAPI</p>
-              <p>Figma</p>
-              <p>iOS Dev</p>
-            </div>
-            <div className='col skills'>
-              <p>GIT</p>
-              <p>ROS Robotics</p>
-              <p>LinuxCLI</p>
-              <p>Pandas</p>
-            </div>
-            <div className='col skills'>
-              <p>Algo-Design</p>
-              <p>Data-Structs</p>
-              <p>Data-Privacy</p>
-              <p>PC-Building</p>
+            <div id='skills-col'>
+              <div className='row'>
+                <h4 className='thin-title' id='skills-title'>SKILLS & TOOLS</h4>
+              </div>
+              <div className='row'>
+                <div className='col skills'>
+                  <p>Fullstack Dev<br/>FastAPI<br/>Figma<br/>iOS Dev</p>
+                </div>
+                <div className='col skills'>
+                  <p>GIT<br/>ROS Robotics<br/>LinuxCLI<br/>Pandas</p>
+                </div>
+                <div className='col skills'>
+                  <p>Algo-Design<br/>Data-Structs<br/>Data-Privacy<br/>PC-Building</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
