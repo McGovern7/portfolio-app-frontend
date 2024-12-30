@@ -97,6 +97,12 @@ html {
     }
   }
 
+  .thin-title {
+    font-size: 16px;
+    font-weight: 300 !important;
+    color: var(--gray-200);
+  }
+
   scrollbar-color: var(--purple-800) rgba(0, 0, 0, 0);
   /* Thumb color and track color */
 }
@@ -117,6 +123,10 @@ html {
   justify-content: space-between;
   overflow: hidden;
   white-space: nowrap;
+
+  #intro {
+    padding: 1rem 1.5rem 0 1.5rem;
+  }
 }
 
 .main-column-B {
@@ -134,28 +144,47 @@ html {
     #prof-table {
       display: flex;
       flex-wrap: wrap;
-      transition: all 1s ease; /* Smooth transition on changes */
 
-      .skills p {
-        margin: 0;
+      .thin-header {
+        font-size: 30px;
+        font-weight: 300;
       }
 
       #language-col {
         flex: 1;
         flex-direction: row;
         margin-right: 1rem;
-        border: 1px solid var(--lightPrimary);
-        min-width: 40%;
-        transition: all 1s ease;
+        max-width: 40%;
       }
 
       #skills-col {
         flex: 1;
         flex-direction: row;
-        min-width: max(60%, 355px);
-        transition: all 1s ease;
+        min-width: max(60%, 450px);
+        max-width: 60%;
       }
     }
+  }
+
+  /* Card Comp */
+  .card-section {
+    margin: 1.5rem .5rem 1.5rem .5rem;
+    background-color: var(--purple-800);
+    width: max(425px, 80%);
+    line-height: 1.2;
+
+    .card-title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .card-content {
+      font-size: 16px;
+    }
+  }
+
+  .card-section:hover {
+    background-color: var(--purple-600);
   }
 
   .error {
@@ -227,10 +256,6 @@ html {
   }
 }
 
-#intro {
-  padding: 1rem 1.5rem 0 1.5rem;
-}
-
 #dark-mode-btn,
 #back-btn,
 #slide-btn {
@@ -246,76 +271,35 @@ html {
 /* SideBar Comp */
 .side-bar-column {
   display: flex;
-  max-width: 14%;
-  min-width: max(calc(200px), 14%);
+  width: 15%;
+  min-width: max(216px, 15%);
 }
 
 /* ScrollTo Comp */
 .scroll-list {
-  margin: 0;
   display: flex;
   flex-direction: column;
-}
-
-/* Card Comp */
-.portfolio-page {
-  .card-section {
-    margin: 1.5rem .5rem 1.5rem .5rem;
-    background-color: var(--purple-800);
-    width: max(425px, 80%);
-    line-height: 1.2;
-
-    .card-title {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .card-content {
-      font-size: 16px;
-    }
-  }
-
-  .card-section:hover {
-    background-color: var(--purple-600);
-  }
-}
-
-.thin-title {
-  font-size: 16px;
-  font-weight: 300 !important;
-  color: var(--gray-200);
-}
-
-.thin-content p {
-  font-size: 13px;
-  font-weight: 300 !important;
-}
-
-.thin-content.dark-mode p {
-  color: var(--gray-400) !important;
+  margin: 0;
 }
 
 .project-group {
-  margin-block: 1rem;
-
   .project-link {
     display: flex;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
     background-color: var(--gray-750);
-    border-radius: 0.375rem;
+    border-radius: .375rem;
     cursor: pointer;
     width: 48%;
 
     .thin-title {
       padding: 1rem 0 .75rem 2rem;
-      flex: 1;
       text-decoration: none;
     }
 
     .external {
-      margin-left: 0.5rem;
+      margin-left: .5rem;
       justify-content: right;
-      transition: transform 0.3s ease;
+      transition: transform .3s ease;
       padding-bottom: 1px;
     }
   }
@@ -336,13 +320,12 @@ html {
 
   .shield {
     img {
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-right: .5rem;
+      margin-bottom: .5rem;
       padding: 0;
       width: auto;
       height: 30px;
     }
-
   }
 }
 
@@ -351,9 +334,9 @@ html {
   display: flex;
   height: 100vh;
   min-height: 500px;
+  width: stretch;
 
   object {
-    flex-grow: 1;
-    width: calc(100vw - 200px);
+    width: stretch;
   }
 }
