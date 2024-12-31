@@ -65,32 +65,28 @@ const Register = () => {
         <Navbar />
       </React.Fragment>
       <main>
-        <p id='warning-text'>
-          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
-        </p>
+        <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
         <h3>Registration</h3>
-        <div className='grouper'>
-          <section id='register-sect' className='shadow-lg'>
-            <div className='register p-3'>
-              <h5>Register A New Profile</h5>
-              <form aria-labelledby='register-sect' onSubmit={handleRegFormSubmit}>
-                <div className='mb-3'>
-                  <label htmlFor="username" className='form-label'>Username</label>
-                  <input type="text" className='form-control' id='username' name='username' onChange={handleRegInputChange} value={regData.username} maxLength={15} />
-                </div>
+        <div className='grouper profile'>
+          <div className='change-status p-3 shadow'>
+            <h5>Register A New Profile</h5>
+            <form aria-labelledby='register-sect' onSubmit={handleRegFormSubmit}>
+              <div className='mb-3'>
+                <label htmlFor="username" className='form-label'>Username</label>
+                <input type="text" className='form-control' id='username' name='username' onChange={handleRegInputChange} value={regData.username} maxLength={15} />
+              </div>
 
-                <div className='mb-3'>
-                  <label htmlFor="password" className='form-label'>Password</label>
-                  <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} maxLength={36} />
-                </div>
+              <div className='mb-3'>
+                <label htmlFor="password" className='form-label'>Password</label>
+                <input type="password" className='form-control' id='password' name='password' onChange={handleRegInputChange} value={regData.password} maxLength={36} />
+              </div>
 
-                <Button id='register' label={loading ? ' Registering' : ' Register'} icon={<FaUserPlus />} variant='success' type='submit' disabled={loading}></Button>
-                {error && <p aria-labelledby='register-sect' className="error">{error}</p>}
-                {regStatus && <p aria-labelledby='register-sect' className="success">{regStatus}</p>}
-              </form>
-              {localStorage.getItem('username') ? <></> : (<p>Want to access Profile? <a href="/profile">Login</a></p>)}
-            </div>
-          </section>
+              <Button id='register' label={loading ? ' Registering' : ' Register'} icon={<FaUserPlus />} variant='success' type='submit' disabled={loading}></Button>
+              {error && <p aria-labelledby='register-sect' className="error">{error}</p>}
+              {regStatus && <p aria-labelledby='register-sect' className="success">{regStatus}</p>}
+            </form>
+            {localStorage.getItem('username') ? <></> : (<p>Want to access Profile? <a href="/profile">Login</a></p>)}
+          </div>
         </div>
       </main>
     </div>

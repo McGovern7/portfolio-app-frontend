@@ -128,52 +128,36 @@ function Profile() {
         <Navbar />
       </React.Fragment>
       <main>
-        <p id='warning-text'>
-          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
-        </p>
+        <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
         <h3>User Profile</h3>
-        <div style={{ display: logoutVisible ? 'block' : 'none' }}>
-          <div className='grouper'>
-            <section id='logout-sect' className='shadow-lg'>
-              <div className='logout p-3'>
-                <h5>Logout of *{localStorage.getItem('username')}*?</h5>
-                <Button id='logout-button' label={loading ? ' Logging out' : ' Logout'} icon={<FaSignOutAlt />} variant='success' type='submit' onClick={handleLogoutButton} disabled={loading}></Button>
-              </div>
-            </section>
-            <section id='delete-sect' className='shadow-lg'>
-              <div className='delete p-3'>
-                <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
-                <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
-                {error && <p aria-label='delete form error response' className="error">{error}</p>}
-              </div>
-            </section>
+        <div className='grouper profile' style={{ display: logoutVisible ? 'flex' : 'none' }}>
+          <div className='change-status p-3 shadow'>
+            <h5>Logout of *{localStorage.getItem('username')}*?</h5>
+            <Button id='logout-button' label={loading ? ' Logging out' : ' Logout'} icon={<FaSignOutAlt />} variant='success' type='submit' onClick={handleLogoutButton} disabled={loading}></Button>
+          </div>
+          <div className='change-status p-3 shadow'>
+            <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
+            <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
+            {error && <p aria-label='delete form error response' className="error">{error}</p>}
           </div>
         </div>
 
-        <div style={{ display: loginVisible ? 'block' : 'none' }}>
-          <div className='grouper'>
-            <section id='login-sect' className='shadow-lg'>
-              <div className='login p-3'>
-                <h5 aria-label='login title'>Login to access your entries</h5>
-                <form id='login-form' onSubmit={handleLogFormSubmit} aria-label='login form'>
-
-                  <div className='mb-3'>
-                    <label htmlFor="username" className='form-label'>Username</label>
-                    <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username} maxLength={15} />
-                  </div>
-
-                  <div className='mb-3'>
-                    <label htmlFor="password" className='form-label'>Password</label>
-                    <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
-                  </div>
-
-                  <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading} ariaLabelledBy='login-form'></Button>
-                  {error && <p className="error" aria-labelledby='login-form' >{error}</p>}
-                </form>
-                <p aria-label='register new account prompt'>Don't have an Account?  <a href="/register">Register</a></p>
-
+        <div className='grouper profile' style={{ display: loginVisible ? 'flex' : 'none' }}>
+          <div className='change-status p-3 shadow'>
+            <h5 aria-label='login title'>Login to access your entries</h5>
+            <form id='login-form' onSubmit={handleLogFormSubmit} aria-label='login form'>
+              <div className='mb-3'>
+                <label htmlFor="username" className='form-label'>Username</label>
+                <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username} maxLength={15} />
               </div>
-            </section>
+              <div className='mb-3'>
+                <label htmlFor="password" className='form-label'>Password</label>
+                <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
+              </div>
+              <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading} ariaLabelledBy='login-form'></Button>
+              {error && <p className="error" aria-labelledby='login-form' >{error}</p>}
+            </form>
+            <p aria-label='register new account prompt'>Don't have an Account?  <a href="/register">Register</a></p>
           </div>
         </div>
       </main>

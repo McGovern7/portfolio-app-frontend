@@ -119,7 +119,7 @@ header {
     color: var(--mainColor);
     visibility: hidden;
     opacity: 0;
-    font-size: 3vh;
+    font-size: 1.5rem;
   }
 }
 
@@ -129,10 +129,9 @@ header {
     padding-right: 2rem;
 
     .nav-btn {
-      position: absolute;
       visibility: visible;
       opacity: 1;
-      right: 2rem;
+      min-height: 1.5rem;
     }
 
     .nav-bar {
@@ -145,11 +144,12 @@ header {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.5vh;
       background-color: var(--secondaryColor);
       transition: 1s;
       transform: translateY(-100vh);
       z-index: 99;
+      overflow: scroll;
 
       a {
         font-size: 1.5rem;
@@ -176,8 +176,7 @@ header {
   user-select: none;
 
   .scroll-btn {
-    margin-bottom: 5vh;
-    margin-left: 5vh;
+    margin: 0 0 5vh 5vh;
     width: 40px;
     height: 40px;
     color: var(--secondaryColor);

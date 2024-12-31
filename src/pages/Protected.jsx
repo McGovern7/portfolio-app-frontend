@@ -185,42 +185,34 @@ function ProtectedPage() {
         <Navbar />
       </React.Fragment>
       <main>
-        <p id='warning-text'>
-          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
-        </p>
+        <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
         <h3>{localStorage.getItem('username')}'s Stash</h3>
         {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
         <div className='grouper'>
-          <section id='entry-form-sect' className='shadow-lg'>
+          <section id='entry-form-sect' className='shadow'>
             <h4>Enter Ammo into your Storage</h4>
             <form aria-labelledby='entry-form-sect' onSubmit={handleFormSubmit}>
-
               <div className='mb-3 mt-3'>
-                <label htmlFor='ammo_name' className='form-label'>
-                  Ammo Name
-                </label>
-                <input type='text' className='form-control' id='ammo_name' name="ammo_name" onChange={handleAmmoNameChange} value={formData.ammo_name} maxLength={25} />
+                <label htmlFor='ammo_name' className='form-label'> Ammo Name </label>
+                <input type='text' className='form-control' id='ammo_name' name="ammo_name" 
+                  onChange={handleAmmoNameChange} value={formData.ammo_name} maxLength={25} />
               </div>
-
               <div className='mb-3'>
-                <label htmlFor='caliber' className='form-label'>
-                  Caliber
-                </label>
-                <input type='text' className='form-control' id='caliber' name="caliber" onChange={handleCaliberChange} value={formData.caliber} maxLength={25} />
+                <label htmlFor='caliber' className='form-label'> Caliber </label>
+                <input type='text' className='form-control' id='caliber' name="caliber" 
+                  onChange={handleCaliberChange} value={formData.caliber} maxLength={25} />
               </div>
-
               <div className='mb-3'>
-                <label htmlFor='ammo_amount' className='form-label'>
-                  Amount
-                </label>
-                <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" onChange={handleOtherChange} value={formData.ammo_amount} />
+                <label htmlFor='ammo_amount' className='form-label'> Amount </label>
+                <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" 
+                  onChange={handleOtherChange} value={formData.ammo_amount} />
               </div>
-
-              <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet alt="" />} variant='primary' type='submit' disabled={loading}></Button>
+              <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet alt="" />} 
+                variant='primary' type='submit' disabled={loading}></Button>
               {formError && <p aria-labelledby='entry-form-sect' style={{ color: 'red' }}>{formError}</p>}
             </form>
           </section>
-          <section id='entry-table-sect' className='shadow-lg' >
+          <section id='entry-table-sect' className='shadow'>
             <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
             <table id='entry-table' aria-labelledby='entry-table-sect' className='table table-striped table-bordered border-dark'>
               <thead className='table-dark '>
@@ -243,7 +235,7 @@ function ProtectedPage() {
           </section>
         </div>
         <div className='grouper'>
-          <section id='ammo-type-chart-sect' className='shadow-lg' >
+          <section id='ammo-type-chart-sect' className='shadow'>
             <h4>Ammo Types Chart</h4>
             <button aria-labelledby='ammo-type-chart-sect' type='submit' className='dropdown' onClick={handleDropDown} disabled={loading}>
               {dropDown.icon}

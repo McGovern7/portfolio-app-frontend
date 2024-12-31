@@ -150,6 +150,10 @@ html {
         font-weight: 300;
       }
 
+      .skills p {
+        white-space: nowrap;
+      }
+
       #language-col {
         flex: 1;
         flex-direction: row;
@@ -162,6 +166,10 @@ html {
         flex-direction: row;
         min-width: max(60%, 450px);
         max-width: 60%;
+        flex-wrap: wrap;
+        .row {
+          display: flex;
+        }
       }
     }
   }
