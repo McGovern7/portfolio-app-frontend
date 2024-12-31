@@ -36,7 +36,7 @@ h5 {
   color: green;
 }
 
-#warning-text {
+.warning-text {
   font-size: large;
   font-weight: bold;
   line-height: 2.0;
@@ -132,53 +132,24 @@ h5 {
   }
 }
 
-/* Profile CSS */
-#login-sect {
-  margin: 4vh 1vw 7vh 2vw;
+/* Profile & Register CSS */
+.grouper.profile {
+  display: flex;
+  flex-wrap: wrap;
 
-  p {
-    min-width: 20rem;
-    font-weight: bold;
-    color: gray;
-  }
-
-  .login {
+  .change-status {
+    margin: 4vh 1vw 4vh 2vw;
     background-color: var(--textColor);
     border: 6px solid var(--mainColor);
-  }
-}
 
-#logout-sect {
-  margin: 4vh 1vw 7vh 2vw;
+    h5 {
+      white-space: nowrap;
+    }
 
-  .logout {
-    background-color: var(--textColor);
-    border: 6px solid var(--mainColor);
-  }
-}
-
-#delete-sect {
-  margin: 4vh 1vw 7vh 2vw;
-
-  .delete {
-    background-color: var(--textColor);
-    border: 6px solid var(--mainColor);
-  }
-}
-
-/* Register CSS */
-#register-sect {
-  margin: 4vh 1vw 7vh 2vw;
-
-  p {
-    font-weight: bold;
-    color: gray;
-  }
-
-  .register {
-    min-width: 20rem;
-    background-color: var(--textColor);
-    border: 6px solid var(--mainColor);
+    p {
+      font-weight: bold;
+      color: gray;
+    }
   }
 }
 
@@ -195,15 +166,16 @@ h5 {
 }
 
 #entry-form-sect {
-  margin: 2rem 1rem 3.5rem 1rem;
+  margin: 2rem 1rem 1rem 1rem;
   padding: 1rem;
+  width: 30%;
   min-width: 20rem;
   background-color: var(--textColor);
   border: 6px solid var(--mainColor);
 }
 
 #entry-table-sect {
-  margin: 2rem 1rem 3rem 1rem;
+  margin: 2rem 1rem 1rem 1rem;
   padding: 1rem;
   width: 70%;
   min-width: 45rem;
@@ -212,9 +184,10 @@ h5 {
 }
 
 #ammo-type-chart-sect {
-  margin: 2rem 3rem 5rem 1rem;
+  margin: 1rem 3rem 2rem 1rem;
   padding: 1rem;
   min-width: 994px;
+  width: 75%;
   background-color: var(--textColor);
   border: 6px solid var(--mainColor);
 }

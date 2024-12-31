@@ -5,35 +5,25 @@ import './pages.css';
 
 export default function Home() {
   return (
-    <div className='main-page' id="home-top">
+    <div className='main-page'>
       <React.Fragment>
         <Navbar />
       </React.Fragment>
       <main>
-        <p id='warning-text'>
-          **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH**
-        </p>
+        <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
         <section id='description'>
-          <h3 id='description-title'>App Description</h3>
-          <p>
-            &emsp;&ensp;This app provides a space for players of the game Escape from Tarkov to create secure accounts, log their in-game ammo, and view advanced ammo data. The storage tab can be accessed after registering an account and loggin in.
-          </p>
+          <h3>App Description</h3>
+          <p> &emsp;&ensp;This app provides a space for players of the game Escape from Tarkov to create secure accounts, log their in-game ammo, and view advanced ammo data. The storage tab can be accessed after registering an account and loggin in. </p>
         </section>
         <section id='writeup-sect'>
           <h3>Writeup: Tarkov Ammo Storage Application</h3>
-          <p>
-            &emsp;&ensp;In today's rapidly evolving and competitive tech landscape, full-stack capable developers are becoming highly regarded. Full-stack development is a multi-discipline skill, requiring devs to have an end-to-end understanding of an application. This comprehensive knowledge enables efficient problem-solving and leads to the creation of more robust application architecture.  For example, a full-stack dev assigned to the frontend can leverage their insights of backend processes to optimize how frontend components interact with server-side logic. These devs can streamline queries, robustly handle bad requests, and minimize server data load. In turn improving performance, development time, and user experience.
-          </p>
-          <p>
-            &emsp;&ensp;When creating applications prior to this project, I was primarily assigned roles localized within an app's frontend or backend.  While this specialization allowed for expertise of roles, it limited my understanding of the app’s overall architecture.  My goal with this project is to gain a comprehensive view of an application's stack, while discovering the benefits and challenges associated with full-stack development.
-          </p>
-          <p>
-            &emsp;&ensp;I have successfully taught myself the various software disciplines necessary to build my first web application as a solo full-stack developer.  In addition, I have learned the process of hosting this app both remotely and locally.  Made high in demand by today's devs, the following elements comprise this project's stack.
-          </p>
+          <p> &emsp;&ensp;In today's rapidly evolving and competitive tech landscape, full-stack capable developers are becoming highly regarded. Full-stack development is a multi-discipline skill, requiring devs to have an end-to-end understanding of an application. This comprehensive knowledge enables efficient problem-solving and leads to the creation of more robust application architecture.  For example, a full-stack dev assigned to the frontend can leverage their insights of backend processes to optimize how frontend components interact with server-side logic. These devs can streamline queries, robustly handle bad requests, and minimize server data load. In turn improving performance, development time, and user experience. </p>
+          <p> &emsp;&ensp;When creating applications prior to this project, I was primarily assigned roles localized within an app's frontend or backend.  While this specialization allowed for expertise of roles, it limited my understanding of the app’s overall architecture.  My goal with this project is to gain a comprehensive view of an application's stack, while discovering the benefits and challenges associated with full-stack development. </p>
+          <p> &emsp;&ensp;I have successfully taught myself the various software disciplines necessary to build my first web application as a solo full-stack developer.  In addition, I have learned the process of hosting this app both remotely and locally.  Made high in demand by today's devs, the following elements comprise this project's stack. </p>
         </section>
         <section>
           <h3>Architecture: The Stack on localhost</h3>
-          <h4 style={{ textAlign: 'left', margin: '2rem 0rem 0rem 8rem' }}>Back End</h4>
+          <h4 style={{ margin: '2rem 0rem 0rem 8rem' }}>Back End</h4>
           <div className='card-block'>
             <Card aria-label='MySQL card' id='data-card'
               title={<p className='card-title' ><b><a target="_blank" rel="noopener noreferrer" href='https://www.mysql.com/'>MySQL</a></b> Database</p>}
@@ -104,7 +94,7 @@ export default function Home() {
           </ul>
         </section>
         <ScrollTo ariaLabel='scroll to top button' className='scroll-to'
-                      icon={<FaAngleUp />} sectionID='top' />
+          icon={<FaAngleUp />} sectionID='top' />
       </main>
     </div>
   )

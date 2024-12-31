@@ -119,13 +119,13 @@ function Portfolio() {
               </div>
               <div className='row'>
                 <div className='col skills'>
-                  <p>Fullstack Dev<br />FastAPI<br />Figma<br />iOS Dev</p>
+                  <p>Fullstack Dev<br/>FastAPI<br/>Figma<br/>iOS Dev</p>
                 </div>
                 <div className='col skills'>
-                  <p>GIT<br />ROS Robotics<br />LinuxCLI<br />Pandas</p>
+                  <p>GIT<br/>ROS Robotics<br/>LinuxCLI<br/>Pandas</p>
                 </div>
                 <div className='col skills'>
-                  <p>Algorithm Design<br />Data Structures<br />Data Privacy<br />PC Building</p>
+                  <p>Algorithm Design<br/>Data Structures<br/>Data Privacy<br/>PC Building</p>
                 </div>
               </div>
             </div>
