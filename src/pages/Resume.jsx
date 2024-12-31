@@ -12,9 +12,9 @@ export default function ResumePage() {
             <SideBar />
           </React.Fragment>
         </section>
-        <div className='resume-column'>
-          <object aria-label='Resume PDF' data={Resume} type="application/pdf"></object>
-        </div>
+      </div>
+      <div className='resume-column'>
+        <object aria-label='Resume PDF' data={Resume} type="application/pdf"></object>
       </div>
     </div>
   )

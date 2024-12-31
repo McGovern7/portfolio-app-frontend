@@ -28,7 +28,7 @@
   color: var(--gray-100);
 
   .card-title {
-    padding: 2vh 2vh 1vh 2vh;
+    padding: 1rem 1rem 0.5rem 1rem;
     font-size: 20px;
     position: relative;
   }
@@ -39,12 +39,12 @@
     top: 100%;
     right: 0;
     height: 2px;
-    width: 125px;
+    width: 50%;
     background: var(--gray-100);
   }
 
   .card-content {
-    padding: 1vh 4vh 2vh 6vh;
+    padding: 0.5rem 2rem 1rem 3rem;
   }
 }
 
@@ -197,17 +197,16 @@ ul .scroll-to:hover {
 .side-bar-comp {
   display: flex;
   flex-direction: column;
-  padding-inline: 1vh;
-  padding-block: 2vh;
+  padding-inline: 12px;
+  padding-block: 16px;
   height: 100vh;
   min-height: 500px;
-  width: 200px;
   background-color: var(--greenPrimary);
 
   .back-btn-container {
     display: flex;
     justify-content: flex-end;
-    padding-right: 4vh;
+    padding-right: 12px;
 
     #back-btn {
       background-color: var(--gray-100);
@@ -259,7 +258,7 @@ ul .scroll-to:hover {
 
     .side-link:hover {
       h5 {
-        padding-left: 2vh;
+        padding-left: 1rem;
       }
 
       background: var(--greenSecondary);
