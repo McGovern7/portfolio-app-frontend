@@ -136,8 +136,8 @@ function Portfolio() {
           <div className='project-group'>
             <div className='project-link'><Link className='thin-title' to='/tarkov-app/home' target="_blank" rel="noopener noreferrer">TARKOV APP<FiArrowUpRight className='external' /></Link></div>
             <div className='row'>
-              <p className='col'>Having been primarily assigned Front-End roles in college, I sought to expand my horizons. I built this FastAPI app to encompass all parts of a contemporary website's development stack, and uncoil their interworkings.</p>
-              <p className='col'>My website's stack is designed using modular components, so that future builds can be scaled with additional components additional like Caching, Load Balancing, and Backups. Expect slow API service, as the SQL is hosted on a free Supabase version.</p>
+              <p className='col'>Having been primarily assigned Front-End roles in college, I sought to expand my horizons. I built this FastAPI app to encompass all parts of a contemporary website's development stack, and uncoil their inner workings.</p>
+              <p className='col'>My website's stack is designed using modular components, so that future builds can be scaled with additional components like Caching, Load Balancing, and Backups. Expect slow API service, as the SQL is hosted on a free Supabase version.</p>
             </div>
             <p className='mini'>Frontend</p>
             <div className='shield'>
@@ -205,7 +205,7 @@ function Portfolio() {
             content={<p className='card-content'>Developed an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a RESTful API</p>}/>
           <Card ariaLabel='Class, data privacy' id='data-priv-class'
             title={<p className='card-title'><b>Data Privacy</b>Fall 2023</p>}
-            content={<p className='card-content'>Solo Project-based Learning: Created software which adds privacy mechanisms to create secure and accurate coordinate data. Data then plotted on a world map with GeoPandas.</p>}/>
+            content={<p className='card-content'>Solo Project-based Learning: Created software which adds privacy mechanisms to ensure secure and accurate coordinate data. Data plotted on a world map with GeoPandas.</p>}/>
           <Card ariaLabel='Class, software engineering' id='software-eng-class'
             title={<p className='card-title'><b>Software Engineering</b>Spring 2023</p>}
             content={<p className='card-content'>Using Agile Development in a group of 4, I coded a simulated monopoly game using PyGame. Code was shared through GitLab for this semester-long project.</p>}/>
