@@ -71,6 +71,8 @@ function Profile() {
         },
         body: formDetails,
       });
+      console.log(response.data);
+      console.log(response);
       setLoading(false);
       if (response.ok) {
         const data = await response.json();
