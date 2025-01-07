@@ -78,6 +78,7 @@ function Profile() {
         const data = await response.json();
         localStorage.setItem('token', data.access_token); // set local storage to received token
         localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
+        localStorage.log(access_token);
         navigate('/tarkov-app/protected'); // protected component ensureing valid token
       } else {
         localStorage.clear();
