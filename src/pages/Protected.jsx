@@ -224,7 +224,7 @@ function ProtectedPage() {
               </thead>
               <tbody>
                 {entries.map((entry) => (
-                  <tr key={entry.ammo_name}>
+                  <tr key={[entry.ammo_name, entry.caliber]}>
                     <th scope="row">{entry.ammo_name}</th>
                     <td>{entry.caliber}</td>
                     <td>{entry.ammo_amount}</td>
@@ -254,7 +254,7 @@ function ProtectedPage() {
                 </thead>
                 <tbody>
                   {ammoTypes.map((type) => (
-                    <tr key={[type.ammo_name, type.ammo_group]}>
+                    <tr key={[type.ammo_name, type.caliber]}>
                       <th scope='row'>{type.ammo_name}</th>
                       <td>{type.caliber}</td>
                       <td>{type.penetration}</td>
