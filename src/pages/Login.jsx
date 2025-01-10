@@ -76,25 +76,6 @@ function Profile() {
         const data = await response.json();
         localStorage.setItem('token', data.access_token); // set local storage to received token
         localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
-        /*
-        // send token to supabase
-        const jwtToken = data.access_token;
-        fetch('https://niqfgjqsjklhovgewfla.supabase.co/rest/v1/users', {
-          method: '*',  // Or PUT, PATCH, DELETE
-          headers: {
-            'Authorization': `Bearer ${jwtToken}`,  // Send the JWT in the Authorization header
-            'apikey': 'your-public-api-key',  // Optional: Public API key from Supabase
-          },
-          body: JSON.stringify({
-            field1: 'value1',
-            field2: 'value2',
-          }),
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-        */
-        
         navigate('/tarkov-app/protected'); // protected component ensureing valid token
       } else {
         localStorage.clear();
