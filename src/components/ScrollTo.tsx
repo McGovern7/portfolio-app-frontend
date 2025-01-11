@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { useEffect, useState, ReactNode } from 'react';
 import './components.css';
 
 interface ScrollToProps {
@@ -11,6 +11,21 @@ interface ScrollToProps {
 }
 
 const ScrollTo = ({ ariaLabel, id, className, content, sectionID, icon }: ScrollToProps) => {
+  const [isVisible, setIsVisible] = useState(window.scrollY <= 500);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollChange = window.scrollY <= 500;
+      if (scrollChange) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      };
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const ScrollToSection = () => {
     const section = document.getElementById(sectionID);
     if (section) {
@@ -27,7 +42,7 @@ const ScrollTo = ({ ariaLabel, id, className, content, sectionID, icon }: Scroll
     )
   } else {
     return (
-      <div aria-label={ariaLabel} id={id} className={className}
+      <div aria-label={ariaLabel} id={id} className={className} style={{ visibility: isVisible ? 'hidden' : 'visible' }}
         onClick={ScrollToSection}>
         <button className='scroll-btn circle-btn'>{icon}</button>
       </div>

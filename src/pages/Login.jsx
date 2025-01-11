@@ -20,16 +20,10 @@ function Profile() {
 
   const navigate = useNavigate();
   const handleVerify = async () => {
-    const response = await VerifyToken();
-    // login or logout depending on verification status
-    if (response) {
-      setLoginVisible(false);
-      setLogoutVisible(true);
-    }
-    else {
-      setLoginVisible(true); // could be redundant
-      setLogoutVisible(false);
-    }
+    const loggedIn = await VerifyToken();
+    // show login or logout buttons depending on verification status
+    setLoginVisible(!loggedIn);
+    setLogoutVisible(loggedIn);
   };
 
   useEffect(() => {
@@ -49,7 +43,6 @@ function Profile() {
       setError('Username and password are required');
       return false;
     };
-    setError('');
     return true;
   };
 
@@ -64,28 +57,19 @@ function Profile() {
 
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8000/auth/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formDetails,
-      });
+      const response = await api.post('http://localhost:8000/auth/token',
+        formDetails, { headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, });
+      const data = response.data;
+      setError('');
+      localStorage.setItem('token', data.access_token); // set local storage to received token
+      localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
       setLoading(false);
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.access_token); // set local storage to received token
-        localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
-        navigate('/tarkov-app/protected'); // protected component ensureing valid token
-      } else {
-        localStorage.clear();
-        const errorData = await response.json();
-        setError(errorData.detail || 'Authentication failed!');
-      };
+      navigate('/tarkov-app/protected'); // protected component ensureing valid token
     } catch (error) {
-      setLoading(false);
-      setError('An error occurred. Please try again later.');
-    };
+      localStorage.clear();
+      if (error.response.status === 401) { setError(`Login failed: Incorrect Username or Password`); }
+      else { setError(`An error has ocurred, please try again later`); }
+    } finally { setLoading(false) };
   };
 
   // handle submissions when user tries to LOGOUT
@@ -98,28 +82,24 @@ function Profile() {
   // delete user and their entries from both databases
   const handleDeleteButton = async () => {
     handleVerify();
-    console.log('verified');
-    setLoading(true);
     const username = localStorage.getItem('username');
     try {
+      setLoading(true);
       await api.delete(`/entries/${username}`);
-      setLoading(false);
+      setError('');
     } catch (error) {
-      setLoading(false);
-    };
+      if (error.response.status !== 404) {
+        setError(`Error: Could not delete ${username}'s entries`);
+        return;
+      }
+    } finally { setLoading(false); };
     try {
-      const delUserResponse = await api.delete(`/users/${username}`);
-      if (delUserResponse.status === 200) {
-        localStorage.clear();
-        setError('');
-      } else {
-        throw new Error(`Failed to DELETE user ${username}`);
-      };
+      await api.delete(`/users/${username}`);
+      setError('');
+      localStorage.clear();
     } catch (error) {
-      setError(`Failed to delete user ${username}`);
-    } finally {
-      setLoading(false);
-    };
+      setError(`Failed to delete user '${username}'`);
+    } finally { setLoading(false); };
     setDelTriggered(true);
   };
   return (
@@ -138,7 +118,7 @@ function Profile() {
           <div className='change-status p-3 shadow'>
             <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
             <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
-            {error && <p aria-label='delete form error response' className="error">{error}</p>}
+            {error && <p aria-labelledby='delete-button' className="text-danger">{error}</p>}
           </div>
         </div>
 
@@ -155,7 +135,7 @@ function Profile() {
                 <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
               </div>
               <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading} ariaLabelledBy='login-form'></Button>
-              {error && <p className="error" aria-labelledby='login-form' >{error}</p>}
+              {error && <p className="text-danger" aria-labelledby='login-form' >{error}</p>}
             </form>
             <p aria-label='register new account prompt'>Don't have an Account?  <a href="/register">Register</a></p>
           </div>

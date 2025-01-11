@@ -176,15 +176,19 @@ header {
   user-select: none;
 
   .scroll-btn {
-    margin: 0 0 5vh 5vh;
+    position: fixed;
+    bottom: 80px;
+    right: 12px;
     width: 40px;
     height: 40px;
     color: var(--secondaryColor);
+    opacity: 0.7;
   }
 
   .scroll-btn:hover {
     background-color: var(--secondaryColor);
     color: white;
+    opacity: 1;
   }
 }
 

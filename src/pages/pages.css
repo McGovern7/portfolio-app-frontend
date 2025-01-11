@@ -28,14 +28,6 @@ h5 {
   margin-bottom: 1.5vh;
 }
 
-.error {
-  color: red;
-}
-
-.success {
-  color: green;
-}
-
 .warning-text {
   font-size: large;
   font-weight: bold;

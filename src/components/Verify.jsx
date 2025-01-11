@@ -1,21 +1,20 @@
-// function verifies if a username and authorized JWT token is found in local storage
+import api from '../api';
+
+// function verifies if the username and authorized JWT token in localStorage is still valid
 const verifyToken = async () => {
   const token = localStorage.getItem('token');
-
   if (!token) {
     localStorage.clear();
     return false;
   };
   try {
-    const response = await fetch(`'http://localhost:8000/auth/verify-token/${token}`);
-    if (!response.ok) {
-      throw new Error('Token verification failed');
-    };
+    await api.get(`/auth/verify-token/${token}`);
+    return true;
   } catch (error) {
-    localStorage.clear()
+    localStorage.clear();
+    console.log(error);
     return false;
   };
-  return true;
 };
 
 export default verifyToken;
