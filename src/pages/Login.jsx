@@ -61,7 +61,7 @@ function Profile() {
 
     try {
       setLoading(true);
-      const response = await api.post('http://localhost:8000/auth/token',
+      const response = await api.post('/auth/token',
         formDetails, { headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, });
       const data = response.data;
       setError('');
