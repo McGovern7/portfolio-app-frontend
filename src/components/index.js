@@ -5,4 +5,4 @@ export { default as ImageComp } from './ImageComp';
 export { default as Navbar } from './Navbar';
 export { default as ScrollTo } from './ScrollTo';
 export { default as SideBar } from './SideBar';
-export { default as VerifyToken } from './Verify';
+export { getCookie, setCookie, clearCookie, verifyToken } from './Verify';

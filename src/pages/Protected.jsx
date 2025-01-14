@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
-import { Button, Navbar, ScrollTo, VerifyToken } from '../components';
+import { Button, Navbar, ScrollTo, getCookie, verifyToken } from '../components';
 import '../components/components.css';
 import './pages.css';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -10,13 +10,7 @@ import { GiSilverBullet } from "react-icons/gi";
 
 function ProtectedPage() {
   const navigate = useNavigate();
-  const handleVerify = useCallback(async () => {
-    const loggedIn = await VerifyToken();
-    if (!loggedIn) {
-      localStorage.clear();
-      navigate('/tarkov-app/profile');
-    }
-  }, [navigate]);
+  const username = getCookie('username');
 
   // declare useStates for form and its table
   const [formError, setFormError] = useState('');
@@ -28,12 +22,32 @@ function ProtectedPage() {
     ammo_name: '',
     caliber: '',
     ammo_amount: 0,
-    username: localStorage.getItem('username')
+    username: username
   });
+
+  const [ammoTypes, setAmmoTypes] = useState([]);
+
+  // unique dropdown button to show/hide ammo table
+  const [dropDown, setDropDown] = useState({
+    icon: <FaChevronDown />,
+    isOpen: false,
+    fetchedOnce: false,
+  });
+
+  const handleVerify = async () => {
+    setLoading(true);
+    const loggedIn = await verifyToken();
+    if (!loggedIn) {
+      setLoading(false);
+      navigate('/tarkov-app/profile');
+    }
+    else {
+      setLoading(false);
+    };
+  };
 
   // GET all of the entries from the logged in user
   const fetchEntries = async () => {
-    const username = localStorage.getItem('username');
     if (!username) { return; };
     try {
       setLoading(true);
@@ -48,7 +62,12 @@ function ProtectedPage() {
     } finally { setLoading(false); };
   };
 
-  // expect an event and create a variable based on a checkbox being clicked or not (nullish coalescing operator)
+  useEffect(() => {
+    handleVerify();
+    fetchEntries();
+  }, [navigate]);
+
+  // expect an event & create variable based on a checkbox being clicked or not (nullish coalescing operator)
   // Real-time syntax query correcting of Ammo Name form data toUpperCase() 
   const handleAmmoNameChange = (event) => {
     function toUpper(str) {
@@ -85,7 +104,7 @@ function ProtectedPage() {
     });
   };
 
-  // pre-submission validations
+  // pre-submission form validations
   const validateForm = () => {
     if (!formData.ammo_name || !formData.caliber) {
       setFormError('All Fields are required');
@@ -101,11 +120,8 @@ function ProtectedPage() {
 
   // function to submit a validated entry form
   const handleFormSubmit = async (event) => {
-    handleVerify();
-    fetchEntries();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
-
     try {
       setLoading(true);
       await api.get(`/tarkov_ammo/${formData.caliber}/${formData.ammo_name}`);
@@ -146,13 +162,6 @@ function ProtectedPage() {
     };
   };
 
-  useEffect(() => {
-    handleVerify();
-    fetchEntries();
-  }, [handleVerify]);
-
-  const [ammoTypes, setAmmoTypes] = useState([]);
-
   const fetchAmmoTypes = async () => {
     try {
       setLoading(true);
@@ -162,13 +171,6 @@ function ProtectedPage() {
       setAmmoError('Unable to get Ammo Data, Try refreshing tab');
     } finally { setLoading(false) };
   };
-
-  // unique dropdown button to show/hide ammo table
-  const [dropDown, setDropDown] = useState({
-    icon: <FaChevronDown />,
-    isOpen: false,
-    fetchedOnce: false,
-  });
 
   const handleDropDown = () => {
     if (dropDown.isOpen) {
@@ -196,17 +198,17 @@ function ProtectedPage() {
             <form aria-labelledby='entry-form-sect' onSubmit={handleFormSubmit}>
               <div className='mb-3 mt-3'>
                 <label htmlFor='ammo_name' className='form-label'> Ammo Name </label>
-                <input type='text' className='form-control' id='ammo_name' name="ammo_name"
+                <input type='text' className='form-control' id='ammo_name' name="ammo_name" autocomplete="off"
                   onChange={handleAmmoNameChange} value={formData.ammo_name} maxLength={25} />
               </div>
               <div className='mb-3'>
                 <label htmlFor='caliber' className='form-label'> Caliber </label>
-                <input type='text' className='form-control' id='caliber' name="caliber"
+                <input type='text' className='form-control' id='caliber' name="caliber" autocomplete="off"
                   onChange={handleCaliberChange} value={formData.caliber} maxLength={25} />
               </div>
               <div className='mb-3'>
                 <label htmlFor='ammo_amount' className='form-label'> Amount </label>
-                <input type='number' className='form-control' id='ammo_amount' name="ammo_amount"
+                <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" autocomplete="off"
                   onChange={handleOtherChange} value={formData.ammo_amount} />
               </div>
               <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet alt="" />}
@@ -215,7 +217,7 @@ function ProtectedPage() {
             </form>
           </section>
           <section id='entry-table-sect' className='shadow'>
-            <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
+            <h4>{username}'s Ammo Storage</h4>
             {entryError && <p className='d-flex text-secondary justify-content-center'>{entryError}</p>}
             <table id='entry-table' aria-labelledby='entry-table-sect' className='table table-striped table-bordered border-dark'>
               <thead className='table-dark '>

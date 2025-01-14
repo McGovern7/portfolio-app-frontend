@@ -178,16 +178,20 @@ header {
   .scroll-btn {
     position: fixed;
     bottom: 80px;
-    right: 12px;
+    right: 40px;
     width: 40px;
     height: 40px;
-    color: var(--secondaryColor);
+    background-color: var(--secondaryColor);
+    color: white;
+    border: 2px solid white;
+
     opacity: 0.7;
   }
 
   .scroll-btn:hover {
-    background-color: var(--secondaryColor);
-    color: white;
+    color: var(--secondaryColor);
+    background-color: white;
+    border: 2px solid var(--secondaryColor);
     opacity: 1;
   }
 }

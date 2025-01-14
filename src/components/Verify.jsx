@@ -1,20 +1,42 @@
 import api from '../api';
+import Cookies from 'js-cookie';
 
-// function verifies if the username and authorized JWT token in localStorage is still valid
-const verifyToken = async () => {
-  const token = localStorage.getItem('token');
+// function verifies if the username and authorized JWT token Cookie is still valid
+export const setCookie = (cookieName, cookieData) => {
+  try {
+    Cookies.set(cookieName, cookieData, {
+      secure: true,
+      sameSite: 'strict',
+      path: '/',
+    })
+  } catch (error) {
+  };
+}
+
+export const getCookie = (cookieName) => {
+  try {
+    const cookie = Cookies.get(cookieName);
+    return cookie;
+  } catch (error) {
+  };
+}
+
+export const clearCookie = (cookieName) => {
+  Cookies.remove(cookieName, { path: '/' });
+}
+
+export const verifyToken = async () => {
+  const token = Cookies.get('token');
   if (!token) {
-    localStorage.clear();
     return false;
   };
   try {
     await api.get(`/auth/verify-token/${token}`);
     return true;
   } catch (error) {
-    localStorage.clear();
+    clearCookie('token');
+    clearCookie('username');
     console.log(error);
     return false;
   };
 };
-
-export default verifyToken;

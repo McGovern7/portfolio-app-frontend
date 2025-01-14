@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
-import { Button, Navbar, VerifyToken } from '../components/';
+import { Button, Navbar, getCookie, setCookie, clearCookie, verifyToken } from '../components/';
 import '../components/components.css';
 import './pages.css';
 import { FaSignInAlt, FaSignOutAlt, FaTrashAlt } from "react-icons/fa";
 
 function Profile() {
-
+  const [username, setUsername] = useState('');
   const [regData, setRegData] = useState({
     username: '',
     password: ''
@@ -20,7 +20,10 @@ function Profile() {
 
   const navigate = useNavigate();
   const handleVerify = async () => {
-    const loggedIn = await VerifyToken();
+    const loggedIn = await verifyToken();
+    if (loggedIn) {
+      setUsername(getCookie('username'));
+    };
     // show login or logout buttons depending on verification status
     setLoginVisible(!loggedIn);
     setLogoutVisible(loggedIn);
@@ -38,6 +41,7 @@ function Profile() {
     });
   };
 
+  // validate before checking form
   const validateForm = () => {
     if (!regData.username || !regData.password) {
       setError('Username and password are required');
@@ -48,7 +52,7 @@ function Profile() {
 
   // handle submissions when user tries to LOGIN
   const handleLogFormSubmit = async (event) => {
-    event.preventDefault(); // prevent default of removing everything with fetch and submit api
+    event.preventDefault(); // prevents form data removal from bad api calls
     if (!validateForm()) return;
 
     const formDetails = new URLSearchParams();
@@ -61,12 +65,12 @@ function Profile() {
         formDetails, { headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, });
       const data = response.data;
       setError('');
-      localStorage.setItem('token', data.access_token); // set local storage to received token
-      localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
+      // set username & token Cookies for later retrieval
+      setCookie('token', data.access_token);
+      setCookie('username', regData.username);
       setLoading(false);
-      navigate('/tarkov-app/protected'); // protected component ensureing valid token
+      navigate('/tarkov-app/protected'); // nav to secure page
     } catch (error) {
-      localStorage.clear();
       if (error.response.status === 401) { setError(`Login failed: Incorrect Username or Password`); }
       else { setError(`An error has ocurred, please try again later`); }
     } finally { setLoading(false) };
@@ -75,14 +79,14 @@ function Profile() {
   // handle submissions when user tries to LOGOUT
   const handleLogoutButton = () => {
     handleVerify();
-    localStorage.clear();
+    clearCookie('username');
+    clearCookie('token');
     navigate('/tarkov-app/home');
   };
 
-  // delete user and their entries from both databases
+  // DELETE user and their entries from both databases
   const handleDeleteButton = async () => {
     handleVerify();
-    const username = localStorage.getItem('username');
     try {
       setLoading(true);
       await api.delete(`/entries/${username}`);
@@ -96,7 +100,8 @@ function Profile() {
     try {
       await api.delete(`/users/${username}`);
       setError('');
-      localStorage.clear();
+      clearCookie('username');
+      clearCookie('token');
     } catch (error) {
       setError(`Failed to delete user '${username}'`);
     } finally { setLoading(false); };
@@ -112,11 +117,11 @@ function Profile() {
         <h3>User Profile</h3>
         <div className='grouper profile' style={{ display: logoutVisible ? 'flex' : 'none' }}>
           <div className='change-status p-3 shadow'>
-            <h5>Logout of *{localStorage.getItem('username')}*?</h5>
+            <h5>Logout of *{username}*?</h5>
             <Button id='logout-button' label={loading ? ' Logging out' : ' Logout'} icon={<FaSignOutAlt />} variant='success' type='submit' onClick={handleLogoutButton} disabled={loading}></Button>
           </div>
           <div className='change-status p-3 shadow'>
-            <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
+            <h5 aria-label='Delete user title'>Delete user account *{username}*?</h5>
             <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
             {error && <p aria-labelledby='delete-button' className="text-danger">{error}</p>}
           </div>
@@ -128,11 +133,11 @@ function Profile() {
             <form id='login-form' onSubmit={handleLogFormSubmit} aria-label='login form'>
               <div className='mb-3'>
                 <label htmlFor="username" className='form-label'>Username</label>
-                <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username} maxLength={15} />
+                <input type="text" className='form-control' id='username' name='username' autoComplete='username' onChange={handleLogInputChange} value={regData.username} maxLength={15} />
               </div>
               <div className='mb-3'>
                 <label htmlFor="password" className='form-label'>Password</label>
-                <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
+                <input type="password" className='form-control' id='password' name='password' autoComplete='current-password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
               </div>
               <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading} ariaLabelledBy='login-form'></Button>
               {error && <p className="text-danger" aria-labelledby='login-form' >{error}</p>}
