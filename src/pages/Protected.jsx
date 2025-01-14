@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
-import { Button, Navbar, ScrollTo, VerifyToken } from '../components';
+import { Button, Navbar, ScrollTo, getCookie, verifyToken } from '../components';
 import '../components/components.css';
 import './pages.css';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -10,45 +10,64 @@ import { GiSilverBullet } from "react-icons/gi";
 
 function ProtectedPage() {
   const navigate = useNavigate();
-  const handleVerify = useCallback(async () => {
-    const response = await VerifyToken();
-    if (!response) {
-      localStorage.clear();
-      navigate('/tarkov-app/profile');
-    }
-  }, [navigate]);
+  const username = getCookie('username');
 
   // declare useStates for form and its table
   const [formError, setFormError] = useState('');
-  const [generalError, setGeneralError] = useState('');
+  const [entryError, setEntryError] = useState('');
+  const [ammoError, setAmmoError] = useState('');
   const [loading, setLoading] = useState('');
   const [entries, setEntries] = useState([]);
   const [formData, setFormData] = useState({
     ammo_name: '',
     caliber: '',
     ammo_amount: 0,
-    username: localStorage.getItem('username')
+    username: username
   });
 
-  // GET all of the entries from the logged in user
-  const fetchEntries = async () => {
+  const [ammoTypes, setAmmoTypes] = useState([]);
+
+  // unique dropdown button to show/hide ammo table
+  const [dropDown, setDropDown] = useState({
+    icon: <FaChevronDown />,
+    isOpen: false,
+    fetchedOnce: false,
+  });
+
+  const handleVerify = async () => {
     setLoading(true);
-    const username = localStorage.getItem('username');
-    if (!username) {
-      return;
-    };
-    try {
-      const response = await api.get(`/entries/${username}`);
-      setEntries(response.data);
-      setGeneralError('');
-    } catch (error) {
-      console.log(`No Entries Associated with ${username}`);
-    } finally {
+    const loggedIn = await verifyToken();
+    if (!loggedIn) {
+      setLoading(false);
+      navigate('/tarkov-app/profile');
+    }
+    else {
       setLoading(false);
     };
   };
 
-  // expect an event and create a variable based on a checkbox being clicked or not (nullish coalescing operator)
+  // GET all of the entries from the logged in user
+  const fetchEntries = async () => {
+    if (!username) { return; };
+    try {
+      setLoading(true);
+      const response = await api.get(`/entries/${username}`);
+      setEntries(response.data);
+      setEntryError('');
+    } catch (error) {
+      if (error.response.status === 404) {
+        setEntryError(`No Entries Associated with ${username}`);
+      }
+      else { setEntryError('An error occured finding your entries'); }
+    } finally { setLoading(false); };
+  };
+
+  useEffect(() => {
+    handleVerify();
+    fetchEntries();
+  }, [navigate]);
+
+  // expect an event & create variable based on a checkbox being clicked or not (nullish coalescing operator)
   // Real-time syntax query correcting of Ammo Name form data toUpperCase() 
   const handleAmmoNameChange = (event) => {
     function toUpper(str) {
@@ -85,7 +104,7 @@ function ProtectedPage() {
     });
   };
 
-  // pre-submission validations
+  // pre-submission form validations
   const validateForm = () => {
     if (!formData.ammo_name || !formData.caliber) {
       setFormError('All Fields are required');
@@ -101,17 +120,14 @@ function ProtectedPage() {
 
   // function to submit a validated entry form
   const handleFormSubmit = async (event) => {
-    handleVerify();
-    fetchEntries();
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
-    setLoading(true);
-
     try {
+      setLoading(true);
       await api.get(`/tarkov_ammo/${formData.caliber}/${formData.ammo_name}`);
     } catch (error) {
       setLoading(false);
-      setFormError("Ammo type not found, See Chart for Name/Caliber Format");
+      setFormError('Ammo not found, See Chart for Name/Caliber Format');
       return;
     };
 
@@ -120,52 +136,41 @@ function ProtectedPage() {
       const currResponse = await api.get(`/entries/${formData.username}/${formData.caliber}/${formData.ammo_name}`);
       const currData = currResponse.data;
       const currID = parseInt(currData.id); // existing entry's id
-      if (currID > 0) {
+      if (currID > 0) { // existing entry, try PATCH
         try {
           const newAmount = parseInt(currData.ammo_amount) + parseInt(formData.ammo_amount);
-          await api.patch(`/entries/${currID}`, { newAmount: newAmount }); // PATCH validated entry
+          await api.patch(`/entries/${currID}`, { newAmount: newAmount });
         } catch (error) {
-          setFormError("An issue patching existing data has occurred");
+          setFormError(`Error Updating Entry: '${formData.ammo_name}'`);
         };
       };
-    } catch (error) {
+    } catch (error) { // No existing ammo entry, POST
       try {
         await api.post(`/entries/`, formData); // POST validated entry
       } catch (error) {
-        setFormError("Unable to submit entry to database");
+        setFormError(`Error Creating Entry: '${formData.ammo_name}'`);
       };
     } finally {
       fetchEntries(); // recall all the entries so app is always up to date
-      setLoading(false);
       setFormData({ // reset form
         ...formData,
         ammo_name: '',
         caliber: '',
         ammo_amount: 0,
       });
+      setLoading(false);
     };
   };
 
-  useEffect(() => {
-    handleVerify();
-    fetchEntries();
-  }, [handleVerify]);
-
-  const [ammoTypes, setAmmoTypes] = useState([]);
-
   const fetchAmmoTypes = async () => {
-    setLoading(true);
-    const response = await api.get(`/tarkov_ammo/`);
-    setLoading(false);
-    setAmmoTypes(response.data);
+    try {
+      setLoading(true);
+      const response = await api.get(`/tarkov_ammo/`);
+      setAmmoTypes(response.data);
+    } catch (error) {
+      setAmmoError('Unable to get Ammo Data, Try refreshing tab');
+    } finally { setLoading(false) };
   };
-
-  // unique dropdown button to show/hide ammo table
-  const [dropDown, setDropDown] = useState({
-    icon: <FaChevronDown />,
-    isOpen: false,
-    fetchedOnce: false,
-  });
 
   const handleDropDown = () => {
     if (dropDown.isOpen) {
@@ -174,7 +179,7 @@ function ProtectedPage() {
     else {
       if (dropDown.fetchedOnce === false) {
         fetchAmmoTypes();
-        dropDown.fetchedOnce = true;
+        dropDown.fetchedOnce = true; // no repeat GET for this visit
       };
       setDropDown({ icon: <FaChevronUp alt="dropdown" />, isOpen: true });
     };
@@ -186,34 +191,34 @@ function ProtectedPage() {
       </React.Fragment>
       <main>
         <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
-        <h3>{localStorage.getItem('username')}'s Stash</h3>
-        {generalError && <p style={{ color: 'red' }}>{generalError}</p>}
+        <h3>Secret Stash</h3>
         <div className='grouper'>
           <section id='entry-form-sect' className='shadow'>
             <h4>Enter Ammo into your Storage</h4>
             <form aria-labelledby='entry-form-sect' onSubmit={handleFormSubmit}>
               <div className='mb-3 mt-3'>
                 <label htmlFor='ammo_name' className='form-label'> Ammo Name </label>
-                <input type='text' className='form-control' id='ammo_name' name="ammo_name" 
+                <input type='text' className='form-control' id='ammo_name' name="ammo_name" autocomplete="off"
                   onChange={handleAmmoNameChange} value={formData.ammo_name} maxLength={25} />
               </div>
               <div className='mb-3'>
                 <label htmlFor='caliber' className='form-label'> Caliber </label>
-                <input type='text' className='form-control' id='caliber' name="caliber" 
+                <input type='text' className='form-control' id='caliber' name="caliber" autocomplete="off"
                   onChange={handleCaliberChange} value={formData.caliber} maxLength={25} />
               </div>
               <div className='mb-3'>
                 <label htmlFor='ammo_amount' className='form-label'> Amount </label>
-                <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" 
+                <input type='number' className='form-control' id='ammo_amount' name="ammo_amount" autocomplete="off"
                   onChange={handleOtherChange} value={formData.ammo_amount} />
               </div>
-              <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet alt="" />} 
+              <Button id='add-button' label={loading ? ' Adding' : ' Add'} icon={<GiSilverBullet alt="" />}
                 variant='primary' type='submit' disabled={loading}></Button>
-              {formError && <p aria-labelledby='entry-form-sect' style={{ color: 'red' }}>{formError}</p>}
+              {formError && <p aria-labelledby='entry-form-sect' className='text-danger'>{formError}</p>}
             </form>
           </section>
           <section id='entry-table-sect' className='shadow'>
-            <h4>{localStorage.getItem('username')}'s Ammo Storage</h4>
+            <h4>{username}'s Ammo Storage</h4>
+            {entryError && <p className='d-flex text-secondary justify-content-center'>{entryError}</p>}
             <table id='entry-table' aria-labelledby='entry-table-sect' className='table table-striped table-bordered border-dark'>
               <thead className='table-dark '>
                 <tr>
@@ -224,7 +229,7 @@ function ProtectedPage() {
               </thead>
               <tbody>
                 {entries.map((entry) => (
-                  <tr key={entry.ammo_name}>
+                  <tr key={[entry.ammo_name, entry.caliber]}>
                     <th scope="row">{entry.ammo_name}</th>
                     <td>{entry.caliber}</td>
                     <td>{entry.ammo_amount}</td>
@@ -241,6 +246,7 @@ function ProtectedPage() {
               {dropDown.icon}
             </button>
             <div style={{ display: dropDown.isOpen ? 'block' : 'none' }}>
+              {ammoError && <p aria-labelledby='ammo-type-chart-sect' className='text-danger'>{ammoError}</p>}
               <table id='ammo-table' aria-labelledby='ammo-type-chart-sect' className='table table-striped table-bordered border-dark'>
                 <thead className='table-dark no-highlight'>
                   <tr>
@@ -254,7 +260,7 @@ function ProtectedPage() {
                 </thead>
                 <tbody>
                   {ammoTypes.map((type) => (
-                    <tr key={[type.ammo_name, type.ammo_group]}>
+                    <tr key={[type.ammo_name, type.caliber]}>
                       <th scope='row'>{type.ammo_name}</th>
                       <td>{type.caliber}</td>
                       <td>{type.penetration}</td>
@@ -268,7 +274,7 @@ function ProtectedPage() {
             </div>
           </section>
         </div>
-        <ScrollTo ariaLabel='scroll to top' className='scroll-to'
+        <ScrollTo ariaLabel='scroll to top' className='scroll-to to-top'
           icon={<FaAngleUp />} sectionID='top' />
       </main>
     </div>
