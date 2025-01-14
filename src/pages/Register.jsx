@@ -32,15 +32,14 @@ const Register = () => {
       setError('Password must be at least 8 characters');
       return false;
     };
-    setError('');
     return true;
   };
 
   const handleRegFormSubmit = async (event) => {
     event.preventDefault(); // prevent default of removing everything with fetch and submit api
     if (!validateForm()) return;
-    setLoading(true);
     try {
+      setLoading(true);
       await api.post('/auth/', regData); // case insensitive
       setError('');
       setRegStatus(`${regData.username} registered successfully`);
@@ -49,15 +48,12 @@ const Register = () => {
         password: ''
       });
     } catch (error) {
-      setError('An account with that name already exists', error);
-      console.log(error);
+      setError('An account with that name already exists');
       setRegData({
         ...regData,
         password: ''
       });
-    } finally {
-      setLoading(false);
-    };
+    } finally { setLoading(false); };
   };
   return (
     <div className='main-page'>
@@ -82,8 +78,8 @@ const Register = () => {
               </div>
 
               <Button id='register' label={loading ? ' Registering' : ' Register'} icon={<FaUserPlus />} variant='success' type='submit' disabled={loading}></Button>
-              {error && <p aria-labelledby='register-sect' className="error">{error}</p>}
-              {regStatus && <p aria-labelledby='register-sect' className="success">{regStatus}</p>}
+              {error && <p aria-labelledby='register-sect' className="text-danger">{error}</p>}
+              {regStatus && <p aria-labelledby='register-sect' className="text-success">{regStatus}</p>}
             </form>
             {localStorage.getItem('username') ? <></> : (<p>Want to access Profile? <a href="/profile">Login</a></p>)}
           </div>

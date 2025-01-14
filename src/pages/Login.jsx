@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
-import { Button, Navbar, VerifyToken } from '../components/';
+import { Button, Navbar, getCookie, setCookie, clearCookie, verifyToken } from '../components/';
 import '../components/components.css';
 import './pages.css';
 import { FaSignInAlt, FaSignOutAlt, FaTrashAlt } from "react-icons/fa";
 
 function Profile() {
-
+  const [username, setUsername] = useState('');
   const [regData, setRegData] = useState({
     username: '',
     password: ''
@@ -20,16 +20,13 @@ function Profile() {
 
   const navigate = useNavigate();
   const handleVerify = async () => {
-    const response = await VerifyToken();
-    // login or logout depending on verification status
-    if (response) {
-      setLoginVisible(false);
-      setLogoutVisible(true);
-    }
-    else {
-      setLoginVisible(true); // could be redundant
-      setLogoutVisible(false);
-    }
+    const loggedIn = await verifyToken();
+    if (loggedIn) {
+      setUsername(getCookie('username'));
+    };
+    // show login or logout buttons depending on verification status
+    setLoginVisible(!loggedIn);
+    setLogoutVisible(loggedIn);
   };
 
   useEffect(() => {
@@ -49,7 +46,6 @@ function Profile() {
       setError('Username and password are required');
       return false;
     };
-    setError('');
     return true;
   };
 
@@ -64,62 +60,50 @@ function Profile() {
 
     try {
       setLoading(true);
-      const response = await fetch('https://portfolio-app-backend-ay3g.onrender.com/auth/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formDetails,
-      });
+      const response = await api.post('/auth/token',
+        formDetails, { headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, });
+      const data = response.data;
+      setError('');
+      // set username & token Cookies for later retrieval
+      setCookie('token', data.access_token);
+      setCookie('username', regData.username);
       setLoading(false);
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.access_token); // set local storage to received token
-        localStorage.setItem('username', regData.username); // set username to local storage so it can be grabbed for entries
-        navigate('/tarkov-app/protected'); // protected component ensureing valid token
-      } else {
-        localStorage.clear();
-        const errorData = await response.json();
-        setError(errorData.detail || 'Authentication failed!');
-      };
+      navigate('/tarkov-app/protected'); // protected component ensureing valid token
     } catch (error) {
-      setLoading(false);
-      setError('An error occurred. Please try again later.');
-    };
+      if (error.response.status === 401) { setError(`Login failed: Incorrect Username or Password`); }
+      else { setError(`An error has ocurred, please try again later`); }
+    } finally { setLoading(false) };
   };
 
   // handle submissions when user tries to LOGOUT
   const handleLogoutButton = () => {
     handleVerify();
-    localStorage.clear();
+    clearCookie('username');
+    clearCookie('token');
     navigate('/tarkov-app/home');
   };
 
   // delete user and their entries from both databases
   const handleDeleteButton = async () => {
     handleVerify();
-    console.log('verified');
-    setLoading(true);
-    const username = localStorage.getItem('username');
     try {
+      setLoading(true);
       await api.delete(`/entries/${username}`);
-      setLoading(false);
+      setError('');
     } catch (error) {
-      setLoading(false);
-    };
+      if (error.response.status !== 404) {
+        setError(`Error: Could not delete ${username}'s entries`);
+        return;
+      }
+    } finally { setLoading(false); };
     try {
-      const delUserResponse = await api.delete(`/users/${username}`);
-      if (delUserResponse.status === 200) {
-        localStorage.clear();
-        setError('');
-      } else {
-        throw new Error(`Failed to DELETE user ${username}`);
-      };
+      await api.delete(`/users/${username}`);
+      setError('');
+      clearCookie('username');
+      clearCookie('token');
     } catch (error) {
-      setError(`Failed to delete user ${username}`);
-    } finally {
-      setLoading(false);
-    };
+      setError(`Failed to delete user '${username}'`);
+    } finally { setLoading(false); };
     setDelTriggered(true);
   };
   return (
@@ -132,13 +116,13 @@ function Profile() {
         <h3>User Profile</h3>
         <div className='grouper profile' style={{ display: logoutVisible ? 'flex' : 'none' }}>
           <div className='change-status p-3 shadow'>
-            <h5>Logout of *{localStorage.getItem('username')}*?</h5>
+            <h5>Logout of *{username}*?</h5>
             <Button id='logout-button' label={loading ? ' Logging out' : ' Logout'} icon={<FaSignOutAlt />} variant='success' type='submit' onClick={handleLogoutButton} disabled={loading}></Button>
           </div>
           <div className='change-status p-3 shadow'>
-            <h5 aria-label='Delete user title'>Delete user account *{localStorage.getItem('username')}*?</h5>
+            <h5 aria-label='Delete user title'>Delete user account *{username}*?</h5>
             <Button id='delete-button' label={loading ? ' Deleting' : ' Delete'} icon={<FaTrashAlt />} variant='danger' type='submit' onClick={handleDeleteButton} disabled={loading}></Button>
-            {error && <p aria-label='delete form error response' className="error">{error}</p>}
+            {error && <p aria-labelledby='delete-button' className="text-danger">{error}</p>}
           </div>
         </div>
 
@@ -148,14 +132,14 @@ function Profile() {
             <form id='login-form' onSubmit={handleLogFormSubmit} aria-label='login form'>
               <div className='mb-3'>
                 <label htmlFor="username" className='form-label'>Username</label>
-                <input type="text" className='form-control' id='username' name='username' onChange={handleLogInputChange} value={regData.username} maxLength={15} />
+                <input type="text" className='form-control' id='username' name='username' autoComplete='username' onChange={handleLogInputChange} value={regData.username} maxLength={15} />
               </div>
               <div className='mb-3'>
                 <label htmlFor="password" className='form-label'>Password</label>
-                <input type="password" className='form-control' id='password' name='password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
+                <input type="password" className='form-control' id='password' name='password' autoComplete='current-password' onChange={handleLogInputChange} value={regData.password} maxLength={36} />
               </div>
               <Button id='login-button' label={loading ? ' Logging in' : ' Login'} icon={<FaSignInAlt />} variant='success' type='submit' disabled={loading} ariaLabelledBy='login-form'></Button>
-              {error && <p className="error" aria-labelledby='login-form' >{error}</p>}
+              {error && <p className="text-danger" aria-labelledby='login-form' >{error}</p>}
             </form>
             <p aria-label='register new account prompt'>Don't have an Account?  <a href="/register">Register</a></p>
           </div>
