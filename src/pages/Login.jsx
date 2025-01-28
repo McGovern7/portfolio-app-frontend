@@ -72,7 +72,7 @@ function Profile() {
       navigate('/tarkov-app/protected'); // nav to secure page
     } catch (error) {
       if (error.response.status === 401) { setError(`Login failed: Incorrect Username or Password`); }
-      else { setError(`An error has ocurred, please try again later`); }
+      else { setError(`An error has ocurred, please try again later`); };
     } finally { setLoading(false) };
   };
 
@@ -95,7 +95,7 @@ function Profile() {
       if (error.response.status !== 404) {
         setError(`Error: Could not delete ${username}'s entries`);
         return;
-      }
+      };
     } finally { setLoading(false); };
     try {
       await api.delete(`/users/${username}`);

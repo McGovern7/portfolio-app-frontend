@@ -57,8 +57,7 @@ function ProtectedPage() {
     } catch (error) {
       if (error.response.status === 404) {
         setEntryError(`No Entries Associated with ${username}`);
-      }
-      else { setEntryError('An error occured finding your entries'); }
+      } else { setEntryError('An error occured finding your entries'); }
     } finally { setLoading(false); };
   };
 

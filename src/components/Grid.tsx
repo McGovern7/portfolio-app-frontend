@@ -14,6 +14,16 @@ const GRID_WIDTH = 19;
 const GRID_HEIGHT = 19;
 
 const SquareGrid = () => {
+	// highlight each square starting where height&width = 0
+	// animate in a wave by iterating through width squares, then adding one to height
+	const handleSquareIdle = (e: any) => {
+
+	}
+
+	// when hovering over grid, stop idle animation
+	const handleSquareHover = (e: any) => {
+
+	}
 	const handleSquareClick = (e: any) => {
 		anime({
 			targets: ".square-point",
@@ -38,7 +48,11 @@ const SquareGrid = () => {
 
 	const squares = [];
 	let index = 0;
+	// handleSquareIdle
 
+	// handleSquareHover
+
+	// handleSquareClick
 	for (let i = 0; i < GRID_HEIGHT; i++) {
 		const column = [];
 		for (let j = 0; j < GRID_WIDTH; j++) {
