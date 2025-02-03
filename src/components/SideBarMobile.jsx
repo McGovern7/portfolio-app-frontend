@@ -1,45 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import ImageComp from './ImageComp.tsx';
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline } from "react-icons/io5";
 import { GiFuji } from "react-icons/gi";
-import './SharedComps.css';
-import './DeskComps.css';
+import './MobileComps.css';
 
-function SideBar() {
+function SideBarMobile() {
   const sideRef = useRef();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [canGoBack, setCanGoBack] = useState();
   const isHome = window.location.pathname === '/portfolio';
   const isResume = window.location.pathname === '/resume';
 
-  const checkCanGoBack = async () => {
-    if (location.key !== "default") {
-      setCanGoBack(true);
-    } else {
-      setCanGoBack(false);
-    };
-  };
-
-  const goBack = () => {
-    if (navigate(-1)) {
-      navigate(-1); // Go back if within the same origin
-    } else {
-      setCanGoBack(false);
-    }
-  };
-  useEffect(() => {
-    checkCanGoBack();
-  });
   return (
-    <div className='side-bar-comp desk'>
-      <div className='back-btn-container'>
-        <button id="back-btn" className='circle-btn' onClick={goBack} style={{ visibility: canGoBack ? 'visible' : 'hidden' }}>
-          <FaArrowLeftLong />
-        </button>
-      </div>
+    <div className='side-bar-comp mobile'>
+      <div className='back-btn-container'></div>
       <nav className='side-bar' ref={sideRef}>
         <Link className='side-link' to="/portfolio"><div className='side-icon'>{isHome ? <IoHome /> : <IoHomeOutline />}</div><h5>Home</h5></Link>
         <Link className='side-link' to="/resume"><div className='side-icon'>{isResume ? <IoDocumentAttach /> : <IoDocumentAttachOutline />}</div><h5>Resume</h5></Link>
@@ -56,4 +29,4 @@ function SideBar() {
   );
 }
 
-export default SideBar
+export default SideBarMobile

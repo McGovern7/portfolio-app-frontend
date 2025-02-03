@@ -1,0 +1,91 @@
+/* Grid */
+.grid {
+  padding: 1vh 0vh 1vh 5%;
+  display: flex;
+  cursor: crosshair;
+  place-content: left;
+  overflow: hidden;
+
+  .row-group {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .square-group {
+    padding: 6px;
+
+    .square-point {
+      height: 8px;
+      width: 8px;
+      background: linear-gradient(to bottom, var(--purple-800), var(--gray-200));
+      opacity: 50%;
+    }
+  }
+
+  .square-group:hover {
+    background: var(--gray-700);
+  }
+
+  .square-group:hover .square-point {
+    background: var(--gray-100);
+    /* Hover effect */
+    opacity: 1;
+  }
+}
+
+/* ScrollTo Comp */
+.scroll-to {
+  cursor: pointer;
+  width: fit-content;
+  transition: padding 0.3s ease;
+  user-select: none;
+
+  .scroll-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondaryColor);
+    color: white;
+    border: 2px solid white;
+    opacity: 0.7;
+  }
+
+  .scroll-btn:hover {
+    color: var(--secondaryColor);
+    background-color: white;
+    border: 2px solid var(--secondaryColor);
+    opacity: 1;
+  }
+}
+
+ul .scroll-to:hover {
+  padding-left: 25px;
+}
+
+/* SideBar Comp */
+.side-bar-comp.desk {
+  .back-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 12px;
+
+    #back-btn {
+      background-color: var(--gray-100);
+    }
+
+    #back-btn:hover {
+      background-color: var(--gray-900);
+      color: var(--gray-100);
+    }
+  }
+
+  .side-link:hover {
+    h5 {
+      padding-left: 1rem;
+    }
+
+    background: var(--greenSecondary);
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import api from '../api';
 import { Button, Navbar } from '../components/';
-import '../components/components.css';
+import '../components/SharedComps.css';
 import './pages.css';
 import { FaUserPlus } from "react-icons/fa";
 

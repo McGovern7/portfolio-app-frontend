@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ReactNode } from 'react';
-import './components.css';
+import './SharedComps.css';
 
 interface ScrollToProps {
   ariaLabel: string;

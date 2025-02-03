@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import './SharedComps.css';
+import './MobileComps.css';
 
 interface CardProps {
     ariaLabel: string;
@@ -10,7 +11,7 @@ interface CardProps {
     content: string;
 }
 
-const Card = ({ ariaLabel, id, title, image, content }: CardProps) => {
+const CardMobile = ({ ariaLabel, id, title, image, content }: CardProps) => {
     return (
         <article
             aria-label={ariaLabel}
@@ -24,4 +25,4 @@ const Card = ({ ariaLabel, id, title, image, content }: CardProps) => {
     )
 }
 
-export default Card;
+export default CardMobile;

@@ -1,0 +1,95 @@
+.top.mob {
+  padding: .5rem 1.5rem .5rem 1rem;
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  background-color: var(--greenPrimary);
+  border-bottom: 1px solid var(--gray-100);
+  z-index: 3;
+
+  #slide-btn-mobile {
+    position: relative;
+    align-self: flex-end;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    visibility: visible;
+  }
+}
+
+.mobile-portfolio {
+  .main-col {
+    padding: 0rem 1.5rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    #prof-table-mobile {
+      display: flex;
+      flex-wrap: wrap;
+
+      .thin-header {
+        font-size: 30px;
+        font-weight: 300;
+      }
+
+      .skills p {
+        white-space: nowrap;
+      }
+
+      #language-col-mobile {
+        flex: 1;
+        flex-direction: row;
+        margin-right: 1rem;
+        max-width: 40%;
+      }
+
+      #skills-col-mobile {
+        flex: 1;
+        flex-direction: row;
+        min-width: max(60%, 450px);
+        max-width: 60%;
+        flex-wrap: wrap;
+
+        .row {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+.resume-page.mob {
+  position: relative;
+
+  /* Resume Page */
+  .resume-column.mob {
+    position: absolute;
+    height: calc(100vh - 47px);
+    overflow-y: hidden;
+
+    object {
+      height: inherit;
+    }
+  }
+}
+
+.side-bar-column.mob {
+  position: fixed;
+  transition: all 1s ease;
+}
+
+/* SideBar Comp */
+.side-bar-column.mob.hide-side {
+  left: -216px;
+}
+
+.side-bar-column.mob.show-side {
+  left: 0px;
+}

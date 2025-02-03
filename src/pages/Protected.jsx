@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import { Button, Navbar, ScrollTo, getCookie, verifyToken } from '../components';
-import '../components/components.css';
+import '../components/SharedComps.css';
 import './pages.css';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa6";
@@ -64,6 +64,7 @@ function ProtectedPage() {
   useEffect(() => {
     handleVerify();
     fetchEntries();
+    // eslint-disable-next-line
   }, [navigate]);
 
   // expect an event & create variable based on a checkbox being clicked or not (nullish coalescing operator)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SideBar } from '../components';
-import './MeStyle.css';
+import './DesktopStyle.css';
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);

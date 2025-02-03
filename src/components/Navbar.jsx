@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaBars, FaHome, FaUserCog, FaUserPlus, FaWpforms } from 'react-icons/fa';
 import { TbWorld } from "react-icons/tb";
 import { } from "react-icons/fa";
-import './components.css';
+import './SharedComps.css';
 
 function Navbar() {
   const navRef = useRef();

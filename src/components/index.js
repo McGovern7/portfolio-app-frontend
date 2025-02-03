@@ -5,4 +5,6 @@ export { default as ImageComp } from './ImageComp';
 export { default as Navbar } from './Navbar';
 export { default as ScrollTo } from './ScrollTo';
 export { default as SideBar } from './SideBar';
+export { default as CardMobile } from './CardMobile';
+export { default as SideBarMobile } from './SideBarMobile';
 export { getCookie, setCookie, clearCookie, verifyToken } from './Verify';

@@ -5,12 +5,6 @@
   font-style: normal;
 }
 
-html,
-body {
-  overflow: auto;
-  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
-}
-
 :root {
   --mainColor: #A2E4B8;
   --mainColorBright: #08FF08;
@@ -47,6 +41,8 @@ h5 {
   max-width: 100%;
   min-width: 600px;
   min-height: 100vh;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
+
 
   .card-block {
     display: flex;

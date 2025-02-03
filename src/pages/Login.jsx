@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import { Button, Navbar, getCookie, setCookie, clearCookie, verifyToken } from '../components/';
-import '../components/components.css';
+import '../components/SharedComps.css';
 import './pages.css';
 import { FaSignInAlt, FaSignOutAlt, FaTrashAlt } from "react-icons/fa";
 

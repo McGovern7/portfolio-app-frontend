@@ -1,0 +1,33 @@
+
+/* Card Comp */
+.card-title {
+  padding: 1rem 1rem 0.5rem 1rem;
+  font-size: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-title::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  height: 2px;
+  width: 50%;
+  background: var(--gray-100);
+  z-index: 2;
+}
+
+.card-content {
+  padding: 0.5rem 2rem 1rem 3rem;
+}
+
+/* SideBar Comp */
+.side-bar-comp.mobile {
+  z-index: 100;
+
+  .back-btn-container {
+    display: flex;
+    height: 30px;
+  }
+}

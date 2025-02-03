@@ -1,5 +1,5 @@
 import React from 'react';
-import './components.css';
+import './SharedComps.css';
 import anime from "animejs";
 
 const Grid = () => {
@@ -14,6 +14,7 @@ const GRID_WIDTH = 19;
 const GRID_HEIGHT = 19;
 
 const SquareGrid = () => {
+	/*
 	// highlight each square starting where height&width = 0
 	// animate in a wave by iterating through width squares, then adding one to height
 	const handleSquareIdle = (e: any) => {
@@ -24,6 +25,7 @@ const SquareGrid = () => {
 	const handleSquareHover = (e: any) => {
 
 	}
+	*/
 	const handleSquareClick = (e: any) => {
 		anime({
 			targets: ".square-point",

@@ -1,0 +1,155 @@
+.top.desk {
+  display: none;
+}
+
+.diagonal-grid.dark-mode {
+  background-color: var(--gray-900);
+}
+
+.desktop-portfolio {
+  display: flex;
+  min-height: 500px;
+  height: 100vh;
+
+  .main-column-A {
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    justify-content: space-between;
+    overflow: hidden;
+    white-space: nowrap;
+
+    #intro {
+      padding: 1rem 1.5rem 0 1.5rem;
+    }
+
+    /* ScrollTo Comp */
+    .scroll-list {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+  }
+
+  .main-column-B {
+    padding: 1rem 1.5rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-inline: 2px solid var(--greenPrimary);
+
+    #proficiencies {
+      max-width: 1200px;
+
+      #prof-table {
+        display: flex;
+        flex-wrap: wrap;
+
+        .thin-header {
+          font-size: 30px;
+          font-weight: 300;
+        }
+
+        .skills p {
+          white-space: nowrap;
+        }
+
+        #language-col {
+          flex: 1;
+          flex-direction: row;
+          margin-right: 1rem;
+          max-width: 40%;
+        }
+
+        #skills-col {
+          flex: 1;
+          flex-direction: row;
+          min-width: max(60%, 450px);
+          max-width: 60%;
+          flex-wrap: wrap;
+
+          .row {
+            display: flex;
+          }
+        }
+      }
+    }
+
+    .card-section:hover {
+      background-color: var(--purple-600);
+    }
+  }
+
+  @media (max-width: 1110px) and (min-width: 769px) {
+    .main-column-A.hidden-b {
+      min-width: 420px;
+      max-width: 420px !important;
+      border-right: 2px solid var(--greenPrimary);
+      transition: all 1s ease;
+    }
+
+    .main-column-A.hidden-a {
+      max-width: 0px;
+      min-width: 0px;
+      transition: all 1s ease;
+    }
+
+    .main-column-B.hidden-a {
+      max-width: 100%;
+      min-width: max(calc(100% - 246px), 480px);
+      transition: all 1s ease;
+    }
+
+    .main-column-B.hidden-b {
+      padding: 0;
+      min-width: 0px;
+      max-width: 0px;
+      border-left: none;
+      border-right: 2px solid var(--greenPrimary);
+      transition: all 1s ease;
+
+      section p,
+      section div {
+        flex: 0;
+        min-width: 250px;
+        overflow-x: hidden;
+      }
+    }
+
+    #slide-btn {
+      position: relative;
+      align-self: flex-end;
+      top: calc(50% - 15px);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      visibility: visible;
+    }
+  }
+
+  @media (min-width: 1099px) {
+    .main-column-A {
+      min-width: 420px;
+      max-width: 420px;
+      transition: all 1s ease;
+    }
+  
+    .main-column-B {
+      max-width: 100%;
+      transition: all 1s ease;
+    }
+  }
+}
+
+.resume-page.desk {
+  display: flex;
+
+  /* Resume Page */
+  .resume-column.desk {
+    display: flex;
+  }
+}
