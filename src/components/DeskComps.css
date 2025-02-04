@@ -77,6 +77,7 @@ ul .scroll-to:hover {
 
 /* SideBar Comp */
 .side-bar-comp.desk {
+  padding-block: 16px;
   .back-btn-container {
     display: flex;
     justify-content: flex-end;

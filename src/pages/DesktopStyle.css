@@ -2,6 +2,8 @@
   display: none;
 }
 
+
+
 .diagonal-grid.dark-mode {
   background-color: var(--gray-900);
 }
@@ -10,6 +12,12 @@
   display: flex;
   min-height: 500px;
   height: 100vh;
+
+  #dark-mode-btn:hover,
+  #slide-btn:hover {
+    background-color: var(--greenPrimary);
+    color: #DBD7D2;
+  }
 
   h1 {
     margin-top: 2vh;
@@ -146,7 +154,7 @@
       max-width: 420px;
       transition: all 1s ease;
     }
-  
+
     .main-column-B {
       max-width: 100%;
       transition: all 1s ease;

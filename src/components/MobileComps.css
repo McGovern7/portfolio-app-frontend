@@ -13,10 +13,11 @@
 
 /* SideBar Comp */
 .side-bar-comp.mobile {
-  z-index: 100;
+  z-index: 5;
+  overflow: auto;
+  padding-top: 47px;
 
-  .back-btn-container {
-    display: flex;
-    height: 30px;
+  footer {
+    margin-bottom: 48px;
   }
 }

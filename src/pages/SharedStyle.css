@@ -44,12 +44,6 @@ html {
   color: var(--greenPrimary);
 }
 
-#dark-mode-btn:hover,
-#slide-btn:hover {
-  background-color: var(--greenPrimary);
-  color: #DBD7D2;
-}
-
 .side-bar-column {
   display: flex;
   z-index: 2;

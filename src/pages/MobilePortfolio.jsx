@@ -6,6 +6,7 @@ import { IoContrast } from "react-icons/io5";
 import { FiArrowUpRight } from "react-icons/fi";
 import { BiExpandHorizontal } from "react-icons/bi";
 import './MobileStyle.css';
+import './SharedStyle.css';
 
 const MobilePortfolio = () => {
   const [darkMode, setDarkMode] = useState(true);
