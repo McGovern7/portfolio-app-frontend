@@ -3,7 +3,7 @@ import axios from 'axios';
 // axios is an api connection library
 
 const api = axios.create({
-    baseURL: 'https://lukemcg27.netlify.app/portfolio',
+    baseURL: 'https://portfolio-app-backend-ay3g.onrender.com',
 });
 
 export default api;
