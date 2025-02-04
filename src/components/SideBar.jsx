@@ -43,7 +43,7 @@ function SideBar() {
       <nav className='side-bar' ref={sideRef}>
         <Link className='side-link' to="/portfolio"><div className='side-icon'>{isHome ? <IoHome /> : <IoHomeOutline />}</div><h5>Home</h5></Link>
         <Link className='side-link' to="/resume"><div className='side-icon'>{isResume ? <IoDocumentAttach /> : <IoDocumentAttachOutline />}</div><h5>Resume</h5></Link>
-        <Link className='side-link' to="/japan-trip"><div className='side-icon'><GiFuji /></div><h5>Travel</h5></Link>
+        {/* <Link className='side-link' to="/japan-trip"><div className='side-icon'><GiFuji /></div><h5>Travel</h5></Link>*/}
       </nav>
       <div id='side-border' />
       <nav className='side-bar' ref={sideRef}>

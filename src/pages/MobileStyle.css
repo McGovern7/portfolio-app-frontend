@@ -71,13 +71,13 @@
 }
 
 .resume-page.mob {
-  position: relative;
+  display: flex;
 
   /* Resume Page */
   .resume-column.mob {
-    position: absolute;
-    height: 100vh;
-    overflow-y: hidden;
+    height: calc(100vh - 47px);
+    margin-top: 47px;
+    overflow: hidden;
 
     object {
       height: inherit;
