@@ -53,38 +53,38 @@ const MobilePortfolio = () => {
           <div className='row'>
             <p>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.</p>
             <p>I have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first fullstack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.</p>
-            <p>My current goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer.</p>
+						<p>My goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer. While making applications, I've been busy upgrading the interface of my Dad's pizza website.</p>
           </div>
         </section>
         <section id='proficiencies-mobile'>
           <h2>Proficiencies</h2>
           <div id='prof-table-mobile'>
-            <div id='language-col-mobile'>
-              <div className='row'>
+            <div className='col-mob'>
+              <div className='row-mob' style={{ marginRight: '2vw' }}>
                 <h4 className='thin-header'>LANGUAGES</h4>
               </div>
-              <div className='row'>
-                <div className='col skills'>
-                  <p>Python<br />Swift<br />C<br />C++<br />JavaScript</p>
+              <div className='row-mob'>
+                <div className='col-mob'>
+                  <p className='skills'>Python<br />Swift<br />C<br />C++<br />JavaScript</p>
                 </div>
-                <div className='col skills'>
-                  <p>SQL<br />React<br />CSS<br />HTML</p>
+                <div className='col-mob'>
+                  <p className='skills'>SQL<br />React<br />CSS<br />HTML</p>
                 </div>
               </div>
             </div>
-            <div id='skills-col-mobile'>
-              <div className='row'>
+            <div className='col-mob'>
+              <div className='row-mob'>
                 <h4 className='thin-header' id='skills-title-mobile'>SKILLS & TOOLS</h4>
               </div>
-              <div className='row'>
-                <div className='col skills'>
-                  <p>Fullstack Dev<br />FastAPI<br />Figma<br />iOS Dev</p>
+              <div className='row-mob'>
+                <div className='col-mob'>
+                  <p className='skills'>Fullstack Dev<br />FastAPI<br />Figma<br />iOS Dev</p>
                 </div>
-                <div className='col skills'>
-                  <p>GIT<br />ROS Robotics<br />LinuxCLI<br />Pandas</p>
+                <div className='col-mob'>
+                  <p className='skills'>GIT<br />ROS Robotics<br />LinuxCLI<br />Pandas</p>
                 </div>
-                <div className='col skills'>
-                  <p>Algorithm Design<br />Data Structures<br />Data Privacy<br />PC Building</p>
+                <div className='col-mob'>
+                  <p className='skills'>Algorithm Design<br />Data Structures<br />Data Privacy<br />PC Building</p>
                 </div>
               </div>
             </div>

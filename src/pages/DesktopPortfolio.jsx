@@ -96,7 +96,7 @@ const DesktopPortfolio = () => {
 					<div className='row'>
 						<p className='col'>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.</p>
 						<p className='col'>I have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first fullstack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.</p>
-						<p>My current goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer.</p>
+						<p>My goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer. While making applications, I've been busy upgrading the interface of my Dad's pizza website.</p>
 					</div>
 				</section>
 				<section id='proficiencies'>

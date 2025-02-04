@@ -146,7 +146,7 @@ html {
     background-color: var(--gray-750);
     border-radius: .375rem;
     cursor: pointer;
-    width: 73%;
+    width: max(215px, 50%);
 
     .thin-title {
       padding: 1rem 0 .75rem 2rem;

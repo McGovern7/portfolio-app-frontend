@@ -35,35 +35,29 @@
     overflow-x: hidden;
 
     #prof-table-mobile {
+      flex: 1 1 auto;
       display: flex;
       flex-wrap: wrap;
+
+      .row-mob {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .col-mob {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+      }
 
       .thin-header {
         font-size: 30px;
         font-weight: 300;
       }
 
-      .skills p {
-        white-space: nowrap;
-      }
-
-      #language-col-mobile {
-        flex: 1;
-        flex-direction: row;
-        margin-right: 1rem;
-        width: 35.2vw;
-      }
-
-      #skills-col-mobile {
-        flex: 1;
-        flex-direction: row;
-        min-width: max(60%, 450px);
-        width: 52.8vw;
-        flex-wrap: wrap;
-
-        .row {
-          display: flex;
-        }
+      .skills {
+        margin-bottom: 0;
       }
     }
 
