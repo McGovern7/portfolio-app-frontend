@@ -12,18 +12,22 @@
     position: relative;
     align-self: flex-end;
     top: calc(50% - 15px);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    visibility: visible;
   }
 }
 
 .mobile-portfolio {
+  h1 {
+    margin-top: 1vh;
+    font-size: min(11vw, 3rem);
+  }
+
+  h2 {
+    margin-top: 1.5vh;
+    font-size: min(8vw, 2.2rem);
+  }
+
   .main-col {
-    padding: 0rem 1.5rem 1rem 1rem;
+    padding-inline: 4vw;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -47,20 +51,25 @@
         flex: 1;
         flex-direction: row;
         margin-right: 1rem;
-        max-width: 40%;
+        width: 35.2vw;
       }
 
       #skills-col-mobile {
         flex: 1;
         flex-direction: row;
         min-width: max(60%, 450px);
-        max-width: 60%;
+        width: 52.8vw;
         flex-wrap: wrap;
 
         .row {
           display: flex;
         }
       }
+    }
+
+    .card-section {
+      margin-bottom: 1rem;
+      max-width: max(425px, 80%);
     }
   }
 }

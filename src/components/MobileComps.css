@@ -1,25 +1,14 @@
 
 /* Card Comp */
 .card-title {
-  padding: 1rem 1rem 0.5rem 1rem;
-  font-size: 20px;
+  flex-wrap: wrap;
+  padding: 2vw 2vw 1vw 2vw;
+  font-size: calc(12px + 1.5vw);
   position: relative;
-  z-index: 2;
-}
-
-.card-title::after {
-  content: " ";
-  position: absolute;
-  top: 100%;
-  right: 0;
-  height: 2px;
-  width: 50%;
-  background: var(--gray-100);
-  z-index: 2;
 }
 
 .card-content {
-  padding: 0.5rem 2rem 1rem 3rem;
+  padding: 1vw 2vw 4vw 6vw;
 }
 
 /* SideBar Comp */

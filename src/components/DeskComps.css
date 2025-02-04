@@ -1,6 +1,17 @@
+/* Card Comp */
+.card-title {
+  padding: 1rem 1rem 0.5rem 1rem;
+  font-size: 20px;
+}
+
+.card-content {
+  padding: 0.5rem 2rem 1rem 3rem;
+}
+
+
 /* Grid */
 .grid {
-  padding: 1vh 0vh 1vh 5%;
+  margin: 1vh 0vh 1rem 5%;
   display: flex;
   cursor: crosshair;
   place-content: left;

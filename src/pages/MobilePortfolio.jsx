@@ -43,7 +43,7 @@ const MobilePortfolio = () => {
       <div className='main-col'>
         <section id='intro-mobile'>
           <h1>Luke McGovern</h1>
-          <ul style={{ marginBottom: "0", }}>
+          <ul style={{ paddingInline: "2vw", marginBottom: "0" }}>
             <p className='mini' style={{ marginBottom: "0" }}>Software Engineer, Fullstack Developer</p>
             <p className='mini' style={{ marginBottom: "0" }}>luke.mcgovern18@gmail.com</p>
           </ul>

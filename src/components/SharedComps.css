@@ -28,8 +28,6 @@
   color: var(--gray-100);
 
   .card-title {
-    padding: 1rem 1rem 0.5rem 1rem;
-    font-size: 20px;
     position: relative;
   }
 
@@ -41,10 +39,6 @@
     height: 2px;
     width: 50%;
     background: var(--gray-100);
-  }
-
-  .card-content {
-    padding: 0.5rem 2rem 1rem 3rem;
   }
 }
 
