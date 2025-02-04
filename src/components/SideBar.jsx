@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ImageComp from './ImageComp.tsx';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline } from "react-icons/io5";
-import { GiFuji } from "react-icons/gi";
 import './SharedComps.css';
 import './DeskComps.css';
 
@@ -33,7 +32,10 @@ function SideBar() {
   useEffect(() => {
     checkCanGoBack();
   });
-  /* <Link className='side-link' to="/japan-trip"><div className='side-icon'><GiFuji /></div><h5>Travel</h5></Link>*/
+  /*
+  import { GiFuji } from "react-icons/gi";
+
+   <Link className='side-link' to="/japan-trip"><div className='side-icon'><GiFuji /></div><h5>Travel</h5></Link>*/
   return (
     <div className='side-bar-comp desk'>
       <div className='back-btn-container'>

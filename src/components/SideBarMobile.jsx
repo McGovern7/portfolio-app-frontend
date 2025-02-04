@@ -2,14 +2,15 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ImageComp from './ImageComp.tsx';
 import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline } from "react-icons/io5";
-import { GiFuji } from "react-icons/gi";
 import './MobileComps.css';
 
 function SideBarMobile() {
   const sideRef = useRef();
   const isHome = window.location.pathname === '/portfolio';
   const isResume = window.location.pathname === '/resume';
-  /* <Link className='side-link' to="/japan-trip"><div className='side-icon'><GiFuji /></div><h5>Travel</h5></Link> */
+  /* 
+  import { GiFuji } from "react-icons/gi";
+  <Link className='side-link' to="/japan-trip"><div className='side-icon'><GiFuji /></div><h5>Travel</h5></Link> */
   return (
     <div className='side-bar-comp mobile'>
       <div className='back-btn-container'></div>
