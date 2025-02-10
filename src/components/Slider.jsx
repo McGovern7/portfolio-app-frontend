@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { BiExpandHorizontal } from "react-icons/bi";
+import { BsLayoutSidebarInset } from "react-icons/bs";
 
 // Create context
 const SliderContext = createContext(null);
@@ -17,7 +17,7 @@ export const SliderProvider = ({ children }) => {
 
   const sliderDiv = (
     <div className='slider-col'>
-      <button id='slide-btn' className='circle-btn' onClick={handleSlider}><BiExpandHorizontal /></button>
+      <button id='slide-btn' className='circle-btn' onClick={handleSlider}><BsLayoutSidebarInset /></button>
     </div>
   );
 
