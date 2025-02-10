@@ -83,6 +83,15 @@
       height: inherit;
     }
   }
+
+  /* No Page */
+  .main-column-B {
+    height: 100vh;
+    border: none;
+    .error {
+      justify-content: flex-end;
+    }
+  }
 }
 
 .side-bar-column.mob {

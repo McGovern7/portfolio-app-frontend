@@ -52,7 +52,8 @@ html {
 }
 
 .desktop-portfolio,
-.mobile-portfolio {
+.mobile-portfolio, 
+.resume-page {
   position: relative;
   background-color: var(--lightPrimary);
 
