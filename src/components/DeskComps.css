@@ -1,13 +1,14 @@
 /* Card Comp */
-.card-title {
-  padding: 1rem 1rem 0.5rem 1rem;
-  font-size: 20px;
-}
+.card-section.desk {
+  .card-title {
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 20px;
+  }
 
-.card-content {
-  padding: 0.5rem 2rem 1rem 3rem;
+  .card-content {
+    padding: 0.5rem 2rem 1rem 3rem;
+  }
 }
-
 
 /* Grid */
 .grid {

@@ -145,6 +145,7 @@ html {
     .thin-title {
       padding: 1rem 0 .75rem 2rem;
       text-decoration: none;
+      width: stretch;
     }
 
     .external {

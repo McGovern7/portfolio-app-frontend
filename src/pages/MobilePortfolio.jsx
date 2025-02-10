@@ -1,45 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { CardMobile, SideBarMobile } from '../components';
-// @ts-ignore
-import { IoContrast } from "react-icons/io5";
+import { Card, useDarkMode, useSidebar, useSlider } from '../components';
 import { FiArrowUpRight } from "react-icons/fi";
-import { BiExpandHorizontal } from "react-icons/bi";
 import './MobileStyle.css';
 import './SharedStyle.css';
 
 const MobilePortfolio = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const [showSideBar, setShowSideBar] = useState(true);
-
-  const handleSideBar = async () => { // open and close the sidebar window
-    setShowSideBar(!showSideBar);
-  };
-
-  // Update the state on button press
-  const logDarkMode = async () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    // Update after state change
-    localStorage.setItem('darkMode', newDarkMode.toString());
-  };
+  // Call the useContext variables
+  const { darkModeTernary, darkModeDiv } = useDarkMode();
+  const { sidebar } = useSidebar();
+  const { sliderTernary, sliderDiv } = useSlider();
 
   return (
-    <div className={`mobile-portfolio ${darkMode ? 'dark-mode' : ''}`}>
-      <div className={`side-bar-column mob ${showSideBar ? 'show-side' : 'hide-side'}`}>
+    <div className={`mobile-portfolio ${darkModeTernary}`}>
+      <div className={`side-bar-column mob ${sliderTernary}`}>
         <section className='fixed-section'>
-          <React.Fragment>
-            <SideBarMobile />
-          </React.Fragment>
+          {sidebar}
         </section>
       </div>
       <header className='top mob'>
-        <div className='slider-col'>
-          <button id='slide-btn' className='circle-btn' onClick={handleSideBar}><BiExpandHorizontal /></button>
-        </div>
-        <div className='dark-btn-container'>
-          <button id='dark-mode-btn' className='circle-btn' onClick={logDarkMode}><IoContrast /></button>
-        </div>
+        {sliderDiv}
+        {darkModeDiv}
       </header>
       <div className='main-col'>
         <section id='intro-mobile'>
@@ -54,7 +35,7 @@ const MobilePortfolio = () => {
           <div className='row'>
             <p>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.</p>
             <p>I have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first fullstack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.</p>
-						<p>My goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer. While making applications, I've been busy upgrading the interface of my Dad's pizza website.</p>
+            <p>My goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer. While sending applications, I've been busy upgrading the interface of my Dad's pizza website.</p>
           </div>
         </section>
         <section id='proficiencies-mobile'>
@@ -142,38 +123,38 @@ const MobilePortfolio = () => {
         </section>
         <section id='work-experience-mobile'>
           <h2>Work Experience</h2>
-          <CardMobile ariaLabel='Work experience, Donahue & Associates' id='D-and-A-job-mobile'
-            title={<p className='card-title'><b>Tech Consultant,<br></br> Donahue & Associates</b> May 2023 - Aug 2023</p>}
+          <Card ariaLabel='Work experience, Donahue & Associates' id='D-and-A-job-mobile' isMobile={false}
+            title={<p className='card-title'><b>Tech Consultant,<br></br> Donahue & Associates</b> 05/23 - 08/23</p>}
             content={<ul className='card-content'>
               <li>Manage website and help implement new tech endeavors</li>
               <li>Teach realtors how to get aerial shots of properties with a drone</li>
               <li>Set up computer equipment when moving office spaces</li></ul>} />
-          <CardMobile ariaLabel='Work experience, Bordeaux Constuction' id='construction-job-mobile'
-            title={<p className='card-title'><b>Construction,<br></br> Bordeaux Construction</b> 2020 - Present</p>}
+          <Card ariaLabel='Work experience, Bordeaux Constuction' id='construction-job-mobile' isMobile={false}
+            title={<p className='card-title'><b>Construction,<br></br> Bordeaux Construction</b> 2020 - 2024</p>}
             content={<ul className='card-content'>
               <li>Renovate commercial and residential properties</li>
               <li>Assist contractor with full apartment renovations, at each stage of the process</li>
               <li>Flip large returns for property owners</li>
               <li>Build planning and communication skills dealing with potentially dangerous environments</li></ul>} />
         </section>
-        <section id='class-work'>
+        <section id='class-work-mobile'>
           <h2>Notable Class Work</h2>
-          <CardMobile ariaLabel='Class, Web app development' id='web-dev-class-mobile'
+          <Card ariaLabel='Class, Web app development' id='web-dev-class-mobile' isMobile={false}
             title={<p className='card-title'><b>Web App Development</b>Fall 2023</p>}
             content={<p className='card-content'>Developed an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a RESTful API</p>} />
-          <CardMobile ariaLabel='Class, data privacy' id='data-priv-class-mobile'
+          <Card ariaLabel='Class, data privacy' id='data-priv-class-mobile' isMobile={false}
             title={<p className='card-title'><b>Data Privacy</b>Fall 2023</p>}
             content={<p className='card-content'>Solo Project-based Learning: Created software which adds privacy mechanisms to create secure and accurate coordinate data. Data then plotted on a world map with GeoPandas.</p>} />
-          <CardMobile ariaLabel='Class, software engineering' id='software-eng-class-mobile'
+          <Card ariaLabel='Class, software engineering' id='software-eng-class-mobile' isMobile={false}
             title={<p className='card-title'><b>Software Engineering</b>Spring 2023</p>}
             content={<p className='card-content'>Using Agile Development in a group of 4, I coded a simulated monopoly game using PyGame. Code was shared through GitLab for this semester-long project.</p>} />
-          <CardMobile ariaLabel='Class, cybersecurity' id='cybersecurity-class-mobile'
+          <Card ariaLabel='Class, cybersecurity' id='cybersecurity-class-mobile' isMobile={false}
             title={<p className='card-title'><b>Cybersecurity Principles</b>Summer 2022</p>}
             content={<p className='card-content'>Infiltrate my professor’s (fake) online bank using cryptographic hashing to secure computer networks. Newfound understanding of network threat vectors allows me to build more secure software.</p>} />
         </section>
       </div>
     </div>
-  )
+  );
 };
 
 export default MobilePortfolio;

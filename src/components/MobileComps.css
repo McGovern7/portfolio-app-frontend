@@ -1,21 +1,19 @@
-
 /* Card Comp */
-.card-title {
-  flex-wrap: wrap;
-  padding: 2vw 2vw 1vw 2vw;
-  font-size: calc(12px + 1.5vw);
-  position: relative;
-}
+.card-content.mob {
+  .card-title {
+    flex-wrap: wrap;
+    padding: 2vw 2vw 1vw 2vw;
+  }
 
-.card-content {
-  padding: 1vw 2vw 4vw 6vw;
+  .card-content {
+    padding: 1vw 2vw 4vw 6vw;
+  }
 }
 
 /* SideBar Comp */
-.side-bar-comp.mobile {
-  z-index: 5;
+.side-bar-comp.mob {
   overflow: auto;
-  padding-top: 47px;
+  padding-top: 17px;
 
   footer {
     margin-bottom: 48px;

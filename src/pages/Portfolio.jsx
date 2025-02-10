@@ -1,20 +1,13 @@
-import { useState, useEffect } from "react";
+import React from 'react';
+import { useScreenWidth } from '../components';
 import DesktopPortfolio from "./DesktopPortfolio";
 import MobilePortfolio from "./MobilePortfolio";
 
 const Portfolio = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { isMobile } = useScreenWidth();
+  const portfolioRender = <React.Fragment>{isMobile ? <MobilePortfolio /> : <DesktopPortfolio />}</React.Fragment>;
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return isMobile ? <MobilePortfolio /> : <DesktopPortfolio />;
+  return (portfolioRender);
 };
 
 export default Portfolio;

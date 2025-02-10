@@ -1,76 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Grid, ScrollTo, SideBar } from '../components';
-// @ts-ignore
-import { IoContrast } from "react-icons/io5";
+import { Card, Grid, ScrollTo, useDarkMode, useSidebar, useScreenWidth } from '../components';
 import { FiArrowUpRight } from "react-icons/fi";
 import { BiExpandHorizontal } from "react-icons/bi";
 import './DesktopStyle.css';
 import './SharedStyle.css';
 
 const DesktopPortfolio = () => {
-	// unique darkmode button to change palette
-	const [darkMode, setDarkMode] = useState(true);
-	const [smallScreen, setSmallScreen] = useState(window.innerWidth <= 1110);
+	// Call the useContext variables
+	const { darkModeTernary, darkModeDiv } = useDarkMode();
+	const { desktopClass } = useScreenWidth();
+	const { sidebar } = useSidebar();
+	// Initialize the state variables
 	const [hiddenA, setHiddenA] = useState(false);
 	const [hiddenB, setHiddenB] = useState(true);
+	const [hiddenATernary, setHiddenATernary] = useState(hiddenA ? 'hidden-a' : '');
+	const [hiddenBTernary, setHiddenBTernary] = useState(hiddenB ? 'hidden-b' : '');
 
-	const handleSlide = async () => {
-		if (hiddenA) {
-			setHiddenA(false);
-			setHiddenB(true);
-		}
-		else if (hiddenB) {
-			setHiddenB(false); // b is showing, so hide it
-			setHiddenA(true); // now show A
-		};
-	};
-
-	useEffect(() => {
-		// if (localStorage.getItem('darkMode')) { setDarkMode() }
-		const handleResize = () => {
-			const isSmall = (window.innerWidth <= 1100 && window.innerWidth > 768);
-			if (isSmall !== smallScreen) { // if screen changes on this run, update it for next
-				if (!isSmall && smallScreen) {
-					setSmallScreen(false);
-				}
-				else {
-					setSmallScreen(true);
-				};
-			};
-		};
-
-		window.addEventListener("resize", handleResize);
-		return () => window.removeEventListener("resize", handleResize); // cleanup listener
-		// eslint-disable-next-line
-	}, [handleSlide]);
-
-	// Update the state on button press
-	const logDarkMode = async () => {
-		const newDarkMode = !darkMode;
-		setDarkMode(newDarkMode);
-		// Update after state change
-		localStorage.setItem('darkMode', newDarkMode.toString());
+	const handleSlide = () => {
+		setHiddenA(prevHiddenA => {
+			const newHiddenA = !prevHiddenA;
+			setHiddenATernary(newHiddenA ? 'hidden-a' : '');
+			return newHiddenA;
+		});
+		setHiddenB(prevHiddenB => {
+			const newHiddenB = !prevHiddenB;
+			setHiddenBTernary(newHiddenB ? 'hidden-b' : '');
+			return newHiddenB;
+		});
 	};
 
 	return (
-		<div className={`desktop-portfolio  ${darkMode ? 'dark-mode' : ''}`}>
+		<div className={`desktop-portfolio  ${darkModeTernary}`}>
 			<div className='side-bar-column'>
 				<section className='fixed-section'>
-					<React.Fragment>
-						<SideBar />
-					</React.Fragment>
+					{sidebar}
 				</section>
 			</div>
-			<div className={`main-column-A ${hiddenA ? 'hidden-a' : ''} ${hiddenB ? 'hidden-b' : ''}`}>
+			<div className={`main-column-A ${hiddenATernary} ${hiddenBTernary}`}>
 				<section id='intro'>
-					<div className='dark-btn-container'>
-						<button id='dark-mode-btn' className='circle-btn' onClick={logDarkMode}><IoContrast /></button>
-					</div>
+					{darkModeDiv}
 					<h1>Luke McGovern</h1>
 					<ul style={{ paddingLeft: '3px', margin: '0' }}>
 						<p className='mini' style={{ marginBottom: "0" }}>Software Engineer, Fullstack Developer</p>
-						<p className='mini' style={{ paddingBottom: "2vh", }}>luke.mcgovern18@gmail.com</p>
+						<p className='mini'>luke.mcgovern18@gmail.com</p>
 					</ul>
 					<ul className='scroll-list'>
 						<ScrollTo ariaLabel='scroll to about me' id='about-scroll' className='scroll-to'
@@ -87,16 +60,16 @@ const DesktopPortfolio = () => {
 				</section>
 				<Grid />
 			</div>
-			<div className={`slider-col ${smallScreen ? 'small-screen' : 'big-screen'}`}>
+			<div className={`slider-col ${desktopClass}`}>
 				<button id='slide-btn' className='circle-btn' onClick={handleSlide}><BiExpandHorizontal /></button>
 			</div>
-			<div className={`main-column-B ${hiddenA ? 'hidden-a' : ''} ${hiddenB ? 'hidden-b' : ''}`}>
+			<div className={`main-column-B ${hiddenATernary} ${hiddenBTernary}`}>
 				<section id='about-me'>
 					<h2>About Me</h2>
 					<div className='row'>
 						<p className='col'>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.</p>
 						<p className='col'>I have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first fullstack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.</p>
-						<p>My goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer. While making applications, I've been busy upgrading the interface of my Dad's pizza website.</p>
+						<p>My goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer. While sending applications, I've been busy upgrading the interface of my Dad's pizza website.</p>
 					</div>
 				</section>
 				<section id='proficiencies'>
@@ -186,13 +159,13 @@ const DesktopPortfolio = () => {
 				</section>
 				<section id='work-experience'>
 					<h2>Work Experience</h2>
-					<Card ariaLabel='Work experience, Donahue & Associates' id='D-and-A-job'
-						title={<p className='card-title'><b>Tech Consultant,<br></br> Donahue & Associates</b> May 2023 - Aug 2023</p>}
+					<Card ariaLabel='Work experience, Donahue & Associates' id='D-and-A-job' isMobile={false}
+						title={<p className='card-title'><b>Tech Consultant,<br></br> Donahue & Associates</b> 05/2023 - 08/2023</p>}
 						content={<ul className='card-content'>
 							<li>Manage website and help implement new tech endeavors</li>
 							<li>Teach realtors how to get aerial shots of properties with a drone</li>
 							<li>Set up computer equipment when moving office spaces</li></ul>} />
-					<Card ariaLabel='Work experience, Bordeaux Constuction' id='construction-job'
+					<Card ariaLabel='Work experience, Bordeaux Constuction' id='construction-job' isMobile={false}
 						title={<p className='card-title'><b>Construction,<br></br> Bordeaux Construction</b> 2020 - Present</p>}
 						content={<ul className='card-content'>
 							<li>Renovate commercial and residential properties</li>
@@ -202,16 +175,16 @@ const DesktopPortfolio = () => {
 				</section>
 				<section id='class-work'>
 					<h2>Notable Class Work</h2>
-					<Card ariaLabel='Class, Web app development' id='web-dev-class'
+					<Card ariaLabel='Class, Web app development' id='web-dev-class' isMobile={false}
 						title={<p className='card-title'><b>Web App Development</b>Fall 2023</p>}
 						content={<p className='card-content'>Developed an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a RESTful API</p>} />
-					<Card ariaLabel='Class, data privacy' id='data-priv-class'
+					<Card ariaLabel='Class, data privacy' id='data-priv-class' isMobile={false}
 						title={<p className='card-title'><b>Data Privacy</b>Fall 2023</p>}
 						content={<p className='card-content'>Solo Project-based Learning: Created software which adds privacy mechanisms to create secure and accurate coordinate data. Data then plotted on a world map with GeoPandas.</p>} />
-					<Card ariaLabel='Class, software engineering' id='software-eng-class'
+					<Card ariaLabel='Class, software engineering' id='software-eng-class' isMobile={false}
 						title={<p className='card-title'><b>Software Engineering</b>Spring 2023</p>}
 						content={<p className='card-content'>Using Agile Development in a group of 4, I coded a simulated monopoly game using PyGame. Code was shared through GitLab for this semester-long project.</p>} />
-					<Card ariaLabel='Class, cybersecurity' id='cybersecurity-class'
+					<Card ariaLabel='Class, cybersecurity' id='cybersecurity-class' isMobile={false}
 						title={<p className='card-title'><b>Cybersecurity Principles</b>Summer 2022</p>}
 						content={<p className='card-content'>Infiltrate my professor’s (fake) online bank using cryptographic hashing to secure computer networks. Newfound understanding of network threat vectors allows me to build more secure software.</p>} />
 				</section>
