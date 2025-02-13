@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Grid, ScrollTo, useDarkMode, useSidebar, useScreenWidth } from '../components';
+import { Card, Grid, ScrollTo, useDarkMode, useScreenWidth, Sidebar } from '../components';
 import { FiArrowUpRight } from "react-icons/fi";
 import { BiExpandHorizontal } from "react-icons/bi";
+import { IoContrast } from "react-icons/io5";
 import './DesktopStyle.css';
 import './SharedStyle.css';
 
 const DesktopPortfolio = () => {
 	// Call the useContext variables
-	const { darkModeTernary, darkModeDiv } = useDarkMode();
+	const { darkMode, toggleDarkMode } = useDarkMode();
 	const { desktopClass } = useScreenWidth();
-	const { sidebar } = useSidebar();
 	// Initialize the state variables
 	const [hiddenA, setHiddenA] = useState(false);
 	const [hiddenB, setHiddenB] = useState(true);
@@ -31,15 +31,19 @@ const DesktopPortfolio = () => {
 	};
 
 	return (
-		<div className={`desktop-portfolio  ${darkModeTernary}`}>
+		<div className={`desktop-portfolio  ${darkMode ? 'dark' : ''}`}>
 			<div className='side-bar-column'>
 				<section className='fixed-section'>
-					{sidebar}
+					<Sidebar />
 				</section>
 			</div>
 			<div className={`main-column-A ${hiddenATernary} ${hiddenBTernary}`}>
 				<section id='intro'>
-					{darkModeDiv}
+					<div className='dark-btn-container'>
+						<button className="circle-btn" onClick={toggleDarkMode}>
+							<IoContrast />
+						</button>
+					</div>
 					<h1>Luke McGovern</h1>
 					<ul style={{ paddingLeft: '3px', margin: '0' }}>
 						<p className='mini' style={{ marginBottom: "0" }}>Software Engineer, Fullstack Developer</p>

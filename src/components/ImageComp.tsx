@@ -1,4 +1,3 @@
-import React from 'react';
 declare var require: any;
 
 const images = require.context('../assets', false, /\.(png|jpe?g|webp|svg)$/);

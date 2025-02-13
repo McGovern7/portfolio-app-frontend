@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import api from '../api';
 import { Button, Navbar } from '../components/';
 import '../components/SharedComps.css';
@@ -57,9 +57,7 @@ const Register = () => {
   };
   return (
     <div className='main-page'>
-      <React.Fragment>
-        <Navbar />
-      </React.Fragment>
+      <Navbar />
       <main>
         <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
         <h3>Registration</h3>

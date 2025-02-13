@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navbar, ImageComp, Card, ScrollTo } from '../components';
 import { FaAngleUp } from "react-icons/fa6";
 import './pages.css';
@@ -6,9 +5,7 @@ import './pages.css';
 export default function Home() {
   return (
     <div className='main-page'>
-      <React.Fragment>
-        <Navbar />
-      </React.Fragment>
+      <Navbar />
       <main>
         <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
         <section id='description'>

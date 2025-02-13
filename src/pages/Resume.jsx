@@ -1,27 +1,30 @@
-import React from 'react';
 import Resume from '../assets/Resume.pdf';
-import { useDarkMode, useScreenWidth, useSidebar, useSlider } from '../components';
+import { Sidebar, useDarkMode, useScreenWidth, useSlider } from '../components';
+import { IoContrast } from "react-icons/io5";
 import './DesktopStyle.css';
 import './MobileStyle.css';
 import './SharedStyle.css';
 
-export default function ResumePage() {
+const ResumePage = () => {
   // Call the useContext variables
-  const { darkModeTernary, darkModeDiv } = useDarkMode();
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const { screenClass } = useScreenWidth();
-  const { sidebar } = useSidebar();
   const { sliderTernary, sliderDiv } = useSlider();
 
   return (
-    <div className={`resume-page ${screenClass} ${darkModeTernary}`}>
+    <div className={`resume-page ${screenClass} ${darkMode ? 'dark' : ''}`}>
       <div className={`side-bar-column ${screenClass} ${sliderTernary}`}>
         <section className='fixed-section'>
-          {sidebar}
+          <Sidebar />
         </section>
       </div>
       <header className={`top ${screenClass}`} >
         {sliderDiv}
-        {darkModeDiv}
+        <div className='dark-btn-container'>
+          <button className="circle-btn" onClick={toggleDarkMode}>
+            <IoContrast />
+          </button>
+        </div>
       </header>
       <div className={`resume-column ${screenClass}`}>
         <object aria-label='Resume PDF' data={Resume} type="application/pdf"></object>
@@ -29,3 +32,5 @@ export default function ResumePage() {
     </div>
   );
 };
+
+export default ResumePage

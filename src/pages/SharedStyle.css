@@ -31,9 +31,9 @@ html {
   font-style: normal;
 }
 
-.desktop-portfolio.dark-mode,
-.mobile-portfolio.dark-mode,
-.resume-page.dark-mode {
+.desktop-portfolio.dark,
+.mobile-portfolio.dark,
+.resume-page.dark {
   background-color: var(--gray-900);
   color: var(--gray-200);
 }

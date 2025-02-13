@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ImageComp, useScreenWidth } from '.';
 import { FaArrowLeftLong } from "react-icons/fa6";
@@ -8,9 +8,8 @@ import './DeskComps.css';
 import './MobileComps.css';
 
 // Create context
-const SideBarContext = createContext(null);
 
-export const SideBarProvider = ({ children }) => {
+const Sidebar = () => {
   const { screenClass } = useScreenWidth();
   const [canGoBack, setCanGoBack] = useState();
   const navigate = useNavigate();
@@ -34,12 +33,12 @@ export const SideBarProvider = ({ children }) => {
     }
   };
 
- // runs on page load
+  // runs on page load
   useEffect(() => {
     checkCanGoBack();
   });
 
-  const sidebar = (
+  return (
     <div className={`side-bar-comp ${screenClass}`}>
       <div className='back-btn-container'>
         <button id="back-btn" className='circle-btn' onClick={goBack} style={{ visibility: canGoBack ? 'visible' : 'hidden' }}>
@@ -57,13 +56,8 @@ export const SideBarProvider = ({ children }) => {
         <Link className='side-link' to="https://mail.google.com/mail/u/0/?fs=1&to=luke.mcgovern18@gmail.com&su=&body=&bcc=&tf=cm" target="_blank" rel="noopener noreferrer"><ImageComp ariaLabel='Gmail logo' src='GmailLogo.webp' alt="the Gmail logo in a circle" ></ImageComp><h5>Email Me</h5></Link>
       </nav>
       <footer><u>App under development</u> Accessibility features are unimplemented. <br></br>If problem, Disable VPN</footer>
-    </div>);
-
-  return (
-    <SideBarContext.Provider value={{ sidebar }}>
-      {children}
-    </SideBarContext.Provider>
+    </div>
   );
-}
+};
 
-export const useSidebar = () => (useContext(SideBarContext));
+export default Sidebar;

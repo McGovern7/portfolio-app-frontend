@@ -1,4 +1,3 @@
-import React from 'react';
 import './SharedComps.css';
 import anime from "animejs";
 

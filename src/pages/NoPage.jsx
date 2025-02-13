@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSidebar, useDarkMode, useScreenWidth, useSlider } from '../components';
+import { Sidebar, useDarkMode, useScreenWidth, useSlider } from '../components';
 import './DesktopStyle.css';
 import './MobileStyle.css';
 import './SharedStyle.css';
@@ -8,14 +7,13 @@ export default function Portfolio() {
   // Call the useContext variables
   const { darkModeTernary, darkModeDiv } = useDarkMode();
   const { screenClass } = useScreenWidth();
-  const { sidebar } = useSidebar();
   const { sliderTernary, sliderDiv } = useSlider();
 
   return (
     <div className={`resume-page ${screenClass} ${darkModeTernary}`}>
       <div className={`side-bar-column ${screenClass} ${sliderTernary}`}>
         <section className='fixed-section'>
-          {sidebar}
+          <Sidebar />
         </section>
       </div>
       <header className={`top ${screenClass}`} >

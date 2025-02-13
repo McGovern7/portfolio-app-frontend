@@ -1,26 +1,29 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, useDarkMode, useSidebar, useSlider } from '../components';
+import { Card, Sidebar, useDarkMode, useSlider } from '../components';
 import { FiArrowUpRight } from "react-icons/fi";
+import { IoContrast } from "react-icons/io5";
 import './MobileStyle.css';
 import './SharedStyle.css';
 
 const MobilePortfolio = () => {
   // Call the useContext variables
-  const { darkModeTernary, darkModeDiv } = useDarkMode();
-  const { sidebar } = useSidebar();
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const { sliderTernary, sliderDiv } = useSlider();
 
   return (
-    <div className={`mobile-portfolio ${darkModeTernary}`}>
+    <div className={`mobile-portfolio ${darkMode ? 'dark' : ''}`}>
       <div className={`side-bar-column mob ${sliderTernary}`}>
         <section className='fixed-section'>
-          {sidebar}
+          <Sidebar />
         </section>
       </div>
       <header className='top mob'>
         {sliderDiv}
-        {darkModeDiv}
+        <div className='dark-btn-container'>
+          <button className="circle-btn" onClick={toggleDarkMode}>
+            <IoContrast />
+          </button>
+        </div>
       </header>
       <div className='main-col'>
         <section id='intro-mobile'>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import { Button, Navbar, ScrollTo, getCookie, verifyToken } from '../components';
@@ -186,9 +186,7 @@ function ProtectedPage() {
   };
   return (
     <div className='main-page'>
-      <React.Fragment>
-        <Navbar />
-      </React.Fragment>
+      <Navbar />
       <main>
         <p className='warning-text'> **EXPECT WAIT TIMES (1 MIN +), API HOSTED ON A FREE SUPABASE TRIAL, NEEDS TIME TO LAUNCH** </p>
         <h3>Secret Stash</h3>

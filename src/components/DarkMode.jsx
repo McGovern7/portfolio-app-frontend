@@ -1,29 +1,21 @@
-import { createContext, useContext, useState } from 'react';
-import { IoContrast } from "react-icons/io5";
+import { createContext, useContext, useEffect, useState } from 'react';
 
 // Create context
 const DarkModeContext = createContext(null);
 
 export const DarkModeProvider = ({ children }) => {
 	// Initialize the state variables
-	const [darkModeStatus, setDarkModeStatus] = useState(true);
-	const [darkModeTernary, setDarkModeTernary] = useState(darkModeStatus ? 'dark-mode' : '');
+  const [darkMode, setDarkMode] = useState(null);
 
-	// Update the states on button press
-	const logDarkMode = async () => {
-		const newDarkModeStatus = !darkModeStatus;
-		setDarkModeStatus(newDarkModeStatus);
-		setDarkModeTernary(newDarkModeStatus ? 'dark-mode' : '');
-	};
+  useEffect(() => {
+    const storedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(storedDarkMode);
+  }, []);
 
-	const darkModeDiv = (
-		<div className='dark-btn-container'>
-			<button id='dark-mode-btn' className='circle-btn' onClick={logDarkMode}><IoContrast /></button>
-		</div>
-	);
+	const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
 	return (
-		<DarkModeContext.Provider value={{ darkModeTernary, darkModeDiv }}>
+		<DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
 			{children}
 		</DarkModeContext.Provider>
 	);
