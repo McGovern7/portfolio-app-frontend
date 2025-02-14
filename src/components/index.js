@@ -5,6 +5,7 @@ export { default as ImageComp } from './ImageComp';
 export { default as Navbar } from './Navbar';
 export { default as ScrollTo } from './ScrollTo';
 export { default as Sidebar } from './SideBar';
+export { default as Topbar } from './TopBar';
 export { DarkModeProvider, useDarkMode } from './DarkMode'
 export { ScreenWidthProvider, useScreenWidth} from './ScreenWidth';
 export { SliderProvider, useSlider } from './Slider';

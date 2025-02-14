@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import { BsLayoutSidebarInset } from "react-icons/bs";
 
 // Create context
 const SliderContext = createContext(null);
@@ -7,22 +6,11 @@ const SliderContext = createContext(null);
 export const SliderProvider = ({ children }) => {
   // Initialize the state variables
   const [sliderStatus, setSliderStatus] = useState(false);
-  const [sliderTernary, setSliderTernary] = useState(sliderStatus ? 'show-side' : 'hide-side');
 
-  const handleSlider = async () => { // open and close the sidebar window
-    const newSliderStatus = !sliderStatus;
-    setSliderStatus(newSliderStatus);
-    setSliderTernary(newSliderStatus ? 'show-side' : 'hide-side');
-  };
-
-  const sliderDiv = (
-    <div className='slider-col'>
-      <button id='slide-btn' className='circle-btn' onClick={handleSlider}><BsLayoutSidebarInset /></button>
-    </div>
-  );
+	const toggleSlider = () => setSliderStatus((prev) => !prev);
 
   return (
-    <SliderContext.Provider value={{ sliderTernary, sliderDiv }}>
+    <SliderContext.Provider value={{ sliderStatus, toggleSlider }}>
       {children}
     </SliderContext.Provider>
   );

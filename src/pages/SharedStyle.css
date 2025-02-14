@@ -24,37 +24,20 @@ html {
   background-color: var(--greenPrimary);
 }
 
-.desktop-portfolio *,
-.mobile-portfolio *,
-.resume-page * {
-  font-family: "Josefin Sans", serif;
+.desktop-portfolio *, .mobile-portfolio *, .resume-page * {
+  font-family: "Josefin Sans", sans-serif;
   font-style: normal;
 }
 
-.desktop-portfolio.dark,
-.mobile-portfolio.dark,
-.resume-page.dark {
+.desktop-portfolio.dark, .mobile-portfolio.dark, .resume-page.dark {
   background-color: var(--gray-900);
   color: var(--gray-200);
 }
 
-#dark-mode-btn,
-#back-btn,
-#slide-btn {
-  color: var(--greenPrimary);
-}
-
-.side-bar-column {
+.desktop-portfolio, .mobile-portfolio, .resume-page {
   display: flex;
-  z-index: 2;
-  min-width: 216px;
-  max-width: 216px;
-}
-
-.desktop-portfolio,
-.mobile-portfolio, 
-.resume-page {
   position: relative;
+  height: 100vh;
   background-color: var(--lightPrimary);
 
   h1,
@@ -80,6 +63,7 @@ html {
 
   .mini {
     padding-top: 0;
+    margin: 0;
     font-size: 14.5px;
     color: var(--gray-500);
   }
@@ -90,17 +74,17 @@ html {
     line-height: 1.3;
   }
 
+  ul {
+    margin: 0;
+  }
+
   li p,
   li {
     font-size: 16px;
   }
 
-  .slider-col.big-screen {
-    max-width: 0%;
-
-    #slide-btn {
-      visibility: hidden;
-    }
+  .resize-col.wide {
+    display: none;
   }
 
   .thin-title {
@@ -118,10 +102,6 @@ html {
       display: flex;
       justify-content: space-between;
     }
-
-    .card-content {
-      font-size: 16px;
-    }
   }
 
   .error {
@@ -134,59 +114,60 @@ html {
   /* Thumb color and track color */
 }
 
-.project-group {
-  .project-link {
-    display: flex;
-    margin-bottom: .5rem;
-    background-color: var(--gray-750);
-    border-radius: .375rem;
-    cursor: pointer;
-    width: max(215px, 50%);
+.project-link {
+  display: flex;
+  margin-bottom: .5rem;
+  background-color: var(--gray-750);
+  border-radius: .375rem;
+  cursor: pointer;
+  width: max(215px, 50%);
 
-    .thin-title {
-      padding: 1rem 0 .75rem 2rem;
-      text-decoration: none;
-      width: stretch;
-    }
-
-    .external {
-      margin-left: .5rem;
-      justify-content: right;
-      transition: transform .3s ease;
-      padding-bottom: 1px;
-    }
+  .thin-title {
+    padding: 1rem 0 .75rem 2rem;
+    text-decoration: none;
+    width: stretch;
   }
 
-  .project-link:hover {
-    background-color: var(--gray-700);
-
-    a {
-      color: white;
-    }
-
-    .external {
-      color: var(--red-500);
-      transform: translate(4px, -8px);
-      /* Move right (positive X) and up (negative Y) */
-    }
-  }
-
-  .shield {
-    img {
-      margin-right: .5rem;
-      margin-bottom: .5rem;
-      padding: 0;
-      width: auto;
-      height: 30px;
-    }
+  .external {
+    margin-left: .5rem;
+    justify-content: right;
+    transition: transform .3s ease;
+    padding-bottom: 1px;
   }
 }
 
-.resume-column {
+.project-link:hover {
+  background-color: var(--gray-700);
+
+  a {
+    color: white;
+  }
+
+  .external {
+    color: var(--red-500);
+    transform: translate(4px, -8px);
+    /* Move right (positive X) and up (negative Y) */
+  }
+}
+
+.shield {
+  img {
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+    padding: 0;
+    width: auto;
+    height: 30px;
+  }
+}
+
+.extra-col {
+  display: flex;
   min-height: 500px;
+  height: inherit;
   width: stretch;
 
   object {
+    height: inherit;
     width: inherit;
   }
 }

@@ -13,13 +13,8 @@ interface ButtonProps {
 
 const Button = ({ id, label, icon, variant, onClick, disabled, ariaLabelledBy }: ButtonProps) => {
   return (
-    <button
-      id={id}
-      onClick={onClick}
-      disabled={disabled}
-      aria-labelledby={ariaLabelledBy}
-      className={`btn btn-${variant} mb-3`}
-    >
+    <button id={id} onClick={onClick} disabled={disabled}
+      aria-labelledby={ariaLabelledBy} className={`btn btn-${variant} mb-3`}>
       {icon}{label}
     </button>
   );

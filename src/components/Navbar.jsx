@@ -30,13 +30,9 @@ function Navbar() {
         <Link to="/tarkov-app/protected">
           <FaWpforms alt="" /> Storage
         </Link>
-        <button className="nav-btn nav-close-btn" onClick={showNavBar}>
-          <FaBars />
-        </button>
+        <button className="nav-btn nav-close-btn" onClick={showNavBar}><FaBars /></button>
       </nav>
-      <button className="nav-btn" onClick={showNavBar}>
-        <FaBars />
-      </button>
+      <button className="nav-btn" onClick={showNavBar}><FaBars /></button>
     </header>
   );
 }

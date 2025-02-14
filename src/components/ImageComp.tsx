@@ -22,16 +22,8 @@ const ImageComp = ({ id, ariaLabel, src, className, width, height, alt }: ImageP
     return null; // Return null if the image doesn't exist
   };
   return (
-    <img
-      id={id}
-      aria-label={ariaLabel}
-      src={imageSrc}
-      className={className}
-      width={width}
-      height={height}
-      alt={alt}
-      loading='lazy'
-    />
+    <img id={id} src={imageSrc} aria-label={ariaLabel} className={className}
+      width={width} height={height} alt={alt} loading='lazy' />
   );
 };
 

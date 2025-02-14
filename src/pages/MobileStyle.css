@@ -1,4 +1,4 @@
-.top.mob {
+.resume-page.mob .top, .mobile-portfolio .top {
   padding: .5rem 1.5rem .5rem 1rem;
   display: flex;
   position: fixed;
@@ -8,12 +8,6 @@
   background-color: var(--greenPrimary);
   border-bottom: 1px solid var(--gray-100);
   z-index: 3;
-
-  #slide-btn-mobile {
-    position: relative;
-    align-self: flex-end;
-    top: calc(50% - 15px);
-  }
 }
 
 .mobile-portfolio {
@@ -70,40 +64,8 @@
   }
 }
 
-.resume-page.mob {
-  display: flex;
-
-  /* Resume Page */
-  .resume-column.mob {
-    height: calc(100vh - 47px);
-    margin-top: 47px;
-    overflow: hidden;
-
-    object {
-      height: inherit;
-    }
-  }
-
-  /* No Page */
-  .main-column-B {
-    height: 100vh;
-    border: none;
-    .error {
-      justify-content: flex-end;
-    }
-  }
-}
-
-.side-bar-column.mob {
-  position: fixed;
-  transition: all 1s ease;
-}
-
-/* SideBar Comp */
-.side-bar-column.mob.hide-side {
-  left: -216px;
-}
-
-.side-bar-column.mob.show-side {
-  left: 0px;
+.resume-page.mob .extra-col {
+  margin-top: 47px;
+  height: calc(100vh - 47px);
+  justify-content: end;
 }

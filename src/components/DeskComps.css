@@ -1,21 +1,9 @@
-/* Card Comp */
-.card-section.desk {
-  .card-title {
-    padding: 1rem 1rem 0.5rem 1rem;
-    font-size: 20px;
-  }
-
-  .card-content {
-    padding: 0.5rem 2rem 1rem 3rem;
-  }
-}
-
 /* Grid */
 .grid {
-  margin: 1vh 0vh 1rem 5%;
   display: flex;
   cursor: crosshair;
-  place-content: left;
+  place-content: center;
+  margin-bottom: 16px;
   overflow: hidden;
 
   .row-group {
@@ -47,10 +35,12 @@
 
 /* ScrollTo Comp */
 .scroll-to {
-  cursor: pointer;
   width: fit-content;
+  outline: none;
+  border: none;
+  background: inherit;
+  color: inherit;
   transition: padding 0.3s ease;
-  user-select: none;
 
   .scroll-btn {
     position: fixed;
@@ -77,12 +67,12 @@ ul .scroll-to:hover {
 }
 
 /* SideBar Comp */
-.side-bar-comp.desk {
-  padding-block: 16px;
-  .back-btn-container {
+.sidebar-comp.desk {
+  padding-top: 16px;
+  .back-btn-div {
     display: flex;
-    justify-content: flex-end;
-    padding-right: 12px;
+    justify-content: end;
+    padding-right: 4px;
 
     #back-btn {
       background-color: var(--gray-100);
@@ -95,10 +85,10 @@ ul .scroll-to:hover {
   }
 
   .side-link:hover {
+    background: var(--greenSecondary);
+
     h5 {
       padding-left: 1rem;
     }
-
-    background: var(--greenSecondary);
   }
 }

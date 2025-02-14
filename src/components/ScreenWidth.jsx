@@ -5,28 +5,25 @@ const ScreenWidthContext = createContext(null);
 
 // Context provider
 export const ScreenWidthProvider = ({ children }) => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [isMobile, setIsMobile] = useState(width < 768); // mobile or desktop screen size?
-  const [isSmallDesktop, setIsSmallDesktop] = useState(width >= 768 && width <= 1100); // desktop size: shrinks column
-  // classname changes
-  const [screenClass, setScreenClass] = useState(isMobile ? 'mob' : 'desk'); 
-  const [desktopClass, setDesktopClass] = useState(isSmallDesktop ? 'small-screen' : 'big-screen');
+  const [screen, setScreen] = useState({
+    isMobile: window.innerWidth < 768,
+    isSmallDesktop: window.innerWidth >= 768 && window.innerWidth <= 1100,
+  });
 
   useEffect(() => {
     const handleResize = () => { 
-      setWidth(window.innerWidth);
-      setIsMobile(width < 768);
-      setIsSmallDesktop(width >= 768 && width <= 1100);
-      setScreenClass(isMobile ? 'mob' : 'desk');
-      setDesktopClass(isSmallDesktop ? 'small-screen' : 'big-screen');
+      setScreen({
+        isMobile: window.innerWidth < 768,
+        isSmallDesktop: window.innerWidth >= 768 && window.innerWidth <= 1100,
+      });
     }
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [width, screenClass, isSmallDesktop, isMobile]);
+  });
 
   return (
-    <ScreenWidthContext.Provider value={{ width, isMobile, screenClass, desktopClass }}>
+    <ScreenWidthContext.Provider value={screen}>
       {children}
     </ScreenWidthContext.Provider>
   );
