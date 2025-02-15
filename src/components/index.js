@@ -6,6 +6,7 @@ export { default as Navbar } from './Navbar';
 export { default as ScrollTo } from './ScrollTo';
 export { default as Sidebar } from './SideBar';
 export { default as Topbar } from './TopBar';
+export { CollapseProvider, useCollapse } from './Collapse'
 export { DarkModeProvider, useDarkMode } from './DarkMode'
 export { ScreenWidthProvider, useScreenWidth} from './ScreenWidth';
 export { SliderProvider, useSlider } from './Slider';

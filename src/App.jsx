@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Portfolio, ResumePage, Home, Profile, Register, ProtectedPage, NoPage } from './pages';
-import { DarkModeProvider, ScreenWidthProvider, SliderProvider } from './components';
+import { CollapseProvider, DarkModeProvider, ScreenWidthProvider, SliderProvider } from './components';
 
 const Providers = ({ children }) => (
   <ScreenWidthProvider>
     <SliderProvider>
-      <DarkModeProvider>{children}</DarkModeProvider>
+      <CollapseProvider>
+        <DarkModeProvider>{children}</DarkModeProvider>
+      </CollapseProvider>
     </SliderProvider>
   </ScreenWidthProvider>
 );

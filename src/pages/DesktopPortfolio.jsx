@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Grid, ScrollTo, useDarkMode, useScreenWidth, Sidebar } from '../components';
+import { Card, Grid, ScrollTo, useCollapse, useDarkMode, useScreenWidth, Sidebar } from '../components';
 import { FiArrowUpRight } from "react-icons/fi";
 import { BiExpandHorizontal } from "react-icons/bi";
 import { IoContrast } from "react-icons/io5";
@@ -9,31 +8,14 @@ import './SharedStyle.css';
 
 const DesktopPortfolio = () => {
 	// Call the useContext variables
+	const { leftStatus, rightStatus, toggleCollapse } = useCollapse();
 	const { darkMode, toggleDarkMode } = useDarkMode();
 	const { isSmallDesktop } = useScreenWidth();
-	// Initialize the state variables
-	const [hiddenA, setHiddenA] = useState(false);
-	const [hiddenB, setHiddenB] = useState(true);
-	const [hiddenATernary, setHiddenATernary] = useState(hiddenA ? 'hidden-a' : '');
-	const [hiddenBTernary, setHiddenBTernary] = useState(hiddenB ? 'hidden-b' : '');
-
-	const handleSlide = () => {
-		setHiddenA(prevHiddenA => {
-			const newHiddenA = !prevHiddenA;
-			setHiddenATernary(newHiddenA ? 'hidden-a' : '');
-			return newHiddenA;
-		});
-		setHiddenB(prevHiddenB => {
-			const newHiddenB = !prevHiddenB;
-			setHiddenBTernary(newHiddenB ? 'hidden-b' : '');
-			return newHiddenB;
-		});
-	};
 
 	return (
 		<div className={`desktop-portfolio  ${darkMode ? 'dark' : ''}`}>
 			<Sidebar />
-			<div className={`left-col ${hiddenATernary} ${hiddenBTernary}`}>
+			<div className={`left-col ${leftStatus ? '' : 'hidden-a'} ${rightStatus ? '' : 'hidden-b'}`}>
 				<section>
 					<button id='dark-btn' className='circle-btn' aria-label='toggle dark mode' onClick={toggleDarkMode}>
 						<IoContrast />
@@ -54,9 +36,11 @@ const DesktopPortfolio = () => {
 				<Grid aria-hidden="true" />
 			</div>
 			<div className={`resize-col ${isSmallDesktop ? '' : 'wide'}`}>
-				<button id='resize-btn' className='circle-btn' aria-label='collapse current column to expand the other' onClick={handleSlide}><BiExpandHorizontal /></button>
+				<button id='resize-btn' className='circle-btn' aria-label='collapse current column to expand the other' onClick={toggleCollapse}>
+					<BiExpandHorizontal />
+				</button>
 			</div>
-			<div className={`right-col ${hiddenATernary} ${hiddenBTernary}`}>
+			<div className={`right-col ${leftStatus ? '' : 'hidden-a'} ${rightStatus ? '' : 'hidden-b'}`}>
 				<section id='about-me'>
 					<h2>About Me</h2>
 					<p>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br /><br />
