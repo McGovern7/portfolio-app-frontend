@@ -31,7 +31,7 @@ const ScrollTo = ({ className, content, embed, sectionID, icon }: ScrollToProps)
     } else { console.error("section not found"); };
   };
   if (embed) {
-    return (<a className={className} onClick={ScrollToSection}>{content}</a>)
+    return (<a href="#" className={className} onClick={ScrollToSection}>{content}</a>)
   } else {
     if (content) {
       return (<button className={className} onClick={ScrollToSection}><h5>{content}</h5></button>);
