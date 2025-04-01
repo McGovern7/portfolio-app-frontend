@@ -16,7 +16,6 @@
     margin-top: 1vh;
     font-size: min(11vw, 3rem);
   }
-
   h2 {
     margin-top: 1.5vh;
     font-size: min(8vw, 2.2rem);
@@ -40,26 +39,23 @@
         flex-direction: row;
         flex-wrap: wrap;
       }
-
       .col-mob {
         display: flex;
         flex: 1 1 auto;
         flex-direction: column;
       }
-
       .thin-header {
         font-size: 30px;
         font-weight: 300;
       }
-
-      .skills {
-        margin-bottom: 0;
-      }
+      .skills { margin-bottom: 0; }
     }
-
     .card-section {
       margin-bottom: 1rem;
       max-width: max(425px, 80%);
+    }
+    .external, .card-link {
+      color: var(--purple-600);
     }
   }
 }

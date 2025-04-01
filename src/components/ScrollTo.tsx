@@ -4,11 +4,12 @@ import './SharedComps.css';
 interface ScrollToProps {
   className: string;
   content?: string;
+  embed?: Boolean;
   sectionID: string;
   icon?: ReactNode;
 }
 
-const ScrollTo = ({ className, content, sectionID, icon }: ScrollToProps) => {
+const ScrollTo = ({ className, content, embed, sectionID, icon }: ScrollToProps) => {
   const [isVisible, setIsVisible] = useState(window.scrollY <= 500);
 
   useEffect(() => {
@@ -29,16 +30,19 @@ const ScrollTo = ({ className, content, sectionID, icon }: ScrollToProps) => {
       section.scrollIntoView({ behavior: "smooth" });
     } else { console.error("section not found"); };
   };
-
-  if (content) {
-    return ( <button className={className} onClick={ScrollToSection}><h5>{content}</h5></button> );
+  if (embed) {
+    return (<a className={className} onClick={ScrollToSection}>{content}</a>)
   } else {
-    return (
-      <div className={className} style={{ visibility: isVisible ? 'hidden' : 'visible' }}
-        onClick={ScrollToSection}>
-        <button className='scroll-btn circle-btn'>{icon}</button>
-      </div>
-    );
+    if (content) {
+      return (<button className={className} onClick={ScrollToSection}><h5>{content}</h5></button>);
+    } else {
+      return (
+        <div className={className} style={{ visibility: isVisible ? 'hidden' : 'visible' }}
+          onClick={ScrollToSection}>
+          <button className='scroll-btn circle-btn'>{icon}</button>
+        </div>
+      );
+    };
   };
 };
 

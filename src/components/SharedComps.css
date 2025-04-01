@@ -31,9 +31,10 @@
     font-size: 18px;
     flex-wrap: wrap;
     position: relative;
-    padding: 2vw 2vw 0vw 2vw;
+    padding-inline: min(2vw, 1rem);
+    padding-top: min(2vh, 1.5rem);
+    padding-bottom: 0;
   }
-
   .card-title::after {
     content: " ";
     position: absolute;
@@ -43,9 +44,10 @@
     width: 50%;
     background: var(--gray-100);
   }
-
   .card-content {
-    padding: 1vh 2vw 2vh 4vw;
+    padding-top: min(1vh, 12px);
+    padding-bottom: min(2vh, 16px);
+    padding-left: min(6vw, 2.5rem);
   }
 }
 
@@ -69,12 +71,8 @@
       color: var(--mainColor);
       text-decoration: none;
     }
-
-    a:hover {
-      color: var(--mainColorBright);
-    }
+    a:hover { color: var(--mainColorBright); }
   }
-
   .nav-btn {
     padding: 5px;
     cursor: pointer;
@@ -92,13 +90,11 @@
 @media only screen and (max-width: 1025px) {
   #top {
     padding-right: 2rem;
-
     .nav-btn {
       visibility: visible;
       opacity: 1;
       min-height: 1.5rem;
     }
-
     .nav-bar {
       position: fixed;
       top: 0;
@@ -120,16 +116,12 @@
         font-size: 1.5rem;
       }
     }
-
     .nav-bar .nav-close-btn {
       position: absolute;
       top: 1rem;
       right: 2rem;
     }
-
-    .responsive_nav {
-      transform: none;
-    }
+    .responsive_nav { transform: none; }
   }
 }
 
@@ -151,7 +143,6 @@
     display: flex;
     text-decoration: none;
     border-radius: 35px;
-
     .side-icon {
       margin: 8px;
       padding: 2px;
@@ -165,13 +156,11 @@
         height: 30px;
       }
     }
-
     img {
       margin: 8px;
       width: 40px;
       height: 40px;
     }
-
     h5 {
       font-size: 20px;
       margin: 0;
@@ -181,11 +170,9 @@
       transition: padding 0.3s ease;
     }
   }
-
   #side-border {
     border-bottom: 1px solid var(--gray-100);
   }
-
   footer {
     color: var(--gray-100);
     margin-top: auto;

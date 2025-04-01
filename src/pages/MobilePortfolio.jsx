@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Card, Sidebar, Topbar, useDarkMode } from '../components';
+import { Card, Sidebar, ScrollTo, Topbar, useDarkMode } from '../components';
 import { FiArrowUpRight } from "react-icons/fi";
+import { FaCircle } from "react-icons/fa";
 import './MobileStyle.css';
 import './SharedStyle.css';
 
@@ -22,9 +23,10 @@ const MobilePortfolio = () => {
         </section>
         <section>
           <h2>About Me</h2>
-          <p>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to more effectively address the ever-evolving challenges in our tech landscape. My passion to code advance comes from an innate desire to find creative solutions to complex problems.<br /><br />
-            have recently become proficient in robotics software architecture, after designing autonomous navigation features for a virtual drone (planning to integrate my code into a self-built drone). I have also and hosted my personal Website, which contains my first fullstack application. These two solo projects have vastly improved my ability to solve problems independently, and create software which far surpasses what is taught at UVM.<br /><br />
-            My goal is to join a dev team at an innovative company, where I can use my skills, creativity, and passion to grow into an expert developer. While sending applications, I've been busy upgrading the interface of my Dad's pizza website.</p>
+          <p className='mb-0'>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to dynamically address the evolving challenges in our tech landscape. My passion to code comes from an innate desire to find creative solutions to complex problems.<br /><br />
+            <b>(<u>2024</u>)</b> I have recently become proficient in robotics software architecture after designing autonomous navigation features for a virtual drone. I have also developed and hosted my Personal Website, which contains my first fullstack application. These solo projects have improved my ability to solve problems independently, and build large-scale software systems.<br /><br />
+            <b>(<u>2025</u>)</b> I am currently working as a contracted web developer, tasked with overhauling design, and API functionality for two companies' e-commerce websites. I am collaborating with business owners, their employees, and brand strategists to improve their companies’ online presence. This real-world experience is improving my ability to analyze digital platforms, understand their inner workings, and implement practical optimizations. Balancing these two gigs has greatly improved my time management and prioritization skills. More info <ScrollTo className='scroll-link' content='here' embed='True' sectionID='work-experience' />.<br /><br />
+            My ultimate goal is to join a development team at an innovative company, where I can apply my skills, creativity, and passion to make impactful solutions. I am eager to contribute long-term, grow as a developer, and collaborate with a team that shares my values.</p>
         </section>
         <section>
           <h2>Proficiencies</h2>
@@ -35,10 +37,13 @@ const MobilePortfolio = () => {
               </div>
               <div className='row-mob'>
                 <div className='col-mob'>
-                  <p className='skills'>Python<br />Swift<br />C<br />C++<br />JavaScript</p>
+                  <p className='skills'>Python<br />Swift<br />C<br />C++</p>
                 </div>
                 <div className='col-mob'>
-                  <p className='skills'>SQL<br />React<br />CSS<br />HTML</p>
+                  <p className='skills'>Javascript<br />TypeScript<br />Ruby</p>
+                </div>
+                <div className='col-mob'>
+                  <p className='skills'>SQL<br />CSS3<br />HTML5</p>
                 </div>
               </div>
             </div>
@@ -48,13 +53,13 @@ const MobilePortfolio = () => {
               </div>
               <div className='row-mob'>
                 <div className='col-mob'>
-                  <p className='skills'>Fullstack Dev<br />FastAPI<br />Figma<br />iOS Dev</p>
+                  <p className='skills'>Fullstack Dev<br />FastAPI<br />Figma<br />iOS Dev<br />ShopifyCLI</p>
                 </div>
                 <div className='col-mob'>
                   <p className='skills'>GIT<br />ROS Robotics<br />LinuxCLI<br />Pandas</p>
                 </div>
                 <div className='col-mob'>
-                  <p className='skills'>Algorithm Design<br />Data Structures<br />Data Privacy<br />PC Building</p>
+                  <p className='skills'>React.js<br />Node.js<br />Data Privacy<br />PC Building</p>
                 </div>
               </div>
             </div>
@@ -67,8 +72,8 @@ const MobilePortfolio = () => {
               TARKOV APP<FiArrowUpRight className='external' />
             </Link>
           </div>
-          <p>Having been primarily assigned Front-End roles in college, I sought to expand my horizons. I built this FastAPI app to encompass all parts of a contemporary website's development stack, and uncoil their interworkings.<br /><br />
-            My website's stack is designed using modular components, so that future builds can be scaled with additional components additional like Caching, Load Balancing, and Backups. Expect slow API service, as the SQL is hosted on a free Supabase version.</p>
+          <p>Having been primarily assigned Front-End roles in college, I sought to expand my horizons. I built this FastAPI app to uncover the aspects of a contemporary website's development stack, and uncoil their interworkings.<br /><br />
+            My website's stack is designed using modular components, so that future builds can be scaled with additional components like Caching, Load Balancing, and Backups. Expect slow API service, as the SQL is hosted on a free Supabase version.</p>
           <p className='mini'>Frontend</p>
           <div className='shield'>
             <img alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&labelColor=%234d3459&color=%23fcdc00" />
@@ -101,7 +106,7 @@ const MobilePortfolio = () => {
               ARDUPILOT NAV<FiArrowUpRight className='external' />
             </Link>
           </div>
-          <p>After graduation, I joined the drone navigation community. A community where hobbyists build and program drones to navigate without controllers. The code I built for this project allows a drone to navigate a 3D maze autonomously using a script.<br /><br />
+          <p>After graduation, I joined the drone navigation community. A community where hobbyists build and program drones to navigate without controllers. The code I built for this project allows a drone to navigate a 3D maze autonomously using a script I developed.<br /><br />
             This is just the beginning. I have Future plans to create object recognition and tracking software, which will then be integrated into a custom-built drone. See the writeup.md on Github for the project's overview</p>
           <div className='shield'>
             <img alt="ardupilot copter" src="https://img.shields.io/badge/Copter-space?label=Ardupilot&labelColor=%23dedede&color=%23fcd94c" />
@@ -112,21 +117,40 @@ const MobilePortfolio = () => {
             <img alt="pymavlink mavutil" src="https://img.shields.io/badge/mavutil-space?label=Pymavlink&color=%23ee6000" />
           </div>
         </section>
-        <section>
-          <h2>Work Experience</h2>
-          <Card id='D-and-A-job' 
-            title={<p className='card-title'><b>Tech Consultant,<br /> Donahue & Associates</b> 05/23 - 08/23</p>}
+        <section id='work-experience'>
+          <span id='work-status'><h2>Work Experience<p><FaCircle color='#8C1A00' /> Active <FaCircle color='#352C63' /> Prior</p></h2></span>
+          <Card id='jwm-job'
+            title={<p className='card-title'><b> Contract Web Developer<br />
+              <Link className='card-link' aria-label="Open Johnson Woolen Mills website in a new tab" to='https://www.johnsonwoolenmills.com/' target="_blank" rel="noopener noreferrer">
+                Johnson Woolen Mills<FiArrowUpRight className='external' />
+              </Link>
+            </b> 3/25–</p>}
+            content={<ul className='card-content'>
+              <li>Currently overhauling UX/UI of an E-commerce website using ShopifyCLI</li>
+              <li>Collaborating with brand ambassadors to outline the rebrand's impact on the website</li>
+              <li>Planning to optimize throughput by teaching employees how to properly log sales</li></ul>} />
+          <Card id='nypo-job'
+            title={<p className='card-title'><b> Web & Digital Strategy Lead<br />
+              <Link className='card-link' aria-label="Open New York Pizza oven website in a new tab" to='https://www.nypovt.com/' target="_blank" rel="noopener noreferrer">
+                New York Pizza Oven<FiArrowUpRight className='external' />
+              </Link>
+            </b> 2/25–</p>}
+            content={<ul className='card-content'>
+              <li>Enhancing the website's design and optimizing the integration of its Point of Sale (POS) API.</li>
+              <li>Streamlining the online ordering process, Increasing traffic and sales</li>
+              <li>Managing the pizza shop's online marketing campaigns</li></ul>} />
+          <Card id='D-and-A-job'
+            title={<p className='card-title'><b>Tech Consultant<br /> Donahue & Associates</b> 5/23–8/23</p>}
             content={<ul className='card-content'>
               <li>Manage website and help implement new tech endeavors</li>
               <li>Teach realtors how to get aerial shots of properties with a drone</li>
               <li>Set up computer equipment when moving office spaces</li></ul>} />
           <Card id='construction-job'
-            title={<p className='card-title'><b>Construction,<br /> Bordeaux Construction</b> 2020 - 2024</p>}
+            title={<p className='card-title'><b>Construction<br /> Bordeaux Construction</b> 6/20–12/24</p>}
             content={<ul className='card-content'>
               <li>Renovate commercial and residential properties</li>
               <li>Assist contractor with full apartment renovations, at each stage of the process</li>
-              <li>Flip large returns for property owners</li>
-              <li>Build planning and communication skills dealing with potentially dangerous environments</li></ul>} />
+              <li>Build planning and communication skills in high-risk environments</li></ul>} />
         </section>
         <section>
           <h2>Notable Class Work</h2>
