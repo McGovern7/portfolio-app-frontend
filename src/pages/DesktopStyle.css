@@ -1,21 +1,16 @@
-.resume-page.desk .top {
-  display: none;
-}
+.resume-page.desk .top { display: none; }
 
 .desktop-portfolio {
   min-height: 500px;
 
-  #dark-btn:hover,
-  #resize-btn:hover {
+  #dark-btn:hover, #resize-btn:hover {
     background-color: var(--greenPrimary);
     color: #DBD7D2;
   }
-
   h1 {
     margin-top: 2vh;
     font-size: 43px;
   }
-
   h2 {
     margin-top: 3.5rem;
     font-size: 35px;
@@ -30,7 +25,6 @@
   justify-content: space-between;
   overflow: hidden;
   white-space: nowrap;
-
   /* ScrollTo Comp */
   .scroll-list {
     display: flex;
@@ -48,11 +42,22 @@
   overflow-x: hidden;
   border-inline: 2px solid var(--greenPrimary);
 
+  .project-link:hover {
+    background-color: var(--gray-700);
+    a { color: white; }
+  }
+  .project-link:hover, .card-link:hover {
+    .external {
+      color: var(--purple-600);
+      transform: translate(4px, -8px);
+      /* Move right (positive X) and up (negative Y) */
+    }
+  }
   .card-section {
     margin-block: 1.5rem;
     width: max(425px, 80%);
   }
-
+  #jwm-job:hover, #nypo-job:hover { background-color: var(--orangeBright); }
   .card-section:hover {
     background-color: var(--purple-600);
   }
@@ -68,15 +73,8 @@
     font-size: 30px;
     font-weight: 300;
   }
-
-  .skills p {
-    white-space: nowrap;
-  }
-
-  .languages {
-    max-width: 40%;
-  }
-
+  .skills p { white-space: nowrap; }
+  .languages { max-width: 40%; }
   .tools {
     min-width: max(60%, 450px);
     max-width: 60%;
@@ -90,19 +88,16 @@
     border-right: 2px solid var(--greenPrimary);
     transition: all 1s ease;
   }
-
   .left-col.hidden-a {
     padding-inline: 0;
     max-width: 0px;
     min-width: 0px;
     transition: all 1s ease;
   }
-
   .right-col.hidden-a {
     max-width: 100%;
     transition: all 1s ease;
   }
-
   .right-col.hidden-b {
     padding-inline: 0;
     min-width: 0px;
@@ -111,14 +106,12 @@
     border-right: 2px solid var(--greenPrimary);
     transition: all 1s ease;
 
-    section p,
-    section div {
+    section p, section div {
       flex: 0;
       min-width: 250px;
       overflow-x: hidden;
     }
   }
-
   #resize-btn {
     position: relative;
     align-self: flex-end;
@@ -132,7 +125,6 @@
     max-width: 420px;
     transition: all 1s ease;
   }
-
   .right-col {
     max-width: 100%;
     transition: all 1s ease;

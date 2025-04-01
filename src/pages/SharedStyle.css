@@ -18,10 +18,13 @@
   --red-500: #ef4444;
   --purple-800: #352C63;
   --purple-600: #5E4DB2;
+  --orangeBright: #C62300;
+  --orangeDark: #8C1A00;
 }
 
 html {
   background-color: var(--greenPrimary);
+  scroll-behavior: smooth;
 }
 
 .desktop-portfolio *, .mobile-portfolio *, .resume-page * {
@@ -32,6 +35,8 @@ html {
 .desktop-portfolio.dark, .mobile-portfolio.dark, .resume-page.dark {
   background-color: var(--gray-900);
   color: var(--gray-200);
+
+  #work-status p { color: var(--gray-200); }
 }
 
 .desktop-portfolio, .mobile-portfolio, .resume-page {
@@ -40,52 +45,29 @@ html {
   height: 100vh;
   background-color: var(--lightPrimary);
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    font-family: "Source Code Pro", monospace;
-  }
-
-  h1{
-    font-weight: 900;
-  }
-
+  h1, h2, h3, h4, h5 { font-family: "Source Code Pro", monospace; }
+  h1{ font-weight: 900; }
   h2{
     font-weight: 400;
     color: var(--greenPrimary);
   }
-
-  h4 {
-    font-weight: 600;
-  }
-
+  h4 { font-weight: 600; }
   .mini {
     padding-top: 0;
     margin: 0;
     font-size: 14.5px;
     color: var(--gray-500);
   }
-
   p {
     font-weight: 600;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.3;
   }
+  ul { margin: 0; }
 
-  ul {
-    margin: 0;
-  }
+  li p, li { font-size: 16px; }
 
-  li p,
-  li {
-    font-size: 16px;
-  }
-
-  .resize-col.wide {
-    display: none;
-  }
+  .resize-col.wide { display: none; }
 
   .thin-title {
     font-size: 16px;
@@ -93,10 +75,13 @@ html {
     color: var(--gray-200);
   }
 
+  .scroll-link { cursor: pointer; }
+
   /* Card Comp */
   .card-section {
     background-color: var(--purple-800);
-    line-height: 1.2;
+    color: var(--gray-200);
+    line-height: 1.3;
 
     .card-title {
       display: flex;
@@ -104,12 +89,22 @@ html {
     }
   }
 
+  #work-status p {
+    color: var(--bs-gray-900);
+    margin: .25 0 0 0;
+    svg { margin-bottom: 5px; }
+  }
+  #jwm-job { margin-top: 0; }
+
+  #jwm-job, #nypo-job { 
+    background-color: var(--orangeDark); 
+  }
+
   .error {
     display: flex;
     margin: 0;
     padding: 1rem;
   }
-
   scrollbar-color: var(--purple-800) rgba(0, 0, 0, 0);
   /* Thumb color and track color */
 }
@@ -127,27 +122,18 @@ html {
     text-decoration: none;
     width: stretch;
   }
-
-  .external {
-    margin-left: .5rem;
-    justify-content: right;
-    transition: transform .3s ease;
-    padding-bottom: 1px;
-  }
 }
 
-.project-link:hover {
-  background-color: var(--gray-700);
+.external {
+  margin-left: .5rem;
+  justify-content: right;
+  transition: transform .3s ease;
+  padding-bottom: 1px;
+}
 
-  a {
-    color: white;
-  }
-
-  .external {
-    color: var(--red-500);
-    transform: translate(4px, -8px);
-    /* Move right (positive X) and up (negative Y) */
-  }
+.card-link {
+  color: var(--gray-200);
+  text-decoration: none;
 }
 
 .shield {
