@@ -55,12 +55,10 @@
   }
   .card-section {
     margin-block: 1.5rem;
-    width: max(425px, 80%);
+    width: max(425px, 85%);
   }
-  #jwm-job:hover, #nypo-job:hover { background-color: var(--orangeBright); }
-  .card-section:hover {
-    background-color: var(--purple-600);
-  }
+  .active-job:hover { background-color: var(--orangeBright); }
+  .inactive-job:hover, #class-work .card-section:hover { background-color: var(--purple-600); }
 }
 
 #prof-table {

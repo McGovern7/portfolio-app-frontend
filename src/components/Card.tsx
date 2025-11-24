@@ -10,10 +10,10 @@ interface CardProps {
 	content: string;
 }
 
-const Card = ({ ariaLabel, id, title, image, content }: CardProps) => {
+const Card = ({ className, ariaLabel, id, title, image, content }: CardProps) => {
 	return (
 		<article aria-label={ariaLabel} id={id}
-			className={`card-section card shadow`}>
+			className={className + ` card-section card shadow`}>
 			{title}
 			{image}
 			{content}

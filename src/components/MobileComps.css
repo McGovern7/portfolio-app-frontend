@@ -1,6 +1,6 @@
 .sidebar-comp.mob {
   position: fixed;
-  transition: all 1s ease;
+  transition: all .3s ease-out;
 }
 
 /* SideBar Comp */

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Card, Grid, ScrollTo, useCollapse, useDarkMode, useScreenWidth, Sidebar } from '../components';
+import { Card, Grid, ImageComp, ScrollTo, useCollapse, useDarkMode, useScreenWidth, Sidebar } from '../components';
 import { FiArrowUpRight } from "react-icons/fi";
 import { FaCircle } from "react-icons/fa";
 import { BiExpandHorizontal } from "react-icons/bi";
@@ -27,11 +27,11 @@ const DesktopPortfolio = () => {
 						<p className='mini'>luke.mcgovern18@gmail.com</p>
 					</ul>
 					<ul className='scroll-list' aria-label='scrolls to sections of content' >
-						<ScrollTo className='scroll-to' content='About Me' sectionID='about-me' />
-						<ScrollTo className='scroll-to' content='Proficiencies' sectionID='proficiencies' />
-						<ScrollTo className='scroll-to' content='Projects' sectionID='projects' />
-						<ScrollTo className='scroll-to' content='Work Experience' sectionID='work-experience' />
-						<ScrollTo className='scroll-to' content='Class Work' sectionID='class-work' />
+						<ScrollTo className='scroll-to' content='ABOUT ME' sectionID='about-me' />
+						<ScrollTo className='scroll-to' content='PROFICIENCIES' sectionID='proficiencies' />
+						<ScrollTo className='scroll-to' content='PROJECTS' sectionID='projects' />
+						<ScrollTo className='scroll-to' content='WORK EXPERIENCE' sectionID='work-experience' />
+						<ScrollTo className='scroll-to' content='CLASS WORK' sectionID='class-work' />
 					</ul>
 				</section>
 				<Grid aria-hidden="true" />
@@ -43,14 +43,27 @@ const DesktopPortfolio = () => {
 			</div>
 			<div className={`right-col ${leftStatus ? '' : 'hidden-a'} ${rightStatus ? '' : 'hidden-b'}`}>
 				<section id='about-me'>
-					<h2>About Me</h2>
-					<p className='mb-0'>I am a recent Computer Science graduate from the University of Vermont, where I earned a knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding my C.S. repertoire to dynamically address the evolving challenges in our tech landscape. My passion to code comes from an innate desire to find creative solutions to complex problems.<br /><br />
-						<b>(<u>2024</u>)</b> I have recently become proficient in robotics software architecture after designing autonomous navigation features for a virtual drone. I have also developed and hosted my Personal Website, which contains my first fullstack application. These solo projects have improved my ability to solve problems independently, and build large-scale software systems.<br /><br />
-						<b>(<u>2025</u>)</b> I am currently working as a contracted web developer, tasked with overhauling design, and API functionality for two companies' e-commerce websites. I am collaborating with business owners, their employees, and brand strategists to improve their companies’ online presence. This real-world experience is improving my ability to analyze digital platforms, understand their inner workings, and implement practical optimizations. Balancing these two gigs has greatly improved my time management and prioritization skills. More info <ScrollTo className='scroll-link text-primary' content='here' embed='True' sectionID='work-experience' />.<br /><br />
-						My ultimate goal is to join a development team at an innovative company, where I can apply my skills, creativity, and passion to make impactful solutions. I am eager to contribute long-term, grow as a developer, and collaborate with a team that shares my values.</p>
+					<h2>ABOUT ME</h2>
+					<p className='mb-0'>I am a recent Computer Science graduate from the University of Vermont, where I earned a
+						knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding
+						my repertoire of skills to dynamically address our evolving tech landscape.<br /><br />
+						<b>(<u>2024</u>)</b> Throughout 2024, I became proficient in robotics software architecture by designing autonomous
+						navigation features for virtual drones. I also developed and hosted my Personal Website, which contains my first
+						fullstack application. These solo projects have improved my ability to solve problems independently, and build
+						large-scale software systems using an agile framework.<br /><br />
+						<b>(<u>2025</u>)</b> Spanning 2025, I operated as a contracted web developer tasked with overhauling the design and
+						API functionality of two companies' e-commerce websites. As an independent contractor, I collaborated closely with
+						business owners, employees, and brand strategists. This real-world experience required my ability to analyze
+						commercial platforms, and implement practical solutions within restricted timeframes. It also gave me valuable
+						insight into the importance of teamwork and resource management in driving meaningful growth. More info
+						<ScrollTo className='scroll-link text-primary' content=' here' embed='True' sectionID='work-experience' />.<br /><br />
+						My current goal is to join an innovative company, where I can apply my skills, creativity, and passion to make
+						impactful solutions. I am eager to contribute long-term, grow as a developer, and collaborate with a team that
+						shares my values.
+					</p>
 				</section>
 				<section id='proficiencies'>
-					<h2>Proficiencies</h2>
+					<h2>PROFICIENCIES</h2>
 					<div id='prof-table'>
 						<div className='col languages'>
 							<div className='row'>
@@ -61,7 +74,7 @@ const DesktopPortfolio = () => {
 									<p>Python<br />Swift<br />C<br />C++</p>
 								</div>
 								<div className='col skills'>
-									<p>Javascript<br />TypeScript<br />Ruby</p>
+									<p>Javascript<br />TypeScript<br />Liquid</p>
 								</div>
 								<div className='col skills'>
 									<p>SQL<br />CSS3<br />HTML5</p>
@@ -77,7 +90,7 @@ const DesktopPortfolio = () => {
 									<p className='mb-0'>Fullstack Dev<br />FastAPI<br />Figma<br />iOS Dev<br />ShopifyCLI</p>
 								</div>
 								<div className='col skills'>
-									<p>GIT<br />ROS Robotics<br />LinuxCLI<br />Pandas</p>
+									<p>GIT<br />ROS Robotics<br />LinuxCLI<br />Pandas<br />E-commerce</p>
 								</div>
 								<div className='col skills'>
 									<p>React.js<br />Node.js<br />Data Privacy<br />PC Building</p>
@@ -86,8 +99,51 @@ const DesktopPortfolio = () => {
 						</div>
 					</div>
 				</section>
+				<section id='work-experience'>
+					<span id='work-status'><h2>WORK EXPERIENCE<p><FaCircle color='#8C1A00' /> Active <FaCircle color='#352C63' /> Prior</p></h2></span>
+					<Card className='active-job'
+						title={<p className='card-title'><b>CONTRACT WEB DEVELOPER<br />
+							<Link className='card-link' aria-label="Open Johnson Woolen Mills website in a new tab" to='https://www.johnsonwoolenmills.com/' target="_blank" rel="noopener noreferrer">
+								Johnson Woolen Mills<FiArrowUpRight className='external' />
+							</Link>
+						</b> 3/25–</p>}
+						content={
+							<div>
+								<ul className='card-content'>
+									<li>Overhauled UX/UI of an E-commerce website using ShopifyCLI</li>
+									<li>Collaborated with brand ambassadors to outline the rebrand's impact on the website</li>
+									<li>Added <u>31% Total Sale</u> & <u>16% Conversion Rate</u> YTD increases</li>
+								</ul>
+								<p className='chart-title'>Total Sales Charted Over JWM Tenure (price hidden)</p>
+								<ImageComp src='SalesYTD.webp' className="card-image" alt="chart with 31% year to date total sales increase during my tenure" width="100%" height="inherit" />
+							</div>
+						}
+					/>
+					<Card className='active-job'
+						title={<p className='card-title'><b>WEB & DIGITAL STRATEGY LEAD<br />
+							<Link className='card-link' aria-label="Open New York Pizza oven website in a new tab" to='https://www.nypovt.com/' target="_blank" rel="noopener noreferrer">
+								New York Pizza Oven<FiArrowUpRight className='external' />
+							</Link>
+						</b> 2/25–</p>}
+						content={<ul className='card-content'>
+							<li>Enhancing the website's design and optimizing the integration of its Point of Sale (POS) API (Using ToastTab).</li>
+							<li>Streamlining the online ordering process, Increasing traffic and sales</li>
+							<li>Managing the pizza shop's online marketing campaigns</li></ul>} />
+					<Card className='inactive-job'
+						title={<p className='card-title'><b>TECH CONSULTANT<br /> Donahue & Associates</b> 5/23–8/23</p>}
+						content={<ul className='card-content'>
+							<li>Manage website and help implement new tech endeavors</li>
+							<li>Teach realtors how to get aerial shots of properties with a drone</li>
+							<li>Set up computer equipment when moving office spaces</li></ul>} />
+					<Card className='inactive-job'
+						title={<p className='card-title'><b>CONSTRUCTION<br /> Bordeaux Construction</b> 6/20–12/24</p>}
+						content={<ul className='card-content'>
+							<li>Renovate commercial and residential properties</li>
+							<li>Assist contractor with full apartment renovations</li>
+							<li>Build planning and communication skills in high-risk environments</li></ul>} />
+				</section>
 				<section id='projects'>
-					<h2>Projects</h2>
+					<h2>PROJECTS</h2>
 					<div className='project-link'>
 						<Link className='thin-title' aria-label="Open my Tarkov App in a new tab" to='/tarkov-app/home' target="_blank" rel="noopener noreferrer">
 							TARKOV APP<FiArrowUpRight className='external' />
@@ -142,58 +198,23 @@ const DesktopPortfolio = () => {
 						<img alt="pymavlink mavutil" src="https://img.shields.io/badge/mavutil-space?label=Pymavlink&color=%23ee6000" />
 					</div>
 				</section>
-				<section id='work-experience'>
-					<span id='work-status'><h2>Work Experience<p><FaCircle color='#8C1A00' /> Active <FaCircle color='#352C63' /> Prior</p></h2></span>
-					<Card id='jwm-job'
-						title={<p className='card-title'><b> Contract Web Developer<br />
-							<Link className='card-link' aria-label="Open Johnson Woolen Mills website in a new tab" to='https://www.johnsonwoolenmills.com/' target="_blank" rel="noopener noreferrer">
-								Johnson Woolen Mills<FiArrowUpRight className='external' />
-							</Link>
-						</b> 3/25–</p>}
-						content={<ul className='card-content'>
-							<li>Currently overhauling UX/UI of an E-commerce website using ShopifyCLI</li>
-							<li>Collaborating with brand ambassadors to outline the rebrand's impact on the website</li>
-							<li>Planning to optimize throughput by teaching employees how to properly log sales</li></ul>} />
-					<Card id='nypo-job'
-						title={<p className='card-title'><b> Web & Digital Strategy Lead<br />
-							<Link className='card-link' aria-label="Open New York Pizza oven website in a new tab" to='https://www.nypovt.com/' target="_blank" rel="noopener noreferrer">
-								New York Pizza Oven<FiArrowUpRight className='external' />
-							</Link>
-						</b> 2/25–</p>}
-						content={<ul className='card-content'>
-							<li>Enhancing the website's design and optimizing the integration of its Point of Sale (POS) API (Using ToastTab).</li>
-							<li>Streamlining the online ordering process, Increasing traffic and sales</li>
-							<li>Managing the pizza shop's online marketing campaigns</li></ul>} />
-					<Card id='D-and-A-job'
-						title={<p className='card-title'><b>Tech Consultant<br /> Donahue & Associates</b> 5/23–8/23</p>}
-						content={<ul className='card-content'>
-							<li>Manage website and help implement new tech endeavors</li>
-							<li>Teach realtors how to get aerial shots of properties with a drone</li>
-							<li>Set up computer equipment when moving office spaces</li></ul>} />
-					<Card id='construction-job'
-						title={<p className='card-title'><b>Construction<br /> Bordeaux Construction</b> 6/20–12/24</p>}
-						content={<ul className='card-content'>
-							<li>Renovate commercial and residential properties</li>
-							<li>Assist contractor with full apartment renovations</li>
-							<li>Build planning and communication skills in high-risk environments</li></ul>} />
-				</section>
 				<section id='class-work'>
-					<h2>Notable Class Work</h2>
+					<h2>NOTABLE CLASS WORK</h2>
 					<Card id='web-dev-class'
-						title={<p className='card-title'><b>Web App Development</b>Fall 2023</p>}
+						title={<p className='card-title'><b>WEB APP DEVELOPMENT</b>FALL 2023</p>}
 						content={<p className='card-content'>Developed an iOS app which streamlines flight scheduling between pilots. Uses Apple’s AirTag feature. 3 member semester long project. JSON data exchanges through a RESTful API</p>} />
 					<Card id='data-priv-class'
-						title={<p className='card-title'><b>Data Privacy</b>Fall 2023</p>}
+						title={<p className='card-title'><b>DATA PRIVACY</b>FALL 2023</p>}
 						content={<p className='card-content'>Solo Project-based Learning: Created software which adds privacy mechanisms to create secure and accurate coordinate data. Data then plotted on a world map with GeoPandas.</p>} />
 					<Card id='software-eng-class'
-						title={<p className='card-title'><b>Software Engineering</b>Spring 2023</p>}
+						title={<p className='card-title'><b>SOFTWARE ENGINEERING</b>SPRING 2023</p>}
 						content={<p className='card-content'>Using Agile Development in a group of 4, I coded a simulated monopoly game using PyGame. Code was shared through GitLab for this semester-long project.</p>} />
 					<Card id='cybersecurity-class'
-						title={<p className='card-title'><b>Cybersecurity Principles</b>Summer 2022</p>}
+						title={<p className='card-title'><b>CYBERSECURITY PRINCIPLES</b>SUMMER 2022</p>}
 						content={<p className='card-content'>Infiltrate my professor’s (fake) online bank using cryptographic hashing to secure computer networks. Newfound understanding of network threat vectors allows me to build more secure software.</p>} />
 				</section>
 			</div>
-		</div>
+		</div >
 	);
 };
 

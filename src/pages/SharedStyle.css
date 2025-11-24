@@ -79,13 +79,26 @@ html {
 
   /* Card Comp */
   .card-section {
-    background-color: var(--purple-800);
     color: var(--gray-200);
     line-height: 1.3;
 
     .card-title {
       display: flex;
       justify-content: space-between;
+    }
+
+    .chart-title {
+      display: flex;
+      justify-content: center;
+      margin-bottom: .5rem;
+    }
+
+    .card-image {
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      margin-bottom: 1rem;
+      border-radius: .375rem;
     }
   }
 
@@ -94,9 +107,12 @@ html {
     margin: .25 0 0 0;
     svg { margin-bottom: 5px; }
   }
-  #jwm-job { margin-top: 0; }
 
-  #jwm-job, #nypo-job { 
+  .inactive-job, #class-work .card-section {
+    background-color: var(--purple-800);
+  }
+
+  .active-job { 
     background-color: var(--orangeDark); 
   }
 
@@ -132,8 +148,8 @@ html {
 }
 
 .card-link {
-  color: var(--gray-200);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .shield {

@@ -42,11 +42,11 @@ const Sidebar = () => {
       <nav>
         <Link className='side-link' to="/portfolio"><div className='side-icon' role='presentation'>
           {isHome ? <IoHome /> : <IoHomeOutline />}
-        </div><h5>Home</h5>
+        </div><h5>HOME</h5>
         </Link>
         <Link className='side-link' to="/resume"><div className='side-icon' role='presentation'>
           {isResume ? <IoDocumentAttach /> : <IoDocumentAttachOutline />}
-        </div><h5>Resume</h5>
+        </div><h5>RESUME</h5>
         </Link>
       </nav>
       <div id='side-border' />
