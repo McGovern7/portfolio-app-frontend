@@ -10,7 +10,7 @@ const MobilePortfolio = () => {
   const { darkMode } = useDarkMode();
 
   return (
-    <div className={`mobile-portfolio ${darkMode ? 'dark' : ''}`}>
+    <div className={`mobile-portfolio ${darkMode ? '' : 'dark'}`}>
       <Sidebar />
       <Topbar />
       <div className='main-col'>

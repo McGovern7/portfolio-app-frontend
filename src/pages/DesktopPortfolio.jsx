@@ -14,7 +14,7 @@ const DesktopPortfolio = () => {
 	const { isSmallDesktop } = useScreenWidth();
 
 	return (
-		<div className={`desktop-portfolio  ${darkMode ? 'dark' : ''}`}>
+		<div className={`desktop-portfolio  ${darkMode ? '' : 'dark'}`}>
 			<Sidebar />
 			<div className={`left-col ${leftStatus ? '' : 'hidden-a'} ${rightStatus ? '' : 'hidden-b'}`}>
 				<section>
