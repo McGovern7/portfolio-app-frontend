@@ -44,18 +44,16 @@ const DesktopPortfolio = () => {
 			<div className={`right-col ${leftStatus ? '' : 'hidden-a'} ${rightStatus ? '' : 'hidden-b'}`}>
 				<section id='about-me'>
 					<h2>ABOUT ME</h2>
-					<p className='mb-0'>I am a recent Computer Science graduate from the University of Vermont, where I earned a
-						knowledge base spanning multiple disciplines and languages. Since graduating, I've been passionately expanding
-						my repertoire of skills to dynamically address our evolving tech landscape.<br /><br />
+					<p className='mb-0'>I am a recent Computer Science graduate from the University of Vermont. Constantly honing my skills to address our evolving tech landscape.<br /><br />
 						<b>(<u>2024</u>)</b> Throughout 2024, I became proficient in robotics software architecture by designing autonomous
 						navigation features for virtual drones. I also developed and hosted my Personal Website, which contains my first
 						fullstack application. These solo projects have improved my ability to solve problems independently, and build
-						large-scale software systems using an agile framework.<br /><br />
-						<b>(<u>2025</u>)</b> Spanning 2025, I operated as a contracted web developer tasked with overhauling the design and
-						API functionality of two companies' e-commerce websites. As an independent contractor, I collaborated closely with
+						large-scale software systems using agile frameworks.<br /><br />
+						<b>(<u>2025</u>)</b> Spanning 2025, I worked as a web developer tasked with overhauling the design and
+						API functionality of two companies' e-commerce websites. As an independent contractor, I collaborated with
 						business owners, employees, and brand strategists. This real-world experience required my ability to analyze
-						commercial platforms, and implement practical solutions within restricted timeframes. It also gave me valuable
-						insight into the importance of teamwork and resource management in driving meaningful growth. More info
+						commercial platforms, and implement practical solutions within restricted timeframes. It gave me valuable
+						insight into the importance of teamwork in driving meaningful growth. More info
 						<ScrollTo className='scroll-link text-primary' content=' here' embed='True' sectionID='work-experience' />.<br /><br />
 						My current goal is to join an innovative company, where I can apply my skills, creativity, and passion to make
 						impactful solutions. I am eager to contribute long-term, grow as a developer, and collaborate with a team that
@@ -74,7 +72,7 @@ const DesktopPortfolio = () => {
 									<p>Python<br />Swift<br />C<br />C++</p>
 								</div>
 								<div className='col skills'>
-									<p>Javascript<br />TypeScript<br />Liquid</p>
+									<p>Javascript<br />TypeScript<br />Liquid<br />JSON</p>
 								</div>
 								<div className='col skills'>
 									<p>SQL<br />CSS3<br />HTML5</p>
@@ -116,6 +114,13 @@ const DesktopPortfolio = () => {
 								</ul>
 								<p className='chart-title'>Total Sales Charted Over JWM Tenure (price hidden)</p>
 								<ImageComp src='SalesYTD.webp' className="card-image" alt="chart with 31% year to date total sales increase during my tenure" width="100%" height="inherit" />
+								<div className='shield'>
+									<img alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&labelColor=%234d3459&color=%23fcdc00" />
+									<img alt="Ruby" src="https://img.shields.io/badge/-%3F?logo=ruby&logoColor=%23fc0e00&label=Ruby&color=%23fc0e00" />
+									<img alt="shopify liquid" src="https://img.shields.io/badge/-Liquid-_?logo=Shopify&logoColor=%2361f44a&label=Shopify&color=%2361f44a" />
+									<img alt="JSON data exchange" src="https://img.shields.io/badge/-Data-_?logo=JSON&logoColor=%23bcbcbc&label=JSON&color=%23bcbcbc" />
+									<img alt="gimp image-editor" src="https://img.shields.io/badge/-Editor-_?logo=gimp&logoColor=%23917d4d&label=GIMP&color=%23917d4d" />
+								</div>
 							</div>
 						}
 					/>
