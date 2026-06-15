@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { ImageComp, ScrollTo, Topbar, useCollapse, useDarkMode, useScreenWidth, Sidebar } from '../components';
 import { IoContrast } from "react-icons/io5";
 import './DesktopStyle.css';
@@ -56,4 +56,4 @@ const Showcase = () => {
   )
 };
 
-export default Showcase;
+export default Showcase;*/
