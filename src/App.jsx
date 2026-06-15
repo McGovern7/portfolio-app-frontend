@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Portfolio, ResumePage, Showcase, Home, Profile, Register, ProtectedPage, NoPage } from './pages';
+import { Portfolio, ResumePage, Home, Profile, Register, ProtectedPage, NoPage } from './pages'; // Showcase
 import { CollapseProvider, DarkModeProvider, ScreenWidthProvider, SliderProvider } from './components';
 
 const Providers = ({ children }) => (
@@ -22,7 +22,7 @@ const App = () => {
           <Route index element={<Portfolio />} />
           <Route path='/portfolio' element={<Portfolio />} />
           <Route path='/resume' element={<ResumePage />} />
-          <Route path='/showcase' element={<Showcase />} />
+          {/*<Route path='/showcase' element={<Showcase />} />*/}
           <Route path='/tarkov-app/home' element={<Home />} />
           <Route path='/tarkov-app/profile' element={<Profile />} />
           <Route path='/tarkov-app/register' element={<Register />} />

@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f7f9e5a5.css",
+    "main.js": "/static/js/main.d3d64704.js",
+    "static/js/453.653e8e19.chunk.js": "/static/js/453.653e8e19.chunk.js",
+    "static/media/JWMDec.png": "/static/media/JWMDec.14d1fe17ee5467ad19cf.png",
+    "static/media/JWMMar.png": "/static/media/JWMMar.3e1dd79ad59c872f825b.png",
+    "static/media/Frame 1.png": "/static/media/Frame 1.5d73d482b08b5031b488.png",
+    "static/media/DataFlow.webp": "/static/media/DataFlow.c0ad3c816e14f9b4c005.webp",
+    "static/media/Resume.pdf": "/static/media/Resume.14161c182a0dd9ccad77.pdf",
+    "static/media/LoggedIn.webp": "/static/media/LoggedIn.239e7f2e2d02a51579c6.webp",
+    "static/media/WebLogo.webp": "/static/media/WebLogo.7df9aeda69d8282da4fb.webp",
+    "static/media/LoggedOut.webp": "/static/media/LoggedOut.a37f610ef035c967aed3.webp",
+    "static/media/GmailLogo.webp": "/static/media/GmailLogo.ea951137d73c6a9a6dc4.webp",
+    "static/media/LinkedInLogo.webp": "/static/media/LinkedInLogo.563bb61343573fa38280.webp",
+    "static/media/ResumeLogo.webp": "/static/media/ResumeLogo.c282ff9fa82ea42787b2.webp",
+    "static/media/SalesYTD.webp": "/static/media/SalesYTD.5da1a6863085c4673bd2.webp",
+    "static/media/GithubLogo.webp": "/static/media/GithubLogo.e0ea16119a8f1ff5a535.webp",
+    "index.html": "/index.html",
+    "static/media/FigmaIcon.svg": "/static/media/FigmaIcon.b20b74d8f8062021895a.svg",
+    "main.f7f9e5a5.css.map": "/static/css/main.f7f9e5a5.css.map",
+    "main.d3d64704.js.map": "/static/js/main.d3d64704.js.map",
+    "453.653e8e19.chunk.js.map": "/static/js/453.653e8e19.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f7f9e5a5.css",
+    "static/js/main.d3d64704.js"
+  ]
+}

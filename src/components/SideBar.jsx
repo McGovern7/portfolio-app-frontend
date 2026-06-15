@@ -15,7 +15,7 @@ const Sidebar = () => {
   const location = useLocation();
   const isHome = window.location.pathname === '/portfolio';
   const isResume = window.location.pathname === '/resume';
-  const isShowcase = window.location.pathname === '/showcase';
+  // const isShowcase = window.location.pathname === '/showcase';
 
   const checkCanGoBack = async () => {
     if (location.key !== "default") {
