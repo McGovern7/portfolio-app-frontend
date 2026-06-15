@@ -114,7 +114,7 @@ const DesktopPortfolio = () => {
 							<div>
 								<ul className='card-content'>
 									<li>Refurbishing clunky website components with custom-coded solutions</li>
-									<li>Educating management on how to independtly manage marketing, campaigns, etc. to save resources</li>
+									<li>Educating management on how to independently manage marketing, campaigns, etc. to save resources</li>
 								</ul>
 								<div className='shield'>
                   <img alt="Wordpress content management system" src="https://img.shields.io/badge/-CMS-_?logo=wordpress&label=WordPress&color=%2321759B" />
