@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ImageComp, useScreenWidth, useSlider } from '.';
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline, IoTerminal, IoTerminalOutline } from "react-icons/io5";
+import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline } from "react-icons/io5"; // IoTerminal, IoTerminalOutline
 import './SharedComps.css';
 import './DeskComps.css';
 import './MobileComps.css';
