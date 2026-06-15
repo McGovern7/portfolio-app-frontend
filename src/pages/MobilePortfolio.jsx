@@ -15,26 +15,32 @@ const MobilePortfolio = () => {
       <Topbar />
       <div className='main-col'>
         <section>
-          <h1>Luke McGovern</h1>
+          <h1>LUKE MCGOVERN</h1>
           <ul style={{ paddingInline: "2vw" }}>
             <p className='mini'>Software Engineer, Fullstack Developer</p>
             <p className='mini'>luke.mcgovern18@gmail.com</p>
           </ul>
         </section>
         <section>
-          <h2>ABOUT ME</h2>
-          <p className='mb-0'>2023 Computer Science (BSCS) from the University of Vermont. Constantly honing my skills to address our evolving tech landscape. <br /><br />
-						<b>(<u>2024</u>)</b> Throughout 2024, I became proficient in robotics software architecture by designing autonomous
+          <h2 className='mt-5 mb-0'>ABOUT ME</h2>
+					<h5 className='mb-0'>Evolving with Tech</h5><br />
+					<p className='mb-0'>
+						<b>(<u>2023</u>)</b> Graduated The University of Vermont with a major in Computer Science (BSCS), and a minor in Japanese Language.<br /><br />
+						<b>(<u>2024</u>)</b> Grew proficient in robotics software architecture by designing autonomous
 						navigation features for virtual drones. I also developed and hosted my Personal Website, which contains my first
 						fullstack application. These solo projects have improved my ability to solve problems independently, and build
 						large-scale software systems using agile frameworks.<br /><br />
-						<b>(<u>2025</u>)</b> Spanning 2025, I worked as a web developer tasked with overhauling the design and
+						<b>(<u>2025</u>)</b> Tasked as a web developer with overhauling the design and
 						API functionality of two companies' e-commerce websites. As an independent contractor, I collaborated with
 						business owners, employees, and brand strategists. This real-world experience required my ability to analyze
 						commercial platforms, and implement practical solutions within restricted timeframes. It gave me valuable
-						insight into the importance of teamwork in driving meaningful growth. More info
-						<ScrollTo className='scroll-link text-primary' content=' here' embed='True' sectionID='work-experience' />.<br /><br />
-						My current goal is to join an innovative company, where I can apply my skills, creativity, and passion to make
+						insight into the importance of teamwork in driving meaningful growth.
+						<ScrollTo className='scroll-link text-primary' content=' More info' embed='True' sectionID='work-experience' />
+						<br /><br />
+            <b>(<u>2026</u>)</b> Continuing to operate as a web developer through Luke M Software LLC, expanding service offerings to include website hosting, 
+						ongoing maintenance, search engine optimization (SEO), and Google Business Profile management and optimization.
+            <br /><br />
+            My current goal is to join an innovative company, where I can apply my skills, creativity, and passion to make
 						impactful solutions. I am eager to contribute long-term, grow as a developer, and collaborate with a team that
 						shares my values.
 					</p>
@@ -70,20 +76,63 @@ const MobilePortfolio = () => {
                   <p className='skills'>GIT<br />ROS Robotics<br />LinuxCLI<br />Pandas<br />E-commerce</p>
                 </div>
                 <div className='col-mob'>
-                  <p className='skills'>React.js<br />Node.js<br />Data Privacy<br />PC Building</p>
+                  <p className='skills'>React.js<br />Node.js<br />Data Privacy<br />WordPress<br />Site Hosting</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 				<section id='work-experience'>
-					<span id='work-status'><h2>WORK EXPERIENCE<p><FaCircle color='#8C1A00' /> Active <FaCircle color='#352C63' /> Prior</p></h2></span>
+					<span className='work-status'><h2>WORK EXPERIENCE<p><FaCircle color='#8C1A00' /> Active <FaCircle color='#352C63' /> Prior</p></h2></span>
 					<Card className='active-job'
+						title={<p className='card-title'><b>FREELANCE WEB DEVELOPER<br />
+							<Link className='card-link' aria-label="Open Blue Sky Roofing website in a new tab" to='https://blueskyroofingvt.com/' target="_blank" rel="noopener noreferrer">
+								Blue Sky Roofing<FiArrowUpRight className='external' />
+							</Link>
+						</b>3/26-</p>}
+						content={
+							<div>
+								<ul className='card-content'>
+									<li>Refurbishing clunky website components with custom-coded solutions</li>
+									<li>Educating management on how to independtly manage marketing, campaigns, etc. to save resources</li>
+								</ul>
+								<div className='shield'>
+                  <img alt="Wordpress content management system" src="https://img.shields.io/badge/-CMS-_?logo=wordpress&label=WordPress&color=%2321759B" />
+								  <img alt="CSS styling" src="https://img.shields.io/badge/-Styling-_?logo=css&label=CSS&color=%23663399" />
+									<img alt="Elementor Design" src="https://img.shields.io/badge/-Design-_?logo=Elementor&label=Elementor&color=%2392003B" />
+								</div>
+							</div>
+						}
+					/>
+          <Card className='inactive-job'
+						title={<p className='card-title'><b>FREELANCE WEB DEVELOPER<br />
+							<Link className='card-link' aria-label="Open Jake's property Management website in a new tab" to='https://jakespropertymgmt.com/' target="_blank" rel="noopener noreferrer">
+								Jake's Property Management<FiArrowUpRight className='external' />
+							</Link>
+						</b>1/26-6/26</p>}
+						content={
+							<div>
+								<ul className='card-content'>
+									<li>Redesigned original Squarespace site using their limited Drag/Drop editor</li>
+									<li>Overhauled company's online presence w/ creation of custom-built Wordpress site</li>
+									<li>Built up the SEO framework for this new site</li>
+									<li>Reorganized business management by creating a business email integrated with the web domain and hosting platform</li>
+								</ul>
+								<div className='shield'>
+                  <img alt="Wordpress content management system" src="https://img.shields.io/badge/-CMS-_?logo=wordpress&label=WordPress&color=%2321759B" />
+									<img alt="CSS styling" src="https://img.shields.io/badge/-Styling-_?logo=css&label=CSS&color=%23663399" />
+									<img alt="figma design" src="https://img.shields.io/badge/-Design-_?logo=figma&label=Figma&color=%23F24E1E" />
+									<img alt="siteground hosting" src="https://img.shields.io/badge/-Hosting-_?label=SiteGround&color=%2395cb4c" />
+								</div>
+							</div>
+						}
+					/>
+					<Card className='inactive-job'
 						title={<p className='card-title'><b>CONTRACT WEB DEVELOPER<br />
 							<Link className='card-link' aria-label="Open Johnson Woolen Mills website in a new tab" to='https://www.johnsonwoolenmills.com/' target="_blank" rel="noopener noreferrer">
 								Johnson Woolen Mills<FiArrowUpRight className='external' />
 							</Link>
-						</b> 3/25–</p>}
+						</b>3/25-4/26</p>}
 						content={
 							<div>
 								<ul className='card-content'>
@@ -93,14 +142,15 @@ const MobilePortfolio = () => {
 								</ul>
 								<p className='chart-title'>Total Sales Charted Over JWM Tenure (price hidden)</p>
 								<ImageComp src='SalesYTD.webp' className="card-image" alt="chart with 31% year to date total sales increase during my tenure" width="100%" height="inherit" />
-              	<div className='shield'>
+								<div className='shield'>
 									<img alt="Javscript" src="https://img.shields.io/badge/-empty?logo=javascript&label=Javascript&labelColor=%234d3459&color=%23fcdc00" />
 									<img alt="Ruby" src="https://img.shields.io/badge/-%3F?logo=ruby&logoColor=%23fc0e00&label=Ruby&color=%23fc0e00" />
 									<img alt="shopify liquid" src="https://img.shields.io/badge/-Liquid-_?logo=Shopify&logoColor=%2361f44a&label=Shopify&color=%2361f44a" />
 									<img alt="JSON data exchange" src="https://img.shields.io/badge/-Data-_?logo=JSON&logoColor=%23bcbcbc&label=JSON&color=%23bcbcbc" />
 									<img alt="gimp image-editor" src="https://img.shields.io/badge/-Editor-_?logo=gimp&logoColor=%23917d4d&label=GIMP&color=%23917d4d" />
-								</div>
-              </div>
+									<img alt="figma design" src="https://img.shields.io/badge/-Design-_?logo=figma&label=Figma&color=%23F24E1E" />
+                </div>
+							</div>
 						}
 					/>
 					<Card className='active-job'
@@ -108,19 +158,19 @@ const MobilePortfolio = () => {
 							<Link className='card-link' aria-label="Open New York Pizza oven website in a new tab" to='https://www.nypovt.com/' target="_blank" rel="noopener noreferrer">
 								New York Pizza Oven<FiArrowUpRight className='external' />
 							</Link>
-						</b> 2/25–</p>}
+						</b>2/25-</p>}
 						content={<ul className='card-content'>
 							<li>Enhancing the website's design and optimizing the integration of its Point of Sale (POS) API (Using ToastTab).</li>
 							<li>Streamlining the online ordering process, Increasing traffic and sales</li>
 							<li>Managing the pizza shop's online marketing campaigns</li></ul>} />
 					<Card className='inactive-job'
-						title={<p className='card-title'><b>TECH CONSULTANT<br /> Donahue & Associates</b> 5/23–8/23</p>}
+						title={<p className='card-title'><b>TECH CONSULTANT<br /> Donahue & Associates</b>5/23-8/23</p>}
 						content={<ul className='card-content'>
 							<li>Manage website and help implement new tech endeavors</li>
 							<li>Teach realtors how to get aerial shots of properties with a drone</li>
 							<li>Set up computer equipment when moving office spaces</li></ul>} />
-					<Card className='inactive-job'
-						title={<p className='card-title'><b>CONSTRUCTION<br /> Bordeaux Construction</b> 6/20–12/24</p>}
+					<Card className='inactive-job mb-0'
+						title={<p className='card-title'><b>CONSTRUCTION<br /> Bordeaux Construction</b>6/20-12/24</p>}
 						content={<ul className='card-content'>
 							<li>Renovate commercial and residential properties</li>
 							<li>Assist contractor with full apartment renovations</li>

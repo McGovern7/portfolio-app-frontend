@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ImageComp, useScreenWidth, useSlider } from '.';
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline } from "react-icons/io5";
+import { IoHome, IoHomeOutline, IoDocumentAttach, IoDocumentAttachOutline, IoTerminal, IoTerminalOutline } from "react-icons/io5";
 import './SharedComps.css';
 import './DeskComps.css';
 import './MobileComps.css';
@@ -15,6 +15,7 @@ const Sidebar = () => {
   const location = useLocation();
   const isHome = window.location.pathname === '/portfolio';
   const isResume = window.location.pathname === '/resume';
+  const isShowcase = window.location.pathname === '/showcase';
 
   const checkCanGoBack = async () => {
     if (location.key !== "default") {
@@ -48,6 +49,12 @@ const Sidebar = () => {
           {isResume ? <IoDocumentAttach /> : <IoDocumentAttachOutline />}
         </div><h5>RESUME</h5>
         </Link>
+        {/* 
+        <Link className='side-link' to="/showcase"><div className='side-icon' role='presentation'>
+          {isShowcase ? <IoTerminal /> : <IoTerminalOutline />}
+        </div><h5>SHOWCASE</h5>
+        </Link>
+        */}
       </nav>
       <div id='side-border' />
       <nav>
@@ -64,7 +71,7 @@ const Sidebar = () => {
           <h5>Email Me</h5>
         </Link>
       </nav>
-      <footer><u>App under development</u> Accessibility features are unimplemented. <br></br>If problem, Disable VPN</footer>
+      <footer><u>App under development</u> Accessibility features are unimplemented.</footer>
     </div>
   );
 };

@@ -5,3 +5,4 @@ export { default as ProtectedPage } from './Protected';
 export { default as NoPage } from './NoPage';
 export { default as Portfolio } from './Portfolio';
 export { default as ResumePage } from './Resume';
+export { default as Showcase } from './Showcase';

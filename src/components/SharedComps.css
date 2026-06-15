@@ -38,11 +38,11 @@
   .card-title::after {
     content: " ";
     position: absolute;
-    top: 100%;
+    top: 105%;
     right: max(-2vw, -1rem);
-    height: 2px;
+    height: 3px;
     width: 50%;
-    background: var(--gray-100);
+    background: var(--gray-200);
   }
   .card-content {
     padding-top: min(1vh, 12px);
@@ -137,6 +137,7 @@
   max-width: 216px;
   background-color: var(--greenPrimary);
   overflow: auto;
+  font-size: 14px;
 
   .side-link {
     margin: 1vh;
@@ -147,8 +148,6 @@
       margin: 8px;
       padding: 2px;
       color: var(--gray-100);
-      border: 2px solid var(--gray-100);
-      border-radius: 50%;
   
       svg {
         margin: 2px;
@@ -164,7 +163,6 @@
     h5 {
       font-size: 20px;
       margin: 0;
-      padding-left: 0.375rem;
       align-content: center;
       color: var(--gray-100);
       transition: padding 0.3s ease;

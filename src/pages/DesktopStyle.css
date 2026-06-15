@@ -1,5 +1,9 @@
 .resume-page.desk .top { display: none; }
 
+@media screen and (min-width: 1400px) {
+  
+}
+
 .desktop-portfolio {
   min-height: 500px;
 
@@ -8,11 +12,10 @@
     color: #DBD7D2;
   }
   h1 {
-    margin-top: 2vh;
     font-size: 43px;
   }
   h2 {
-    margin-top: 3.5rem;
+    margin-top: 18px;
     font-size: 35px;
   }
 }
@@ -55,10 +58,10 @@
   }
   .card-section {
     margin-block: 1.5rem;
-    width: max(425px, 85%);
+    width: max(425px, 90%);
   }
-  .active-job:hover { background-color: var(--orangeBright); }
-  .inactive-job:hover, #class-work .card-section:hover { background-color: var(--purple-600); }
+  /*.active-job:hover {  }
+  .inactive-job:hover, #class-work .card-section:hover {  } */
 }
 
 #prof-table {
@@ -67,12 +70,14 @@
   flex-wrap: wrap;
   gap: 1rem;
 
-  .thin-header {
-    font-size: 30px;
-    font-weight: 300;
+  .skills p { 
+    white-space: nowrap; 
+    margin: 0;
   }
-  .skills p { white-space: nowrap; }
-  .languages { max-width: 40%; }
+  .languages { 
+    min-width: 33%;
+    max-width: 60%; 
+  }
   .tools {
     min-width: max(60%, 450px);
     max-width: 60%;
