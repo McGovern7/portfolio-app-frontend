@@ -205,7 +205,7 @@ body {
   content: " ";
   position: absolute;
   margin-block: 10px;
-  height: fill;
+  height: stretch;
   width: 6px;
   background: var(--greenPrimary);
 }
